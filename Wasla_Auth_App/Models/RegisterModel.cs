@@ -1,0 +1,17 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Wasla_Auth_App.Models
+{
+    public class RegisterModel
+    {
+        [Required(ErrorMessage = "username is required")]
+        public required string Username { get; set; }
+
+        [Required(ErrorMessage = "email is required")]
+        public required string Email { get; set; }
+
+
+        [Required(ErrorMessage = "Password is required")]
+        public required string Password { get; set; }
+    }
+}

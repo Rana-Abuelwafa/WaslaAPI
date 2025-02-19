@@ -1,0 +1,14 @@
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Debug\net8.0\WaslaApp.Data.deps.json
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Debug\net8.0\WaslaApp.Data.runtimeconfig.json
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Debug\net8.0\WaslaApp.Data.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Debug\net8.0\WaslaApp.Data.pdb
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.csproj.AssemblyReference.cache
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.AssemblyInfoInputs.cache
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.AssemblyInfo.cs
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.csproj.CoreCompileInputs.cache
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\refint\WaslaApp.Data.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.pdb
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.genruntimeconfig.cache
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\ref\WaslaApp.Data.dll

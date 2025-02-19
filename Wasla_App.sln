@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wasla_App", "Wasla_App\Wasla_App.csproj", "{A3773BE8-0AEA-4A5C-9C63-5691112C8E05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Walsa_Auth", "Walsa_Auth", "{27018C86-EBF7-45E9-B61C-1BDA7EDC41AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wasla_Auth_App", "Wasla_Auth_App\Wasla_Auth_App.csproj", "{70401E20-872E-4F51-8A7E-01DC84FF339C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wasla_Client_App", "Wasla_Client_App", "{09301DC4-C832-4F82-A017-CECC119B9C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaslaApp.Data", "WaslaApp.Data\WaslaApp.Data.csproj", "{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3773BE8-0AEA-4A5C-9C63-5691112C8E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3773BE8-0AEA-4A5C-9C63-5691112C8E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3773BE8-0AEA-4A5C-9C63-5691112C8E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3773BE8-0AEA-4A5C-9C63-5691112C8E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70401E20-872E-4F51-8A7E-01DC84FF339C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70401E20-872E-4F51-8A7E-01DC84FF339C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70401E20-872E-4F51-8A7E-01DC84FF339C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70401E20-872E-4F51-8A7E-01DC84FF339C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3773BE8-0AEA-4A5C-9C63-5691112C8E05} = {09301DC4-C832-4F82-A017-CECC119B9C7B}
+		{70401E20-872E-4F51-8A7E-01DC84FF339C} = {27018C86-EBF7-45E9-B61C-1BDA7EDC41AA}
+		{51D3FA4C-F6D9-49E2-B080-85DE0247CD0D} = {09301DC4-C832-4F82-A017-CECC119B9C7B}
+	EndGlobalSection
+EndGlobal

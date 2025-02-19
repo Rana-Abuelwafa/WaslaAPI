@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "getQuesList",
+    "RelativePath": "api/WaslaClient/getQuesList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lang",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveQuesList",
+    "RelativePath": "api/WaslaClient/saveQuesList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lst",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.RegistrationAnswer, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

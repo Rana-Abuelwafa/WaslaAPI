@@ -1,0 +1,12 @@
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\bin\Debug\net8.0\Walsa_Auth_DAO.deps.json
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\bin\Debug\net8.0\Walsa_Auth_DAO.dll
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\bin\Debug\net8.0\Walsa_Auth_DAO.pdb
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.csproj.AssemblyReference.cache
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.GeneratedMSBuildEditorConfig.editorconfig
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.AssemblyInfoInputs.cache
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.AssemblyInfo.cs
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.csproj.CoreCompileInputs.cache
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.dll
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\refint\Walsa_Auth_DAO.dll
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\Walsa_Auth_DAO.pdb
+D:\WaslaProjectApi\Wasla_App\Walsa_Auth_DAO\obj\Debug\net8.0\ref\Walsa_Auth_DAO.dll

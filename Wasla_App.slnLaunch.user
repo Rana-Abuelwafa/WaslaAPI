@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Wasla_App\\Wasla_App.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Wasla_Auth_App\\Wasla_Auth_App.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
