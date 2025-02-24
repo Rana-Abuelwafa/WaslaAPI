@@ -150,3 +150,4 @@ D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Scrutor.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Debug\net8.0\Wasla_App.sourcelink.json
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Newtonsoft.Json.dll

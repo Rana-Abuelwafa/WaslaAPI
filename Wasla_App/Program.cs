@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
+builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null);
+//builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(MyAllowSpecificOrigins,
@@ -80,10 +82,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
+app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
-app.UseCors(MyAllowSpecificOrigins);
+
 app.MapControllers();
 
 app.Run();
