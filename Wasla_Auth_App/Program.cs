@@ -2,16 +2,27 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using System.Text;
 using Wasla_Auth_App;
 using Wasla_Auth_App.Models;
 
+ string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+        builder =>
+        {
+            builder.WithOrigins("*")
+                    .WithMethods("*")
+                    .WithHeaders(HeaderNames.ContentType, "*");
+        });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -73,6 +84,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 app.MapIdentityApi<ApplicationUser>();
 app.MapControllers();
 

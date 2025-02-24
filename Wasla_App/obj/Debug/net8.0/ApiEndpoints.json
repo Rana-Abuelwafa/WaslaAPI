@@ -8,9 +8,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "lang",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

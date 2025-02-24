@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Wasla_App.services;
 using WaslaApp.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models;
 
 namespace Wasla_App.Controllers
 {
@@ -25,10 +26,10 @@ namespace Wasla_App.Controllers
         }
 
         [HttpPost("getQuesList")]
-        public async Task<IActionResult> getQuesList(string lang)
+        public async Task<IActionResult> getQuesList(QuesLstReq req)
         {
 
-            return Ok(await _waslaService.getRegistrationQuestionList(lang));
+            return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
 
         [HttpPost("saveQuesList")]

@@ -10,15 +10,25 @@
         "tags": [
           "WaslaClient"
         ],
-        "parameters": [
-          {
-            "name": "lang",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -69,6 +79,16 @@
   },
   "components": {
     "schemas": {
+      "QuesLstReq": {
+        "type": "object",
+        "properties": {
+          "lang": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RegistrationAnswer": {
         "type": "object",
         "properties": {

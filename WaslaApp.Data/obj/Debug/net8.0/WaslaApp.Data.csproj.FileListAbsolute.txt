@@ -12,3 +12,4 @@ D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\refint\WaslaApp.Data
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.pdb
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.genruntimeconfig.cache
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\ref\WaslaApp.Data.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Debug\net8.0\WaslaApp.Data.sourcelink.json

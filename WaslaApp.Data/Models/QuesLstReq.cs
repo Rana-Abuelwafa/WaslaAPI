@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace WaslaApp.Data.Models
 {
-    public class ResponseCls 
+    public class QuesLstReq
     {
-        public bool success { get; set; }
-        public string? errors { get; set; }
-
+        public string lang { get;set;}
     }
 }
