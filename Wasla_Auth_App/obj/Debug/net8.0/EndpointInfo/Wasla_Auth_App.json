@@ -598,6 +598,10 @@
           "password": {
             "minLength": 1,
             "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
