@@ -46,7 +46,7 @@ namespace WaslaApp.Data
                     answer.client_id = client_id;
                     if (answer.id  == 0)
                     {
-                        _db.RegistrationAnswers.AddAsync(answer);
+                        _db.RegistrationAnswers.Add(answer);
                     }
                     else
                     {
@@ -57,7 +57,7 @@ namespace WaslaApp.Data
                     count++;
                 }
                 
-                _db.SaveChangesAsync();
+                _db.SaveChanges();
                 if (count == lst.Count)
                 {
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = htmlcontent };

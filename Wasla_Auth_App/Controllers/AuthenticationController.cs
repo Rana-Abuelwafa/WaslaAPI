@@ -32,7 +32,7 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser { UserName = model.FirstName + " " + model.LastName, Email = model.Email,FirstName=model.FirstName,LastName=model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -40,6 +40,8 @@ namespace Wasla_Auth_App.Controllers
                 return Ok(new User
                 {
                     UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName=user.LastName,
                     Email=user.Email,
                     isSuccessed = result.Succeeded,
                     msg = "User created successfully" ,
@@ -55,6 +57,8 @@ namespace Wasla_Auth_App.Controllers
                 {
                     UserName = "",
                     Email = "",
+                    FirstName ="",
+                    LastName="",
                     isSuccessed = result.Succeeded,
                     msg = errors,
                     AccessToken = "",
@@ -74,6 +78,8 @@ namespace Wasla_Auth_App.Controllers
                 return Ok(new User
                 {
                     UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                     Email = user.Email,
                     isSuccessed = true,
                     msg = "User login successfully",
@@ -104,6 +110,9 @@ namespace Wasla_Auth_App.Controllers
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim("ClientId", user.Id.ToString()),
+                        //new Claim("UserName", user.Id.ToString()),
+                        //new Claim("ClientId", user.Id.ToString()),
+                        //new Claim("ClientId", user.Id.ToString()),
                         new Claim("TimeStamp",timestamp.ToString()),
                         new Claim("ActivtationTokenExpiredAt",timestamp.AddDays(14).ToString()),
                     };

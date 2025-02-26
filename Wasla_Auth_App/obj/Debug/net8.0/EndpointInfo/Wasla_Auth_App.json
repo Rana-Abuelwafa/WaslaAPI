@@ -577,12 +577,17 @@
       "RegisterModel": {
         "required": [
           "email",
-          "password",
-          "username"
+          "firstName",
+          "lastName",
+          "password"
         ],
         "type": "object",
         "properties": {
-          "username": {
+          "firstName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "lastName": {
             "minLength": 1,
             "type": "string"
           },
