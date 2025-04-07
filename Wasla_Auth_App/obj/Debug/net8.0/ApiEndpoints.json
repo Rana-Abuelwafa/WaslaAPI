@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "ExternalRegister",
+    "RelativePath": "api/Authentication/ExternalRegister",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Wasla_Auth_App.Models.AppsRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "Login",
     "RelativePath": "api/Authentication/LoginUser",
     "HttpMethod": "POST",

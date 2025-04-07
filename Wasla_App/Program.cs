@@ -64,7 +64,8 @@ builder.Services.AddDbContext<wasla_client_dbContext>(options =>
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<WaslaDAO>();
 builder.Services.AddScoped<IWaslaService, WaslaService>();
-builder.Services.AddAuthentication().AddJwtBearer(options =>
+builder.Services.AddAuthentication()
+    .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {

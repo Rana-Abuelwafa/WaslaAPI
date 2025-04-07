@@ -128,5 +128,43 @@ namespace Wasla_Auth_App.Controllers
         }
 
 
+        [HttpPost("ExternalRegister")]
+        public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
+        {
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+            var result = await _userManager.CreateAsync(user);
+            if (result.Succeeded)
+            {
+                var token = GenerateJwtToken(user);
+                return Ok(new User
+                {
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    isSuccessed = result.Succeeded,
+                    msg = "User created successfully",
+                    AccessToken = token,
+                    RefreshToken = token
+                });
+            }
+            else
+            {
+                List<IdentityError> errorList = result.Errors.ToList();
+                var errors = string.Join(", ", errorList.Select(e => e.Description));
+                return BadRequest(new User
+                {
+                    UserName = "",
+                    Email = "",
+                    FirstName = "",
+                    LastName = "",
+                    isSuccessed = result.Succeeded,
+                    msg = errors,
+                    AccessToken = "",
+                    RefreshToken = ""
+                });
+            }
+
+        }
     }
 }
