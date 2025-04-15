@@ -19,9 +19,9 @@ namespace Wasla_App.services
             return _waslaDao.getRegistrationQuestionList(lang);
         }
 
-        public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string clientId)
+        public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string clientId,string FullName,string email)
         {
-            return _waslaDao.saveRegistrationSteps(lst, clientId);
+            return _waslaDao.saveRegistrationSteps(lst, clientId, FullName, email);
         }
     }
 }

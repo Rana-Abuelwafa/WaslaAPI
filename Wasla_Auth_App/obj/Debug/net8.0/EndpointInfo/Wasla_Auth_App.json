@@ -98,6 +98,54 @@
         }
       }
     },
+    "/api/Authentication/SendMail": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailData"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/register": {
       "post": {
         "tags": [
@@ -609,6 +657,28 @@
             "nullable": true
           },
           "twoFactorRecoveryCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MailData": {
+        "type": "object",
+        "properties": {
+          "emailToId": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailToName": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailSubject": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailBody": {
             "type": "string",
             "nullable": true
           }

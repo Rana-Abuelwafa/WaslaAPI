@@ -7,6 +7,7 @@ using System.Text;
 using Wasla_App.services;
 using WaslaApp.Data;
 using WaslaApp.Data.Data;
+using WaslaApp.Models;
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,10 +60,13 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddHttpContextAccessor();
+//mail
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddDbContext<wasla_client_dbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WaslaConnection")));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<WaslaDAO>();
+builder.Services.AddScoped<MailSettingDao>();
 builder.Services.AddScoped<IWaslaService, WaslaService>();
 builder.Services.AddAuthentication()
     .AddJwtBearer(options =>

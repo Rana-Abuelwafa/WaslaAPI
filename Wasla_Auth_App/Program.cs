@@ -6,8 +6,9 @@ using Microsoft.Net.Http.Headers;
 using System.Text;
 using Wasla_Auth_App;
 using Wasla_Auth_App.Models;
+using Wasla_Auth_App.Services;
 
- string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,6 +24,8 @@ builder.Services.AddCors(options =>
                     .WithHeaders(HeaderNames.ContentType, "*");
         });
 });
+//mail
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -71,7 +74,7 @@ builder.Services.AddDbContext<AuthenticationDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AuthConnection")));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthenticationDBContext>();
-
+builder.Services.AddTransient<IMailService, MailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

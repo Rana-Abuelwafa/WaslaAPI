@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
+using WaslaApp.Models;
 
 namespace WaslaApp.Data
 {
     public class WaslaDAO
     {
+        private readonly MailSettingDao _mailSettingDao;
         private readonly wasla_client_dbContext _db;
         string htmlcontent = "<p>Dear customer, the form has been submitted to our \r\ndesigners for review and implementation, you will be \r\ncontacted to obtain further details.\r\n<br/>\r\n<br/>\r\n Thank you for choosing our services.<p/>";
 
-        public  WaslaDAO(wasla_client_dbContext db) {
+        public  WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao) {
             _db = db;
+            _mailSettingDao = mailSettingDao;
         }
 
         #region "select"
@@ -35,7 +38,7 @@ namespace WaslaApp.Data
         #endregion
 
         #region "insert & update"
-         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string client_id)
+         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string client_id,string FullName,string email)
         {
             int count = 0;
             RegsistrationQuesResponse response;
@@ -60,6 +63,18 @@ namespace WaslaApp.Data
                 _db.SaveChanges();
                 if (count == lst.Count)
                 {
+                    //send mail
+                    try
+                    {
+                        MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = "wasla activation mail" };
+                        _mailSettingDao.SendMail(Mail_Data);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+
+                    //end send mail
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = htmlcontent };
                 }
                 else

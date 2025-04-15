@@ -151,3 +151,8 @@ D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Swashbuckle.AspNetCore.F
 D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Debug\net8.0\Wasla_App.sourcelink.json
 D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\MailKit.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\MimeKit.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

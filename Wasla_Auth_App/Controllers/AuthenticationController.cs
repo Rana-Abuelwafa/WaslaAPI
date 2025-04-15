@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Wasla_Auth_App.Models;
+using Wasla_Auth_App.Services;
 
 namespace Wasla_Auth_App.Controllers
 {
@@ -17,15 +18,17 @@ namespace Wasla_Auth_App.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
+        IMailService Mail_Service = null;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         public AuthenticationController(UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+        SignInManager<ApplicationUser> signInManager, IConfiguration configuration , IMailService _MailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            Mail_Service = _MailService;
 
         }
 
@@ -36,6 +39,8 @@ namespace Wasla_Auth_App.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+
+             
                 var token = GenerateJwtToken(user);
                 return Ok(new User
                 {
@@ -105,13 +110,14 @@ namespace Wasla_Auth_App.Controllers
             //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             //};
             DateTime timestamp = DateTime.Now;
+            string fullName = user.FirstName + " " + user.LastName;
             var authClaims = new List<Claim>
                     {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim("ClientId", user.Id.ToString()),
-                        //new Claim("UserName", user.Id.ToString()),
-                        //new Claim("ClientId", user.Id.ToString()),
+                        new Claim("FullName", fullName),
+                        new Claim("Email", user.Email),
                         //new Claim("ClientId", user.Id.ToString()),
                         new Claim("TimeStamp",timestamp.ToString()),
                         new Claim("ActivtationTokenExpiredAt",timestamp.AddDays(14).ToString()),
@@ -165,6 +171,11 @@ namespace Wasla_Auth_App.Controllers
                 });
             }
 
+        }
+        [HttpPost("SendMail")]
+        public bool SendMail(MailData Mail_Data)
+        {
+            return Mail_Service.SendMail(Mail_Data);
         }
     }
 }
