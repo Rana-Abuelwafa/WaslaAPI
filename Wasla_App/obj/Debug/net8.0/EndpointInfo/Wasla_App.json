@@ -5,6 +5,68 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/WaslaAdmin/saveQuestions": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getAdminQuesList": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/getQuesList": {
       "post": {
         "tags": [
@@ -36,7 +98,7 @@
         }
       }
     },
-    "/api/WaslaClient/saveQuesList": {
+    "/api/WaslaClient/saveRegistrationSteps": {
       "post": {
         "tags": [
           "WaslaClient"
@@ -105,6 +167,28 @@
             "nullable": true
           },
           "answer": {
+            "type": "string",
+            "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrationQuestion": {
+        "type": "object",
+        "properties": {
+          "ques_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ques_title": {
+            "type": "string",
+            "nullable": true
+          },
+          "ques_type": {
             "type": "string",
             "nullable": true
           },

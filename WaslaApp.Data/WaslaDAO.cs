@@ -8,6 +8,7 @@ using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
 using WaslaApp.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WaslaApp.Data
 {
@@ -28,7 +29,15 @@ namespace WaslaApp.Data
 
             try
             {
-                return await _db.RegistrationQuestions.Where(wr => wr.lang_code == lang).ToListAsync();
+                if(lang.ToLower() == "all")
+                {
+                    return await _db.RegistrationQuestions.ToListAsync();
+                }
+                else
+                {
+                    return await _db.RegistrationQuestions.Where(wr => wr.lang_code == lang).ToListAsync();
+                }
+                
             }
             catch(Exception ex)
             {
@@ -89,6 +98,33 @@ namespace WaslaApp.Data
             }
             return response;
         }
+         
+        public ResponseCls saveQuestions(RegistrationQuestion ques)
+        {
+            ResponseCls response;
+            try
+            {
+                if(ques.ques_id == 0)
+                {
+                    int maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
+                    ques.ques_id = maxId + 1;
+                    _db.RegistrationQuestions.Add(ques);
+                }
+                else
+                {
+                    _db.Update(ques);
+                }
+                
+                _db.SaveChanges();
+                response = new ResponseCls {  success=true,errors=null};
+            }
+            catch(Exception ex)
+            {
+                response = new ResponseCls { success=false, errors = ex.Message};
+            }
+            return response;
+        }
+
         #endregion
 
     }

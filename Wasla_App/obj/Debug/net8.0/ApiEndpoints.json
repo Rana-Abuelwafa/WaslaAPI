@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getQuesList",
+    "RelativePath": "api/WaslaAdmin/getAdminQuesList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "saveQuestions",
+    "RelativePath": "api/WaslaAdmin/saveQuestions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ques",
+        "Type": "WaslaApp.Data.Entities.RegistrationQuestion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "getQuesList",
     "RelativePath": "api/WaslaClient/getQuesList",
@@ -17,8 +49,8 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
-    "Method": "saveQuesList",
-    "RelativePath": "api/WaslaClient/saveQuesList",
+    "Method": "saveRegistrationSteps",
+    "RelativePath": "api/WaslaClient/saveRegistrationSteps",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

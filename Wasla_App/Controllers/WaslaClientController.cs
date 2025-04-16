@@ -35,8 +35,8 @@ namespace Wasla_App.Controllers
             return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
 
-        [HttpPost("saveQuesList")]
-        public  IActionResult saveQuesList(List<RegistrationAnswer> lst)
+        [HttpPost("saveRegistrationSteps")]
+        public  IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)
         {
             string clientId = string.Empty;
             string FullName = string.Empty;
@@ -51,6 +51,8 @@ namespace Wasla_App.Controllers
 
             return  Ok(_waslaService.saveRegistrationSteps(lst, clientId , FullName, email));
         }
+
       
+
     }
 }
