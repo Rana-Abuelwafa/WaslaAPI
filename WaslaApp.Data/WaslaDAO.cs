@@ -125,6 +125,25 @@ namespace WaslaApp.Data
             return response;
         }
 
+
+        public ResponseCls deleteQuestions(RegistrationQuestion ques)
+        {
+            ResponseCls response;
+            try
+            {
+               
+                    _db.Remove(ques);
+                
+                _db.SaveChanges();
+                response = new ResponseCls { success = true, errors = null };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { success = false, errors = ex.Message };
+            }
+            return response;
+        }
+
         #endregion
 
     }

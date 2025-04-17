@@ -39,6 +39,7 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.ques_type).HasMaxLength(50);
+            entity.Property(e => e.order);
         });
 
         OnModelCreatingPartial(modelBuilder);

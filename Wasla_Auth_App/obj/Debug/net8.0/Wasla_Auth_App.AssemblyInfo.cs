@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wasla_Auth_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dab106279d3064567dd0cfbb394c7149e78b781f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ba8e22f505ded3fdcf7f73f7e032bb1678aeda0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wasla_Auth_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wasla_Auth_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

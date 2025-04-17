@@ -14,6 +14,11 @@ namespace Wasla_App.services
 
         }
 
+        public ResponseCls deleteQuestions(RegistrationQuestion ques)
+        {
+            return _waslaDao.deleteQuestions(ques);
+        }
+
         public Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang)
         {
             return _waslaDao.getRegistrationQuestionList(lang);

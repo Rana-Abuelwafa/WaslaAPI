@@ -22,6 +22,12 @@ namespace Wasla_App.Controllers
 
             return Ok(_waslaService.saveQuestions(ques));
         }
+        [HttpPost("deleteQuestions")]
+        public IActionResult deleteQuestions(RegistrationQuestion ques)
+        {
+
+            return Ok(_waslaService.deleteQuestions(ques));
+        }
         [HttpPost("getAdminQuesList")]
         public async Task<IActionResult> getQuesList(QuesLstReq req)
         {

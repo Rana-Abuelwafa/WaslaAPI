@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "deleteQuestions",
+    "RelativePath": "api/WaslaAdmin/deleteQuestions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ques",
+        "Type": "WaslaApp.Data.Entities.RegistrationQuestion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "getQuesList",
     "RelativePath": "api/WaslaAdmin/getAdminQuesList",
     "HttpMethod": "POST",

@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/WaslaAdmin/deleteQuestions": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationQuestion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaAdmin/getAdminQuesList": {
       "post": {
         "tags": [
@@ -195,6 +226,10 @@
           "lang_code": {
             "type": "string",
             "nullable": true
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
