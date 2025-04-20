@@ -31,6 +31,7 @@ namespace Wasla_App.Controllers
         [HttpPost("getAdminQuesList")]
         public async Task<IActionResult> getQuesList(QuesLstReq req)
         {
+            
 
             return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
