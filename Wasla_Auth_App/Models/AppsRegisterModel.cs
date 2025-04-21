@@ -12,5 +12,6 @@ namespace Wasla_Auth_App.Models
 
         [Required(ErrorMessage = "email is required")]
         public required string Email { get; set; }
+        
     }
 }

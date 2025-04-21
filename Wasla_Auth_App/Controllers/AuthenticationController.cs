@@ -77,31 +77,46 @@ namespace Wasla_Auth_App.Controllers
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            try
             {
-                var token = GenerateJwtToken(user);
-                return Ok(new User
+                var isAuth = await _userManager.CheckPasswordAsync(user, model.Password);
+                if (user != null && isAuth)
                 {
-                    UserName = user.UserName,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    isSuccessed = true,
-                    msg = "User login successfully",
-                    AccessToken = token,
-                    RefreshToken = token
-                });
+                    var token = GenerateJwtToken(user);
+                    return Ok(new User
+                    {
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        isSuccessed = true,
+                        msg = "User login successfully",
+                        AccessToken = token,
+                        RefreshToken = token
+                    });
+                }
+                else
+                    return Unauthorized(new User
+                    {
+
+                        isSuccessed = false,
+                        msg = "mail or password is incorrect",
+
+                    });
+
+
             }
-            else
+            catch (Exception e) {
                 return Unauthorized(new User
                 {
-                    
+
                     isSuccessed = false,
                     msg = "mail or password is incorrect",
-                    
+
                 });
-           
+            }
         }
+
         private string GenerateJwtToken(ApplicationUser user)
         {
             //    var claims = new[]
@@ -137,7 +152,7 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,GoogleId="1" };
             var result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
             {
@@ -172,6 +187,54 @@ namespace Wasla_Auth_App.Controllers
             }
 
         }
+
+
+
+        [HttpPost("LoginGmail")]
+        public async Task<IActionResult> LoginGmail([FromBody] AppsRegisterModel model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            try
+            {
+            
+                if (user != null)
+                {
+                    var token = GenerateJwtToken(user);
+                    return Ok(new User
+                    {
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        isSuccessed = true,
+                        msg = "User login successfully",
+                        AccessToken = token,
+                        RefreshToken = token
+                    });
+                }
+                else
+                    return Unauthorized(new User
+                    {
+
+                        isSuccessed = false,
+                        msg = "user Not Found",
+
+                    });
+
+
+            }
+            catch (Exception e)
+            {
+                return Unauthorized(new User
+                {
+
+                    isSuccessed = false,
+                    msg = "user Not Found",
+
+                });
+            }
+        }
+
         [HttpPost("SendMail")]
         public bool SendMail(MailData Mail_Data)
         {
