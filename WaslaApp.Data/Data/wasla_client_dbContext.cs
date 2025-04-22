@@ -16,20 +16,65 @@ public partial class wasla_client_dbContext : DbContext
     {
     }
 
+    public virtual DbSet<ClientBrand> ClientBrands { get; set; }
+
+    public virtual DbSet<ClientProfile> ClientProfiles { get; set; }
+
+    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
 
     public virtual DbSet<RegistrationQuestion> RegistrationQuestions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost:5432;Database=wasla_client_db;Username=postgres;Password=123456");
+        => optionsBuilder.UseNpgsql("Host=localhost:5432;Database=wasla_client_db;Username=postgres;Password=Berlin2020");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ClientBrand>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("ClientBrand_pkey");
+
+            entity.ToTable("ClientBrand");
+
+            entity.Property(e => e.brand_name).HasMaxLength(100);
+            entity.Property(e => e.brand_type).HasMaxLength(20);
+            entity.Property(e => e.client_Id).HasColumnType("character varying");
+        });
+
+        modelBuilder.Entity<ClientProfile>(entity =>
+        {
+            entity.HasKey(e => e.profile_id).HasName("ClientProfile_pkey");
+
+            entity.ToTable("ClientProfile");
+
+            entity.Property(e => e.client_email).HasMaxLength(50);
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.client_name).HasMaxLength(50);
+            entity.Property(e => e.fb_link).HasMaxLength(50);
+            entity.Property(e => e.gender).HasMaxLength(50);
+            entity.Property(e => e.lang).HasMaxLength(20);
+            entity.Property(e => e.nation).HasMaxLength(50);
+            entity.Property(e => e.pay_code).HasMaxLength(20);
+            entity.Property(e => e.phone_number).HasMaxLength(50);
+            entity.Property(e => e.twitter_link).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<PaymentMethod>(entity =>
+        {
+            entity.HasKey(e => e.pay_id).HasName("PaymentMethods_pkey");
+
+            entity.Property(e => e.pay_id).ValueGeneratedNever();
+            entity.Property(e => e.pay_code).HasMaxLength(20);
+            entity.Property(e => e.pay_name).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<RegistrationAnswer>(entity =>
         {
             entity.HasKey(e => e.id).HasName("RegistrationAnswers_pkey");
 
+            entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.lang_code).HasMaxLength(20);
         });
 
@@ -38,8 +83,8 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.ques_id).HasName("RegistrationQuestions_pkey");
 
             entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.order).HasDefaultValue(0);
             entity.Property(e => e.ques_type).HasMaxLength(50);
-            entity.Property(e => e.order);
         });
 
         OnModelCreatingPartial(modelBuilder);

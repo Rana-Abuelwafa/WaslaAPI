@@ -12,5 +12,6 @@ public partial class RegistrationQuestion
     public string? ques_type { get; set; }
 
     public string? lang_code { get; set; }
-    public int order { get; set; }
+
+    public int? order { get; set; }
 }

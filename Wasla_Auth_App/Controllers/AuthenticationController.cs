@@ -51,7 +51,8 @@ namespace Wasla_Auth_App.Controllers
                     isSuccessed = result.Succeeded,
                     msg = "User created successfully" ,
                     AccessToken=token,
-                    RefreshToken=token
+                    RefreshToken=token,
+                    Id=user.Id
                 });
             }
             else
@@ -67,7 +68,8 @@ namespace Wasla_Auth_App.Controllers
                     isSuccessed = result.Succeeded,
                     msg = errors,
                     AccessToken = "",
-                    RefreshToken = ""
+                    RefreshToken = "",
+                    Id=null
                 });
             }
             
@@ -92,7 +94,8 @@ namespace Wasla_Auth_App.Controllers
                         isSuccessed = true,
                         msg = "User login successfully",
                         AccessToken = token,
-                        RefreshToken = token
+                        RefreshToken = token,
+                        Id=user.Id
                     });
                 }
                 else
@@ -166,7 +169,8 @@ namespace Wasla_Auth_App.Controllers
                     isSuccessed = result.Succeeded,
                     msg = "User created successfully",
                     AccessToken = token,
-                    RefreshToken = token
+                    RefreshToken = token,
+                    Id=user.Id
                 });
             }
             else
@@ -182,7 +186,8 @@ namespace Wasla_Auth_App.Controllers
                     isSuccessed = result.Succeeded,
                     msg = errors,
                     AccessToken = "",
-                    RefreshToken = ""
+                    RefreshToken = "",
+                    Id=null
                 });
             }
 
@@ -209,7 +214,8 @@ namespace Wasla_Auth_App.Controllers
                         isSuccessed = true,
                         msg = "User login successfully",
                         AccessToken = token,
-                        RefreshToken = token
+                        RefreshToken = token,
+                        Id=user.Id
                     });
                 }
                 else
@@ -240,5 +246,71 @@ namespace Wasla_Auth_App.Controllers
         {
             return Mail_Service.SendMail(Mail_Data);
         }
+
+        [HttpPost("changePassword")]
+        public async Task<IActionResult> changePassword([FromBody] PasswordCls model)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(model.userId);
+                if (user != null)
+                {
+                    var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        var token = GenerateJwtToken(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = "Password is changed successfully",
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id=user.Id
+                        });
+                    }
+                    else
+                    {
+                        List<IdentityError> errorList = result.Errors.ToList();
+                        var errors = string.Join(", ", errorList.Select(e => e.Description));
+                        return BadRequest(new User
+                        {
+
+                            isSuccessed = false,
+                            msg = errors,
+
+                        });
+                    }
+
+
+                }
+                else
+                {
+                    return Unauthorized(new User
+                    {
+
+                        isSuccessed = false,
+                        msg = "User Not Found",
+
+                    });
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                return Unauthorized(new User
+                {
+
+                    isSuccessed = false,
+                    msg = e.Message,
+
+                });
+            }
+        }
+
     }
 }

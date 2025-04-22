@@ -9,7 +9,7 @@ public partial class RegistrationAnswer
 
     public decimal ques_id { get; set; }
 
-    public string client_id { get; set; }
+    public string client_id { get; set; } = null!;
 
     public string? answer { get; set; }
 

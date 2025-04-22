@@ -23,6 +23,8 @@ namespace WaslaApp.Data
             _mailSettingDao = mailSettingDao;
         }
 
+        #region "questions"
+
         #region "select"
         public async Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang)
         {
@@ -146,5 +148,49 @@ namespace WaslaApp.Data
 
         #endregion
 
+        #endregion
+
+        #region "Profile"
+
+        public async Task<List<PaymentMethod>> GetPaymentMethods()
+        {
+
+            try
+            {               
+                    return await _db.PaymentMethods.ToListAsync();
+   
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<ClientBrand>> GetClientBrands(string clientId)
+        {
+            try
+            {
+                return await _db.ClientBrands.Where(wr => wr.client_Id == clientId).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<ClientProfile>> GetClientProfiles(string clientId)
+        {
+            try
+            {
+                return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
     }
 }
