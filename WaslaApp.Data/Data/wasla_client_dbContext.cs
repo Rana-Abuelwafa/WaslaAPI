@@ -18,6 +18,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<ClientBrand> ClientBrands { get; set; }
 
+    public virtual DbSet<ClientImage> ClientImages { get; set; }
+
     public virtual DbSet<ClientProfile> ClientProfiles { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
@@ -41,6 +43,16 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.brand_name).HasMaxLength(100);
             entity.Property(e => e.brand_type).HasMaxLength(20);
             entity.Property(e => e.client_Id).HasColumnType("character varying");
+        });
+
+        modelBuilder.Entity<ClientImage>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("ClientImages_pkey");
+
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.img_name).HasMaxLength(50);
+            entity.Property(e => e.img_path).HasMaxLength(100);
+            entity.Property(e => e.type).HasComment("1 for profile");
         });
 
         modelBuilder.Entity<ClientProfile>(entity =>

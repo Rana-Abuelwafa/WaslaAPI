@@ -28,6 +28,7 @@ namespace Wasla_App.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+        #region "registration questions"
         [HttpPost("getQuesList")]
         public async Task<IActionResult> getQuesList(QuesLstReq req)
         {
@@ -52,7 +53,121 @@ namespace Wasla_App.Controllers
             return  Ok(_waslaService.saveRegistrationSteps(lst, clientId , FullName, email));
         }
 
-      
+
+        #endregion
+
+
+        #region "Profile"
+        [HttpPost("GetPaymentMethods")]
+        public async Task<IActionResult> GetPaymentMethods()
+        {
+
+            return Ok(await _waslaService.GetPaymentMethods());
+        }
+
+        [HttpPost("GetClientBrands")]
+        public async Task<IActionResult> GetClientBrands()
+        {
+
+            string clientId = string.Empty;
+          
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+             
+            }
+
+            return Ok(await _waslaService.GetClientBrands(clientId));
+        }
+
+        [HttpPost("GetClientProfiles")]
+        public async Task<IActionResult> GetClientProfiles()
+        {
+            string clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(await _waslaService.GetClientProfiles(clientId));
+        }
+
+
+        [HttpPost("saveMainProfile")]
+        public IActionResult saveMainProfile(ClientProfile profile)
+        {
+            string clientId = string.Empty;
+            string FullName = string.Empty;
+            string email = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+                FullName = _httpContextAccessor.HttpContext.User.FindFirstValue("FullName");
+                email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
+            }
+
+            profile.client_id = clientId;
+            profile.client_name = FullName;
+            profile.client_email = email;
+            return Ok(_waslaService.saveMainProfile(profile));
+        }
+
+        [HttpPost("saveClientBrand")]
+        public IActionResult saveClientBrand(ClientBrand brand)
+        {
+            string clientId = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+            }
+
+            brand.client_Id = clientId;
+            return Ok(_waslaService.saveClientBrand(brand));
+        }
+
+        [HttpPost("saveProfileImage")]
+        public IActionResult saveProfileImage(ImgCls cls)
+        {
+            string clientId = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+            }
+            var path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images" + "\\", cls.img.FileName);
+
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                 cls.img.CopyToAsync(stream);
+                stream.Close();
+            }
+            ClientImage image = new ClientImage
+            {
+                client_id = clientId,
+                img_name = cls.img.FileName,
+                img_path = path,
+                type = 1  //mean save profile image
+            };
+            
+            return Ok(_waslaService.saveProfileImage(image));
+        }
+
+        [HttpPost("GetProfileImage")]
+        public async Task<IActionResult> GetProfileImage()
+        {
+            string clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(await _waslaService.GetProfileImage(clientId));
+        }
+        #endregion
+
+
+
 
     }
 }

@@ -49,6 +49,46 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetClientBrands",
+    "RelativePath": "api/WaslaClient/GetClientBrands",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetClientProfiles",
+    "RelativePath": "api/WaslaClient/GetClientProfiles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetPaymentMethods",
+    "RelativePath": "api/WaslaClient/GetPaymentMethods",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetProfileImage",
+    "RelativePath": "api/WaslaClient/GetProfileImage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "getQuesList",
     "RelativePath": "api/WaslaClient/getQuesList",
     "HttpMethod": "POST",
@@ -59,6 +99,54 @@
         "Name": "req",
         "Type": "WaslaApp.Data.Models.QuesLstReq",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveClientBrand",
+    "RelativePath": "api/WaslaClient/saveClientBrand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brand",
+        "Type": "WaslaApp.Data.Entities.ClientBrand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveMainProfile",
+    "RelativePath": "api/WaslaClient/saveMainProfile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profile",
+        "Type": "WaslaApp.Data.Entities.ClientProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveProfileImage",
+    "RelativePath": "api/WaslaClient/saveProfileImage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "img",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

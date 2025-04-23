@@ -8,6 +8,7 @@ using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
 using WaslaApp.Models;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WaslaApp.Data
@@ -17,7 +18,6 @@ namespace WaslaApp.Data
         private readonly MailSettingDao _mailSettingDao;
         private readonly wasla_client_dbContext _db;
         string htmlcontent = "<p>Dear customer, the form has been submitted to our \r\ndesigners for review and implementation, you will be \r\ncontacted to obtain further details.\r\n<br/>\r\n<br/>\r\n Thank you for choosing our services.<p/>";
-
         public  WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao) {
             _db = db;
             _mailSettingDao = mailSettingDao;
@@ -184,6 +184,129 @@ namespace WaslaApp.Data
             try
             {
                 return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        public ResponseCls saveMainProfile(ClientProfile profile)
+        {
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+                if (profile.profile_id == 0)
+                {
+                    if (_db.ClientProfiles.Count() > 0)
+                    {
+                        maxId = _db.ClientProfiles.Max(d => d.profile_id);
+
+                    }
+                   
+                    profile.profile_id = maxId + 1;
+                    _db.ClientProfiles.Add(profile);
+                }
+                else
+                {
+                    _db.Update(profile);
+                }
+
+                _db.SaveChanges();
+                response = new ResponseCls { success = true, errors = null };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { success = false, errors = ex.Message };
+            }
+            return response;
+        }
+
+        public ResponseCls saveClientBrand(ClientBrand brand)
+        {
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+                if (brand.id == 0)
+                {
+                    if (_db.ClientBrands.Count() > 0)
+                    {
+                        maxId =  _db.ClientBrands.Max(d => d.id);
+
+                    }
+                    
+
+                    brand.id = maxId + 1 ;
+                    _db.ClientBrands.Add(brand);
+                }
+                else
+                {
+                    _db.Update(brand);
+                }
+
+                _db.SaveChanges();
+                response = new ResponseCls { success = true, errors = null };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { success = false, errors = ex.Message };
+            }
+            return response;
+        }
+
+        public async Task<ResponseCls> saveProfileImage(ClientImage image)
+        {
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+
+                var result =  _db.ClientImages.Where(wr => wr.client_id == image.client_id && wr.type == image.type).SingleOrDefault();
+                if(result != null)
+                {
+                    result.img_path = image.img_path;
+                      result.img_name = image.img_name;
+                    _db.Update(result);
+                }
+                else
+                {
+                    if (_db.ClientImages.Count() > 0)
+                    {
+                        maxId = await _db.ClientImages.DefaultIfEmpty().MaxAsync(d => d.id);
+
+                    }
+
+                    image.id = maxId + 1;
+                    _db.ClientImages.Add(image);
+                }
+             
+
+                _db.SaveChanges();
+                response = new ResponseCls { success = true, errors = null };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { success = false, errors = ex.Message };
+            }
+            return response;
+        }
+       
+        public async Task<List<ClientImage>> GetProfileImage(string clientId)
+        {
+            try
+            {
+                return await _db.ClientImages.Where(wr => wr.client_id == clientId).Select(s=> new ClientImage
+                {
+                    id = s.id,
+                    client_id = s.client_id,
+                    img_name = s.img_name,
+                    type = s.type,
+                    img_path= "https://waslaa.de/" + s.img_path
+                }).ToListAsync();
 
             }
             catch (Exception ex)

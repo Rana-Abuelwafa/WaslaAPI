@@ -19,9 +19,44 @@ namespace Wasla_App.services
             return _waslaDao.deleteQuestions(ques);
         }
 
+        public Task<List<ClientBrand>> GetClientBrands(string clientId)
+        {
+            return _waslaDao.GetClientBrands(clientId);
+        }
+
+        public Task<List<ClientImage>> GetProfileImage(string clientId)
+        {
+            return _waslaDao.GetProfileImage(clientId);
+        }
+
+        public Task<List<ClientProfile>> GetClientProfiles(string clientId)
+        {
+            return _waslaDao.GetClientProfiles(clientId);
+        }
+
+        public Task<List<PaymentMethod>> GetPaymentMethods()
+        {
+            return _waslaDao.GetPaymentMethods();
+        }
+
         public Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang)
         {
             return _waslaDao.getRegistrationQuestionList(lang);
+        }
+
+        public ResponseCls saveClientBrand(ClientBrand brand)
+        {
+            return _waslaDao.saveClientBrand(brand);
+        }
+
+        public ResponseCls saveProfileImage(ClientImage image)
+        {
+            return _waslaDao.saveProfileImage(image).Result;
+        }
+
+        public ResponseCls saveMainProfile(ClientProfile profile)
+        {
+            return _waslaDao.saveMainProfile(profile);
         }
 
         public ResponseCls saveQuestions(RegistrationQuestion ques)

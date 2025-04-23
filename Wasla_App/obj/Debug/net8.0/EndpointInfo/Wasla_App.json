@@ -168,10 +168,228 @@
           }
         }
       }
+    },
+    "/api/WaslaClient/GetPaymentMethods": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetClientBrands": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetClientProfiles": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/saveMainProfile": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientProfile"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientProfile"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientProfile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/saveClientBrand": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientBrand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientBrand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientBrand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/saveProfileImage": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "img": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "img": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetProfileImage": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ClientBrand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "client_Id": {
+            "type": "string",
+            "nullable": true
+          },
+          "brand_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "brand_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "brand_desc": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientProfile": {
+        "type": "object",
+        "properties": {
+          "profile_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "client_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "client_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "client_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "nation": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
+          },
+          "pay_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "fb_link": {
+            "type": "string",
+            "nullable": true
+          },
+          "twitter_link": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "QuesLstReq": {
         "type": "object",
         "properties": {
@@ -229,7 +447,8 @@
           },
           "order": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
