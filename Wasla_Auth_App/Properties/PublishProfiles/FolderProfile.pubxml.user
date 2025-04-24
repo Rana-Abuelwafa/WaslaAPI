@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\WaslaProjectApi\publishAUTH</_PublishTargetUrl>
-    <History>True|2025-04-23T12:54:03.5990488Z||;True|2025-04-21T11:21:35.5547737+02:00||;</History>
+    <History>True|2025-04-23T14:00:52.2272309Z||;True|2025-04-23T14:54:03.5990488+02:00||;True|2025-04-21T11:21:35.5547737+02:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

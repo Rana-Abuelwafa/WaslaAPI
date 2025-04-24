@@ -35,6 +35,18 @@ namespace Wasla_App.Controllers
 
             return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
+        [HttpPost("getQuesWithAnswers")]
+        public  IActionResult getQuesWithAnswers(QuesLstReq req)
+        {
+            string clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(_waslaService.getQuesWithAnswers(clientId, req.lang));
+        }
 
         [HttpPost("saveRegistrationSteps")]
         public  IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)

@@ -26,6 +26,47 @@ namespace WaslaApp.Data
         #region "questions"
 
         #region "select"
+        public List<QuesWithAnswers> getQuesWithAnswers(string clientId, string lang)
+        {
+            try
+            {
+                var result = from ques in _db.RegistrationQuestions.Where(wr => wr.lang_code == lang)
+                             join ans in _db.RegistrationAnswers.Where(wr => wr.client_id == clientId) on ques.ques_id equals ans.ques_id into quesWans
+                             from m in quesWans.DefaultIfEmpty()
+                             select new QuesWithAnswers
+                             {
+                                 ques_id = ques.ques_id,
+                                 lang_code= ques.lang_code,
+                                 client_id=m.client_id,
+                                 answer= m.answer,
+                                 order = ques.order,
+                                 ques_title = ques.ques_title,
+                                 ques_type = ques.ques_type
+                                 
+                             };
+                //var result = _db.RegistrationQuestions.Where(wr => wr.lang_code == lang)
+                //    .GroupJoin(
+                //       _db.RegistrationAnswers.Where(wr => wr.client_id == clientId),
+                //         ques => new { ques.ques_id },
+                //         ans => new { ans.ques_id },
+                //         (ques, ans) => new { ques, ans })
+                //        .SelectMany(x => x.ans.DefaultIfEmpty(),
+                //                   (x, y) => new QuesWithAnswers
+                //                   {
+                //                      ques_id = x.ques.ques_id,
+                //                      lang_code=x.ques.lang_code,
+                                      
+
+                //                   }
+                //       ).ToList();
+
+                return result.ToList();
+
+            }
+            catch (Exception ex) {
+                return null;
+            }
+        }
         public async Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang)
         {
 
@@ -108,7 +149,7 @@ namespace WaslaApp.Data
             {
                 if(ques.ques_id == 0)
                 {
-                    int maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
+                    decimal maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
                     ques.ques_id = maxId + 1;
                     _db.RegistrationQuestions.Add(ques);
                 }

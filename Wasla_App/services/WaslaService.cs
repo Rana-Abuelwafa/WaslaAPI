@@ -68,5 +68,10 @@ namespace Wasla_App.services
         {
             return _waslaDao.saveRegistrationSteps(lst, clientId, FullName, email);
         }
+
+        public List<QuesWithAnswers> getQuesWithAnswers(string clientId, string lang)
+        {
+            return _waslaDao.getQuesWithAnswers(clientId, lang);
+        }
     }
 }

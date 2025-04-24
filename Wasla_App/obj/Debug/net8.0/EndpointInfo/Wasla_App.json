@@ -129,6 +129,37 @@
         }
       }
     },
+    "/api/WaslaClient/getQuesWithAnswers": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuesLstReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/saveRegistrationSteps": {
       "post": {
         "tags": [
@@ -430,8 +461,8 @@
         "type": "object",
         "properties": {
           "ques_id": {
-            "type": "integer",
-            "format": "int32"
+            "type": "number",
+            "format": "double"
           },
           "ques_title": {
             "type": "string",

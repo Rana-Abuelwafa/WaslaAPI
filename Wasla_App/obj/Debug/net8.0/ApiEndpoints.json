@@ -105,6 +105,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "getQuesWithAnswers",
+    "RelativePath": "api/WaslaClient/getQuesWithAnswers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "saveClientBrand",
     "RelativePath": "api/WaslaClient/saveClientBrand",
     "HttpMethod": "POST",
