@@ -149,7 +149,7 @@ namespace WaslaApp.Data
             {
                 if(ques.ques_id == 0)
                 {
-                    decimal maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
+                    int maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
                     ques.ques_id = maxId + 1;
                     _db.RegistrationQuestions.Add(ques);
                 }

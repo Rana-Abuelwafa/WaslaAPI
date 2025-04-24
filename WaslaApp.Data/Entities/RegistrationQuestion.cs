@@ -5,7 +5,7 @@ namespace WaslaApp.Data.Entities;
 
 public partial class RegistrationQuestion
 {
-    public decimal ques_id { get; set; }
+    public int ques_id { get; set; }
 
     public string? ques_title { get; set; }
 

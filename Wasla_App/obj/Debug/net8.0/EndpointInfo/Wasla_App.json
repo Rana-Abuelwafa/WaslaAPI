@@ -439,8 +439,8 @@
             "format": "int32"
           },
           "ques_id": {
-            "type": "number",
-            "format": "double"
+            "type": "integer",
+            "format": "int32"
           },
           "client_id": {
             "type": "string",
@@ -461,8 +461,8 @@
         "type": "object",
         "properties": {
           "ques_id": {
-            "type": "number",
-            "format": "double"
+            "type": "integer",
+            "format": "int32"
           },
           "ques_title": {
             "type": "string",

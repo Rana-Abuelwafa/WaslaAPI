@@ -7,7 +7,7 @@ public partial class RegistrationAnswer
 {
     public int id { get; set; }
 
-    public decimal ques_id { get; set; }
+    public int ques_id { get; set; }
 
     public string client_id { get; set; } = null!;
 
