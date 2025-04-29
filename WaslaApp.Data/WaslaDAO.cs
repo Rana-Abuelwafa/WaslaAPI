@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
 using WaslaApp.Models;
 using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WaslaApp.Data
 {
@@ -224,7 +224,22 @@ namespace WaslaApp.Data
         {
             try
             {
-                return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).ToListAsync();
+                return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).Select(slc => new ClientProfile
+                {
+                    client_birthday = slc.client_birthday,
+                    client_birthdayStr = DateTime.Parse(slc.client_birthday.ToString()).ToString("yyyy-MM-dd"),
+                    client_email = slc.client_email,
+                    client_id = slc.client_id,
+                    client_name = slc.client_name,
+                    fb_link= slc.fb_link,
+                    gender= slc.gender,
+                    lang= slc.lang,
+                    nation= slc.nation,
+                    pay_code= slc.pay_code,
+                    phone_number= slc.phone_number,
+                    profile_id= slc.profile_id,
+                    twitter_link= slc.twitter_link
+                }).ToListAsync();
 
             }
             catch (Exception ex)
@@ -240,6 +255,7 @@ namespace WaslaApp.Data
             decimal maxId = 0;
             try
             {
+                profile.client_birthday = DateOnly.Parse(profile.client_birthdayStr, CultureInfo.InvariantCulture);
                 if (profile.profile_id == 0)
                 {
                     if (_db.ClientProfiles.Count() > 0)

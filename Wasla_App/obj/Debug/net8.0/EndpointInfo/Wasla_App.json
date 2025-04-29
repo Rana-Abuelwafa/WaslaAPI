@@ -417,6 +417,15 @@
           "twitter_link": {
             "type": "string",
             "nullable": true
+          },
+          "client_birthday": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "client_birthdayStr": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

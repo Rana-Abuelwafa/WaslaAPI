@@ -94,6 +94,7 @@ public partial class wasla_client_dbContext : DbContext
         {
             entity.HasKey(e => e.ques_id).HasName("RegistrationQuestions_pkey");
 
+            entity.Property(e => e.ques_id).HasDefaultValueSql("nextval('\"RegistrationQuestions_ques_id_seq\"'::regclass)");
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.order).HasDefaultValue(0);
             entity.Property(e => e.ques_type).HasMaxLength(50);

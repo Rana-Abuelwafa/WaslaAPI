@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,8 @@ using System.Security.Claims;
 using System.Text;
 using Wasla_Auth_App.Models;
 using Wasla_Auth_App.Services;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Wasla_Auth_App.Controllers
 {
@@ -35,13 +38,26 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email,FirstName=model.FirstName,LastName=model.LastName };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email,FirstName=model.FirstName,LastName=model.LastName,TwoFactorEnabled=true };
             var result = await _userManager.CreateAsync(user, model.Password);
+           
             if (result.Succeeded)
             {
-
-             
-                var token = GenerateJwtToken(user);
+                //var token = GenerateJwtToken(user);
+                //send otp to email
+                await _signInManager.SignOutAsync();
+                await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
+               
+                var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                MailData mailData = new MailData
+                {
+                    EmailBody= "<p>Thank you For Registering account</p><br /><p>"+ otp +"<p/>",
+                    EmailSubject="Mail Confirmation",
+                    EmailToId=user.Email,
+                    EmailToName=user.Email
+                };
+               
+                Mail_Service.SendOTPMail(mailData);
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -50,16 +66,19 @@ namespace Wasla_Auth_App.Controllers
                     Email=user.Email,
                     isSuccessed = result.Succeeded,
                     msg = "User created successfully" ,
-                    AccessToken=token,
-                    RefreshToken=token,
-                    Id=user.Id
+                    AccessToken=null,
+                    RefreshToken=null,
+                    Id=user.Id,
+                    EmailConfirmed = user.EmailConfirmed,
+                    GoogleId = user.GoogleId,
+                    TwoFactorEnabled = user.TwoFactorEnabled
                 });
             }
             else
             {
                 List<IdentityError> errorList = result.Errors.ToList();
                 var errors = string.Join(", ", errorList.Select(e => e.Description));
-                return BadRequest(new User
+                return Ok(new User
                 {
                     UserName = "",
                     Email = "",
@@ -84,24 +103,62 @@ namespace Wasla_Auth_App.Controllers
                 var isAuth = await _userManager.CheckPasswordAsync(user, model.Password);
                 if (user != null && isAuth)
                 {
-                    var token = GenerateJwtToken(user);
-                    return Ok(new User
+                    if(user.EmailConfirmed == false)
                     {
-                        UserName = user.UserName,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Email = user.Email,
-                        isSuccessed = true,
-                        msg = "User login successfully",
-                        AccessToken = token,
-                        RefreshToken = token,
-                        Id=user.Id
-                    });
+                        //send otp to email
+                        var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                        MailData mailData = new MailData
+                        {
+                            EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                            EmailSubject = "Mail Confirmation",
+                            EmailToId = user.Email,
+                            EmailToName = user.Email
+                        };
+
+                        Mail_Service.SendOTPMail(mailData);
+                        return Ok(new User
+                        {
+                            
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = $"We have sent an OTP to your Email {user.Email}",
+                            AccessToken = null,
+                            RefreshToken = null,
+                            Id = user.Id,
+                            EmailConfirmed=user.EmailConfirmed,
+                            GoogleId=user.GoogleId,
+                            TwoFactorEnabled=user.TwoFactorEnabled
+                        });
+                    }
+                    else
+                    {
+                        await _signInManager.SignInAsync(user,false);
+                        var token = GenerateJwtToken(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = "User login successfully",
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled
+                        });
+                    }
+                   
+
                 }
                 else
                     return Unauthorized(new User
                     {
-
                         isSuccessed = false,
                         msg = "mail or password is incorrect",
 
@@ -155,11 +212,24 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,GoogleId="1" };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,GoogleId="1",TwoFactorEnabled = true };
             var result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
             {
-                var token = GenerateJwtToken(user);
+                //send otp to email
+                //await _signInManager.SignOutAsync();
+                //await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
+
+                var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                MailData mailData = new MailData
+                {
+                    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                    EmailSubject = "Mail Confirmation",
+                    EmailToId = user.Email,
+                    EmailToName = user.Email
+                };
+
+                Mail_Service.SendOTPMail(mailData);
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -168,16 +238,19 @@ namespace Wasla_Auth_App.Controllers
                     Email = user.Email,
                     isSuccessed = result.Succeeded,
                     msg = "User created successfully",
-                    AccessToken = token,
-                    RefreshToken = token,
-                    Id=user.Id
+                    AccessToken = null,
+                    RefreshToken = null,
+                    Id = user.Id,
+                    EmailConfirmed = user.EmailConfirmed,
+                    GoogleId = user.GoogleId,
+                    TwoFactorEnabled = user.TwoFactorEnabled
                 });
             }
             else
             {
                 List<IdentityError> errorList = result.Errors.ToList();
                 var errors = string.Join(", ", errorList.Select(e => e.Description));
-                return BadRequest(new User
+                return Ok(new User
                 {
                     UserName = "",
                     Email = "",
@@ -201,43 +274,92 @@ namespace Wasla_Auth_App.Controllers
             var user = await _userManager.FindByEmailAsync(model.Email);
             try
             {
-            
                 if (user != null)
                 {
-                    var token = GenerateJwtToken(user);
-                    return Ok(new User
+                    if (user.EmailConfirmed == false)
                     {
-                        UserName = user.UserName,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Email = user.Email,
-                        isSuccessed = true,
-                        msg = "User login successfully",
-                        AccessToken = token,
-                        RefreshToken = token,
-                        Id=user.Id
-                    });
+                        //send otp to email
+                        var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                        MailData mailData = new MailData
+                        {
+                            EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                            EmailSubject = "Mail Confirmation",
+                            EmailToId = user.Email,
+                            EmailToName = user.Email
+                        };
+
+                        Mail_Service.SendOTPMail(mailData);
+                        return Ok(new User
+                        {
+
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = $"We have sent an OTP to your Email {user.Email}",
+                            AccessToken = null,
+                            RefreshToken = null,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled
+                        });
+                    }
+                    else
+                    {
+                        await _signInManager.SignInAsync(user, false);
+                        var token = GenerateJwtToken(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = "User login successfully",
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled
+                        });
+                    }
                 }
                 else
-                    return Unauthorized(new User
-                    {
+                    return StatusCode(StatusCodes.Status401Unauthorized,
+                      new User
+                      {
+                          isSuccessed = false,
+                          msg = "user Not Found",
 
-                        isSuccessed = false,
-                        msg = "user Not Found",
+                      });
+                //return Unauthorized(new User
+                //    {
+                //        isSuccessed = false,
+                //        msg = "user Not Found",
 
-                    });
+                //    });
 
 
             }
             catch (Exception e)
             {
-                return Unauthorized(new User
-                {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                      new User
+                      {
+                          isSuccessed = false,
+                          msg = e.Message,
 
-                    isSuccessed = false,
-                    msg = "user Not Found",
+                      });
+                //return Unauthorized(new User
+                //{
 
-                });
+                //    isSuccessed = false,
+                //    msg = "user Not Found",
+
+                //});
             }
         }
 
@@ -312,5 +434,84 @@ namespace Wasla_Auth_App.Controllers
             }
         }
 
+        [HttpPost("ConfirmOTP")]
+        public async Task<IActionResult> confirmOTP([FromBody] OTPConfirmCls model)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if(user != null)
+                {
+                    var isCodeValid = await _userManager.VerifyTwoFactorTokenAsync(user,"Email",model.otp);
+                    // var signIn = await _signInManager.TwoFactorSignInAsync("Email", model.otp, false, false);
+                    //if (signIn.Succeeded)
+                    if (isCodeValid)
+                    {
+                        user.EmailConfirmed = true;
+                        await _userManager.UpdateAsync(user);
+                        var token = GenerateJwtToken(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = "User login successfully",
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled
+                        });
+                    }
+                    else
+                    {
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            isSuccessed = false,
+                            msg = $"Invalid Code",
+                            AccessToken = "",
+                            RefreshToken = "",
+                        });
+                      
+                    }
+                }
+                return Unauthorized(new User
+                {
+
+                    isSuccessed = false,
+                    msg = "user Not Found",
+
+                });
+
+
+            }
+            catch (Exception e)
+            {
+                return Ok(new User
+                {
+                    UserName = "",
+                    Email = "",
+                    FirstName = "",
+                    LastName = "",
+                    isSuccessed = false,
+                    msg = e.Message,
+                    AccessToken = "",
+                    RefreshToken = "",
+                    Id = null,
+                    
+                });
+            }
+        }
     }
 }
