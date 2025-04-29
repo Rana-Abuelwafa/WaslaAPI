@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "completeMyProfile",
+    "RelativePath": "api/Authentication/CompleteMyProfile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Wasla_Auth_App.Models.ModelCls",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "confirmOTP",
     "RelativePath": "api/Authentication/ConfirmOTP",
     "HttpMethod": "POST",

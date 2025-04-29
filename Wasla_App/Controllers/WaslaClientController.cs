@@ -146,7 +146,8 @@ namespace Wasla_App.Controllers
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
             }
-            var path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images" + "\\", cls.img.FileName);
+            var path = Path.Combine("Images" + "//", cls.img.FileName);
+            //var path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images" + "//", cls.img.FileName);
 
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {

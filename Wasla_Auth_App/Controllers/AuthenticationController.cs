@@ -513,5 +513,24 @@ namespace Wasla_Auth_App.Controllers
                 });
             }
         }
+        [HttpPost("CompleteMyProfile")]
+        public async Task<IActionResult> completeMyProfile([FromBody] ModelCls model)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    user.completeprofile = 1;
+                    await _userManager.UpdateAsync(user);
+                }
+                
+                return Ok(new User { isSuccessed = true, msg = "updated Successfully", });
+            }
+            catch (Exception e)
+            {
+                return Ok(new User { isSuccessed = false, msg = e.Message, });
+            }
+        }
     }
 }

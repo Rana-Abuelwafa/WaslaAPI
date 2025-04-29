@@ -9,5 +9,6 @@ namespace Wasla_Auth_App.Models
         public string? CloudId { get; set; }
         public string? GoogleId { get; set; }
         public string? FaceBookId { get; set; }
+        public int completeprofile { get; set; }
     }
 }

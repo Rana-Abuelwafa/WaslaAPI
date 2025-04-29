@@ -362,7 +362,7 @@ namespace WaslaApp.Data
                     client_id = s.client_id,
                     img_name = s.img_name,
                     type = s.type,
-                    img_path= "https://waslaa.de/" + s.img_path
+                    img_path= "https://waslaa.de:4431//" + s.img_path
                 }).ToListAsync();
 
             }
