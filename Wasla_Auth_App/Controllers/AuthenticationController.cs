@@ -71,7 +71,9 @@ namespace Wasla_Auth_App.Controllers
                     Id=user.Id,
                     EmailConfirmed = user.EmailConfirmed,
                     GoogleId = user.GoogleId,
-                    TwoFactorEnabled = user.TwoFactorEnabled
+                    TwoFactorEnabled = user.TwoFactorEnabled,
+                    completeprofile=user.completeprofile,
+                    
                 });
             }
             else
@@ -88,7 +90,8 @@ namespace Wasla_Auth_App.Controllers
                     msg = errors,
                     AccessToken = "",
                     RefreshToken = "",
-                    Id=null
+                    Id=null,
+                    completeprofile=0
                 });
             }
             
@@ -130,7 +133,8 @@ namespace Wasla_Auth_App.Controllers
                             Id = user.Id,
                             EmailConfirmed=user.EmailConfirmed,
                             GoogleId=user.GoogleId,
-                            TwoFactorEnabled=user.TwoFactorEnabled
+                            TwoFactorEnabled=user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
                         });
                     }
                     else
@@ -150,7 +154,8 @@ namespace Wasla_Auth_App.Controllers
                             Id = user.Id,
                             EmailConfirmed = user.EmailConfirmed,
                             GoogleId = user.GoogleId,
-                            TwoFactorEnabled = user.TwoFactorEnabled
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
                         });
                     }
                    
@@ -243,7 +248,8 @@ namespace Wasla_Auth_App.Controllers
                     Id = user.Id,
                     EmailConfirmed = user.EmailConfirmed,
                     GoogleId = user.GoogleId,
-                    TwoFactorEnabled = user.TwoFactorEnabled
+                    TwoFactorEnabled = user.TwoFactorEnabled,
+                    completeprofile = user.completeprofile,
                 });
             }
             else
@@ -260,7 +266,8 @@ namespace Wasla_Auth_App.Controllers
                     msg = errors,
                     AccessToken = "",
                     RefreshToken = "",
-                    Id=null
+                    Id=null,
+                    completeprofile=0
                 });
             }
 
@@ -303,7 +310,8 @@ namespace Wasla_Auth_App.Controllers
                             Id = user.Id,
                             EmailConfirmed = user.EmailConfirmed,
                             GoogleId = user.GoogleId,
-                            TwoFactorEnabled = user.TwoFactorEnabled
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
                         });
                     }
                     else
@@ -323,7 +331,8 @@ namespace Wasla_Auth_App.Controllers
                             Id = user.Id,
                             EmailConfirmed = user.EmailConfirmed,
                             GoogleId = user.GoogleId,
-                            TwoFactorEnabled = user.TwoFactorEnabled
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
                         });
                     }
                 }
@@ -391,7 +400,8 @@ namespace Wasla_Auth_App.Controllers
                             msg = "Password is changed successfully",
                             AccessToken = token,
                             RefreshToken = token,
-                            Id=user.Id
+                            Id=user.Id,
+                            completeprofile = user.completeprofile,
                         });
                     }
                     else
@@ -463,7 +473,8 @@ namespace Wasla_Auth_App.Controllers
                             Id = user.Id,
                             EmailConfirmed = user.EmailConfirmed,
                             GoogleId = user.GoogleId,
-                            TwoFactorEnabled = user.TwoFactorEnabled
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
                         });
                     }
                     else
@@ -482,6 +493,7 @@ namespace Wasla_Auth_App.Controllers
                             msg = $"Invalid Code",
                             AccessToken = "",
                             RefreshToken = "",
+                            completeprofile = user.completeprofile,
                         });
                       
                     }
@@ -509,6 +521,7 @@ namespace Wasla_Auth_App.Controllers
                     AccessToken = "",
                     RefreshToken = "",
                     Id = null,
+                    completeprofile=0
                     
                 });
             }
@@ -523,9 +536,36 @@ namespace Wasla_Auth_App.Controllers
                 {
                     user.completeprofile = 1;
                     await _userManager.UpdateAsync(user);
+                    var token = GenerateJwtToken(user);
+                    return Ok(new User
+                    {
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        isSuccessed = true,
+                        msg = "updated successfully",
+                        AccessToken = token,
+                        RefreshToken = token,
+                        Id = user.Id,
+                        EmailConfirmed = user.EmailConfirmed,
+                        GoogleId = user.GoogleId,
+                        TwoFactorEnabled = user.TwoFactorEnabled,
+                        completeprofile = user.completeprofile,
+                    });
                 }
-                
-                return Ok(new User { isSuccessed = true, msg = "updated Successfully", });
+                else
+                {
+                    return Unauthorized(new User
+                    {
+
+                        isSuccessed = false,
+                        msg = "User Not Found",
+
+                    });
+                }
+
+               
             }
             catch (Exception e)
             {
