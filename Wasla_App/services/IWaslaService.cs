@@ -6,6 +6,7 @@ namespace Wasla_App.services
     public interface IWaslaService
     {
         #region "registration questions"
+        public ResponseCls saveClientCopoun(ClientCopoun copoun);
         public Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang);
         public ResponseCls saveQuestions(RegistrationQuestion ques);
         public ResponseCls deleteQuestions(RegistrationQuestion ques);

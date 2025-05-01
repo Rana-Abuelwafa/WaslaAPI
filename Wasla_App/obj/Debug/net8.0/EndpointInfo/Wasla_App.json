@@ -200,6 +200,18 @@
         }
       }
     },
+    "/api/WaslaClient/saveClientCopoun": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/GetPaymentMethods": {
       "post": {
         "tags": [

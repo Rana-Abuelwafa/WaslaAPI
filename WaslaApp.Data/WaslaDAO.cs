@@ -18,7 +18,8 @@ namespace WaslaApp.Data
         private readonly MailSettingDao _mailSettingDao;
         private readonly wasla_client_dbContext _db;
         string htmlcontent = "<p>Dear customer, the form has been submitted to our \r\ndesigners for review and implementation, you will be \r\ncontacted to obtain further details.\r\n<br/>\r\n<br/>\r\n Thank you for choosing our services.<p/>";
-        public  WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao) {
+        public WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao)
+        {
             _db = db;
             _mailSettingDao = mailSettingDao;
         }
@@ -36,13 +37,13 @@ namespace WaslaApp.Data
                              select new QuesWithAnswers
                              {
                                  ques_id = ques.ques_id,
-                                 lang_code= ques.lang_code,
-                                 client_id=m.client_id,
-                                 answer= m.answer,
+                                 lang_code = ques.lang_code,
+                                 client_id = m.client_id,
+                                 answer = m.answer,
                                  order = ques.order,
                                  ques_title = ques.ques_title,
                                  ques_type = ques.ques_type
-                                 
+
                              };
                 //var result = _db.RegistrationQuestions.Where(wr => wr.lang_code == lang)
                 //    .GroupJoin(
@@ -55,7 +56,7 @@ namespace WaslaApp.Data
                 //                   {
                 //                      ques_id = x.ques.ques_id,
                 //                      lang_code=x.ques.lang_code,
-                                      
+
 
                 //                   }
                 //       ).ToList();
@@ -63,7 +64,8 @@ namespace WaslaApp.Data
                 return result.ToList();
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return null;
             }
         }
@@ -72,7 +74,7 @@ namespace WaslaApp.Data
 
             try
             {
-                if(lang.ToLower() == "all")
+                if (lang.ToLower() == "all")
                 {
                     return await _db.RegistrationQuestions.ToListAsync();
                 }
@@ -80,9 +82,9 @@ namespace WaslaApp.Data
                 {
                     return await _db.RegistrationQuestions.Where(wr => wr.lang_code == lang).ToListAsync();
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -90,16 +92,16 @@ namespace WaslaApp.Data
         #endregion
 
         #region "insert & update"
-         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string client_id,string FullName,string email)
+        public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst, string client_id, string FullName, string email)
         {
             int count = 0;
             RegsistrationQuesResponse response;
             try
             {
-                foreach(RegistrationAnswer answer in lst)
+                foreach (RegistrationAnswer answer in lst)
                 {
                     answer.client_id = client_id;
-                    if (answer.id  == 0)
+                    if (answer.id == 0)
                     {
                         _db.RegistrationAnswers.Add(answer);
                     }
@@ -107,26 +109,42 @@ namespace WaslaApp.Data
                     {
                         _db.RegistrationAnswers.Update(answer);
                     }
-                   
-                    
+
+
                     count++;
                 }
-                
+
                 _db.SaveChanges();
                 if (count == lst.Count)
                 {
-                    //send mail
-                    try
-                    {
-                        MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = "wasla activation mail" };
-                        _mailSettingDao.SendMail(Mail_Data);
-                    }
-                    catch (Exception e)
-                    {
 
-                    }
 
-                    //end send mail
+                    //generate & save coupon
+                    string copounAuto = HelperCls.getCopounText();
+                    ClientCopoun copoun = new ClientCopoun {client_id= client_id,copoun= copounAuto,id=0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
+                    if (saveClientCopoun(copoun).success)
+                    {
+                        //send mail
+                        try
+                        {
+                            string htmlBody = File.ReadAllText(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "temp.html"));
+                            htmlBody= htmlBody.Replace("@user", FullName);
+                           string htmlRes= htmlBody.Replace("@copoun", copounAuto);
+                            MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = "wasla activation mail" ,EmailBody= htmlRes };
+                            _mailSettingDao.SendMail(Mail_Data);
+                        }
+                        catch (Exception e)
+                        {
+                            return new RegsistrationQuesResponse { success = false, errors = "error in send mail" };
+                        }
+
+                        //end send mail
+                    }
+                    else
+                    {
+                        return new RegsistrationQuesResponse { success=false,errors="error in generate copoun"};
+                      
+                        }
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = htmlcontent };
                 }
                 else
@@ -134,20 +152,20 @@ namespace WaslaApp.Data
                     response = new RegsistrationQuesResponse { errors = "Error in saving List Check Admin", success = false, WelcomeMsg = null };
                 }
             }
-            
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 response = new RegsistrationQuesResponse { errors = ex.Message, success = false, WelcomeMsg = null };
             }
             return response;
         }
-         
+
         public ResponseCls saveQuestions(RegistrationQuestion ques)
         {
             ResponseCls response;
             try
             {
-                if(ques.ques_id == 0)
+                if (ques.ques_id == 0)
                 {
                     int maxId = _db.RegistrationQuestions.Max(d => d.ques_id);
                     ques.ques_id = maxId + 1;
@@ -157,26 +175,64 @@ namespace WaslaApp.Data
                 {
                     _db.Update(ques);
                 }
-                
+
                 _db.SaveChanges();
-                response = new ResponseCls {  success=true,errors=null};
+                response = new ResponseCls { success = true, errors = null };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                response = new ResponseCls { success=false, errors = ex.Message};
+                response = new ResponseCls { success = false, errors = ex.Message };
             }
             return response;
         }
 
 
+        public ResponseCls saveClientCopoun(ClientCopoun copoun)
+        {
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+                if (copoun.id == 0)
+                {
+                    if (_db.ClientCopouns.Count() > 0)
+                    {
+                        //check client id validation
+                        var result = _db.ClientCopouns.Where(wr => wr.client_id == copoun.client_id && wr.start_date == copoun.start_date && wr.end_date == copoun.end_date).SingleOrDefault();
+                        if(result != null)
+                        {
+                            return new ResponseCls { success = false, errors = "duplicate data" };
+                        }
+                        
+                        maxId = _db.ClientCopouns.Max(d => d.id);
+
+                    }
+                    
+                    copoun.id = maxId + 1;
+                    _db.ClientCopouns.Add(copoun);
+                }
+                else
+                {
+                    _db.Update(copoun);
+                }
+
+                _db.SaveChanges();
+                response = new ResponseCls { success = true, errors = null };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { success = false, errors = ex.Message };
+            }
+            return response;
+        }
         public ResponseCls deleteQuestions(RegistrationQuestion ques)
         {
             ResponseCls response;
             try
             {
-               
-                    _db.Remove(ques);
-                
+
+                _db.Remove(ques);
+
                 _db.SaveChanges();
                 response = new ResponseCls { success = true, errors = null };
             }
@@ -197,9 +253,9 @@ namespace WaslaApp.Data
         {
 
             try
-            {               
-                    return await _db.PaymentMethods.ToListAsync();
-   
+            {
+                return await _db.PaymentMethods.ToListAsync();
+
             }
             catch (Exception ex)
             {
@@ -231,14 +287,14 @@ namespace WaslaApp.Data
                     client_email = slc.client_email,
                     client_id = slc.client_id,
                     client_name = slc.client_name,
-                    fb_link= slc.fb_link,
-                    gender= slc.gender,
-                    lang= slc.lang,
-                    nation= slc.nation,
-                    pay_code= slc.pay_code,
-                    phone_number= slc.phone_number,
-                    profile_id= slc.profile_id,
-                    twitter_link= slc.twitter_link
+                    fb_link = slc.fb_link,
+                    gender = slc.gender,
+                    lang = slc.lang,
+                    nation = slc.nation,
+                    pay_code = slc.pay_code,
+                    phone_number = slc.phone_number,
+                    profile_id = slc.profile_id,
+                    twitter_link = slc.twitter_link
                 }).ToListAsync();
 
             }
@@ -260,10 +316,19 @@ namespace WaslaApp.Data
                 {
                     if (_db.ClientProfiles.Count() > 0)
                     {
-                        maxId = _db.ClientProfiles.Max(d => d.profile_id);
+                        //check validate
+                        if (_db.ClientProfiles.Where(wr => wr.client_id == profile.client_id).Count() == 0)
+                        {
+                            maxId = _db.ClientProfiles.Max(d => d.profile_id);
+                        }
+                        else
+                        {
+                            //do no thing duplicate data
+                            return new ResponseCls { success = false, errors = "duplicate data" };
+
+                        }
 
                     }
-                   
                     profile.profile_id = maxId + 1;
                     _db.ClientProfiles.Add(profile);
                 }
@@ -292,12 +357,12 @@ namespace WaslaApp.Data
                 {
                     if (_db.ClientBrands.Count() > 0)
                     {
-                        maxId =  _db.ClientBrands.Max(d => d.id);
+                        maxId = _db.ClientBrands.Max(d => d.id);
 
                     }
-                    
 
-                    brand.id = maxId + 1 ;
+
+                    brand.id = maxId + 1;
                     _db.ClientBrands.Add(brand);
                 }
                 else
@@ -322,11 +387,11 @@ namespace WaslaApp.Data
             try
             {
 
-                var result =  _db.ClientImages.Where(wr => wr.client_id == image.client_id && wr.type == image.type).SingleOrDefault();
-                if(result != null)
+                var result = _db.ClientImages.Where(wr => wr.client_id == image.client_id && wr.type == image.type).SingleOrDefault();
+                if (result != null)
                 {
                     result.img_path = image.img_path;
-                      result.img_name = image.img_name;
+                    result.img_name = image.img_name;
                     _db.Update(result);
                 }
                 else
@@ -340,7 +405,7 @@ namespace WaslaApp.Data
                     image.id = maxId + 1;
                     _db.ClientImages.Add(image);
                 }
-             
+
 
                 _db.SaveChanges();
                 response = new ResponseCls { success = true, errors = null };
@@ -351,18 +416,18 @@ namespace WaslaApp.Data
             }
             return response;
         }
-       
+
         public async Task<List<ClientImage>> GetProfileImage(string clientId)
         {
             try
             {
-                return await _db.ClientImages.Where(wr => wr.client_id == clientId).Select(s=> new ClientImage
+                return await _db.ClientImages.Where(wr => wr.client_id == clientId).Select(s => new ClientImage
                 {
                     id = s.id,
                     client_id = s.client_id,
                     img_name = s.img_name,
                     type = s.type,
-                    img_path= "https://waslaa.de:4431//" + s.img_path
+                    img_path = "https://waslaa.de:4431//" + s.img_path
                 }).ToListAsync();
 
             }

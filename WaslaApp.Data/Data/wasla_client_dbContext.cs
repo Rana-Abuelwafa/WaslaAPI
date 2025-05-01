@@ -18,6 +18,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<ClientBrand> ClientBrands { get; set; }
 
+    public virtual DbSet<ClientCopoun> ClientCopouns { get; set; }
+
     public virtual DbSet<ClientImage> ClientImages { get; set; }
 
     public virtual DbSet<ClientProfile> ClientProfiles { get; set; }
@@ -43,6 +45,14 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.brand_name).HasMaxLength(100);
             entity.Property(e => e.brand_type).HasMaxLength(20);
             entity.Property(e => e.client_Id).HasColumnType("character varying");
+        });
+
+        modelBuilder.Entity<ClientCopoun>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("ClientCopouns_pkey");
+
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.copoun).HasMaxLength(50);
         });
 
         modelBuilder.Entity<ClientImage>(entity =>
@@ -94,7 +104,6 @@ public partial class wasla_client_dbContext : DbContext
         {
             entity.HasKey(e => e.ques_id).HasName("RegistrationQuestions_pkey");
 
-            entity.Property(e => e.ques_id).HasDefaultValueSql("nextval('\"RegistrationQuestions_ques_id_seq\"'::regclass)");
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.order).HasDefaultValue(0);
             entity.Property(e => e.ques_type).HasMaxLength(50);

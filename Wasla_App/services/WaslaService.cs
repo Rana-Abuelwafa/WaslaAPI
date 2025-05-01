@@ -73,5 +73,10 @@ namespace Wasla_App.services
         {
             return _waslaDao.getQuesWithAnswers(clientId, lang);
         }
+
+        public ResponseCls saveClientCopoun(ClientCopoun copoun)
+        {
+            return _waslaDao.saveClientCopoun(copoun);
+        }
     }
 }

@@ -137,6 +137,16 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveClientCopoun",
+    "RelativePath": "api/WaslaClient/saveClientCopoun",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "saveMainProfile",
     "RelativePath": "api/WaslaClient/saveMainProfile",
     "HttpMethod": "POST",

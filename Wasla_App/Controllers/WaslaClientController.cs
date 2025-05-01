@@ -29,6 +29,8 @@ namespace Wasla_App.Controllers
         }
 
         #region "registration questions"
+       
+        
         [HttpPost("getQuesList")]
         public async Task<IActionResult> getQuesList(QuesLstReq req)
         {
@@ -65,6 +67,20 @@ namespace Wasla_App.Controllers
             return  Ok(_waslaService.saveRegistrationSteps(lst, clientId , FullName, email));
         }
 
+        [HttpPost("saveClientCopoun")]
+        public IActionResult saveClientCopoun()
+        {
+            string clientId = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+              
+            }
+            string copounAuto = HelperCls.getCopounText();
+            ClientCopoun copoun = new ClientCopoun { client_id = clientId, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
+
+            return Ok(_waslaService.saveClientCopoun(copoun));
+        }
 
         #endregion
 
