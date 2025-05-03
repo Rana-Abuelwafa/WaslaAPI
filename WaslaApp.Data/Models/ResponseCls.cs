@@ -10,6 +10,7 @@ namespace WaslaApp.Data.Models
     {
         public bool success { get; set; }
         public string? errors { get; set; }
+        public decimal idOut { get; set; }
 
     }
 }

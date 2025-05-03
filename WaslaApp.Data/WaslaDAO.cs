@@ -338,11 +338,11 @@ namespace WaslaApp.Data
                 }
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null };
+                response = new ResponseCls { success = true, errors = null,idOut=profile.profile_id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
             }
             return response;
         }
@@ -371,11 +371,11 @@ namespace WaslaApp.Data
                 }
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null };
+                response = new ResponseCls { success = true, errors = null,idOut= brand.id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
             }
             return response;
         }
@@ -408,11 +408,11 @@ namespace WaslaApp.Data
 
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null };
+                response = new ResponseCls { success = true, errors = null,idOut= image.id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
             }
             return response;
         }
