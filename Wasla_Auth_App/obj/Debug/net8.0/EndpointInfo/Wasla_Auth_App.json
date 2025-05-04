@@ -639,6 +639,7 @@
         "required": [
           "email",
           "firstName",
+          "lang",
           "lastName"
         ],
         "type": "object",
@@ -654,6 +655,10 @@
           "email": {
             "minLength": 1,
             "type": "string"
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -746,6 +751,7 @@
       "LoginModel": {
         "required": [
           "email",
+          "lang",
           "password"
         ],
         "type": "object",
@@ -757,6 +763,10 @@
           "password": {
             "minLength": 1,
             "type": "string"
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -883,6 +893,7 @@
         "required": [
           "email",
           "firstName",
+          "lang",
           "lastName",
           "password"
         ],
@@ -905,6 +916,10 @@
             "type": "string"
           },
           "confirmPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "lang": {
             "type": "string",
             "nullable": true
           }

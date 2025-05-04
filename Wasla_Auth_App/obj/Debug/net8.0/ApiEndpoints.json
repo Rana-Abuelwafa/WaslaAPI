@@ -121,7 +121,7 @@
     "Parameters": [
       {
         "Name": "Mail_Data",
-        "Type": "Wasla_Auth_App.Models.MailData",
+        "Type": "Mails_App.MailData",
         "IsRequired": true
       }
     ],

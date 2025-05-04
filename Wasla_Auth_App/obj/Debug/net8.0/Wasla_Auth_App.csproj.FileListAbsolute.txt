@@ -327,3 +327,7 @@ D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\MailKit.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\MimeKit.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\libman.json
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\System.Formats.Asn1.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Debug\net8.0\Mails_App.pdb

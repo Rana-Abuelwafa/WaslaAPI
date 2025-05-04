@@ -1,3 +1,4 @@
+using Mails_App;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
@@ -7,7 +8,6 @@ using System.Text;
 using Wasla_App.services;
 using WaslaApp.Data;
 using WaslaApp.Data.Data;
-using WaslaApp.Models;
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 

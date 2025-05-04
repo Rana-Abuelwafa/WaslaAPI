@@ -1,4 +1,4 @@
-﻿namespace WaslaApp.Models
+﻿namespace Mails_App
 {
     public class MailSettings
     {

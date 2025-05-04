@@ -12,5 +12,7 @@ namespace Wasla_Auth_App.Models
 
         [Required(ErrorMessage = "Password is required")]
         public required string Password { get; set; }
+
+        public required string lang { get; set; }
     }
 }

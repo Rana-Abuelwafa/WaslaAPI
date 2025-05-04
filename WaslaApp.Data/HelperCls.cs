@@ -29,7 +29,10 @@ namespace WaslaApp.Data
                 // index to the random alphanumeric string. 
                 randomstring = randomstring + str[x];
             }
-            return "OP"+randomstring.ToUpper();
+            return "OP" + randomstring.ToUpper();
         }
-        }
+
+
+        
     }
+}

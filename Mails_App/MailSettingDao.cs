@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaslaApp.Models;
 
-namespace WaslaApp.Data
+namespace Mails_App
 {
     public class MailSettingDao
     {

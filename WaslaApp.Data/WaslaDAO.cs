@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Mails_App;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,7 +9,6 @@ using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
-using WaslaApp.Models;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace WaslaApp.Data
@@ -95,6 +95,7 @@ namespace WaslaApp.Data
         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst, string client_id, string FullName, string email)
         {
             int count = 0;
+            string? lang = lst.First().lang_code?.ToLower();
             RegsistrationQuesResponse response;
             try
             {
@@ -127,10 +128,12 @@ namespace WaslaApp.Data
                         //send mail
                         try
                         {
-                            string htmlBody = File.ReadAllText(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "temp.html"));
+                            string fileName = "ConfirmMail_" + lang+".html";
+                            string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(),"MailsTemp//", fileName));
                             htmlBody= htmlBody.Replace("@user", FullName);
-                           string htmlRes= htmlBody.Replace("@copoun", copounAuto);
-                            MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = "wasla activation mail" ,EmailBody= htmlRes };
+                            htmlBody = htmlBody.Replace("@EXPIRY_DATE", "06/06/2025");
+                            string htmlRes= htmlBody.Replace("@copoun", copounAuto);
+                            MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang,1), EmailBody= htmlRes };
                             _mailSettingDao.SendMail(Mail_Data);
                         }
                         catch (Exception e)

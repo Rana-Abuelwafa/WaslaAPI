@@ -12,7 +12,6 @@ using Wasla_App.services;
 using WaslaApp.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
-using WaslaApp.Models;
 
 namespace Wasla_App.Controllers
 {

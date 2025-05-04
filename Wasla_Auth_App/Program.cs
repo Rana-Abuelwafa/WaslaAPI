@@ -1,3 +1,4 @@
+using Mails_App;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -73,9 +74,9 @@ builder.Services.AddIdentityCore<ApplicationUser>()
 
 builder.Services.AddDbContext<AuthenticationDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AuthConnection")));
-
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthenticationDBContext>();
 builder.Services.AddTransient<IMailService, MailService>();
+builder.Services.AddScoped<MailSettingDao>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

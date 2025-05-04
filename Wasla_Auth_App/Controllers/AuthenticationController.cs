@@ -1,20 +1,15 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿
+using Mails_App;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using NuGet.Common;
-using NuGet.Packaging.Signing;
-using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Wasla_Auth_App.Models;
 using Wasla_Auth_App.Services;
-using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
+using System;
+using System.Collections.Generic;
 namespace Wasla_Auth_App.Controllers
 {
     [Route("api/[controller]")]
@@ -49,15 +44,28 @@ namespace Wasla_Auth_App.Controllers
                 await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
                
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                MailData mailData = new MailData
-                {
-                    EmailBody= "<p>Thank you For Registering account</p><br /><p>"+ otp +"<p/>",
-                    EmailSubject="Mail Confirmation",
-                    EmailToId=user.Email,
-                    EmailToName=user.Email
-                };
-               
-                Mail_Service.SendOTPMail(mailData);
+
+                string fileName = "OTPMail_" + model.lang + ".html";
+                MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+                //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                //htmlBody = htmlBody.Replace("@user", model.FirstName + " " + model.LastName);
+                //htmlBody = htmlBody.Replace("@otp", otp);
+                //MailData mailData = new MailData
+                //{
+                //    EmailToId = user.Email,
+                //    EmailToName = user.Email,
+                //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
+                //    EmailBody = htmlBody
+                //};
+                //MailData mailData = new MailData
+                //{
+                //    EmailBody= "<p>Thank you For Registering account</p><br /><p>"+ otp +"<p/>",
+                //    EmailSubject="Mail Confirmation",
+                //    EmailToId=user.Email,
+                //    EmailToName=user.Email
+                //};
+
+                Mail_Service.SendMail(mailData);
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -110,15 +118,27 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //send otp to email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                        MailData mailData = new MailData
-                        {
-                            EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                            EmailSubject = "Mail Confirmation",
-                            EmailToId = user.Email,
-                            EmailToName = user.Email
-                        };
+                        MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+                        //string fileName = "OTPMail_" + model.lang + ".html";
+                        //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                        //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
+                        //htmlBody = htmlBody.Replace("@otp", otp);
+                        //MailData mailData = new MailData
+                        //{
+                        //    EmailToId = user.Email,
+                        //    EmailToName = user.Email,
+                        //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
+                        //    EmailBody = htmlBody
+                        //};
+                        //MailData mailData = new MailData
+                        //{
+                        //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                        //    EmailSubject = "Mail Confirmation",
+                        //    EmailToId = user.Email,
+                        //    EmailToName = user.Email
+                        //};
 
-                        Mail_Service.SendOTPMail(mailData);
+                        Mail_Service.SendMail(mailData);
                         return Ok(new User
                         {
                             
@@ -226,15 +246,27 @@ namespace Wasla_Auth_App.Controllers
                 //await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
 
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                MailData mailData = new MailData
-                {
-                    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                    EmailSubject = "Mail Confirmation",
-                    EmailToId = user.Email,
-                    EmailToName = user.Email
-                };
+                MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+                //string fileName = "OTPMail_" + model.lang + ".html";
+                //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
+                //htmlBody = htmlBody.Replace("@otp", otp);
+                //MailData mailData = new MailData
+                //{
+                //    EmailToId = user.Email,
+                //    EmailToName = user.Email,
+                //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
+                //    EmailBody = htmlBody
+                //};
+                //MailData mailData = new MailData
+                //{
+                //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                //    EmailSubject = "Mail Confirmation",
+                //    EmailToId = user.Email,
+                //    EmailToName = user.Email
+                //};
 
-                Mail_Service.SendOTPMail(mailData);
+                Mail_Service.SendMail(mailData);
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -287,15 +319,27 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //send otp to email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                        MailData mailData = new MailData
-                        {
-                            EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                            EmailSubject = "Mail Confirmation",
-                            EmailToId = user.Email,
-                            EmailToName = user.Email
-                        };
+                        MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName,otp,model.Email);
+                        //string fileName = "OTPMail_" + model.lang + ".html";
+                        //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                        //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
+                        //htmlBody = htmlBody.Replace("@otp", otp);
+                        //MailData mailData = new MailData
+                        //{
+                        //    EmailToId = user.Email,
+                        //    EmailToName = user.Email,
+                        //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
+                        //    EmailBody = htmlBody
+                        //};
+                        //MailData mailData = new MailData
+                        //{
+                        //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
+                        //    EmailSubject = "Mail Confirmation",
+                        //    EmailToId = user.Email,
+                        //    EmailToName = user.Email
+                        //};
 
-                        Mail_Service.SendOTPMail(mailData);
+                        Mail_Service.SendMail(mailData);
                         return Ok(new User
                         {
 

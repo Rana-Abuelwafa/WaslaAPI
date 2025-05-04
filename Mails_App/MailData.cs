@@ -1,4 +1,4 @@
-﻿namespace Wasla_Auth_App.Models
+﻿namespace Mails_App
 {
     public class MailData
     {
