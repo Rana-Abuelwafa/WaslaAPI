@@ -29,7 +29,7 @@ namespace Wasla_App.services
             return _waslaDao.GetProfileImage(clientId);
         }
 
-        public Task<List<ClientProfile>> GetClientProfiles(string clientId)
+        public Task<List<ClientProfileCast>> GetClientProfiles(string clientId)
         {
             return _waslaDao.GetClientProfiles(clientId);
         }
@@ -54,7 +54,7 @@ namespace Wasla_App.services
             return _waslaDao.saveProfileImage(image).Result;
         }
 
-        public ResponseCls saveMainProfile(ClientProfile profile)
+        public ResponseCls saveMainProfile(ClientProfileCast profile)
         {
             return _waslaDao.saveMainProfile(profile);
         }
@@ -77,6 +77,16 @@ namespace Wasla_App.services
         public ResponseCls saveClientCopoun(ClientCopoun copoun)
         {
             return _waslaDao.saveClientCopoun(copoun);
+        }
+
+        public Task<List<Product_Tree>> GetProduct_Tree(string clientId)
+        {
+           return _waslaDao.GetProduct_Tree(clientId);
+        }
+
+        public ResponseCls saveClientServices(List<ClientService> lst, string client_id)
+        {
+            return _waslaDao.saveClientServices(lst, client_id);
         }
     }
 }

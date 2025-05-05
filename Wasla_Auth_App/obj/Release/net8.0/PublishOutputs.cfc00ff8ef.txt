@@ -1,6 +1,7 @@
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Wasla_Auth_App.exe
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\libman.json
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Wasla_Auth_App.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Wasla_Auth_App.runtimeconfig.json
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Wasla_Auth_App.pdb
@@ -99,6 +100,7 @@ D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.Formats.Asn1.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
@@ -282,4 +284,6 @@ D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\runtim
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Mails_App.pdb
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\PubTmp\Out\Wasla_Auth_App.deps.json

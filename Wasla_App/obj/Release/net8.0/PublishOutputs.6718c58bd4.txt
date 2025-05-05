@@ -38,6 +38,7 @@ D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Swashbuckle
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.Formats.Asn1.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.Pkcs.dll
@@ -45,6 +46,8 @@ D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.Text
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\System.Text.Json.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Mails_App.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\WaslaApp.Data.dll
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\WaslaApp.Data.pdb
+D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Mails_App.pdb
 D:\WaslaProjectApi\Wasla_App\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.deps.json

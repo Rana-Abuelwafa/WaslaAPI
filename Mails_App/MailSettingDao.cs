@@ -32,8 +32,8 @@ namespace Mails_App
                 email_Message.To.Add(email_To);
                 email_Message.Subject = Mail_Data.EmailSubject;
                 BodyBuilder emailBodyBuilder = new BodyBuilder();
-                emailBodyBuilder.HtmlBody = Mail_Data.EmailBody.ToString();
-                emailBodyBuilder.TextBody = Mail_Data.EmailBody.ToString();
+                emailBodyBuilder.HtmlBody = Mail_Data.EmailBody?.ToString();
+                emailBodyBuilder.TextBody = Mail_Data.EmailBody?.ToString();
                 email_Message.Body = emailBodyBuilder.ToMessageBody();
                 //this is the SmtpClient class from the Mailkit.Net.Smtp namespace, not the System.Net.Mail one
                 SmtpClient MailClient = new SmtpClient();

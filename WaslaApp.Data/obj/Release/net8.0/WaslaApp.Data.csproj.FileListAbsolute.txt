@@ -13,3 +13,6 @@ D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Release\net8.0\refint\WaslaApp.Da
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.pdb
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.genruntimeconfig.cache
 D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Release\net8.0\ref\WaslaApp.Data.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Release\net8.0\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\bin\Release\net8.0\Mails_App.pdb
+D:\WaslaProjectApi\Wasla_App\WaslaApp.Data\obj\Release\net8.0\WaslaApp.F1B65406.Up2Date

@@ -212,6 +212,58 @@
         }
       }
     },
+    "/api/WaslaClient/SaveClientServices": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientService"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientService"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientService"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetProduct_Tree": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/GetPaymentMethods": {
       "post": {
         "tags": [
@@ -257,17 +309,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientProfile"
+                "$ref": "#/components/schemas/ClientProfileCast"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientProfile"
+                "$ref": "#/components/schemas/ClientProfileCast"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientProfile"
+                "$ref": "#/components/schemas/ClientProfileCast"
               }
             }
           }
@@ -383,7 +435,7 @@
         },
         "additionalProperties": false
       },
-      "ClientProfile": {
+      "ClientProfileCast": {
         "type": "object",
         "properties": {
           "profile_id": {
@@ -438,6 +490,25 @@
           "client_birthdayStr": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientService": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "client_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

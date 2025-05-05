@@ -79,6 +79,16 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetProduct_Tree",
+    "RelativePath": "api/WaslaClient/GetProduct_Tree",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "GetProfileImage",
     "RelativePath": "api/WaslaClient/GetProfileImage",
     "HttpMethod": "POST",
@@ -147,6 +157,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "saveClientServices",
+    "RelativePath": "api/WaslaClient/SaveClientServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lst",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.ClientService, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "saveMainProfile",
     "RelativePath": "api/WaslaClient/saveMainProfile",
     "HttpMethod": "POST",
@@ -155,7 +181,7 @@
     "Parameters": [
       {
         "Name": "profile",
-        "Type": "WaslaApp.Data.Entities.ClientProfile",
+        "Type": "WaslaApp.Data.Models.ClientProfileCast",
         "IsRequired": true
       }
     ],

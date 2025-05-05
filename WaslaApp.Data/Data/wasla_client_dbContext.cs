@@ -24,7 +24,13 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<ClientProfile> ClientProfiles { get; set; }
 
+    public virtual DbSet<ClientService> ClientServices { get; set; }
+
+    public virtual DbSet<MailTemp> MailTemps { get; set; }
+
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
 
@@ -83,6 +89,23 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.twitter_link).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<ClientService>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("ClientServices_pkey");
+
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+        });
+
+        modelBuilder.Entity<MailTemp>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("MailTemps_pkey");
+
+            entity.Property(e => e.id).ValueGeneratedNever();
+            entity.Property(e => e.lang).HasMaxLength(20);
+            entity.Property(e => e.mail_Subject).HasMaxLength(50);
+            entity.Property(e => e.type).HasComment("1 => for mail Confirmation\n2 => for otp verify");
+        });
+
         modelBuilder.Entity<PaymentMethod>(entity =>
         {
             entity.HasKey(e => e.pay_id).HasName("PaymentMethods_pkey");
@@ -90,6 +113,15 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.pay_id).ValueGeneratedNever();
             entity.Property(e => e.pay_code).HasMaxLength(20);
             entity.Property(e => e.pay_name).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.HasKey(e => e.productId).HasName("Product_pkey");
+
+            entity.ToTable("Product");
+
+            entity.Property(e => e.productId).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>

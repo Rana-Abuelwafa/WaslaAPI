@@ -1,0 +1,13 @@
+D:\WaslaProjectApi\Wasla_App\Mails_App\bin\Release\net8.0\Mails_App.deps.json
+D:\WaslaProjectApi\Wasla_App\Mails_App\bin\Release\net8.0\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Mails_App\bin\Release\net8.0\Mails_App.pdb
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.csproj.AssemblyReference.cache
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.GeneratedMSBuildEditorConfig.editorconfig
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.AssemblyInfoInputs.cache
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.AssemblyInfo.cs
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.csproj.CoreCompileInputs.cache
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.sourcelink.json
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\refint\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\Mails_App.pdb
+D:\WaslaProjectApi\Wasla_App\Mails_App\obj\Release\net8.0\ref\Mails_App.dll

@@ -122,18 +122,18 @@ namespace WaslaApp.Data
 
                     //generate & save coupon
                     string copounAuto = HelperCls.getCopounText();
-                    ClientCopoun copoun = new ClientCopoun {client_id= client_id,copoun= copounAuto,id=0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
+                    ClientCopoun copoun = new ClientCopoun { client_id = client_id, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
                     if (saveClientCopoun(copoun).success)
                     {
                         //send mail
                         try
                         {
-                            string fileName = "ConfirmMail_" + lang+".html";
-                            string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(),"MailsTemp//", fileName));
-                            htmlBody= htmlBody.Replace("@user", FullName);
+                            string fileName = "ConfirmMail_" + lang + ".html";
+                            string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                            htmlBody = htmlBody.Replace("@user", FullName);
                             htmlBody = htmlBody.Replace("@EXPIRY_DATE", "06/06/2025");
-                            string htmlRes= htmlBody.Replace("@copoun", copounAuto);
-                            MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang,1), EmailBody= htmlRes };
+                            string htmlRes = htmlBody.Replace("@copoun", copounAuto);
+                            MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 1), EmailBody = htmlRes };
                             _mailSettingDao.SendMail(Mail_Data);
                         }
                         catch (Exception e)
@@ -145,9 +145,9 @@ namespace WaslaApp.Data
                     }
                     else
                     {
-                        return new RegsistrationQuesResponse { success=false,errors="error in generate copoun"};
-                      
-                        }
+                        return new RegsistrationQuesResponse { success = false, errors = "error in generate copoun" };
+
+                    }
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = htmlcontent };
                 }
                 else
@@ -202,15 +202,15 @@ namespace WaslaApp.Data
                     {
                         //check client id validation
                         var result = _db.ClientCopouns.Where(wr => wr.client_id == copoun.client_id && wr.start_date == copoun.start_date && wr.end_date == copoun.end_date).SingleOrDefault();
-                        if(result != null)
+                        if (result != null)
                         {
                             return new ResponseCls { success = false, errors = "duplicate data" };
                         }
-                        
+
                         maxId = _db.ClientCopouns.Max(d => d.id);
 
                     }
-                    
+
                     copoun.id = maxId + 1;
                     _db.ClientCopouns.Add(copoun);
                 }
@@ -252,6 +252,113 @@ namespace WaslaApp.Data
 
         #region "Profile"
 
+        public ResponseCls saveClientServices(List<ClientService> lst, string client_id)
+        {
+            int count = 0;
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+                foreach (ClientService service in lst)
+                {
+                    service.client_id = client_id;
+                    if (service.id == 0)
+                    {
+                        if (_db.ClientServices.Count() > 0)
+                        {
+                            //check duplicate validation
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId).SingleOrDefault();
+                            if (result != null)
+                            {
+                                return new ResponseCls { success = false, errors = "duplicate data" };
+                            }
+
+                            maxId = _db.ClientServices.Max(d => d.id);
+
+
+                        }
+                       
+                        service.id = maxId + 1;
+                        _db.ClientServices.Add(service);
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        _db.ClientServices.Update(service);
+                        _db.SaveChanges();
+                    }
+
+                    count++;
+                }
+
+               
+                if (count == lst.Count)
+                {
+                    response = new ResponseCls { errors = null, success = true };
+                }
+                else
+                {
+                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
+                }
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+        public async Task<List<Product_Tree>> GetProduct_Tree(string clientId)
+        {
+
+            try
+            {
+                var main = await _db.Products.ToListAsync();
+
+                var result = GetProduct_TreeMain(main, 0, clientId).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<bool> CheckServiceSelected(int productId, string clientId)
+        {
+            try
+            {
+                var count = _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).CountAsync();
+                if (count.Result > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public List<Product_Tree> GetProduct_TreeMain(List<Product> lst, int parentId, string clientId)
+        {
+
+            return lst
+                   .Where(x => x.productParent == parentId)
+                   .ToList()
+                  .Select(s => new Product_Tree
+                  {
+                      productParent = s.productParent,
+
+                      productId = s.productId,
+                      productName = s.productName,
+                      product_desc = s.product_desc,
+                      children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
+                      isSelected = CheckServiceSelected(s.productId, clientId).Result
+                  })
+                .ToList();
+        }
+
         public async Task<List<PaymentMethod>> GetPaymentMethods()
         {
 
@@ -279,11 +386,11 @@ namespace WaslaApp.Data
             }
         }
 
-        public async Task<List<ClientProfile>> GetClientProfiles(string clientId)
+        public async Task<List<ClientProfileCast>> GetClientProfiles(string clientId)
         {
             try
             {
-                return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).Select(slc => new ClientProfile
+                return await _db.ClientProfiles.Where(wr => wr.client_id == clientId).Select(slc => new ClientProfileCast
                 {
                     client_birthday = slc.client_birthday,
                     client_birthdayStr = DateTime.Parse(slc.client_birthday.ToString()).ToString("yyyy-MM-dd"),
@@ -308,7 +415,7 @@ namespace WaslaApp.Data
         }
 
 
-        public ResponseCls saveMainProfile(ClientProfile profile)
+        public ResponseCls saveMainProfile(ClientProfileCast profile)
         {
             ResponseCls response;
             decimal maxId = 0;
@@ -341,11 +448,11 @@ namespace WaslaApp.Data
                 }
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null,idOut=profile.profile_id };
+                response = new ResponseCls { success = true, errors = null, idOut = profile.profile_id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
+                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
             }
             return response;
         }
@@ -374,11 +481,11 @@ namespace WaslaApp.Data
                 }
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null,idOut= brand.id };
+                response = new ResponseCls { success = true, errors = null, idOut = brand.id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
+                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
             }
             return response;
         }
@@ -411,11 +518,11 @@ namespace WaslaApp.Data
 
 
                 _db.SaveChanges();
-                response = new ResponseCls { success = true, errors = null,idOut= image.id };
+                response = new ResponseCls { success = true, errors = null, idOut = image.id };
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message,idOut=0 };
+                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
             }
             return response;
         }

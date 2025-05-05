@@ -8,6 +8,6 @@ namespace WaslaApp.Data.Models
 {
     public class QuesLstReq
     {
-        public string lang { get;set;}
+        public string? lang { get;set;}
     }
 }

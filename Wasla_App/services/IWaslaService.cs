@@ -16,10 +16,12 @@ namespace Wasla_App.services
         #endregion
 
         #region "profile"
+        public ResponseCls saveClientServices(List<ClientService> lst, string client_id);
+        public Task<List<Product_Tree>> GetProduct_Tree(string clientId);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);
-        public Task<List<ClientProfile>> GetClientProfiles(string clientId);
-        public ResponseCls saveMainProfile(ClientProfile profile);
+        public Task<List<ClientProfileCast>> GetClientProfiles(string clientId);
+        public ResponseCls saveMainProfile(ClientProfileCast profile);
         public ResponseCls saveClientBrand(ClientBrand brand);
         public ResponseCls saveProfileImage(ClientImage image);
         public Task<List<ClientImage>> GetProfileImage(string clientId);

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WaslaApp.Data.Entities;
 
@@ -28,8 +26,6 @@ public partial class ClientProfile
     public string? fb_link { get; set; }
 
     public string? twitter_link { get; set; }
-    [DataType(DataType.Date)]
+
     public DateOnly? client_birthday { get; set; }
-    [NotMapped]
-    public string client_birthdayStr { get; set; }
 }

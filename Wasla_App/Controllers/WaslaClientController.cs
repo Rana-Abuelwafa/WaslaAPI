@@ -52,9 +52,9 @@ namespace Wasla_App.Controllers
         [HttpPost("saveRegistrationSteps")]
         public  IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)
         {
-            string clientId = string.Empty;
-            string FullName = string.Empty;
-            string email = string.Empty;
+            string? clientId = string.Empty;
+            string? FullName = string.Empty;
+            string? email = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
@@ -85,6 +85,33 @@ namespace Wasla_App.Controllers
 
 
         #region "Profile"
+        [HttpPost("SaveClientServices")]
+        public IActionResult saveClientServices(List<ClientService> lst)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+
+            return Ok( _waslaService.saveClientServices(lst,clientId));
+        }
+
+        [HttpPost("GetProduct_Tree")]
+        public async Task<IActionResult> GetProduct_Tree()
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+
+            return Ok(await _waslaService.GetProduct_Tree(clientId));
+        }
         [HttpPost("GetPaymentMethods")]
         public async Task<IActionResult> GetPaymentMethods()
         {
@@ -122,7 +149,7 @@ namespace Wasla_App.Controllers
 
 
         [HttpPost("saveMainProfile")]
-        public IActionResult saveMainProfile(ClientProfile profile)
+        public IActionResult saveMainProfile(ClientProfileCast profile)
         {
             string clientId = string.Empty;
             string FullName = string.Empty;

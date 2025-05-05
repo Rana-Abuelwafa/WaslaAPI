@@ -327,3 +327,7 @@ D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\refint\Wasla_Auth
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\Wasla_Auth_App.pdb
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\Wasla_Auth_App.genruntimeconfig.cache
 D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\obj\Release\net8.0\ref\Wasla_Auth_App.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Release\net8.0\libman.json
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Release\net8.0\System.Formats.Asn1.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Release\net8.0\Mails_App.dll
+D:\WaslaProjectApi\Wasla_App\Wasla_Auth_App\bin\Release\net8.0\Mails_App.pdb

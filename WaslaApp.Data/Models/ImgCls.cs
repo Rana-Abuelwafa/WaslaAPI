@@ -11,6 +11,6 @@ namespace WaslaApp.Data.Models
     public class ImgCls 
     {
   
-        public IFormFile img { get; set; }
+        public IFormFile? img { get; set; }
     }
 }
