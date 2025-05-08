@@ -12,4 +12,6 @@ public partial class Product
     public int? productParent { get; set; }
 
     public string? product_desc { get; set; }
+
+    public bool? active { get; set; }
 }

@@ -252,16 +252,62 @@ namespace WaslaApp.Data
 
         #region "Profile"
 
-        public ResponseCls saveClientServices(List<ClientService> lst, string client_id)
+        public ResponseCls SaveProduct(Product product)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                    if (product.productId == 0)
+                    {
+                        if (_db.Products.Count() > 0)
+                        {
+                            //check duplicate validation
+                            var result = _db.Products.Where(wr => wr.productId == product.productId && wr.productParent == product.productParent).SingleOrDefault();
+                            if (result != null)
+                            {
+                                return new ResponseCls { success = false, errors = "duplicate data" };
+                            }
+
+                            maxId = _db.Products.Max(d => d.productId);
+
+
+                        }
+
+                         product.productId = maxId + 1;
+                        _db.Products.Add(product);
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        _db.Products.Update(product);
+                        _db.SaveChanges();
+                    }
+
+                    response = new ResponseCls { errors = null, success = true };
+ 
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+        
+        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
         {
             int count = 0;
             ResponseCls response;
             decimal maxId = 0;
             try
             {
-                foreach (ClientService service in lst)
+                foreach (ClientServiceCast row in lst)
                 {
-                    service.client_id = client_id;
+
+                    ClientService service = new ClientService { client_id= client_id ,id=row.id,productId=row.productId};
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)
@@ -284,8 +330,15 @@ namespace WaslaApp.Data
                     }
                     else
                     {
-                        _db.ClientServices.Update(service);
-                        _db.SaveChanges();
+                        if (row.isSelected == true)
+                        {
+                            _db.ClientServices.Update(service);
+                        }
+                        else
+                        {
+                            _db.ClientServices.Remove(service);
+                            _db.SaveChanges();
+                        }
                     }
 
                     count++;
@@ -314,7 +367,16 @@ namespace WaslaApp.Data
 
             try
             {
-                var main = await _db.Products.ToListAsync();
+                var main = new List<Product>();
+                if (clientId == "admin")
+                {
+                     main = await _db.Products.ToListAsync();
+                }
+                else
+                {
+                     main = await _db.Products.Where(wr => wr.active == true).ToListAsync();
+                }
+                
 
                 var result = GetProduct_TreeMain(main, 0, clientId).ToList();
                 return result;
@@ -328,8 +390,8 @@ namespace WaslaApp.Data
         {
             try
             {
-                var count = _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).CountAsync();
-                if (count.Result > 0)
+                var count = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).CountAsync();
+                if (count > 0)
                 {
                     return true;
                 }
@@ -353,8 +415,9 @@ namespace WaslaApp.Data
                       productId = s.productId,
                       productName = s.productName,
                       product_desc = s.product_desc,
+                      active=s.active,
                       children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
-                      isSelected = CheckServiceSelected(s.productId, clientId).Result
+                      isSelected = clientId == "admin" ? false : CheckServiceSelected(s.productId, clientId).Result
                   })
                 .ToList();
         }

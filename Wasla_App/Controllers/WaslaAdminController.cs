@@ -16,6 +16,8 @@ namespace Wasla_App.Controllers
             _waslaService = waslaService;
             _httpContextAccessor = httpContextAccessor;
         }
+
+        #region "questions"
         [HttpPost("saveQuestions")]
         public IActionResult saveQuestions(RegistrationQuestion ques)
         {
@@ -35,5 +37,22 @@ namespace Wasla_App.Controllers
 
             return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
+
+        #endregion "questions"
+
+        #region "product"
+        [HttpPost("GetProduct_Tree")]
+        public async Task<IActionResult> GetProduct_Tree()
+        {
+            return Ok(await _waslaService.GetProduct_Tree("admin"));
+        }
+
+        [HttpPost("SaveProduct")]
+        public IActionResult SaveProduct(Product product)
+        {
+            return Ok(_waslaService.SaveProduct(product));
+        }
+        #endregion "product"
+
     }
 }

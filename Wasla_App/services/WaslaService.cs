@@ -84,9 +84,14 @@ namespace Wasla_App.services
            return _waslaDao.GetProduct_Tree(clientId);
         }
 
-        public ResponseCls saveClientServices(List<ClientService> lst, string client_id)
+        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
         {
             return _waslaDao.saveClientServices(lst, client_id);
+        }
+
+        public ResponseCls SaveProduct(Product product)
+        {
+            return _waslaDao.SaveProduct(product);
         }
     }
 }

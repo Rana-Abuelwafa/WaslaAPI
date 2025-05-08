@@ -98,6 +98,49 @@
         }
       }
     },
+    "/api/WaslaAdmin/GetProduct_Tree": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/SaveProduct": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/getQuesList": {
       "post": {
         "tags": [
@@ -223,7 +266,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ClientService"
+                  "$ref": "#/components/schemas/ClientServiceCast"
                 }
               }
             },
@@ -231,7 +274,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ClientService"
+                  "$ref": "#/components/schemas/ClientServiceCast"
                 }
               }
             },
@@ -239,7 +282,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ClientService"
+                  "$ref": "#/components/schemas/ClientServiceCast"
                 }
               }
             }
@@ -494,7 +537,7 @@
         },
         "additionalProperties": false
       },
-      "ClientService": {
+      "ClientServiceCast": {
         "type": "object",
         "properties": {
           "productId": {
@@ -509,6 +552,36 @@
           "id": {
             "type": "number",
             "format": "double"
+          },
+          "isSelected": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productParent": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "product_desc": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false

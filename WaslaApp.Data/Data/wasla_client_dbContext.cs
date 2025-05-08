@@ -93,6 +93,7 @@ public partial class wasla_client_dbContext : DbContext
         {
             entity.HasKey(e => e.id).HasName("ClientServices_pkey");
 
+            entity.Property(e => e.id).HasDefaultValueSql("nextval('\"ClientServices_id_seq\"'::regclass)");
             entity.Property(e => e.client_id).HasColumnType("character varying");
         });
 
@@ -122,6 +123,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.productId).ValueGeneratedNever();
+            entity.Property(e => e.active).HasDefaultValue(true);
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>

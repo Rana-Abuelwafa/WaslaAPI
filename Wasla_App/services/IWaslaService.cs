@@ -16,7 +16,8 @@ namespace Wasla_App.services
         #endregion
 
         #region "profile"
-        public ResponseCls saveClientServices(List<ClientService> lst, string client_id);
+        public ResponseCls SaveProduct(Product product);
+        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
         public Task<List<Product_Tree>> GetProduct_Tree(string clientId);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);

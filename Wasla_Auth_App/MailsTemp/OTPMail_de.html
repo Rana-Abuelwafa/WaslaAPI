@@ -6,9 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
 
-<body>
+
     <style type="text/css">
         body {
             height: 100%;
@@ -34,11 +33,13 @@
             left: 0;
             background-color: #f7f7f7;
             padding: 0 30px;
+            align-items: center;
+            display: flex;
         }
 
             header img {
-                width: 200px;
-                height: 120px;
+                width: auto;
+                height: 30px;
             }
 
         .bg {
@@ -56,15 +57,15 @@
                 margin: 20px 0;
             }
         /* .bg-content {
-            background-color: white;
-            padding: 50px;
-            border-radius: 6px;
-            width: 1000px;
-            min-width: 1000px;
-            height: 400px;
-            margin: 100px auto;
-            position: relative;
-          } */
+         background-color: white;
+         padding: 50px;
+         border-radius: 6px;
+         width: 1000px;
+         min-width: 1000px;
+         height: 400px;
+         margin: 100px auto;
+         position: relative;
+       } */
 
         h2 {
             color: #00bc82;
@@ -100,12 +101,17 @@
             bottom: 0;
             width: 100%;
             color: #222;
-            height: 100px;
+            height: auto;
             background-color: #f7f7f7;
             padding: 10px;
             text-align: center;
             overflow: hidden;
         }
+        .footer img{
+           width: auto;
+           height: 30px;
+           margin: 10px auto;
+       }
 
             .footer p {
                 font-size: 16px;
@@ -126,8 +132,10 @@
         hr {
             border: 1px solid #eee;
         }
-    </style>
-    <header bgColor="#f7f7f7" style="background-color: #f7f7f7; height: 70px;width: 100%;padding: 0 30px;">
+   </style>
+  </head>
+   <body>
+    <header bgColor="#f7f7f7" style="background-color: #f7f7f7; height: 70px;width: 100%;padding: 0 30px;line-height: 70px;display: flex;align-items: center;">
         <img src="https://waslaa.de:4431/images/logo.png" alt="logo" />
     </header>
     <section class="bg">
@@ -162,7 +170,7 @@
             </div>
         </div>
     </section>
-    <footer class="footer" bgColor="#f7f7f7" style="background-color: #f7f7f7;text-align:center;height:100px;width:100%;padding:10px">
+    <footer class="footer" bgColor="#f7f7f7" style="background-color: #f7f7f7;text-align:center;width:100%;padding:10px;height: auto;">
         <img src="https://waslaa.de:4431/images/logo.png"
              alt="Logo"
              class="footer-logo-img" />

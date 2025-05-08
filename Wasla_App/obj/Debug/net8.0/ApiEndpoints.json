@@ -33,6 +33,32 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "GetProduct_Tree",
+    "RelativePath": "api/WaslaAdmin/GetProduct_Tree",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveProduct",
+    "RelativePath": "api/WaslaAdmin/SaveProduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product",
+        "Type": "WaslaApp.Data.Entities.Product",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "saveQuestions",
     "RelativePath": "api/WaslaAdmin/saveQuestions",
     "HttpMethod": "POST",
@@ -165,7 +191,7 @@
     "Parameters": [
       {
         "Name": "lst",
-        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.ClientService, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.ClientServiceCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],

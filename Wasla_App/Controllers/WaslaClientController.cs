@@ -86,7 +86,7 @@ namespace Wasla_App.Controllers
 
         #region "Profile"
         [HttpPost("SaveClientServices")]
-        public IActionResult saveClientServices(List<ClientService> lst)
+        public IActionResult saveClientServices(List<ClientServiceCast> lst)
         {
             string? clientId = string.Empty;
 
