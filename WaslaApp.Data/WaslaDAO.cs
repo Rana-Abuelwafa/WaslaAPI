@@ -386,38 +386,43 @@ namespace WaslaApp.Data
                 return null;
             }
         }
-        public async Task<bool> CheckServiceSelected(int productId, string clientId)
+        public async Task<ClientService> CheckServiceSelected(int productId, string clientId)
         {
+            
             try
             {
-                var count = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).CountAsync();
-                if (count > 0)
+                 var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).SingleOrDefaultAsync();
+                  if(result == null)
                 {
-                    return true;
+                    return new ClientService();
                 }
-                return false;
+                else
+                {
+                    return result;
+                }
+               
             }
             catch (Exception ex)
             {
-                return false;
+                return new ClientService();
             }
         }
         public List<Product_Tree> GetProduct_TreeMain(List<Product> lst, int parentId, string clientId)
         {
-
+            
             return lst
                    .Where(x => x.productParent == parentId)
                    .ToList()
                   .Select(s => new Product_Tree
                   {
                       productParent = s.productParent,
-
                       productId = s.productId,
                       productName = s.productName,
                       product_desc = s.product_desc,
                       active=s.active,
                       children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
-                      isSelected = clientId == "admin" ? false : CheckServiceSelected(s.productId, clientId).Result
+                      clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId, clientId).Result.id,
+                      isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, clientId).Result.id > 0 ? true : false)
                   })
                 .ToList();
         }

@@ -20,11 +20,13 @@ namespace Wasla_App.Controllers
     [ApiController]
     public class WaslaClientController : ControllerBase
     {
+        private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaClientController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor) {
+        public WaslaClientController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger) {
             _waslaService = waslaService;
             _httpContextAccessor = httpContextAccessor;
+            _logger = logger;
         }
 
         #region "registration questions"
@@ -188,14 +190,22 @@ namespace Wasla_App.Controllers
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
             }
-            var path = Path.Combine("Images" + "//", cls.img.FileName);
+            var path = Path.Combine("images" + "//", cls.img.FileName);
             //var path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images" + "//", cls.img.FileName);
-
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+            try
             {
-                 cls.img.CopyToAsync(stream);
-                stream.Close();
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    cls.img.CopyTo(stream);
+                    stream.Close();
+                }
+                _logger.LogInformation("image saved successfully");
             }
+            catch(Exception ex)
+            {
+                _logger.LogError( "image save exception: " + ex.Message);
+            }
+           
             ClientImage image = new ClientImage
             {
                 client_id = clientId,

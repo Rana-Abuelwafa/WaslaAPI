@@ -10,6 +10,7 @@ namespace WaslaApp.Data.Models
     public class Product_Tree : Product
     {
         public bool isSelected { get; set; }
+        public decimal clientServiceId { get; set; }
         public List<Product_Tree>? children { get; set; }
     }
 }
