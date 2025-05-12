@@ -63,12 +63,12 @@ namespace Wasla_Auth_App.Controllers
             {
                 //add rule to user
                 await _userManager.AddToRoleAsync(user, model.Role);
-                //send otp to email
+               
                 await _signInManager.SignOutAsync();
                 await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
-                if(model.Role != "Admin")
+                if(model.Role == "Admin")
                 {
-                    //generate response with token if user's email is verified
+                    
                     await _signInManager.SignInAsync(user, false);
                     var token = GenerateJwtToken(user);
                     return Ok(new User
@@ -150,7 +150,7 @@ namespace Wasla_Auth_App.Controllers
                     var isAdmin = await _userManager.IsInRoleAsync(user,"Admin");
                     if (isAdmin)
                     {
-                        //generate response with token if user's email is verified
+                        //generate response with token to admin
                         await _signInManager.SignInAsync(user, false);
                         var token = GenerateJwtToken(user);
                         return Ok(new User
