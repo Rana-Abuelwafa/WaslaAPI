@@ -38,34 +38,17 @@ namespace Wasla_Auth_App.Controllers
            
             if (result.Succeeded)
             {
-                //var token = GenerateJwtToken(user);
                 //send otp to email
                 await _signInManager.SignOutAsync();
                 await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
                
+                //genertae otp code and send to user by email to verify email
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
 
                 string fileName = "OTPMail_" + model.lang + ".html";
                 MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-                //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
-                //htmlBody = htmlBody.Replace("@user", model.FirstName + " " + model.LastName);
-                //htmlBody = htmlBody.Replace("@otp", otp);
-                //MailData mailData = new MailData
-                //{
-                //    EmailToId = user.Email,
-                //    EmailToName = user.Email,
-                //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
-                //    EmailBody = htmlBody
-                //};
-                //MailData mailData = new MailData
-                //{
-                //    EmailBody= "<p>Thank you For Registering account</p><br /><p>"+ otp +"<p/>",
-                //    EmailSubject="Mail Confirmation",
-                //    EmailToId=user.Email,
-                //    EmailToName=user.Email
-                //};
-
                 Mail_Service.SendMail(mailData);
+               //generate response without token until user verify email
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -105,9 +88,11 @@ namespace Wasla_Auth_App.Controllers
             
         }
 
+        //used for normal login (email & password)
         [HttpPost("LoginUser")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
+            //check if user exist or not first
             var user = await _userManager.FindByEmailAsync(model.Email);
             try
             {
@@ -116,29 +101,13 @@ namespace Wasla_Auth_App.Controllers
                 {
                     if(user.EmailConfirmed == false)
                     {
-                        //send otp to email
+                        //generate otp and send it to user's email to verify email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                         MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-                        //string fileName = "OTPMail_" + model.lang + ".html";
-                        //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
-                        //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
-                        //htmlBody = htmlBody.Replace("@otp", otp);
-                        //MailData mailData = new MailData
-                        //{
-                        //    EmailToId = user.Email,
-                        //    EmailToName = user.Email,
-                        //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
-                        //    EmailBody = htmlBody
-                        //};
-                        //MailData mailData = new MailData
-                        //{
-                        //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                        //    EmailSubject = "Mail Confirmation",
-                        //    EmailToId = user.Email,
-                        //    EmailToName = user.Email
-                        //};
-
+                       
                         Mail_Service.SendMail(mailData);
+
+                        //generate response without token until user verify email
                         return Ok(new User
                         {
                             
@@ -159,6 +128,7 @@ namespace Wasla_Auth_App.Controllers
                     }
                     else
                     {
+                        //generate response with token if user's email is verified
                         await _signInManager.SignInAsync(user,false);
                         var token = GenerateJwtToken(user);
                         return Ok(new User
@@ -204,11 +174,6 @@ namespace Wasla_Auth_App.Controllers
 
         private string GenerateJwtToken(ApplicationUser user)
         {
-            //    var claims = new[]
-            //    {
-            //    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            //};
             DateTime timestamp = DateTime.Now;
             string fullName = user.FirstName + " " + user.LastName;
             var authClaims = new List<Claim>
@@ -220,7 +185,7 @@ namespace Wasla_Auth_App.Controllers
                         new Claim("Email", user.Email),
                         //new Claim("ClientId", user.Id.ToString()),
                         new Claim("TimeStamp",timestamp.ToString()),
-                        new Claim("ActivtationTokenExpiredAt",timestamp.AddDays(14).ToString()),
+                        new Claim("ActivtationTokenExpiredAt",timestamp.AddMinutes(30).ToString()),
                     };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -233,7 +198,7 @@ namespace Wasla_Auth_App.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-
+        //used in gmail register
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
         {
@@ -241,32 +206,12 @@ namespace Wasla_Auth_App.Controllers
             var result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
             {
-                //send otp to email
-                //await _signInManager.SignOutAsync();
-                //await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
-
+                //generate otp and send it to user's email to verify email
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                 MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-                //string fileName = "OTPMail_" + model.lang + ".html";
-                //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
-                //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
-                //htmlBody = htmlBody.Replace("@otp", otp);
-                //MailData mailData = new MailData
-                //{
-                //    EmailToId = user.Email,
-                //    EmailToName = user.Email,
-                //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
-                //    EmailBody = htmlBody
-                //};
-                //MailData mailData = new MailData
-                //{
-                //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                //    EmailSubject = "Mail Confirmation",
-                //    EmailToId = user.Email,
-                //    EmailToName = user.Email
-                //};
-
+               
                 Mail_Service.SendMail(mailData);
+                //generate response without token until user verify email
                 return Ok(new User
                 {
                     UserName = user.UserName,
@@ -310,6 +255,7 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("LoginGmail")]
         public async Task<IActionResult> LoginGmail([FromBody] AppsRegisterModel model)
         {
+            //check if user exist or not first
             var user = await _userManager.FindByEmailAsync(model.Email);
             try
             {
@@ -317,29 +263,12 @@ namespace Wasla_Auth_App.Controllers
                 {
                     if (user.EmailConfirmed == false)
                     {
-                        //send otp to email
+                        //generate otp and send it to user's email to verify email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                         MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName,otp,model.Email);
-                        //string fileName = "OTPMail_" + model.lang + ".html";
-                        //string htmlBody = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
-                        //htmlBody = htmlBody.Replace("@user", user.FirstName + " " + user.LastName);
-                        //htmlBody = htmlBody.Replace("@otp", otp);
-                        //MailData mailData = new MailData
-                        //{
-                        //    EmailToId = user.Email,
-                        //    EmailToName = user.Email,
-                        //    EmailSubject = UtilsCls.GetMailSubjectByLang(model.lang, 2),
-                        //    EmailBody = htmlBody
-                        //};
-                        //MailData mailData = new MailData
-                        //{
-                        //    EmailBody = "<p>Thank you For Registering account</p><br /><p>" + otp + "<p/>",
-                        //    EmailSubject = "Mail Confirmation",
-                        //    EmailToId = user.Email,
-                        //    EmailToName = user.Email
-                        //};
-
+                       
                         Mail_Service.SendMail(mailData);
+                        //generate response without token until user verify email
                         return Ok(new User
                         {
 
@@ -360,6 +289,7 @@ namespace Wasla_Auth_App.Controllers
                     }
                     else
                     {
+                        //generate response with token if user verify email
                         await _signInManager.SignInAsync(user, false);
                         var token = GenerateJwtToken(user);
                         return Ok(new User
@@ -388,14 +318,7 @@ namespace Wasla_Auth_App.Controllers
                           msg = "user Not Found",
 
                       });
-                //return Unauthorized(new User
-                //    {
-                //        isSuccessed = false,
-                //        msg = "user Not Found",
-
-                //    });
-
-
+    
             }
             catch (Exception e)
             {
@@ -406,13 +329,6 @@ namespace Wasla_Auth_App.Controllers
                           msg = e.Message,
 
                       });
-                //return Unauthorized(new User
-                //{
-
-                //    isSuccessed = false,
-                //    msg = "user Not Found",
-
-                //});
             }
         }
 
@@ -427,6 +343,7 @@ namespace Wasla_Auth_App.Controllers
         {
             try
             {
+                //check if user exist or not first
                 var user = await _userManager.FindByIdAsync(model.userId);
                 if (user != null)
                 {
@@ -493,14 +410,16 @@ namespace Wasla_Auth_App.Controllers
         {
             try
             {
+                //check if user exist or not
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if(user != null)
                 {
+                    //verify otp 
                     var isCodeValid = await _userManager.VerifyTwoFactorTokenAsync(user,"Email",model.otp);
-                    // var signIn = await _signInManager.TwoFactorSignInAsync("Email", model.otp, false, false);
-                    //if (signIn.Succeeded)
+                
                     if (isCodeValid)
                     {
+                        //update user EmailConfirmed = true;
                         user.EmailConfirmed = true;
                         await _userManager.UpdateAsync(user);
                         var token = GenerateJwtToken(user);
@@ -575,9 +494,11 @@ namespace Wasla_Auth_App.Controllers
         {
             try
             {
+                //check if user exist or not
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
+                    //update user completeprofile = true, (mean user answer to registration's questions)
                     user.completeprofile = 1;
                     await _userManager.UpdateAsync(user);
                     var token = GenerateJwtToken(user);
