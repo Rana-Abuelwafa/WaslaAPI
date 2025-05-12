@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "GetProduct",
+    "RelativePath": "api/WaslaAdmin/GetProduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.ProductReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "GetProduct_Tree",
     "RelativePath": "api/WaslaAdmin/GetProduct_Tree",
     "HttpMethod": "POST",

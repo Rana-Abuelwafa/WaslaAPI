@@ -98,6 +98,37 @@
         }
       }
     },
+    "/api/WaslaAdmin/GetProduct": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaAdmin/GetProduct_Tree": {
       "post": {
         "tags": [
@@ -582,6 +613,19 @@
           "active": {
             "type": "boolean",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductReq": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

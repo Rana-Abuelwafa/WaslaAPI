@@ -93,5 +93,10 @@ namespace Wasla_App.services
         {
             return _waslaDao.SaveProduct(product);
         }
+
+        public Task<List<Product>> GetProduct(ProductReq req)
+        {
+            return _waslaDao.GetProduct(req);
+        }
     }
 }

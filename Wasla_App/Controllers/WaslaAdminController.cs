@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Wasla_App.services;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
@@ -43,6 +42,12 @@ namespace Wasla_App.Controllers
         #endregion "questions"
 
         #region "product"
+
+        [HttpPost("GetProduct")]
+        public async Task<IActionResult> GetProduct(ProductReq req)
+        {
+            return Ok(await _waslaService.GetProduct(req));
+        }
         [HttpPost("GetProduct_Tree")]
         public async Task<IActionResult> GetProduct_Tree()
         {

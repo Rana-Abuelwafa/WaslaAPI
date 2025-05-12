@@ -245,6 +245,22 @@ namespace WaslaApp.Data
 
         #region "Profile"
 
+        //get Parent products 
+
+        public async Task<List<Product>> GetProduct(ProductReq req)
+        {
+
+            try
+            {
+                 return await _db.Products.Where(wr => wr.active == req.active && wr.productParent == (req.parent == -1 ? wr.productParent : req.parent)).ToListAsync();
+               
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         //save product (service) data by admin
 
         public ResponseCls SaveProduct(Product product)
