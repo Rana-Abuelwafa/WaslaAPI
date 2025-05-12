@@ -68,6 +68,7 @@ options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
 
 builder.Services.AddIdentityCore<ApplicationUser>()
+     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AuthenticationDBContext>()
      .AddDefaultTokenProviders()
     .AddApiEndpoints();

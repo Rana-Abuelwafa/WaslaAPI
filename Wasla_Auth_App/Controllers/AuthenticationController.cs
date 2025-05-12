@@ -10,6 +10,7 @@ using Wasla_Auth_App.Models;
 using Wasla_Auth_App.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 namespace Wasla_Auth_App.Controllers
 {
     [Route("api/[controller]")]
@@ -17,17 +18,39 @@ namespace Wasla_Auth_App.Controllers
     public class AuthenticationController : ControllerBase
     {
         IMailService Mail_Service = null;
+        private readonly RoleManager<IdentityRole>? _roleManager;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        public AuthenticationController(UserManager<ApplicationUser> userManager,
+        public AuthenticationController(RoleManager<IdentityRole>? roleManager, UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager, IConfiguration configuration , IMailService _MailService)
         {
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             Mail_Service = _MailService;
 
+        }
+        [HttpPost("CreateRole")]
+        public async Task<IActionResult> CreateRole([FromBody] RoleModel? roleModel)
+        {
+            if (roleModel == null)
+            {
+                return BadRequest($"{nameof(roleModel)} cannot be null.");
+            }
+
+            var role = new IdentityRole();
+            role.Name = roleModel.role;
+
+            IdentityResult result = await _roleManager.CreateAsync(role);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Unable to create a role.");
+            }
+
+            return Ok();
         }
 
         [HttpPost("RegisterUser")]
@@ -38,10 +61,33 @@ namespace Wasla_Auth_App.Controllers
            
             if (result.Succeeded)
             {
+                //add rule to user
+                await _userManager.AddToRoleAsync(user, model.Role);
                 //send otp to email
                 await _signInManager.SignOutAsync();
                 await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
-               
+                if(model.Role != "Admin")
+                {
+                    //generate response with token if user's email is verified
+                    await _signInManager.SignInAsync(user, false);
+                    var token = GenerateJwtToken(user);
+                    return Ok(new User
+                    {
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        isSuccessed = true,
+                        msg = "User login successfully",
+                        AccessToken = token,
+                        RefreshToken = token,
+                        Id = user.Id,
+                        EmailConfirmed = user.EmailConfirmed,
+                        GoogleId = user.GoogleId,
+                        TwoFactorEnabled = user.TwoFactorEnabled,
+                        completeprofile = user.completeprofile,
+                    });
+                }
                 //genertae otp code and send to user by email to verify email
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
 
@@ -88,6 +134,8 @@ namespace Wasla_Auth_App.Controllers
             
         }
 
+
+
         //used for normal login (email & password)
         [HttpPost("LoginUser")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
@@ -99,7 +147,30 @@ namespace Wasla_Auth_App.Controllers
                 var isAuth = await _userManager.CheckPasswordAsync(user, model.Password);
                 if (user != null && isAuth)
                 {
-                    if(user.EmailConfirmed == false)
+                    var isAdmin = await _userManager.IsInRoleAsync(user,"Admin");
+                    if (isAdmin)
+                    {
+                        //generate response with token if user's email is verified
+                        await _signInManager.SignInAsync(user, false);
+                        var token = GenerateJwtToken(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = "User login successfully",
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
+                        });
+                    }
+                    if (user.EmailConfirmed == false)
                     {
                         //generate otp and send it to user's email to verify email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");

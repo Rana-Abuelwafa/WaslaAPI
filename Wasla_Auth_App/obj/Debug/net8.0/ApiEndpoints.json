@@ -49,6 +49,22 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "CreateRole",
+    "RelativePath": "api/Authentication/CreateRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleModel",
+        "Type": "Wasla_Auth_App.Models.RoleModel",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "ExternalRegister",
     "RelativePath": "api/Authentication/ExternalRegister",
     "HttpMethod": "POST",
