@@ -8,9 +8,11 @@ namespace Mails_App
 {
     public class UtilsCls
     {
-       
+        //this type config is static in code, 1 = confirmation mail , 2 = otp verify
+        
         public static string GetMailSubjectByLang(string lang,int type)
         {
+            
             if (type == 1)
             //mean confirmation mail
             {

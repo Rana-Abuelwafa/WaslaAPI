@@ -31,6 +31,9 @@ namespace WaslaApp.Data
         {
             try
             {
+                //tbl RegistrationQuestions => contains question
+                //tbl RegistrationAnswers => contain users answers (ques_id,answer.clientId)
+                //make left jpon with two tables , to check if user answer this question before or not
                 var result = from ques in _db.RegistrationQuestions.Where(wr => wr.lang_code == lang)
                              join ans in _db.RegistrationAnswers.Where(wr => wr.client_id == clientId) on ques.ques_id equals ans.ques_id into quesWans
                              from m in quesWans.DefaultIfEmpty()
@@ -45,21 +48,6 @@ namespace WaslaApp.Data
                                  ques_type = ques.ques_type
 
                              };
-                //var result = _db.RegistrationQuestions.Where(wr => wr.lang_code == lang)
-                //    .GroupJoin(
-                //       _db.RegistrationAnswers.Where(wr => wr.client_id == clientId),
-                //         ques => new { ques.ques_id },
-                //         ans => new { ans.ques_id },
-                //         (ques, ans) => new { ques, ans })
-                //        .SelectMany(x => x.ans.DefaultIfEmpty(),
-                //                   (x, y) => new QuesWithAnswers
-                //                   {
-                //                      ques_id = x.ques.ques_id,
-                //                      lang_code=x.ques.lang_code,
-
-
-                //                   }
-                //       ).ToList();
 
                 return result.ToList();
 
@@ -69,6 +57,8 @@ namespace WaslaApp.Data
                 return null;
             }
         }
+
+        //get Question List only
         public async Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang)
         {
 
@@ -92,6 +82,7 @@ namespace WaslaApp.Data
         #endregion
 
         #region "insert & update"
+        //save user's answers for registerations questions 
         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst, string client_id, string FullName, string email)
         {
             int count = 0;
@@ -119,13 +110,12 @@ namespace WaslaApp.Data
                 if (count == lst.Count)
                 {
 
-
                     //generate & save coupon
                     string copounAuto = HelperCls.getCopounText();
                     ClientCopoun copoun = new ClientCopoun { client_id = client_id, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
                     if (saveClientCopoun(copoun).success)
                     {
-                        //send mail
+                        //send confirmation mail
                         try
                         {
                             string fileName = "ConfirmMail_" + lang + ".html";
@@ -163,6 +153,7 @@ namespace WaslaApp.Data
             return response;
         }
 
+        //save registration questions (used in admin)
         public ResponseCls saveQuestions(RegistrationQuestion ques)
         {
             ResponseCls response;
@@ -228,6 +219,8 @@ namespace WaslaApp.Data
             }
             return response;
         }
+
+        //delete registration questions (used in admin)
         public ResponseCls deleteQuestions(RegistrationQuestion ques)
         {
             ResponseCls response;
@@ -251,6 +244,8 @@ namespace WaslaApp.Data
         #endregion
 
         #region "Profile"
+
+        //save product (service) data by admin
 
         public ResponseCls SaveProduct(Product product)
         {
@@ -297,6 +292,8 @@ namespace WaslaApp.Data
             return response;
         }
         
+
+        //save Client's services List
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
         {
             int count = 0;
@@ -362,6 +359,11 @@ namespace WaslaApp.Data
 
             return response;
         }
+      
+        
+        // get products as tree (used in admin & website) depend on client Id , 
+        //in website get only active products, and for each one check if client selected or not
+        //in admin get all (active or not active), and not check againts client slected or not
         public async Task<List<Product_Tree>> GetProduct_Tree(string clientId)
         {
 
@@ -386,6 +388,8 @@ namespace WaslaApp.Data
                 return null;
             }
         }
+       
+        
         public async Task<ClientService> CheckServiceSelected(int productId, string clientId)
         {
             
@@ -564,7 +568,7 @@ namespace WaslaApp.Data
             decimal maxId = 0;
             try
             {
-
+                //check if client saved profile image before or not (save or update)
                 var result = _db.ClientImages.Where(wr => wr.client_id == image.client_id && wr.type == image.type).SingleOrDefault();
                 if (result != null)
                 {
@@ -599,7 +603,7 @@ namespace WaslaApp.Data
         {
             try
             {
-                return await _db.ClientImages.Where(wr => wr.client_id == clientId).Select(s => new ClientImage
+                return await _db.ClientImages.Where(wr => wr.client_id == clientId && wr.type == 1).Select(s => new ClientImage
                 {
                     id = s.id,
                     client_id = s.client_id,

@@ -30,14 +30,15 @@ namespace Wasla_App.Controllers
         }
 
         #region "registration questions"
-       
-        
+
+        //get registration Question List only
         [HttpPost("getQuesList")]
         public async Task<IActionResult> getQuesList(QuesLstReq req)
         {
 
             return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
         }
+        //get registration Questions List with user's answers
         [HttpPost("getQuesWithAnswers")]
         public  IActionResult getQuesWithAnswers(QuesLstReq req)
         {
@@ -51,6 +52,7 @@ namespace Wasla_App.Controllers
             return Ok(_waslaService.getQuesWithAnswers(clientId, req.lang));
         }
 
+        //save user's answers for registerations questions
         [HttpPost("saveRegistrationSteps")]
         public  IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)
         {
@@ -71,7 +73,7 @@ namespace Wasla_App.Controllers
         [HttpPost("saveClientCopoun")]
         public IActionResult saveClientCopoun()
         {
-            string clientId = string.Empty;
+            string? clientId = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
@@ -125,7 +127,7 @@ namespace Wasla_App.Controllers
         public async Task<IActionResult> GetClientBrands()
         {
 
-            string clientId = string.Empty;
+            string? clientId = string.Empty;
           
             if (_httpContextAccessor.HttpContext is not null)
             {
@@ -139,7 +141,7 @@ namespace Wasla_App.Controllers
         [HttpPost("GetClientProfiles")]
         public async Task<IActionResult> GetClientProfiles()
         {
-            string clientId = string.Empty;
+            string? clientId = string.Empty;
 
             if (_httpContextAccessor.HttpContext is not null)
             {
@@ -153,9 +155,9 @@ namespace Wasla_App.Controllers
         [HttpPost("saveMainProfile")]
         public IActionResult saveMainProfile(ClientProfileCast profile)
         {
-            string clientId = string.Empty;
-            string FullName = string.Empty;
-            string email = string.Empty;
+            string? clientId = string.Empty;
+            string? FullName = string.Empty;
+            string? email = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
@@ -185,7 +187,7 @@ namespace Wasla_App.Controllers
         [HttpPost("saveProfileImage")]
         public IActionResult saveProfileImage(ImgCls cls)
         {
-            string clientId = string.Empty;
+            string? clientId = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
@@ -220,7 +222,7 @@ namespace Wasla_App.Controllers
         [HttpPost("GetProfileImage")]
         public async Task<IActionResult> GetProfileImage()
         {
-            string clientId = string.Empty;
+            string? clientId = string.Empty;
 
             if (_httpContextAccessor.HttpContext is not null)
             {
