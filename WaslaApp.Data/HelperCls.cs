@@ -8,6 +8,22 @@ namespace WaslaApp.Data
 {
     public class HelperCls
     {
+        public static string getResponseMsg(string lang)
+        {
+            string? response = null;
+            if(lang == "ar")
+            {
+                response = "<p>عزيزي العميل، لقد تم إرسال النموذج إلى مصممينا للمراجعة والتنفيذ، وسيتم الاتصال بك للحصول على مزيد من التفاصيل.<br/>نشكرك لاختيارك خدماتنا.<p/>";
+            }else if(lang == "de")
+            {
+                response = "<p>Geachte klant, het formulier is ter beoordeling en implementatie naar onze ontwerpers verzonden. Wij nemen contact met u op voor meer informatie.<br/> Bedankt dat u voor onze diensten hebt gekozen.</p>";
+            }
+            else
+            {
+                response = "<p>Dear customer, the form has been submitted to our designers for review and implementation, you will be contacted to obtain further details.<br/><br/>Thank you for choosing our services.<p/>";
+            }
+            return response;
+        }
         public static string getCopounText()
         {
             Random res = new Random();

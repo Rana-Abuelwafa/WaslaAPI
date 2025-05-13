@@ -17,7 +17,7 @@ namespace WaslaApp.Data
     {
         private readonly MailSettingDao _mailSettingDao;
         private readonly wasla_client_dbContext _db;
-        string htmlcontent = "<p>Dear customer, the form has been submitted to our \r\ndesigners for review and implementation, you will be \r\ncontacted to obtain further details.\r\n<br/>\r\n<br/>\r\n Thank you for choosing our services.<p/>";
+        
         public WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao)
         {
             _db = db;
@@ -95,6 +95,12 @@ namespace WaslaApp.Data
                     answer.client_id = client_id;
                     if (answer.id == 0)
                     {
+                        //check duplicate validation
+                        var result = _db.RegistrationAnswers.Where(wr => wr.client_id == answer.client_id && wr.ques_id == answer.ques_id && wr.lang_code == answer.lang_code).SingleOrDefault();
+                        if (result != null)
+                        {
+                            return new RegsistrationQuesResponse { success = false, errors = "duplicate data",WelcomeMsg=null };
+                        }
                         _db.RegistrationAnswers.Add(answer);
                     }
                     else
@@ -138,7 +144,7 @@ namespace WaslaApp.Data
                         return new RegsistrationQuesResponse { success = false, errors = "error in generate copoun" };
 
                     }
-                    response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = htmlcontent };
+                    response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = HelperCls.getResponseMsg(lang) };
                 }
                 else
                 {
