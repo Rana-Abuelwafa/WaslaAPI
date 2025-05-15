@@ -70,7 +70,7 @@ namespace Wasla_Auth_App.Controllers
                 {
                     
                     await _signInManager.SignInAsync(user, false);
-                    var token = GenerateJwtToken(user);
+                    var token = await GenerateJwtTokenAsync(user);
                     return Ok(new User
                     {
                         UserName = user.UserName,
@@ -152,7 +152,7 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //generate response with token to admin
                         await _signInManager.SignInAsync(user, false);
-                        var token = GenerateJwtToken(user);
+                        var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
                             UserName = user.UserName,
@@ -201,7 +201,7 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //generate response with token if user's email is verified
                         await _signInManager.SignInAsync(user,false);
-                        var token = GenerateJwtToken(user);
+                        var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
                             UserName = user.UserName,
@@ -243,10 +243,13 @@ namespace Wasla_Auth_App.Controllers
             }
         }
 
-        private string GenerateJwtToken(ApplicationUser user)
+        private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
         {
             DateTime timestamp = DateTime.Now;
             string fullName = user.FirstName + " " + user.LastName;
+            // Get User roles and add them to claims
+            var roles = await _userManager.GetRolesAsync(user);
+            
             var authClaims = new List<Claim>
                     {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -258,6 +261,7 @@ namespace Wasla_Auth_App.Controllers
                         new Claim("TimeStamp",timestamp.ToString()),
                         new Claim("ActivtationTokenExpiredAt",timestamp.AddMinutes(30).ToString()),
                     };
+            AddRolesToClaims(authClaims, roles);
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
@@ -268,7 +272,14 @@ namespace Wasla_Auth_App.Controllers
                 signingCredentials: creds);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
+        private void AddRolesToClaims(List<Claim> claims, IEnumerable<string> roles)
+        {
+            foreach (var role in roles)
+            {
+                var roleClaim = new Claim(ClaimTypes.Role, role);
+                claims.Add(roleClaim);
+            }
+        }
         //used in gmail register
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
@@ -362,7 +373,7 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //generate response with token if user verify email
                         await _signInManager.SignInAsync(user, false);
-                        var token = GenerateJwtToken(user);
+                        var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
                             UserName = user.UserName,
@@ -421,7 +432,7 @@ namespace Wasla_Auth_App.Controllers
                     var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {
-                        var token = GenerateJwtToken(user);
+                        var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
                             UserName = user.UserName,
@@ -493,7 +504,7 @@ namespace Wasla_Auth_App.Controllers
                         //update user EmailConfirmed = true;
                         user.EmailConfirmed = true;
                         await _userManager.UpdateAsync(user);
-                        var token = GenerateJwtToken(user);
+                        var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
                             UserName = user.UserName,
@@ -572,7 +583,7 @@ namespace Wasla_Auth_App.Controllers
                     //update user completeprofile = true, (mean user answer to registration's questions)
                     user.completeprofile = 1;
                     await _userManager.UpdateAsync(user);
-                    var token = GenerateJwtToken(user);
+                    var token = await GenerateJwtTokenAsync(user);
                     return Ok(new User
                     {
                         UserName = user.UserName,
