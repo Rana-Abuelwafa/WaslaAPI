@@ -81,6 +81,16 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Authentication/GetUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "LoginGmail",
     "RelativePath": "api/Authentication/LoginGmail",
     "HttpMethod": "POST",

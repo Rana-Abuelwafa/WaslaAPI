@@ -301,6 +301,18 @@
         }
       }
     },
+    "/api/Authentication/GetUsers": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/register": {
       "post": {
         "tags": [

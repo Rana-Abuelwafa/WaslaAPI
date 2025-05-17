@@ -11,6 +11,7 @@ using Wasla_Auth_App.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Microsoft.EntityFrameworkCore;
 namespace Wasla_Auth_App.Controllers
 {
     [Route("api/[controller]")]
@@ -23,7 +24,7 @@ namespace Wasla_Auth_App.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         public AuthenticationController(RoleManager<IdentityRole>? roleManager, UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager, IConfiguration configuration , IMailService _MailService)
+        SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IMailService _MailService)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -56,19 +57,19 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email,FirstName=model.FirstName,LastName=model.LastName,TwoFactorEnabled=true };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TwoFactorEnabled = true };
             var result = await _userManager.CreateAsync(user, model.Password);
-           
+
             if (result.Succeeded)
             {
                 //add rule to user
                 await _userManager.AddToRoleAsync(user, model.Role);
-               
+
                 await _signInManager.SignOutAsync();
                 await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
-                if(model.Role == "Admin")
+                if (model.Role == "Admin")
                 {
-                    
+
                     await _signInManager.SignInAsync(user, false);
                     var token = await GenerateJwtTokenAsync(user);
                     return Ok(new User
@@ -94,23 +95,23 @@ namespace Wasla_Auth_App.Controllers
                 string fileName = "OTPMail_" + model.lang + ".html";
                 MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
                 Mail_Service.SendMail(mailData);
-               //generate response without token until user verify email
+                //generate response without token until user verify email
                 return Ok(new User
                 {
                     UserName = user.UserName,
                     FirstName = user.FirstName,
-                    LastName=user.LastName,
-                    Email=user.Email,
+                    LastName = user.LastName,
+                    Email = user.Email,
                     isSuccessed = result.Succeeded,
-                    msg = "User created successfully" ,
-                    AccessToken=null,
-                    RefreshToken=null,
-                    Id=user.Id,
+                    msg = "User created successfully",
+                    AccessToken = null,
+                    RefreshToken = null,
+                    Id = user.Id,
                     EmailConfirmed = user.EmailConfirmed,
                     GoogleId = user.GoogleId,
                     TwoFactorEnabled = user.TwoFactorEnabled,
-                    completeprofile=user.completeprofile,
-                    
+                    completeprofile = user.completeprofile,
+
                 });
             }
             else
@@ -121,17 +122,17 @@ namespace Wasla_Auth_App.Controllers
                 {
                     UserName = "",
                     Email = "",
-                    FirstName ="",
-                    LastName="",
+                    FirstName = "",
+                    LastName = "",
                     isSuccessed = result.Succeeded,
                     msg = errors,
                     AccessToken = "",
                     RefreshToken = "",
-                    Id=null,
-                    completeprofile=0
+                    Id = null,
+                    completeprofile = 0
                 });
             }
-            
+
         }
 
 
@@ -147,7 +148,7 @@ namespace Wasla_Auth_App.Controllers
                 var isAuth = await _userManager.CheckPasswordAsync(user, model.Password);
                 if (user != null && isAuth)
                 {
-                    var isAdmin = await _userManager.IsInRoleAsync(user,"Admin");
+                    var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
                     if (isAdmin)
                     {
                         //generate response with token to admin
@@ -175,13 +176,13 @@ namespace Wasla_Auth_App.Controllers
                         //generate otp and send it to user's email to verify email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                         MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-                       
+
                         Mail_Service.SendMail(mailData);
 
                         //generate response without token until user verify email
                         return Ok(new User
                         {
-                            
+
                             UserName = user.UserName,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
@@ -191,16 +192,16 @@ namespace Wasla_Auth_App.Controllers
                             AccessToken = null,
                             RefreshToken = null,
                             Id = user.Id,
-                            EmailConfirmed=user.EmailConfirmed,
-                            GoogleId=user.GoogleId,
-                            TwoFactorEnabled=user.TwoFactorEnabled,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
                         });
                     }
                     else
                     {
                         //generate response with token if user's email is verified
-                        await _signInManager.SignInAsync(user,false);
+                        await _signInManager.SignInAsync(user, false);
                         var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
                         {
@@ -219,7 +220,7 @@ namespace Wasla_Auth_App.Controllers
                             completeprofile = user.completeprofile,
                         });
                     }
-                   
+
 
                 }
                 else
@@ -232,7 +233,8 @@ namespace Wasla_Auth_App.Controllers
 
 
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 return Unauthorized(new User
                 {
 
@@ -249,7 +251,7 @@ namespace Wasla_Auth_App.Controllers
             string fullName = user.FirstName + " " + user.LastName;
             // Get User roles and add them to claims
             var roles = await _userManager.GetRolesAsync(user);
-            
+
             var authClaims = new List<Claim>
                     {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -284,14 +286,14 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,GoogleId="1",TwoFactorEnabled = true };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GoogleId = "1", TwoFactorEnabled = true };
             var result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
             {
                 //generate otp and send it to user's email to verify email
                 var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                 MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-               
+
                 Mail_Service.SendMail(mailData);
                 //generate response without token until user verify email
                 return Ok(new User
@@ -325,8 +327,8 @@ namespace Wasla_Auth_App.Controllers
                     msg = errors,
                     AccessToken = "",
                     RefreshToken = "",
-                    Id=null,
-                    completeprofile=0
+                    Id = null,
+                    completeprofile = 0
                 });
             }
 
@@ -347,8 +349,8 @@ namespace Wasla_Auth_App.Controllers
                     {
                         //generate otp and send it to user's email to verify email
                         var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                        MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName,otp,model.Email);
-                       
+                        MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+
                         Mail_Service.SendMail(mailData);
                         //generate response without token until user verify email
                         return Ok(new User
@@ -400,7 +402,7 @@ namespace Wasla_Auth_App.Controllers
                           msg = "user Not Found",
 
                       });
-    
+
             }
             catch (Exception e)
             {
@@ -443,7 +445,7 @@ namespace Wasla_Auth_App.Controllers
                             msg = "Password is changed successfully",
                             AccessToken = token,
                             RefreshToken = token,
-                            Id=user.Id,
+                            Id = user.Id,
                             completeprofile = user.completeprofile,
                         });
                     }
@@ -494,11 +496,11 @@ namespace Wasla_Auth_App.Controllers
             {
                 //check if user exist or not
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if(user != null)
+                if (user != null)
                 {
                     //verify otp 
-                    var isCodeValid = await _userManager.VerifyTwoFactorTokenAsync(user,"Email",model.otp);
-                
+                    var isCodeValid = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.otp);
+
                     if (isCodeValid)
                     {
                         //update user EmailConfirmed = true;
@@ -540,7 +542,7 @@ namespace Wasla_Auth_App.Controllers
                             RefreshToken = "",
                             completeprofile = user.completeprofile,
                         });
-                      
+
                     }
                 }
                 return Unauthorized(new User
@@ -566,8 +568,8 @@ namespace Wasla_Auth_App.Controllers
                     AccessToken = "",
                     RefreshToken = "",
                     Id = null,
-                    completeprofile=0
-                    
+                    completeprofile = 0
+
                 });
             }
         }
@@ -612,12 +614,46 @@ namespace Wasla_Auth_App.Controllers
                     });
                 }
 
-               
+
             }
             catch (Exception e)
             {
                 return Ok(new User { isSuccessed = false, msg = e.Message, });
             }
         }
+        private async Task<string> GetUserRoles(ApplicationUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            return string.Join(",", roles.ToArray());
+        }
+        [HttpPost("GetUsers")]
+        public IActionResult GetUsers()
+        {
+            try
+            {
+          
+                var users =  _userManager.Users.ToList().Select( c => new UsersWithRoles
+                {
+                    completeprofile = c.completeprofile,
+                    EmailConfirmed= c.EmailConfirmed,
+                    Email = c.Email,
+                    Roles =  GetUserRoles(c).Result,
+                    FirstName=c.FirstName, LastName=c.LastName,
+                    Id=c.Id,
+                    PhoneNumber=c.PhoneNumber,
+                    UserName=c.UserName,
+                    GoogleId=c.GoogleId,
+                    CloudId=c.CloudId,
+                    FaceBookId=c.FaceBookId,
+                    
+                }).ToList();
+                return Ok(new UsersCls {success =true,users= users });
+            }
+            catch (Exception e) {
+                return BadRequest(new UsersCls { success = false,users=null });
+            }
+        }
+        
+
     }
 }
