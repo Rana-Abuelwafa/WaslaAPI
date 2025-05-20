@@ -30,6 +30,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
+    public virtual DbSet<PricingPackage> PricingPackages { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
@@ -116,6 +118,18 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.pay_name).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<PricingPackage>(entity =>
+        {
+            entity.HasKey(e => e.package_id).HasName("PricingPackages_pkey");
+
+            entity.Property(e => e.package_id).ValueGeneratedNever();
+            entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.package_desc).HasMaxLength(100);
+            entity.Property(e => e.package_name).HasMaxLength(50);
+            entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
+        });
+
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.productId).HasName("Product_pkey");
@@ -124,6 +138,8 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.productId).ValueGeneratedNever();
             entity.Property(e => e.active).HasDefaultValue(true);
+            entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.package_id).HasDefaultValue(0);
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>

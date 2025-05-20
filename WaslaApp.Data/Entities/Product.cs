@@ -14,4 +14,8 @@ public partial class Product
     public string? product_desc { get; set; }
 
     public bool? active { get; set; }
+
+    public string? lang_code { get; set; }
+
+    public int? package_id { get; set; }
 }

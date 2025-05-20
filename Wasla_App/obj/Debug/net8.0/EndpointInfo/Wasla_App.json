@@ -134,6 +134,25 @@
         "tags": [
           "WaslaAdmin"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -161,6 +180,99 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/GetPricingPackage": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/SavePricingPackage": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageCast"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageCast"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageCast"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/AssignPackageToServices": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageServiceAssignReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageServiceAssignReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageServiceAssignReq"
               }
             }
           }
@@ -275,58 +387,6 @@
       }
     },
     "/api/WaslaClient/saveClientCopoun": {
-      "post": {
-        "tags": [
-          "WaslaClient"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaClient/SaveClientServices": {
-      "post": {
-        "tags": [
-          "WaslaClient"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ClientServiceCast"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ClientServiceCast"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ClientServiceCast"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaClient/GetProduct_Tree": {
       "post": {
         "tags": [
           "WaslaClient"
@@ -479,6 +539,108 @@
           }
         }
       }
+    },
+    "/api/WaslaClient/GetPricingPackage": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/SaveClientServices": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientServiceCast"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientServiceCast"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClientServiceCast"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetProduct_Tree": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -590,6 +752,92 @@
         },
         "additionalProperties": false
       },
+      "LangReq": {
+        "type": "object",
+        "properties": {
+          "lang": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PackageServiceAssignReq": {
+        "type": "object",
+        "properties": {
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "product_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PricingPackageCast": {
+        "type": "object",
+        "properties": {
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "package_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_desc": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_details": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_sale_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "start_dateStr": {
+            "type": "string",
+            "nullable": true
+          },
+          "end_dateStr": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Product": {
         "type": "object",
         "properties": {
@@ -613,6 +861,15 @@
           "active": {
             "type": "boolean",
             "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -626,6 +883,10 @@
           },
           "active": {
             "type": "boolean"
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

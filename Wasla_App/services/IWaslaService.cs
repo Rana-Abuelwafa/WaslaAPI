@@ -16,10 +16,6 @@ namespace Wasla_App.services
         #endregion
 
         #region "profile"
-        public  Task<List<Product>> GetProduct(ProductReq req);
-        public ResponseCls SaveProduct(Product product);
-        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
-        public Task<List<Product_Tree>> GetProduct_Tree(string clientId);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);
         public Task<List<ClientProfileCast>> GetClientProfiles(string clientId);
@@ -27,6 +23,16 @@ namespace Wasla_App.services
         public ResponseCls saveClientBrand(ClientBrand brand);
         public ResponseCls saveProfileImage(ClientImage image);
         public Task<List<ClientImage>> GetProfileImage(string clientId);
+        #endregion
+
+        #region "packages & services"
+        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req);
+        public Task<List<PricingPackageCast>> GetPricingPackage(LangReq req);
+        public ResponseCls SavePricingPackage(PricingPackageCast package);
+        public Task<List<Product>> GetProduct(ProductReq req);
+        public ResponseCls SaveProduct(Product product);
+        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
+        public Task<List<Product_Tree>> GetProduct_Tree(string clientId, string lang);
         #endregion
 
     }

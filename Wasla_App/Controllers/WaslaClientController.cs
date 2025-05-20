@@ -23,7 +23,8 @@ namespace Wasla_App.Controllers
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaClientController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger) {
+        public WaslaClientController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
+        {
             _waslaService = waslaService;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
@@ -40,7 +41,7 @@ namespace Wasla_App.Controllers
         }
         //get registration Questions List with user's answers
         [HttpPost("getQuesWithAnswers")]
-        public  IActionResult getQuesWithAnswers(QuesLstReq req)
+        public IActionResult getQuesWithAnswers(QuesLstReq req)
         {
             string clientId = string.Empty;
 
@@ -54,7 +55,7 @@ namespace Wasla_App.Controllers
 
         //save user's answers for registerations questions
         [HttpPost("saveRegistrationSteps")]
-        public  IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)
+        public IActionResult saveRegistrationSteps(List<RegistrationAnswer> lst)
         {
             string? clientId = string.Empty;
             string? FullName = string.Empty;
@@ -65,9 +66,9 @@ namespace Wasla_App.Controllers
                 FullName = _httpContextAccessor.HttpContext.User.FindFirstValue("FullName");
                 email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
             }
-            
 
-            return  Ok(_waslaService.saveRegistrationSteps(lst, clientId , FullName, email));
+
+            return Ok(_waslaService.saveRegistrationSteps(lst, clientId, FullName, email));
         }
 
         [HttpPost("saveClientCopoun")]
@@ -77,7 +78,7 @@ namespace Wasla_App.Controllers
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-              
+
             }
             string copounAuto = HelperCls.getCopounText();
             ClientCopoun copoun = new ClientCopoun { client_id = clientId, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
@@ -89,33 +90,7 @@ namespace Wasla_App.Controllers
 
 
         #region "Profile"
-        [HttpPost("SaveClientServices")]
-        public IActionResult saveClientServices(List<ClientServiceCast> lst)
-        {
-            string? clientId = string.Empty;
 
-            if (_httpContextAccessor.HttpContext is not null)
-            {
-                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-
-            }
-
-            return Ok( _waslaService.saveClientServices(lst,clientId));
-        }
-
-        [HttpPost("GetProduct_Tree")]
-        public async Task<IActionResult> GetProduct_Tree()
-        {
-            string? clientId = string.Empty;
-
-            if (_httpContextAccessor.HttpContext is not null)
-            {
-                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-
-            }
-
-            return Ok(await _waslaService.GetProduct_Tree(clientId));
-        }
         [HttpPost("GetPaymentMethods")]
         public async Task<IActionResult> GetPaymentMethods()
         {
@@ -128,11 +103,11 @@ namespace Wasla_App.Controllers
         {
 
             string? clientId = string.Empty;
-          
+
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-             
+
             }
 
             return Ok(await _waslaService.GetClientBrands(clientId));
@@ -203,11 +178,11 @@ namespace Wasla_App.Controllers
                 }
                 _logger.LogInformation("image saved successfully");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.LogError( "image save exception: " + ex.Message);
+                _logger.LogError("image save exception: " + ex.Message);
             }
-           
+
             ClientImage image = new ClientImage
             {
                 client_id = clientId,
@@ -215,7 +190,7 @@ namespace Wasla_App.Controllers
                 img_path = path,
                 type = 1  //mean save profile image
             };
-            
+
             return Ok(_waslaService.saveProfileImage(image));
         }
 
@@ -233,7 +208,41 @@ namespace Wasla_App.Controllers
         }
         #endregion
 
+        #region "packages & services"
+        [HttpPost("GetPricingPackage")]
+        public async Task<IActionResult> GetPricingPackage(LangReq req)
+        {
+            return Ok(await _waslaService.GetPricingPackage(req));
+        }
 
+        [HttpPost("SaveClientServices")]
+        public IActionResult saveClientServices(List<ClientServiceCast> lst)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+
+            return Ok(_waslaService.saveClientServices(lst, clientId));
+        }
+
+        [HttpPost("GetProduct_Tree")]
+        public async Task<IActionResult> GetProduct_Tree(LangReq req)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+
+            return Ok(await _waslaService.GetProduct_Tree(clientId, req.lang));
+        }
+        #endregion
 
 
     }

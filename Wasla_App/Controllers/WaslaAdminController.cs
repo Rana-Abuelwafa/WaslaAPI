@@ -50,9 +50,9 @@ namespace Wasla_App.Controllers
             return Ok(await _waslaService.GetProduct(req));
         }
         [HttpPost("GetProduct_Tree")]
-        public async Task<IActionResult> GetProduct_Tree()
+        public async Task<IActionResult> GetProduct_Tree(LangReq req)
         {
-            return Ok(await _waslaService.GetProduct_Tree("admin"));
+            return Ok(await _waslaService.GetProduct_Tree("admin",req.lang));
         }
 
         [HttpPost("SaveProduct")]
@@ -62,5 +62,24 @@ namespace Wasla_App.Controllers
         }
         #endregion "product"
 
+
+        #region "packages & services"
+        [HttpPost("GetPricingPackage")]
+        public async Task<IActionResult> GetPricingPackage(LangReq req)
+        {
+            return Ok(await _waslaService.GetPricingPackage(req));
+        }
+
+        [HttpPost("SavePricingPackage")]
+        public IActionResult SavePricingPackage(PricingPackageCast req)
+        {
+            return Ok(_waslaService.SavePricingPackage(req));
+        }
+        [HttpPost("AssignPackageToServices")]
+        public IActionResult AssignPackageToServices(PackageServiceAssignReq req)
+        {
+            return Ok(_waslaService.AssignPackageToServices(req));
+        }
+        #endregion
     }
 }

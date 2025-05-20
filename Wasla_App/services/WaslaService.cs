@@ -79,9 +79,9 @@ namespace Wasla_App.services
             return _waslaDao.saveClientCopoun(copoun);
         }
 
-        public Task<List<Product_Tree>> GetProduct_Tree(string clientId)
+        public Task<List<Product_Tree>> GetProduct_Tree(string clientId,string lang)
         {
-           return _waslaDao.GetProduct_Tree(clientId);
+           return _waslaDao.GetProduct_Tree(clientId,lang);
         }
 
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
@@ -97,6 +97,21 @@ namespace Wasla_App.services
         public Task<List<Product>> GetProduct(ProductReq req)
         {
             return _waslaDao.GetProduct(req);
+        }
+
+        public Task<List<PricingPackageCast>> GetPricingPackage(LangReq req)
+        {
+            return _waslaDao.GetPricingPackage(req);
+        }
+
+        public ResponseCls SavePricingPackage(PricingPackageCast package)
+        {
+            return _waslaDao.SavePricingPackage(package);
+        }
+
+        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req)
+        {
+            return _waslaDao.AssignPackageToServices(req);
         }
     }
 }

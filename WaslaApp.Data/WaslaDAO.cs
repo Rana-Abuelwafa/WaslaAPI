@@ -1,6 +1,7 @@
 ﻿using Mails_App;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -251,207 +252,7 @@ namespace WaslaApp.Data
 
         #region "Profile"
 
-        //get Parent products 
-
-        public async Task<List<Product>> GetProduct(ProductReq req)
-        {
-
-            try
-            {
-                 return await _db.Products.Where(wr => wr.active == req.active && wr.productParent == (req.parent == -1 ? wr.productParent : req.parent)).ToListAsync();
-               
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-        //save product (service) data by admin
-
-        public ResponseCls SaveProduct(Product product)
-        {
-            ResponseCls response;
-            int maxId = 0;
-            try
-            {
-                    if (product.productId == 0)
-                    {
-                        if (_db.Products.Count() > 0)
-                        {
-                            //check duplicate validation
-                            var result = _db.Products.Where(wr => wr.productId == product.productId && wr.productParent == product.productParent).SingleOrDefault();
-                            if (result != null)
-                            {
-                                return new ResponseCls { success = false, errors = "duplicate data" };
-                            }
-
-                            maxId = _db.Products.Max(d => d.productId);
-
-
-                        }
-
-                         product.productId = maxId + 1;
-                        _db.Products.Add(product);
-                        _db.SaveChanges();
-                    }
-                    else
-                    {
-                        _db.Products.Update(product);
-                        _db.SaveChanges();
-                    }
-
-                    response = new ResponseCls { errors = null, success = true };
- 
-
-            }
-
-            catch (Exception ex)
-            {
-                response = new ResponseCls { errors = ex.Message, success = false };
-            }
-
-            return response;
-        }
-        
-
-        //save Client's services List
-        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
-        {
-            int count = 0;
-            ResponseCls response;
-            decimal maxId = 0;
-            try
-            {
-                foreach (ClientServiceCast row in lst)
-                {
-
-                    ClientService service = new ClientService { client_id= client_id ,id=row.id,productId=row.productId};
-                    if (service.id == 0)
-                    {
-                        if (_db.ClientServices.Count() > 0)
-                        {
-                            //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId).SingleOrDefault();
-                            if (result != null)
-                            {
-                                return new ResponseCls { success = false, errors = "duplicate data" };
-                            }
-
-                            maxId = _db.ClientServices.Max(d => d.id);
-
-
-                        }
-                       
-                        service.id = maxId + 1;
-                        _db.ClientServices.Add(service);
-                        _db.SaveChanges();
-                    }
-                    else
-                    {
-                        if (row.isSelected == true)
-                        {
-                            _db.ClientServices.Update(service);
-                        }
-                        else
-                        {
-                            _db.ClientServices.Remove(service);
-                            _db.SaveChanges();
-                        }
-                    }
-
-                    count++;
-                }
-
-               
-                if (count == lst.Count)
-                {
-                    response = new ResponseCls { errors = null, success = true };
-                }
-                else
-                {
-                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
-                }
-            }
-
-            catch (Exception ex)
-            {
-                response = new ResponseCls { errors = ex.Message, success = false };
-            }
-
-            return response;
-        }
-      
-        
-        // get products as tree (used in admin & website) depend on client Id , 
-        //in website get only active products, and for each one check if client selected or not
-        //in admin get all (active or not active), and not check againts client slected or not
-        public async Task<List<Product_Tree>> GetProduct_Tree(string clientId)
-        {
-
-            try
-            {
-                var main = new List<Product>();
-                if (clientId == "admin")
-                {
-                     main = await _db.Products.ToListAsync();
-                }
-                else
-                {
-                     main = await _db.Products.Where(wr => wr.active == true).ToListAsync();
-                }
-                
-
-                var result = GetProduct_TreeMain(main, 0, clientId).ToList();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
        
-        
-        public async Task<ClientService> CheckServiceSelected(int productId, string clientId)
-        {
-            
-            try
-            {
-                 var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).SingleOrDefaultAsync();
-                  if(result == null)
-                {
-                    return new ClientService();
-                }
-                else
-                {
-                    return result;
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                return new ClientService();
-            }
-        }
-        public List<Product_Tree> GetProduct_TreeMain(List<Product> lst, int parentId, string clientId)
-        {
-            
-            return lst
-                   .Where(x => x.productParent == parentId)
-                   .ToList()
-                  .Select(s => new Product_Tree
-                  {
-                      productParent = s.productParent,
-                      productId = s.productId,
-                      productName = s.productName,
-                      product_desc = s.product_desc,
-                      active=s.active,
-                      children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
-                      clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId, clientId).Result.id,
-                      isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, clientId).Result.id > 0 ? true : false)
-                  })
-                .ToList();
-        }
 
         public async Task<List<PaymentMethod>> GetPaymentMethods()
         {
@@ -641,5 +442,308 @@ namespace WaslaApp.Data
             }
         }
         #endregion
+
+
+        #region "packages &services"
+
+        //assign packages id to Services (product table)
+
+        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req)
+        {
+            ResponseCls response;
+            try
+            {
+                
+                var products = _db.Products.Where(f => req.product_ids.Contains(f.productId)).ToList();
+                products.ForEach(a => a.package_id = req.package_id);
+                _db.SaveChanges();
+                response = new ResponseCls { errors = null, success = true };
+            }
+            catch(Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+            return response;
+        }
+        //get packages data by lang
+        public async Task<List<PricingPackageCast>> GetPricingPackage(LangReq req)
+        {
+
+            try
+            {
+                return await _db.PricingPackages.Where(wr => wr.lang_code == req.lang).Select(s => new PricingPackageCast
+                {
+                    lang_code = s.lang_code,
+                    end_date = s.end_date,
+                    end_dateStr =s.end_date.ToString(),
+                    package_desc = s.package_desc,
+                    package_details = s.package_details,
+                    package_id = s.package_id,
+                    package_name = s.package_name,
+                    package_price= s.package_price,
+                    package_sale_price = s.package_sale_price,
+                    start_date = s.start_date,
+                    start_dateStr=s.start_date.ToString(),
+                    active=s.active
+                }).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //save Package data by admin
+        public ResponseCls SavePricingPackage(PricingPackageCast package)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                package.start_date = DateTime.Parse(package.start_dateStr);
+                package.end_date = DateTime.Parse(package.end_dateStr);
+                if (package.package_id == 0)
+                {
+                    if (_db.PricingPackages.Count() > 0)
+                    {
+                        //check duplicate validation
+                        var result = _db.PricingPackages.Where(wr => wr.package_name == package.package_name && wr.active == package.active).SingleOrDefault();
+                        if (result != null)
+                        {
+                            return new ResponseCls { success = false, errors = "duplicate data" };
+                        }
+
+                        maxId = _db.PricingPackages.Max(d => d.package_id);
+
+
+
+                    }
+                    package.package_id = maxId + 1;
+                    _db.PricingPackages.Add(package);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.PricingPackages.Update(package);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+
+        //get Parent products 
+        public async Task<List<Product>> GetProduct(ProductReq req)
+        {
+
+            try
+            {
+                return await _db.Products.Where(wr => wr.active == req.active && wr.productParent == (req.parent == -1 ? wr.productParent : req.parent)).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //save product (service) data by admin
+        public ResponseCls SaveProduct(Product product)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                if (product.productId == 0)
+                {
+                    if (_db.Products.Count() > 0)
+                    {
+                        //check duplicate validation
+                        var result = _db.Products.Where(wr => wr.productId == product.productId && wr.productParent == product.productParent).SingleOrDefault();
+                        if (result != null)
+                        {
+                            return new ResponseCls { success = false, errors = "duplicate data" };
+                        }
+
+                        maxId = _db.Products.Max(d => d.productId);
+
+
+                    }
+
+                    product.productId = maxId + 1;
+                    _db.Products.Add(product);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.Products.Update(product);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+
+
+        //save Client's services List
+        public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
+        {
+            int count = 0;
+            ResponseCls response;
+            decimal maxId = 0;
+            try
+            {
+                foreach (ClientServiceCast row in lst)
+                {
+
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId };
+                    if (service.id == 0)
+                    {
+                        if (_db.ClientServices.Count() > 0)
+                        {
+                            //check duplicate validation
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId).SingleOrDefault();
+                            if (result != null)
+                            {
+                                return new ResponseCls { success = false, errors = "duplicate data" };
+                            }
+
+                            maxId = _db.ClientServices.Max(d => d.id);
+
+
+                        }
+
+                        service.id = maxId + 1;
+                        _db.ClientServices.Add(service);
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        if (row.isSelected == true)
+                        {
+                            _db.ClientServices.Update(service);
+                        }
+                        else
+                        {
+                            _db.ClientServices.Remove(service);
+                            _db.SaveChanges();
+                        }
+                    }
+
+                    count++;
+                }
+
+
+                if (count == lst.Count)
+                {
+                    response = new ResponseCls { errors = null, success = true };
+                }
+                else
+                {
+                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
+                }
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+
+
+        // get products as tree (used in admin & website) depend on client Id , 
+        //in website get only active products, and for each one check if client selected or not
+        //in admin get all (active or not active), and not check againts client slected or not
+        public async Task<List<Product_Tree>> GetProduct_Tree(string clientId, string lang)
+        {
+
+            try
+            {
+                var main = new List<Product>();
+                if (clientId == "admin")
+                {
+                    main = await _db.Products.ToListAsync();
+                }
+                else
+                {
+                    main = await _db.Products.Where(wr => wr.active == true && wr.lang_code == lang).ToListAsync();
+                }
+
+
+                var result = GetProduct_TreeMain(main, 0, clientId).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<ClientService> CheckServiceSelected(int productId, string clientId)
+        {
+
+            try
+            {
+                var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).SingleOrDefaultAsync();
+                if (result == null)
+                {
+                    return new ClientService();
+                }
+                else
+                {
+                    return result;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new ClientService();
+            }
+        }
+        public List<Product_Tree> GetProduct_TreeMain(List<Product> lst, int parentId, string clientId)
+        {
+
+            return lst
+                   .Where(x => x.productParent == parentId)
+                   .ToList()
+                  .Select(s => new Product_Tree
+                  {
+                      lang_code = s.lang_code,
+                      package_id = s.package_id,
+                      productParent = s.productParent,
+                      productId = s.productId,
+                      productName = s.productName,
+                      product_desc = s.product_desc,
+                      active = s.active,
+                      children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
+                      clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId, clientId).Result.id,
+                      isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, clientId).Result.id > 0 ? true : false)
+                  })
+                .ToList();
+        }
+        #endregion "packages &services"
+
     }
 }
