@@ -7,10 +7,20 @@ using WaslaApp.Data.Entities;
 
 namespace WaslaApp.Data.Models
 {
-    public class PricingPackageCast : PricingPackage
+    public class PricingPackageCast
     {
-        public string? start_dateStr { get; set; }
+        public int? package_id { get; set; }
 
-        public string? end_dateStr { get; set; }
+        public string? package_name { get; set; }
+
+        public string? package_desc { get; set; }
+
+        public string? package_details { get; set; }
+
+        public decimal? package_sale_price { get; set; }
+
+        public decimal? package_price { get; set; }
+        public string? curr_code { get; set; }
+        public List<ServicesWithPkg>? services { get; set; }
     }
 }

@@ -79,7 +79,7 @@ namespace Wasla_App.services
             return _waslaDao.saveClientCopoun(copoun);
         }
 
-        public Task<List<Product_Tree>> GetProduct_Tree(string clientId,string lang)
+        public Task<List<Service_Tree>> GetProduct_Tree(string clientId,string lang)
         {
            return _waslaDao.GetProduct_Tree(clientId,lang);
         }
@@ -89,29 +89,39 @@ namespace Wasla_App.services
             return _waslaDao.saveClientServices(lst, client_id);
         }
 
-        public ResponseCls SaveProduct(Product product)
+        public ResponseCls SaveProduct(Service service)
         {
-            return _waslaDao.SaveProduct(product);
+            return _waslaDao.SaveProduct(service);
         }
 
-        public Task<List<Product>> GetProduct(ProductReq req)
+        public Task<List<Service>> GetProduct(ServiceReq req)
         {
             return _waslaDao.GetProduct(req);
         }
 
-        public Task<List<PricingPackageCast>> GetPricingPackage(LangReq req)
+        public Task<List<PricingPackageCast>> GetPricingPackageWithService(LangReq req)
         {
-            return _waslaDao.GetPricingPackage(req);
+            return _waslaDao.GetPricingPackageWithService(req);
         }
 
-        public ResponseCls SavePricingPackage(PricingPackageCast package)
+        public ResponseCls SavePricingPackage(PricingPackage package)
         {
             return _waslaDao.SavePricingPackage(package);
         }
 
-        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req)
+        public ResponseCls SavePricingPKgServices(List<PricingPkgService> service)
         {
-            return _waslaDao.AssignPackageToServices(req);
+            return _waslaDao.SavePricingPKgServicesLst(service);
+        }
+
+        public Task<List<PricingPkgCurrencyCast>> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
+        {
+            return _waslaDao.GetPricingPkgCurrency(req);
+        }
+
+        public ResponseCls SavePricingPackageCurrency(PricingPkgCurrencyCast currency)
+        {
+            return _waslaDao.SavePricingPackageCurrency(currency);
         }
     }
 }

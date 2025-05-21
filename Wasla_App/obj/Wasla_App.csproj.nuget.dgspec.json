@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WaslaProjectApi\\Wasla_App\\Wasla_App\\Wasla_App.csproj": {}
+    "D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\Wasla_App.csproj": {}
   },
   "projects": {
-    "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj": {
+    "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj",
+        "projectUniqueName": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj",
         "projectName": "Mails_App",
-        "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj",
-        "packagesPath": "C:\\Users\\ICONS\\.nuget\\packages\\",
-        "outputPath": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\obj\\",
+        "projectPath": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj",
+        "packagesPath": "C:\\Users\\Pro\\.nuget\\packages\\",
+        "outputPath": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICONS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -79,24 +79,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\WaslaApp.Data.csproj": {
+    "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\WaslaApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\WaslaApp.Data.csproj",
+        "projectUniqueName": "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\WaslaApp.Data.csproj",
         "projectName": "WaslaApp.Data",
-        "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\WaslaApp.Data.csproj",
-        "packagesPath": "C:\\Users\\ICONS\\.nuget\\packages\\",
-        "outputPath": "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\obj\\",
+        "projectPath": "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\WaslaApp.Data.csproj",
+        "packagesPath": "C:\\Users\\Pro\\.nuget\\packages\\",
+        "outputPath": "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICONS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -111,8 +111,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj": {
-                "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj"
+              "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj": {
+                "projectPath": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj"
               }
             }
           }
@@ -127,7 +127,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -174,24 +174,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\WaslaProjectApi\\Wasla_App\\Wasla_App\\Wasla_App.csproj": {
+    "D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\Wasla_App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WaslaProjectApi\\Wasla_App\\Wasla_App\\Wasla_App.csproj",
+        "projectUniqueName": "D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\Wasla_App.csproj",
         "projectName": "Wasla_App",
-        "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\Wasla_App\\Wasla_App.csproj",
-        "packagesPath": "C:\\Users\\ICONS\\.nuget\\packages\\",
-        "outputPath": "D:\\WaslaProjectApi\\Wasla_App\\Wasla_App\\obj\\",
+        "projectPath": "D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\Wasla_App.csproj",
+        "packagesPath": "C:\\Users\\Pro\\.nuget\\packages\\",
+        "outputPath": "D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICONS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -206,8 +206,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\WaslaApp.Data.csproj": {
-                "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\WaslaApp.Data\\WaslaApp.Data.csproj"
+              "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\WaslaApp.Data.csproj": {
+                "projectPath": "D:\\waslaa\\api\\WaslaAPI\\WaslaApp.Data\\WaslaApp.Data.csproj"
               }
             }
           }
@@ -222,7 +222,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -286,7 +286,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -26,13 +26,15 @@ namespace Wasla_App.services
         #endregion
 
         #region "packages & services"
-        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req);
-        public Task<List<PricingPackageCast>> GetPricingPackage(LangReq req);
-        public ResponseCls SavePricingPackage(PricingPackageCast package);
-        public Task<List<Product>> GetProduct(ProductReq req);
-        public ResponseCls SaveProduct(Product product);
+        public  Task<List<PricingPkgCurrencyCast>> GetPricingPkgCurrency(PricingPkgCurrencyReq req);
+        public ResponseCls SavePricingPackageCurrency(PricingPkgCurrencyCast currency);
+        public ResponseCls SavePricingPKgServices(List<PricingPkgService> service);
+        public Task<List<PricingPackageCast>> GetPricingPackageWithService(LangReq req);
+        public ResponseCls SavePricingPackage(PricingPackage package);
+        public Task<List<Service>> GetProduct(ServiceReq req);
+        public ResponseCls SaveProduct(Service service);
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
-        public Task<List<Product_Tree>> GetProduct_Tree(string clientId, string lang);
+        public Task<List<Service_Tree>> GetProduct_Tree(string clientId, string lang);
         #endregion
 
     }

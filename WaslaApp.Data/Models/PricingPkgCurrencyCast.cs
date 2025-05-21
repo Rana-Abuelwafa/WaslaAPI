@@ -7,10 +7,10 @@ using WaslaApp.Data.Entities;
 
 namespace WaslaApp.Data.Models
 {
-    public class Product_Tree : Product
+    public  class PricingPkgCurrencyCast : PricingPkgCurrency
     {
-        public bool isSelected { get; set; }
-        public decimal clientServiceId { get; set; }
-        public List<Product_Tree>? children { get; set; }
+        public string? start_dateStr { get; set; }
+
+        public string? end_dateStr { get; set; }
     }
 }

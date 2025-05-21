@@ -10,4 +10,6 @@ public partial class ClientService
     public string? client_id { get; set; }
 
     public decimal id { get; set; }
+
+    public int? package_id { get; set; }
 }

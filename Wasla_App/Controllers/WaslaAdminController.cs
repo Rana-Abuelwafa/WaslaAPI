@@ -45,7 +45,7 @@ namespace Wasla_App.Controllers
         #region "product"
 
         [HttpPost("GetProduct")]
-        public async Task<IActionResult> GetProduct(ProductReq req)
+        public async Task<IActionResult> GetProduct(ServiceReq req)
         {
             return Ok(await _waslaService.GetProduct(req));
         }
@@ -56,29 +56,41 @@ namespace Wasla_App.Controllers
         }
 
         [HttpPost("SaveProduct")]
-        public IActionResult SaveProduct(Product product)
+        public IActionResult SaveProduct(Service service)
         {
-            return Ok(_waslaService.SaveProduct(product));
+            return Ok(_waslaService.SaveProduct(service));
         }
         #endregion "product"
 
 
         #region "packages & services"
-        [HttpPost("GetPricingPackage")]
-        public async Task<IActionResult> GetPricingPackage(LangReq req)
+
+        [HttpPost("SavePricingPackageCurrency")]
+        public IActionResult SavePricingPackageCurrency(PricingPkgCurrencyCast req)
         {
-            return Ok(await _waslaService.GetPricingPackage(req));
+            return Ok( _waslaService.SavePricingPackageCurrency(req));
+        }
+
+        [HttpPost("GetPricingPkgCurrency")]
+        public async Task<IActionResult> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
+        {
+            return Ok(await _waslaService.GetPricingPkgCurrency(req));
+        }
+        [HttpPost("GetPricingPackageWithService")]
+        public async Task<IActionResult> GetPricingPackageWithService(LangReq req)
+        {
+            return Ok(await _waslaService.GetPricingPackageWithService(req));
         }
 
         [HttpPost("SavePricingPackage")]
-        public IActionResult SavePricingPackage(PricingPackageCast req)
+        public IActionResult SavePricingPackage(PricingPackage req)
         {
             return Ok(_waslaService.SavePricingPackage(req));
         }
-        [HttpPost("AssignPackageToServices")]
-        public IActionResult AssignPackageToServices(PackageServiceAssignReq req)
+        [HttpPost("SavePricingPKgServices")]
+        public IActionResult SavePricingPKgServices(List<PricingPkgService> service)
         {
-            return Ok(_waslaService.AssignPackageToServices(req));
+            return Ok(_waslaService.SavePricingPKgServices(service));
         }
         #endregion
     }

@@ -415,23 +415,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ICONS\\.nuget\\packages\\": {},
+    "C:\\Users\\Pro\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj",
+      "projectUniqueName": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj",
       "projectName": "Mails_App",
-      "projectPath": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\Mails_App.csproj",
-      "packagesPath": "C:\\Users\\ICONS\\.nuget\\packages\\",
-      "outputPath": "D:\\WaslaProjectApi\\Wasla_App\\Mails_App\\obj\\",
+      "projectPath": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\Mails_App.csproj",
+      "packagesPath": "C:\\Users\\Pro\\.nuget\\packages\\",
+      "outputPath": "D:\\waslaa\\api\\WaslaAPI\\Mails_App\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ICONS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -458,7 +458,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -493,7 +493,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

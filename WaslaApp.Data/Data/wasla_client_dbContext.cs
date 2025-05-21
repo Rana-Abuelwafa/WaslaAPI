@@ -32,11 +32,15 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<PricingPackage> PricingPackages { get; set; }
 
-    public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<PricingPkgCurrency> PricingPkgCurrencies { get; set; }
+
+    public virtual DbSet<PricingPkgService> PricingPkgServices { get; set; }
 
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
 
     public virtual DbSet<RegistrationQuestion> RegistrationQuestions { get; set; }
+
+    public virtual DbSet<Service> Services { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -130,16 +134,22 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
         });
 
-        modelBuilder.Entity<Product>(entity =>
+        modelBuilder.Entity<PricingPkgCurrency>(entity =>
         {
-            entity.HasKey(e => e.productId).HasName("Product_pkey");
+            entity.HasKey(e => e.id).HasName("PricingPkgCurrency_pkey");
 
-            entity.ToTable("Product");
+            entity.ToTable("PricingPkgCurrency");
 
-            entity.Property(e => e.productId).ValueGeneratedNever();
-            entity.Property(e => e.active).HasDefaultValue(true);
-            entity.Property(e => e.lang_code).HasMaxLength(20);
-            entity.Property(e => e.package_id).HasDefaultValue(0);
+            entity.Property(e => e.id).ValueGeneratedNever();
+            entity.Property(e => e.curr_code).HasMaxLength(20);
+            entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
+            entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
+        });
+
+        modelBuilder.Entity<PricingPkgService>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("PricingPkgServices_pkey");
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>
@@ -157,6 +167,15 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.order).HasDefaultValue(0);
             entity.Property(e => e.ques_type).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Service>(entity =>
+        {
+            entity.HasKey(e => e.productId).HasName("Product_pkey");
+
+            entity.Property(e => e.productId).ValueGeneratedNever();
+            entity.Property(e => e.active).HasDefaultValue(true);
+            entity.Property(e => e.lang_code).HasMaxLength(20);
         });
 
         OnModelCreatingPartial(modelBuilder);

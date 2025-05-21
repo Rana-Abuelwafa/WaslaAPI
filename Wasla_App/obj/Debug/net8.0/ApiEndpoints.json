@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
-    "Method": "AssignPackageToServices",
-    "RelativePath": "api/WaslaAdmin/AssignPackageToServices",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "req",
-        "Type": "WaslaApp.Data.Models.PackageServiceAssignReq",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "deleteQuestions",
     "RelativePath": "api/WaslaAdmin/deleteQuestions",
     "HttpMethod": "POST",
@@ -49,8 +33,8 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
-    "Method": "GetPricingPackage",
-    "RelativePath": "api/WaslaAdmin/GetPricingPackage",
+    "Method": "GetPricingPackageWithService",
+    "RelativePath": "api/WaslaAdmin/GetPricingPackageWithService",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -58,6 +42,22 @@
       {
         "Name": "req",
         "Type": "WaslaApp.Data.Models.LangReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "GetPricingPkgCurrency",
+    "RelativePath": "api/WaslaAdmin/GetPricingPkgCurrency",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PricingPkgCurrencyReq",
         "IsRequired": true
       }
     ],
@@ -73,7 +73,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.ProductReq",
+        "Type": "WaslaApp.Data.Models.ServiceReq",
         "IsRequired": true
       }
     ],
@@ -105,7 +105,39 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.PricingPackageCast",
+        "Type": "WaslaApp.Data.Entities.PricingPackage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SavePricingPackageCurrency",
+    "RelativePath": "api/WaslaAdmin/SavePricingPackageCurrency",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PricingPkgCurrencyCast",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SavePricingPKgServices",
+    "RelativePath": "api/WaslaAdmin/SavePricingPKgServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.PricingPkgService, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -120,8 +152,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "product",
-        "Type": "WaslaApp.Data.Entities.Product",
+        "Name": "service",
+        "Type": "WaslaApp.Data.Entities.Service",
         "IsRequired": true
       }
     ],
@@ -175,8 +207,8 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
-    "Method": "GetPricingPackage",
-    "RelativePath": "api/WaslaClient/GetPricingPackage",
+    "Method": "GetPricingPackageWithService",
+    "RelativePath": "api/WaslaClient/GetPricingPackageWithService",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

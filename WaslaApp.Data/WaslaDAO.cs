@@ -446,46 +446,181 @@ namespace WaslaApp.Data
 
         #region "packages &services"
 
-        //assign packages id to Services (product table)
+        //assign  Services to package
 
-        public ResponseCls AssignPackageToServices(PackageServiceAssignReq req)
+        public ResponseCls SavePricingPKgServicesLst(List<PricingPkgService> lst)
         {
+            int count = 0;
             ResponseCls response;
+            decimal maxId = 0;
             try
             {
-                
-                var products = _db.Products.Where(f => req.product_ids.Contains(f.productId)).ToList();
-                products.ForEach(a => a.package_id = req.package_id);
-                _db.SaveChanges();
-                response = new ResponseCls { errors = null, success = true };
+                foreach (PricingPkgService row in lst)
+                {
+
+                    if (row.id == 0)
+                    {
+                        if (_db.PricingPkgServices.Count() > 0)
+                        {
+                            //check duplicate validation
+                            var result = _db.PricingPkgServices.Where(wr => wr.package_id == row.package_id && wr.service_id == row.service_id).SingleOrDefault();
+                            if (result != null)
+                            {
+                                return new ResponseCls { success = false, errors = "duplicate data" };
+                            }
+
+                            maxId = _db.PricingPkgServices.Max(d => d.id);
+
+
+                        }
+
+                        row.id = maxId + 1;
+                        _db.PricingPkgServices.Add(row);
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        _db.PricingPkgServices.Update(row);
+                        _db.SaveChanges();
+                    }
+
+                    count++;
+
+                }
+
+                if (count == lst.Count)
+                {
+                    response = new ResponseCls { errors = null, success = true };
+                }
+                else
+                {
+                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
+                }
             }
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 response = new ResponseCls { errors = ex.Message, success = false };
             }
+
             return response;
         }
-        //get packages data by lang
-        public async Task<List<PricingPackageCast>> GetPricingPackage(LangReq req)
+    
+        //public ResponseCls SavePricingPKgServices(PricingPkgService service)
+        //{
+        //    ResponseCls response;
+        //    decimal maxId = 0;
+        //    try
+        //    {
+        //        if (service.id == 0)
+        //        {
+        //            if (_db.PricingPkgServices.Count() > 0)
+        //            {
+        //                //check duplicate validation
+        //                var result = _db.PricingPkgServices.Where(wr => wr.package_id == service.package_id && wr.service_id == service.service_id).SingleOrDefault();
+        //                if (result != null)
+        //                {
+        //                    return new ResponseCls { success = false, errors = "duplicate data" };
+        //                }
+
+        //                maxId = _db.PricingPkgServices.Max(d => d.id);
+
+
+
+        //            }
+        //            service.id = maxId + 1;
+        //            _db.PricingPkgServices.Add(service);
+        //            _db.SaveChanges();
+        //        }
+        //        else
+        //        {
+        //            _db.PricingPkgServices.Update(service);
+        //            _db.SaveChanges();
+        //        }
+
+        //        response = new ResponseCls { errors = null, success = true };
+
+
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        response = new ResponseCls { errors = ex.Message, success = false };
+        //    }
+        //    return response;
+        //}
+        //get packages data by lang and currency
+        public async Task<List<PricingPackageCast>> GetPricingPackageWithService(LangReq req)
         {
 
             try
             {
-                return await _db.PricingPackages.Where(wr => wr.lang_code == req.lang).Select(s => new PricingPackageCast
-                {
-                    lang_code = s.lang_code,
-                    end_date = s.end_date,
-                    end_dateStr =s.end_date.ToString(),
-                    package_desc = s.package_desc,
-                    package_details = s.package_details,
-                    package_id = s.package_id,
-                    package_name = s.package_name,
-                    package_price= s.package_price,
-                    package_sale_price = s.package_sale_price,
-                    start_date = s.start_date,
-                    start_dateStr=s.start_date.ToString(),
-                    active=s.active
-                }).ToListAsync();
+                var fullEntries = await _db.PricingPkgServices
+                    .Join(
+                        _db.PricingPackages.Where(wr => wr.lang_code == req.lang),
+                        Service => Service.package_id,
+                        PKG => PKG.package_id,
+                        (Service, PKG) => new { Service, PKG }
+                    )
+                    .Join(
+                        _db.PricingPkgCurrencies.Where(wr => wr.curr_code.ToLower() == req.curr_code.ToLower()),
+                        combinedEntry => combinedEntry.PKG.package_id,
+                        curr => curr.package_id,
+                        (combinedEntry, curr) => new ServicesWithPkg
+                        {
+                            curr_code = curr.curr_code,
+                            package_id = combinedEntry.Service.package_id,
+                            discount_amount = curr.discount_amount,
+                            discount_type = curr.discount_type,
+                            package_desc = combinedEntry.PKG.package_desc,
+                            package_details = combinedEntry.PKG.package_details,
+                            package_name = combinedEntry.PKG.package_name,
+                            package_price = curr.package_price,
+                            package_sale_price = curr.package_sale_price,
+                            servicepkg_id = combinedEntry.Service.id,
+                            service_id = combinedEntry.Service.service_id,
+                            service_name = combinedEntry.Service.service_name
+                        }
+                    ).ToListAsync();
+
+
+               return fullEntries.GroupBy(grp => new
+                 {
+                   grp.package_id,
+                   grp.package_name,   
+                   grp.package_sale_price,
+                   grp.package_price,
+                   grp.package_desc,
+                   grp.package_details,
+                   grp.discount_amount,
+                   grp.discount_type,
+                   grp.curr_code
+                 }).Select(s => new PricingPackageCast
+                 {
+                     package_details=s.Key.package_details,
+                     package_desc=s.Key.package_desc,
+                     package_price=s.Key.package_price,
+                     package_sale_price=s.Key.package_sale_price,
+                     package_name=s.Key.package_name,
+                     curr_code=s.Key.curr_code,
+                     package_id=s.Key.package_id,
+                     services = fullEntries.Where(wr => wr.package_id == s.Key.package_id).ToList(),
+                 }).ToList();
+                //return await _db.PricingPackages.Where(wr => wr.lang_code == req.lang).Select(s => new PricingPackageCast
+                //{
+                //    lang_code = s.lang_code,
+                //    end_date = s.end_date,
+                //    end_dateStr =s.end_date.ToString(),
+                //    package_desc = s.package_desc,
+                //    package_details = s.package_details,
+                //    package_id = s.package_id,
+                //    package_name = s.package_name,
+                //    package_price= s.package_price,
+                //    package_sale_price = s.package_sale_price,
+                //    start_date = s.start_date,
+                //    start_dateStr=s.start_date.ToString(),
+                //    active=s.active
+                //}).ToListAsync();
 
             }
             catch (Exception ex)
@@ -494,15 +629,15 @@ namespace WaslaApp.Data
             }
         }
 
-        //save Package data by admin
-        public ResponseCls SavePricingPackage(PricingPackageCast package)
+        //save main Package data by admin
+        public ResponseCls SavePricingPackage(PricingPackage package)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
-                package.start_date = DateTime.Parse(package.start_dateStr);
-                package.end_date = DateTime.Parse(package.end_dateStr);
+                //package.start_date = DateTime.Parse(package.start_dateStr);
+                //package.end_date = DateTime.Parse(package.end_dateStr);
                 if (package.package_id == 0)
                 {
                     if (_db.PricingPackages.Count() > 0)
@@ -542,13 +677,103 @@ namespace WaslaApp.Data
             return response;
         }
 
-        //get Parent products 
-        public async Task<List<Product>> GetProduct(ProductReq req)
+        //save prices with currency for packages
+        public ResponseCls SavePricingPackageCurrency(PricingPkgCurrencyCast cast)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                PricingPkgCurrency currency = new PricingPkgCurrency { 
+                    start_date  = DateTime.Parse(cast.start_dateStr) ,
+                    active = cast.active,
+                    curr_code = cast.curr_code,
+                    discount_amount = cast.discount_amount,
+                    discount_type = cast.discount_type,
+                    end_date=DateTime.Parse(cast.end_dateStr),
+                    id = cast.id,
+                    package_id = cast.package_id,
+                    package_price = cast.package_price,
+                    package_sale_price=cast.package_sale_price,
+                };
+                if (currency.id == 0)
+                {
+                    if (_db.PricingPkgCurrencies.Count() > 0)
+                    {
+                        //check duplicate validation
+                        var result = _db.PricingPkgCurrencies.Where(wr => wr.package_id == currency.package_id && wr.curr_code.ToLower() == currency.curr_code.ToLower() && wr.start_date == currency.start_date && wr.end_date == currency.end_date ).SingleOrDefault();
+                        if (result != null)
+                        {
+                            return new ResponseCls { success = false, errors = "duplicate data" };
+                        }
+
+                        maxId = _db.PricingPkgCurrencies.Max(d => d.id);
+
+
+
+                    }
+                    currency.id = maxId + 1;
+                    _db.PricingPkgCurrencies.Add(currency);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.PricingPkgCurrencies.Update(currency);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = ex.Message, success = false };
+            }
+
+            return response;
+        }
+
+        //get Package's prices with currency
+        public async Task<List<PricingPkgCurrencyCast>> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
         {
 
             try
             {
-                return await _db.Products.Where(wr => wr.active == req.active && wr.productParent == (req.parent == -1 ? wr.productParent : req.parent)).ToListAsync();
+                return await _db.PricingPkgCurrencies.Where(wr => wr.active == req.active && wr.package_id == req.package_id && wr.curr_code.ToLower() == (req.curr_code.ToLower() == "all" ? wr.curr_code.ToLower() : req.curr_code.ToLower()))
+                    .Select(s => new PricingPkgCurrencyCast
+                    {
+                        package_id=s.package_id,
+                        curr_code=s.curr_code,
+                        active=s.active,
+                        discount_amount=s.discount_amount,
+                        discount_type=s.discount_type,
+                        end_dateStr=s.end_date.ToString(),
+                        end_date=s.end_date,
+                        id=s.id,
+                        package_price=s.package_price,
+                        package_sale_price=s.package_sale_price,
+                        start_date=s.start_date,
+                        start_dateStr=s.start_date.ToString()
+
+                    })
+                    .ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //get Parent products  
+        public async Task<List<Service>> GetProduct(ServiceReq req)
+        {
+
+            try
+            {
+                return await _db.Services.Where(wr => wr.active == req.active && wr.productParent == (req.parent == -1 ? wr.productParent : req.parent)).ToListAsync();
 
             }
             catch (Exception ex)
@@ -558,35 +783,35 @@ namespace WaslaApp.Data
         }
 
         //save product (service) data by admin
-        public ResponseCls SaveProduct(Product product)
+        public ResponseCls SaveProduct(Service service)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
-                if (product.productId == 0)
+                if (service.productId == 0)
                 {
-                    if (_db.Products.Count() > 0)
+                    if (_db.Services.Count() > 0)
                     {
                         //check duplicate validation
-                        var result = _db.Products.Where(wr => wr.productId == product.productId && wr.productParent == product.productParent).SingleOrDefault();
+                        var result = _db.Services.Where(wr => wr.productId == service.productId && wr.productParent == service.productParent).SingleOrDefault();
                         if (result != null)
                         {
                             return new ResponseCls { success = false, errors = "duplicate data" };
                         }
 
-                        maxId = _db.Products.Max(d => d.productId);
+                        maxId = _db.Services.Max(d => d.productId);
 
 
                     }
 
-                    product.productId = maxId + 1;
-                    _db.Products.Add(product);
+                    service.productId = maxId + 1;
+                    _db.Services.Add(service);
                     _db.SaveChanges();
                 }
                 else
                 {
-                    _db.Products.Update(product);
+                    _db.Services.Update(service);
                     _db.SaveChanges();
                 }
 
@@ -615,7 +840,7 @@ namespace WaslaApp.Data
                 foreach (ClientServiceCast row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId };
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id };
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)
@@ -675,19 +900,19 @@ namespace WaslaApp.Data
         // get products as tree (used in admin & website) depend on client Id , 
         //in website get only active products, and for each one check if client selected or not
         //in admin get all (active or not active), and not check againts client slected or not
-        public async Task<List<Product_Tree>> GetProduct_Tree(string clientId, string lang)
+        public async Task<List<Service_Tree>> GetProduct_Tree(string clientId, string lang)
         {
 
             try
             {
-                var main = new List<Product>();
+                var main = new List<Service>();
                 if (clientId == "admin")
                 {
-                    main = await _db.Products.ToListAsync();
+                    main = await _db.Services.ToListAsync();
                 }
                 else
                 {
-                    main = await _db.Products.Where(wr => wr.active == true && wr.lang_code == lang).ToListAsync();
+                    main = await _db.Services.Where(wr => wr.active == true && wr.lang_code == lang).ToListAsync();
                 }
 
 
@@ -722,16 +947,16 @@ namespace WaslaApp.Data
                 return new ClientService();
             }
         }
-        public List<Product_Tree> GetProduct_TreeMain(List<Product> lst, int parentId, string clientId)
+        public List<Service_Tree> GetProduct_TreeMain(List<Service> lst, int parentId, string clientId)
         {
 
             return lst
                    .Where(x => x.productParent == parentId)
                    .ToList()
-                  .Select(s => new Product_Tree
+                  .Select(s => new Service_Tree
                   {
+                      leaf= s.leaf,
                       lang_code = s.lang_code,
-                      package_id = s.package_id,
                       productParent = s.productParent,
                       productId = s.productId,
                       productName = s.productName,

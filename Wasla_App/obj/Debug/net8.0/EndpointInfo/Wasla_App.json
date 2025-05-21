@@ -107,17 +107,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductReq"
+                "$ref": "#/components/schemas/ServiceReq"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductReq"
+                "$ref": "#/components/schemas/ServiceReq"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductReq"
+                "$ref": "#/components/schemas/ServiceReq"
               }
             }
           }
@@ -169,17 +169,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/Service"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/Service"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/Service"
               }
             }
           }
@@ -191,7 +191,69 @@
         }
       }
     },
-    "/api/WaslaAdmin/GetPricingPackage": {
+    "/api/WaslaAdmin/SavePricingPackageCurrency": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyCast"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyCast"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyCast"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/GetPricingPkgCurrency": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPkgCurrencyReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/GetPricingPackageWithService": {
       "post": {
         "tags": [
           "WaslaAdmin"
@@ -231,17 +293,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PricingPackageCast"
+                "$ref": "#/components/schemas/PricingPackage"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PricingPackageCast"
+                "$ref": "#/components/schemas/PricingPackage"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PricingPackageCast"
+                "$ref": "#/components/schemas/PricingPackage"
               }
             }
           }
@@ -253,7 +315,7 @@
         }
       }
     },
-    "/api/WaslaAdmin/AssignPackageToServices": {
+    "/api/WaslaAdmin/SavePricingPKgServices": {
       "post": {
         "tags": [
           "WaslaAdmin"
@@ -262,17 +324,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageServiceAssignReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PricingPkgService"
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageServiceAssignReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PricingPkgService"
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageServiceAssignReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PricingPkgService"
+                }
               }
             }
           }
@@ -540,7 +611,7 @@
         }
       }
     },
-    "/api/WaslaClient/GetPricingPackage": {
+    "/api/WaslaClient/GetPricingPackageWithService": {
       "post": {
         "tags": [
           "WaslaClient"
@@ -746,6 +817,11 @@
             "type": "number",
             "format": "double"
           },
+          "package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "isSelected": {
             "type": "boolean"
           }
@@ -758,29 +834,15 @@
           "lang": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PackageServiceAssignReq": {
-        "type": "object",
-        "properties": {
-          "package_id": {
-            "type": "integer",
-            "format": "int32"
           },
-          "product_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
+          "curr_code": {
+            "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "PricingPackageCast": {
+      "PricingPackage": {
         "type": "object",
         "properties": {
           "package_id": {
@@ -826,6 +888,58 @@
           "active": {
             "type": "boolean",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PricingPkgCurrencyCast": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "curr_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "discount_amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "discount_type": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "package_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_sale_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
           },
           "start_dateStr": {
             "type": "string",
@@ -838,53 +952,42 @@
         },
         "additionalProperties": false
       },
-      "Product": {
+      "PricingPkgCurrencyReq": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "productParent": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "product_desc": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "lang_code": {
+          "curr_code": {
             "type": "string",
             "nullable": true
           },
           "package_id": {
             "type": "integer",
-            "format": "int32",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ProductReq": {
+      "PricingPkgService": {
         "type": "object",
         "properties": {
-          "parent": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "package_id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "active": {
-            "type": "boolean"
+          "service_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
-          "lang": {
+          "service_name": {
             "type": "string",
             "nullable": true
           }
@@ -949,6 +1052,58 @@
           "order": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Service": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productParent": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "product_desc": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "leaf": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceReq": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "lang": {
+            "type": "string",
             "nullable": true
           }
         },

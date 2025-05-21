@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WaslaApp.Data.Models
 {
-    public class ProductReq
+    public class ServiceReq
     {
         public int parent {  get; set; }
         public bool active { get; set; }

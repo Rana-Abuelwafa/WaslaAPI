@@ -9,5 +9,6 @@ namespace WaslaApp.Data.Models
     public class LangReq
     {
         public string? lang { get; set; }
+        public string? curr_code { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WaslaApp.Data.Entities;
 
-public partial class Product
+public partial class Service
 {
     public int productId { get; set; }
 
@@ -16,6 +16,5 @@ public partial class Product
     public bool? active { get; set; }
 
     public string? lang_code { get; set; }
-
-    public int? package_id { get; set; }
+    public bool? leaf { get; set; }
 }

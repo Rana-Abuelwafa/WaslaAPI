@@ -22,5 +22,6 @@ public partial class PricingPackage
     public DateTime? end_date { get; set; }
 
     public string? lang_code { get; set; }
-    public bool ? active { get; set; }
+
+    public bool? active { get; set; }
 }

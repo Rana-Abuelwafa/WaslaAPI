@@ -1,0 +1,873 @@
+[2025-05-21 11:10:24.832 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 11:10:24.988 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 11:10:25.133 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 11:10:25.134 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 11:10:25.416 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 11:10:25.416 +03:00  INF]  Hosting environment: Development
+[2025-05-21 11:10:25.417 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 11:10:26.553 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger - null null
+[2025-05-21 11:10:26.856 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger - 301 0 null 311.1023ms
+[2025-05-21 11:10:26.873 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 11:10:27.036 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 162.9258ms
+[2025-05-21 11:10:27.039 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/swagger-ui.css - null null
+[2025-05-21 11:10:27.039 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/swagger-ui-bundle.js - null null
+[2025-05-21 11:10:27.039 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/swagger-ui-standalone-preset.js - null null
+[2025-05-21 11:10:27.040 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 11:10:27.040 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 11:10:27.049 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 8.6018ms
+[2025-05-21 11:10:27.083 +03:00  INF]  Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2025-05-21 11:10:27.083 +03:00  INF]  Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2025-05-21 11:10:27.084 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/swagger-ui.css - 200 152034 text/css 44.9171ms
+[2025-05-21 11:10:27.086 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 46.4417ms
+[2025-05-21 11:10:27.185 +03:00  INF]  Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2025-05-21 11:10:27.185 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 145.5667ms
+[2025-05-21 11:10:27.222 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 182.345ms
+[2025-05-21 11:10:27.485 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 11:10:27.538 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 52.4838ms
+[2025-05-21 11:11:08.663 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 286
+[2025-05-21 11:11:08.672 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:11:09.783 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-05-21 11:11:09.790 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-05-21 11:11:09.791 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 401 0 null 1129.0182ms
+[2025-05-21 11:12:26.837 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 286
+[2025-05-21 11:12:26.856 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:12:26.963 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:12:26.998 +03:00  INF]  Route matched with {action = "SavePricingPackage", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackage(WaslaApp.Data.Entities.PricingPackage) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:12:29.026 +03:00  INF]  Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPackages" AS p
+[2025-05-21 11:12:29.235 +03:00  ERR]  Failed executing DbCommand (10ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPackages" (package_id, active, end_date, lang_code, package_desc, package_details, package_name, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:12:29.261 +03:00  ERR]  An exception occurred in the database while saving changes for context type 'WaslaApp.Data.Data.wasla_client_dbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+[2025-05-21 11:12:29.368 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:12:29.385 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 2381.4225ms
+[2025-05-21 11:12:29.385 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:12:29.396 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 2559.6253ms
+[2025-05-21 11:13:12.096 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 286
+[2025-05-21 11:13:12.114 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:13:12.122 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:13:12.122 +03:00  INF]  Route matched with {action = "SavePricingPackage", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackage(WaslaApp.Data.Entities.PricingPackage) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:13:24.389 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPackages" AS p
+[2025-05-21 11:13:26.811 +03:00  ERR]  Failed executing DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPackages" (package_id, active, end_date, lang_code, package_desc, package_details, package_name, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:13:26.812 +03:00  ERR]  An exception occurred in the database while saving changes for context type 'WaslaApp.Data.Data.wasla_client_dbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+[2025-05-21 11:13:37.098 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:13:37.099 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 24976.0567ms
+[2025-05-21 11:13:37.099 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:13:37.099 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 25004.1102ms
+[2025-05-21 11:13:54.642 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 242
+[2025-05-21 11:13:54.642 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:13:54.643 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:13:54.643 +03:00  INF]  Route matched with {action = "SavePricingPackage", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackage(WaslaApp.Data.Entities.PricingPackage) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:14:00.539 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPackages" AS p
+[2025-05-21 11:14:01.975 +03:00  INF]  Executed DbCommand (21ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPackages" (package_id, active, end_date, lang_code, package_desc, package_details, package_name, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:14:04.647 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:14:04.648 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 10004.6802ms
+[2025-05-21 11:14:04.648 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:14:04.648 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 10006.0397ms
+[2025-05-21 11:14:31.710 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 242
+[2025-05-21 11:14:31.710 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:14:31.711 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:14:31.711 +03:00  INF]  Route matched with {action = "SavePricingPackage", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackage(WaslaApp.Data.Entities.PricingPackage) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:14:33.842 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPackages" AS p
+[2025-05-21 11:14:33.921 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__package_package_name_0='?', @__package_active_1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.active, p.end_date, p.lang_code, p.package_desc, p.package_details, p.package_name, p.package_price, p.package_sale_price, p.start_date
+FROM "PricingPackages" AS p
+WHERE p.package_name = @__package_package_name_0 AND p.active = @__package_active_1
+LIMIT 2
+[2025-05-21 11:14:33.927 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:14:33.927 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 2215.993ms
+[2025-05-21 11:14:33.927 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:14:33.927 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 2217.4982ms
+[2025-05-21 11:14:56.318 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - application/json 238
+[2025-05-21 11:14:56.319 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:14:56.321 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:14:56.321 +03:00  INF]  Route matched with {action = "SavePricingPackage", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackage(WaslaApp.Data.Entities.PricingPackage) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:14:58.546 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPackages" AS p
+[2025-05-21 11:14:58.549 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__package_package_name_0='?', @__package_active_1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.active, p.end_date, p.lang_code, p.package_desc, p.package_details, p.package_name, p.package_price, p.package_sale_price, p.start_date
+FROM "PricingPackages" AS p
+WHERE p.package_name = @__package_package_name_0 AND p.active = @__package_active_1
+LIMIT 2
+[2025-05-21 11:14:58.558 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.package_id)
+FROM "PricingPackages" AS p
+[2025-05-21 11:14:58.559 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPackages" (package_id, active, end_date, lang_code, package_desc, package_details, package_name, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:14:58.559 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:14:58.560 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 2238.3176ms
+[2025-05-21 11:14:58.560 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
+[2025-05-21 11:14:58.560 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 2245.1682ms
+[2025-05-21 11:16:38.456 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 81
+[2025-05-21 11:16:38.456 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:16:38.457 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:16:38.460 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(WaslaApp.Data.Entities.PricingPkgService) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:16:44.873 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:16:46.780 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 11:16:49.599 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:16:49.599 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 11138.9652ms
+[2025-05-21 11:16:49.599 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:16:49.599 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 11143.8151ms
+[2025-05-21 11:17:09.519 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 81
+[2025-05-21 11:17:09.520 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:17:09.520 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:17:09.520 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(WaslaApp.Data.Entities.PricingPkgService) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:17:11.265 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:17:11.275 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__service_package_id_0='?' (DbType = Int32), @__service_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__service_package_id_0 AND p.service_id = @__service_service_id_1
+LIMIT 2
+[2025-05-21 11:17:11.277 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:17:11.277 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 1756.4537ms
+[2025-05-21 11:17:11.277 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:17:11.277 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 1757.4529ms
+[2025-05-21 11:17:42.452 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 81
+[2025-05-21 11:17:42.452 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:17:42.458 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:17:42.458 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(WaslaApp.Data.Entities.PricingPkgService) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:17:45.240 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:17:45.241 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__service_package_id_0='?' (DbType = Int32), @__service_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__service_package_id_0 AND p.service_id = @__service_service_id_1
+LIMIT 2
+[2025-05-21 11:17:45.253 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:17:45.258 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 11:17:45.258 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:17:45.258 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 2799.5323ms
+[2025-05-21 11:17:45.258 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:17:45.258 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 2806.824ms
+[2025-05-21 11:19:26.716 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:19:26.718 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:19:26.735 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:19:26.740 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:19:33.335 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:19:35.168 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = Int16), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgCurrency" (id, active, curr_code, discount_amount, discount_type, end_date, package_id, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:19:37.786 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:19:37.787 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 11046.463ms
+[2025-05-21 11:19:37.787 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:19:37.787 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 11071.2986ms
+[2025-05-21 11:20:08.199 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 278
+[2025-05-21 11:20:08.201 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:20:08.202 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:20:08.202 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:20:15.686 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?', @p2='?' (DbType = Decimal), @p3='?' (DbType = Int16), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "PricingPkgCurrency" SET active = @p0, curr_code = @p1, discount_amount = @p2, discount_type = @p3, end_date = @p4, package_id = @p5, package_price = @p6, package_sale_price = @p7, start_date = @p8
+WHERE id = @p9;
+[2025-05-21 11:20:48.580 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:20:48.581 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 40378.9941ms
+[2025-05-21 11:20:48.581 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:20:48.581 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 40382.3874ms
+[2025-05-21 11:23:35.914 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 11:23:36.079 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 11:23:36.272 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 11:23:36.273 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 11:23:36.582 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 11:23:36.582 +03:00  INF]  Hosting environment: Development
+[2025-05-21 11:23:36.582 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 11:23:36.757 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 11:23:37.364 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 618.0649ms
+[2025-05-21 11:23:37.708 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 11:23:37.714 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 6.3666ms
+[2025-05-21 11:23:37.889 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 11:23:37.952 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.7294ms
+[2025-05-21 11:23:38.586 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 11:23:38.632 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.2423ms
+[2025-05-21 11:25:39.779 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:25:39.785 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:25:39.918 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:25:39.942 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:25:46.563 +03:00  INF]  Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:25:48.919 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[@__currency_package_id_0='?' (DbType = Int32), @__currency_curr_code_1='?', @__currency_start_date_2='?' (DbType = DateTime2), @__currency_end_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.curr_code, p.discount_amount, p.discount_type, p.end_date, p.package_id, p.package_price, p.package_sale_price, p.start_date
+FROM "PricingPkgCurrency" AS p
+WHERE p.package_id = @__currency_package_id_0 AND p.curr_code = @__currency_curr_code_1 AND p.start_date = @__currency_start_date_2 AND p.end_date = @__currency_end_date_3
+LIMIT 2
+[2025-05-21 11:25:52.723 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:25:56.110 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = Int16), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgCurrency" (id, active, curr_code, discount_amount, discount_type, end_date, package_id, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:25:56.123 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:25:56.135 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 16189.9333ms
+[2025-05-21 11:25:56.135 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:25:56.143 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 16364.5904ms
+[2025-05-21 11:26:25.898 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:26:25.902 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:26:25.911 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:26:25.911 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:26:31.945 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?', @p2='?' (DbType = Decimal), @p3='?' (DbType = Int16), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "PricingPkgCurrency" SET active = @p0, curr_code = @p1, discount_amount = @p2, discount_type = @p3, end_date = @p4, package_id = @p5, package_price = @p6, package_sale_price = @p7, start_date = @p8
+WHERE id = @p9;
+[2025-05-21 11:26:35.100 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:26:35.101 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 9189.3824ms
+[2025-05-21 11:26:35.101 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:26:35.101 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 9204.0122ms
+[2025-05-21 11:27:09.659 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:27:09.698 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:27:09.701 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:27:09.701 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:27:12.511 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?', @p2='?' (DbType = Decimal), @p3='?' (DbType = Int16), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "PricingPkgCurrency" SET active = @p0, curr_code = @p1, discount_amount = @p2, discount_type = @p3, end_date = @p4, package_id = @p5, package_price = @p6, package_sale_price = @p7, start_date = @p8
+WHERE id = @p9;
+[2025-05-21 11:27:12.511 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:27:12.512 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 2810.2667ms
+[2025-05-21 11:27:12.512 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:27:12.512 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 2852.8099ms
+[2025-05-21 11:27:52.468 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:27:52.476 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:27:52.477 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:27:52.477 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:27:54.748 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:27:54.752 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__currency_package_id_0='?' (DbType = Int32), @__currency_curr_code_1='?', @__currency_start_date_2='?' (DbType = DateTime2), @__currency_end_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.curr_code, p.discount_amount, p.discount_type, p.end_date, p.package_id, p.package_price, p.package_sale_price, p.start_date
+FROM "PricingPkgCurrency" AS p
+WHERE p.package_id = @__currency_package_id_0 AND p.curr_code = @__currency_curr_code_1 AND p.start_date = @__currency_start_date_2 AND p.end_date = @__currency_end_date_3
+LIMIT 2
+[2025-05-21 11:27:54.753 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:27:54.755 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = Int16), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgCurrency" (id, active, curr_code, discount_amount, discount_type, end_date, package_id, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:27:54.755 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:27:54.755 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 2278.0185ms
+[2025-05-21 11:27:54.755 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:27:54.756 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 2287.9579ms
+[2025-05-21 11:28:42.234 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - application/json 277
+[2025-05-21 11:28:42.236 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:28:42.238 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:28:42.240 +03:00  INF]  Route matched with {action = "SavePricingPackageCurrency", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPackageCurrency(WaslaApp.Data.Models.PricingPkgCurrencyCast) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:28:43.897 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:28:43.898 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__currency_package_id_0='?' (DbType = Int32), @__currency_curr_code_1='?', @__currency_start_date_2='?' (DbType = DateTime2), @__currency_end_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.curr_code, p.discount_amount, p.discount_type, p.end_date, p.package_id, p.package_price, p.package_sale_price, p.start_date
+FROM "PricingPkgCurrency" AS p
+WHERE p.package_id = @__currency_package_id_0 AND p.curr_code = @__currency_curr_code_1 AND p.start_date = @__currency_start_date_2 AND p.end_date = @__currency_end_date_3
+LIMIT 2
+[2025-05-21 11:28:43.899 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgCurrency" AS p
+[2025-05-21 11:28:43.903 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = Int16), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgCurrency" (id, active, curr_code, discount_amount, discount_type, end_date, package_id, package_price, package_sale_price, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+[2025-05-21 11:28:43.903 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:28:43.903 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App) in 1663.3723ms
+[2025-05-21 11:28:43.903 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackageCurrency (Wasla_App)'
+[2025-05-21 11:28:43.904 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackageCurrency - 200 null application/json; charset=utf-8 1669.8603ms
+[2025-05-21 11:29:22.118 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - application/json 61
+[2025-05-21 11:29:22.120 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:29:22.121 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:22.125 +03:00  INF]  Route matched with {action = "GetPricingPkgCurrency", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPkgCurrency(WaslaApp.Data.Models.PricingPkgCurrencyReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:29:23.936 +03:00  INF]  Executed DbCommand (20ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.curr_code, p.active, p.discount_amount, p.discount_type, COALESCE(p.end_date::text, '') AS "end_dateStr", p.end_date, p.id, p.package_price, p.package_sale_price, p.start_date, COALESCE(p.start_date::text, '') AS "start_dateStr"
+FROM "PricingPkgCurrency" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND (p.curr_code = p.curr_code OR p.curr_code IS NULL)
+[2025-05-21 11:29:23.962 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPkgCurrencyCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:29:23.973 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App) in 1847.5745ms
+[2025-05-21 11:29:23.974 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:23.974 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - 200 null application/json; charset=utf-8 1884.3922ms
+[2025-05-21 11:29:35.931 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - application/json 61
+[2025-05-21 11:29:35.931 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:29:35.931 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:35.932 +03:00  INF]  Route matched with {action = "GetPricingPkgCurrency", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPkgCurrency(WaslaApp.Data.Models.PricingPkgCurrencyReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:29:37.506 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_curr_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.curr_code, p.active, p.discount_amount, p.discount_type, COALESCE(p.end_date::text, '') AS "end_dateStr", p.end_date, p.id, p.package_price, p.package_sale_price, p.start_date, COALESCE(p.start_date::text, '') AS "start_dateStr"
+FROM "PricingPkgCurrency" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.curr_code = @__req_curr_code_2
+[2025-05-21 11:29:37.506 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPkgCurrencyCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:29:37.506 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App) in 1574.3304ms
+[2025-05-21 11:29:37.506 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:37.506 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - 200 null application/json; charset=utf-8 1575.6227ms
+[2025-05-21 11:29:45.145 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - application/json 61
+[2025-05-21 11:29:45.146 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:29:45.147 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:45.148 +03:00  INF]  Route matched with {action = "GetPricingPkgCurrency", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPkgCurrency(WaslaApp.Data.Models.PricingPkgCurrencyReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:29:46.308 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_curr_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.curr_code, p.active, p.discount_amount, p.discount_type, COALESCE(p.end_date::text, '') AS "end_dateStr", p.end_date, p.id, p.package_price, p.package_sale_price, p.start_date, COALESCE(p.start_date::text, '') AS "start_dateStr"
+FROM "PricingPkgCurrency" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.curr_code = @__req_curr_code_2
+[2025-05-21 11:29:46.310 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPkgCurrencyCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:29:46.311 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App) in 1162.3466ms
+[2025-05-21 11:29:46.311 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:46.311 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - 200 null application/json; charset=utf-8 1165.8253ms
+[2025-05-21 11:29:53.023 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - application/json 61
+[2025-05-21 11:29:53.023 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:29:53.024 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:53.025 +03:00  INF]  Route matched with {action = "GetPricingPkgCurrency", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPkgCurrency(WaslaApp.Data.Models.PricingPkgCurrencyReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:29:54.289 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_curr_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.curr_code, p.active, p.discount_amount, p.discount_type, COALESCE(p.end_date::text, '') AS "end_dateStr", p.end_date, p.id, p.package_price, p.package_sale_price, p.start_date, COALESCE(p.start_date::text, '') AS "start_dateStr"
+FROM "PricingPkgCurrency" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.curr_code = @__req_curr_code_2
+[2025-05-21 11:29:54.289 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPkgCurrencyCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:29:54.289 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App) in 1264.4029ms
+[2025-05-21 11:29:54.289 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:29:54.289 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - 200 null application/json; charset=utf-8 1266.5258ms
+[2025-05-21 11:30:03.670 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - application/json 61
+[2025-05-21 11:30:03.670 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:30:03.671 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:30:03.671 +03:00  INF]  Route matched with {action = "GetPricingPkgCurrency", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPkgCurrency(WaslaApp.Data.Models.PricingPkgCurrencyReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:30:04.922 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.package_id, p.curr_code, p.active, p.discount_amount, p.discount_type, COALESCE(p.end_date::text, '') AS "end_dateStr", p.end_date, p.id, p.package_price, p.package_sale_price, p.start_date, COALESCE(p.start_date::text, '') AS "start_dateStr"
+FROM "PricingPkgCurrency" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND (p.curr_code = p.curr_code OR p.curr_code IS NULL)
+[2025-05-21 11:30:04.923 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPkgCurrencyCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:30:04.923 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App) in 1252.1301ms
+[2025-05-21 11:30:04.923 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPkgCurrency (Wasla_App)'
+[2025-05-21 11:30:04.923 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPkgCurrency - 200 null application/json; charset=utf-8 1253.4834ms
+[2025-05-21 11:31:29.425 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:31:29.428 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:31:29.432 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:31:29.436 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:31:34.658 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:31:40.056 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:31:40.064 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 10627.435ms
+[2025-05-21 11:31:40.064 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:31:40.064 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 10639.1542ms
+[2025-05-21 11:33:17.703 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:33:17.704 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:33:17.706 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:33:17.707 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:33:21.225 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:33:21.229 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:33:21.229 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 3521.5157ms
+[2025-05-21 11:33:21.229 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:33:21.229 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 3526.8075ms
+[2025-05-21 11:33:45.930 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:33:45.930 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:33:45.934 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:33:45.937 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:33:47.976 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:33:47.978 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:33:47.978 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 2040.8822ms
+[2025-05-21 11:33:47.978 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:33:47.979 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 2049.1117ms
+[2025-05-21 11:34:23.793 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:34:23.793 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:34:23.794 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:34:23.795 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:34:27.556 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:34:27.557 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:34:27.557 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 3762.454ms
+[2025-05-21 11:34:27.557 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:34:27.557 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 3764.7566ms
+[2025-05-21 11:36:08.420 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 77
+[2025-05-21 11:36:08.423 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:36:08.425 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:36:08.427 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(WaslaApp.Data.Entities.PricingPkgService) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:36:09.612 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:36:09.619 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__service_package_id_0='?' (DbType = Int32), @__service_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__service_package_id_0 AND p.service_id = @__service_service_id_1
+LIMIT 2
+[2025-05-21 11:36:09.626 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:36:09.658 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 11:36:09.658 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:36:09.658 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 1231.4105ms
+[2025-05-21 11:36:09.658 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:36:09.659 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 1238.5083ms
+[2025-05-21 11:36:23.259 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 81
+[2025-05-21 11:36:23.259 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:36:23.260 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:36:23.260 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(WaslaApp.Data.Entities.PricingPkgService) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:36:24.783 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:36:24.784 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__service_package_id_0='?' (DbType = Int32), @__service_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__service_package_id_0 AND p.service_id = @__service_service_id_1
+LIMIT 2
+[2025-05-21 11:36:24.785 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:36:24.788 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 11:36:24.789 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:36:24.789 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 1528.6945ms
+[2025-05-21 11:36:24.789 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:36:24.789 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 1530.1353ms
+[2025-05-21 11:36:51.747 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:36:51.748 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:36:51.748 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:36:51.748 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:36:53.099 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:36:53.099 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:36:53.099 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 1351.355ms
+[2025-05-21 11:36:53.099 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:36:53.100 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 1352.3145ms
+[2025-05-21 11:37:25.593 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 11:37:25.593 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:37:25.639 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:37:25.646 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:37:28.203 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_lang_0='?', @__req_curr_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE p2.curr_code = @__req_curr_code_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 11:37:28.205 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 11:37:28.205 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 2558.6997ms
+[2025-05-21 11:37:28.205 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 11:37:28.205 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 2613.1044ms
+[2025-05-21 11:49:25.838 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 11:49:25.985 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 11:49:26.141 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 11:49:26.141 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 11:49:26.555 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 11:49:26.557 +03:00  INF]  Hosting environment: Development
+[2025-05-21 11:49:26.557 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 11:49:26.761 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 11:49:27.315 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 568.8237ms
+[2025-05-21 11:49:27.454 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 11:49:27.469 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 15.6031ms
+[2025-05-21 11:49:27.552 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 11:49:27.600 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.3777ms
+[2025-05-21 11:49:27.975 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 11:49:28.017 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 42.2656ms
+[2025-05-21 11:51:36.256 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 190
+[2025-05-21 11:51:36.275 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 11:51:36.454 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:51:36.495 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 11:51:37.809 +03:00  INF]  Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:51:38.002 +03:00  INF]  Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 11:51:38.008 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 11:51:38.081 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 11:51:38.096 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientServices" AS c
+[2025-05-21 11:51:38.111 +03:00  ERR]  An exception occurred while iterating over the results of a query for context type 'WaslaApp.Data.Data.wasla_client_dbContext'.
+System.InvalidOperationException: Sequence contains no elements.
+   at lambda_method85(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Sequence contains no elements.
+   at lambda_method85(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+[2025-05-21 11:51:38.199 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 11:51:38.207 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 1708.73ms
+[2025-05-21 11:51:38.207 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 11:51:38.216 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 1959.9051ms
+[2025-05-21 15:27:27.533 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 190
+[2025-05-21 15:27:27.540 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:27:27.569 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:27:27.578 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:27:27.734 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:27:27.746 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 15:27:27.748 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:27:27.758 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:27:27.762 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientServices" AS c
+[2025-05-21 15:27:27.766 +03:00  ERR]  An exception occurred while iterating over the results of a query for context type 'WaslaApp.Data.Data.wasla_client_dbContext'.
+System.InvalidOperationException: Sequence contains no elements.
+   at lambda_method85(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Sequence contains no elements.
+   at lambda_method85(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+[2025-05-21 15:27:27.866 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 15:27:27.869 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 289.9263ms
+[2025-05-21 15:27:27.869 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:27:27.872 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 339.1393ms
+[2025-05-21 15:27:34.159 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 190
+[2025-05-21 15:27:34.160 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:27:34.165 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:27:34.165 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:27:34.322 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:27:34.324 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:27:34.345 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 15:27:34.345 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 179.726ms
+[2025-05-21 15:27:34.345 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:27:34.346 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 187.1455ms
+[2025-05-21 15:28:03.890 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 15:28:04.230 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 15:28:04.552 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 15:28:04.553 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 15:28:05.491 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 15:28:05.492 +03:00  INF]  Hosting environment: Development
+[2025-05-21 15:28:05.492 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 15:28:05.639 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 15:28:06.188 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 571.7913ms
+[2025-05-21 15:28:06.329 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 15:28:06.339 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 10.2896ms
+[2025-05-21 15:28:06.437 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 15:28:06.526 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 88.9256ms
+[2025-05-21 15:28:06.991 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 15:28:07.050 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 60.0022ms
+[2025-05-21 15:31:45.607 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 190
+[2025-05-21 15:31:45.615 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:31:48.094 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:31:48.131 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:31:52.189 +03:00  INF]  Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:31:52.523 +03:00  INF]  Executed DbCommand (18ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:31:52.655 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 15:31:52.673 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 4535.0992ms
+[2025-05-21 15:31:52.673 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:31:52.686 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 7079.2258ms
+[2025-05-21 15:32:50.611 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 15:32:50.912 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 15:32:51.278 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 15:32:51.280 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 15:32:51.555 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 15:32:51.555 +03:00  INF]  Hosting environment: Development
+[2025-05-21 15:32:51.555 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 15:32:52.668 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 15:32:53.196 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 542.1513ms
+[2025-05-21 15:32:54.850 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 15:32:54.859 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 8.2189ms
+[2025-05-21 15:32:54.912 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 15:32:54.975 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.7342ms
+[2025-05-21 15:32:55.334 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 15:32:55.385 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.291ms
+[2025-05-21 15:33:59.967 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-05-21 15:34:00.260 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-05-21 15:34:00.559 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-05-21 15:34:00.560 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-05-21 15:34:01.230 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-05-21 15:34:01.232 +03:00  INF]  Hosting environment: Development
+[2025-05-21 15:34:01.232 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-05-21 15:34:01.651 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-05-21 15:34:02.164 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 529.3758ms
+[2025-05-21 15:34:02.673 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-05-21 15:34:02.682 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 9.3981ms
+[2025-05-21 15:34:02.825 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-05-21 15:34:03.024 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 199.3041ms
+[2025-05-21 15:34:04.648 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-05-21 15:34:04.723 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.8253ms
+[2025-05-21 15:35:44.366 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 190
+[2025-05-21 15:35:44.380 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:35:44.746 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:35:44.797 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:36:08.148 +03:00  INF]  Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:36:13.795 +03:00  INF]  Executed DbCommand (32ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 15:36:26.733 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:36:33.132 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:36:36.801 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:36:39.587 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 15:36:48.559 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 15:36:48.579 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 63770.9295ms
+[2025-05-21 15:36:48.580 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:36:48.598 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 64231.2505ms
+[2025-05-21 15:37:42.436 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - application/json 186
+[2025-05-21 15:37:42.437 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:37:42.451 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:37:42.451 +03:00  INF]  Route matched with {action = "SavePricingPKgServices", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePricingPKgServices(System.Collections.Generic.List`1[WaslaApp.Data.Entities.PricingPkgService]) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:37:44.359 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:37:44.364 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:37:44.365 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:37:44.369 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 15:37:44.370 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:37:44.371 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__row_package_id_0='?' (DbType = Int32), @__row_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.package_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+WHERE p.package_id = @__row_package_id_0 AND p.service_id = @__row_service_id_1
+LIMIT 2
+[2025-05-21 15:37:44.372 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(p.id)
+FROM "PricingPkgServices" AS p
+[2025-05-21 15:37:44.373 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "PricingPkgServices" (id, package_id, service_id, service_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-05-21 15:37:44.374 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.ResponseCls'.
+[2025-05-21 15:37:44.375 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App) in 1923.1856ms
+[2025-05-21 15:37:44.375 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPKgServices (Wasla_App)'
+[2025-05-21 15:37:44.375 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPKgServices - 200 null application/json; charset=utf-8 1939.8258ms
+[2025-05-21 15:38:15.938 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - application/json 40
+[2025-05-21 15:38:15.946 +03:00  INF]  CORS policy execution successful.
+[2025-05-21 15:38:15.953 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 15:38:15.963 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.LangReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-05-21 15:38:17.640 +03:00  INF]  Executed DbCommand (24ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p3.curr_code, p.package_id, p3.discount_amount, p3.discount_type, p1.package_desc, p1.package_details, p1.package_name, p3.package_price, p3.package_sale_price, p.id AS servicepkg_id, p.service_id, p.service_name
+FROM "PricingPkgServices" AS p
+INNER JOIN (
+    SELECT p0.package_id, p0.package_desc, p0.package_details, p0.package_name
+    FROM "PricingPackages" AS p0
+    WHERE p0.lang_code = @__req_lang_0
+) AS p1 ON p.package_id = p1.package_id
+INNER JOIN (
+    SELECT p2.curr_code, p2.discount_amount, p2.discount_type, p2.package_id, p2.package_price, p2.package_sale_price
+    FROM "PricingPkgCurrency" AS p2
+    WHERE lower(p2.curr_code) = @__ToLower_1
+) AS p3 ON p1.package_id = p3.package_id
+[2025-05-21 15:38:17.693 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PricingPackageCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-05-21 15:38:17.720 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App) in 1756.641ms
+[2025-05-21 15:38:17.721 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackageWithService (Wasla_App)'
+[2025-05-21 15:38:17.722 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackageWithService - 200 null application/json; charset=utf-8 1783.997ms
