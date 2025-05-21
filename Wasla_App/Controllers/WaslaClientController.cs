@@ -209,11 +209,7 @@ namespace Wasla_App.Controllers
         #endregion
 
         #region "packages & services"
-        [HttpPost("GetPricingPackageWithService")]
-        public async Task<IActionResult> GetPricingPackageWithService(LangReq req)
-        {
-            return Ok(await _waslaService.GetPricingPackageWithService(req));
-        }
+     
 
         [HttpPost("SaveClientServices")]
         public IActionResult saveClientServices(List<ClientServiceCast> lst)

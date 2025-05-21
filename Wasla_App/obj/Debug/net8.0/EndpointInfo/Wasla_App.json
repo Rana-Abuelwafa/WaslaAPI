@@ -355,6 +355,37 @@
         }
       }
     },
+    "/api/WaslaBrowse/GetPricingPackageWithService": {
+      "post": {
+        "tags": [
+          "WaslaBrowse"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/getQuesList": {
       "post": {
         "tags": [
@@ -604,37 +635,6 @@
         "tags": [
           "WaslaClient"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaClient/GetPricingPackageWithService": {
-      "post": {
-        "tags": [
-          "WaslaClient"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"

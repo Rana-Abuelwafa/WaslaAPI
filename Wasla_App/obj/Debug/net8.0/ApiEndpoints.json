@@ -176,6 +176,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Wasla_App.Controllers.WaslaBrowseController",
+    "Method": "GetPricingPackageWithService",
+    "RelativePath": "api/WaslaBrowse/GetPricingPackageWithService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.LangReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "GetClientBrands",
     "RelativePath": "api/WaslaClient/GetClientBrands",
@@ -203,22 +219,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
-    "Method": "GetPricingPackageWithService",
-    "RelativePath": "api/WaslaClient/GetPricingPackageWithService",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
