@@ -1,4 +1,6 @@
 using Mails_App;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
@@ -9,6 +11,7 @@ using System.Text;
 using Wasla_App.services;
 using WaslaApp.Data;
 using WaslaApp.Data.Data;
+using WaslaApp.Data.Entities;
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 var logger = new LoggerConfiguration()
@@ -24,7 +27,8 @@ builder.Logging.AddSerilog(logger);
 //    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
 //    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 //});
-
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 builder.Services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null);
 //builder.Services.AddControllers();
 builder.Services.AddCors(options =>
@@ -75,6 +79,8 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<WaslaDAO>();
 builder.Services.AddScoped<MailSettingDao>();
 builder.Services.AddScoped<IWaslaService, WaslaService>();
+builder.Services.AddScoped<CustomViewRendererService>();
+
 builder.Services.AddAuthentication()
     .AddJwtBearer(options =>
 {

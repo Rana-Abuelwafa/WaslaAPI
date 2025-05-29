@@ -340,3 +340,5 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.pdb
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.genruntimeconfig.cache
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\ref\Wasla_App.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.RazorAssemblyInfo.cache
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.RazorAssemblyInfo.cs

@@ -17,4 +17,5 @@ public partial class Service
 
     public string? lang_code { get; set; }
     public bool? leaf { get; set; }
+    public decimal? price { get; set; }
 }

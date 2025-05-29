@@ -386,6 +386,18 @@
         }
       }
     },
+    "/api/WaslaBrowse/SendTestEmail2Async": {
+      "post": {
+        "tags": [
+          "WaslaBrowse"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/getQuesList": {
       "post": {
         "tags": [

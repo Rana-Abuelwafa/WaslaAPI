@@ -1,0 +1,210 @@
+﻿@using WaslaApp.Data.Models
+@model HtmlInvoice
+@{
+    Layout = null;  // explicitly no layout page here!
+    // string title =  "Order Confirmation - " + config.ApplicationName;
+    var user = Model.user;
+    var contact = Model.contact;
+    var Address = Model.address;
+    var InvoiceNo = Model.InvoiceNo;
+    var Date = Model.IssuedDate;
+    var SubTtotal = Model.SubTtotal;
+    var Discount = Model.Discount;
+    var Total = Model.Total;
+    var services = Model.services;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            height: 100%;
+            /* min-height: 100vh; */
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        ul {
+            padding-left: 5px;
+        }
+
+        ul li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        header {
+            /* position: fixed; */
+            height: 70px;
+            /* width: 100%; */
+            top: 0;
+            left: 0;
+            padding: 0 30px;
+        }
+
+        header img {
+            width: 200px;
+            height: 120px;
+        }
+
+        .bg {
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            overflow: hidden;
+            /* margin-top: 80px; */
+            display: block;
+            background-color: white;
+            position: relative;
+        }
+
+        .bg img {
+            margin: 20px 0;
+        }
+
+        /*
+        .bg-content {
+            background-color: white;
+            padding: 50px;
+            border-radius: 6px;
+            width: 1000px;
+            min-width: 1000px;
+            height: 400px;
+            margin: 100px auto;
+            position: relative;
+          } */
+
+        h2 {
+            color: #00bc82;
+        }
+
+        h3 {
+            color: #542d72;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 13px;
+            color: #666;
+        }
+        .footer {
+            /* position: fixed; */
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #222;
+            /* height: 100px; */
+            padding: 10px;
+            text-align: center;
+            /* overflow: hidden; */
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+    </style>
+
+    <section class="bg"
+             style="background: #f7f7f7;width: 800px;margin: 10px auto;background-image: url('./images/gletter.png');background-position: center;background-repeat: no-repeat;background-size: contain;">
+        <header style="display: flex; align-content: center;height: 70px;padding:20px;">
+            <div style="flex: 2;">
+                <h2 style="font-size: 60px;margin: 0;">Invoice</h2>
+            </div>
+            <div>
+                <img src="https://waslaa.de:4431/images/logo.png" alt="logo" style="width: 150px;height: auto;" />
+            </div>
+        </header>
+        <div class="bg-content" style="padding: 20px;">
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <p style="margin-bottom: 5px;">Invoice To</p>
+                        <strong>@user</strong>
+                    </td>
+                    <td style="text-align: right;">
+                        <p style="margin-bottom: 5px;">Contact</p>
+                        <strong>@contact</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin-bottom: 5px;">Address</p>
+                        <strong>@Address</strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin-bottom: 5px;">Invoice No</p>
+                        <strong>@InvoiceNo</strong>
+                    </td>
+                    <td style="text-align: right;">
+                        <p style="margin-bottom: 5px;">Date Issued</p>
+                        <strong>@Date</strong>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%; margin: 30px auto;border-collapse:collapse;text-align: left;">
+                <tr style="border: 1px solid #222; border-radius: 50px;">
+                    <th style="padding: 5px;">No.</th>
+                    <th style="padding: 5px;">Product Item Description</th>
+                    <th style="padding: 5px;">Price</th>
+                </tr>
+                @for (var i = 0; i < services.Count; i++)
+                {
+                    var service = services[i];
+                    <tr>
+                        <td>@i</td>
+                        <td>@service.productName</td>
+                        <td>@service.price</td>
+                    </tr>
+                }
+               
+                <tr>
+                    <th colspan="2"></th>
+                    <th>Sub Total</th>
+                    <td>@SubTtotal</td>
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>Discount</th>
+                    <td>@Discount</td>
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
+                    <th>Total</th>
+                    <td>@Total</td>
+                </tr>
+            </table>
+            <div>
+                <h3>Terms & Conditions :</h3>
+                <p>
+                    This amount includes up to two (2) revisions to the final design.
+                    If the client does not respond within 5 days, the project will be temporarily put on hold.
+                    Design rights will be transferred to the client upon full payment.
+                </p>
+            </div>
+
+        </div>
+        <footer class="footer">
+            <img src="https://waslaa.de:4431/images/QRCode.png" alt="wasla_qr" class="footer-logo-img" style="width: 100px;height: 100px;" />
+            <p style="color: #542d72;">Thank you for your Business</p>
+
+
+        </footer>
+    </section>
+
+</body>
+
+
+</html>

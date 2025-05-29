@@ -27,3 +27,15 @@ build_property.MSBuildProjectDirectory = D:\waslaa\api\WaslaAPI\Wasla_App
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
+
+[D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_ar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxcSW52b2ljZV9hci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_de.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxcSW52b2ljZV9kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxcSW52b2ljZV9lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
