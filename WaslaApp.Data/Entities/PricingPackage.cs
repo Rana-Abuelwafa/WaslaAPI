@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WaslaApp.Data.Entities;
 
@@ -38,4 +39,6 @@ public partial class PricingPackage
     public short? discount_type { get; set; }
 
     public int service_id { get; set; }
+    [NotMapped]
+    public string? service_name { get; set; }
 }

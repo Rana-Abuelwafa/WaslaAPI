@@ -11,13 +11,13 @@ namespace Wasla_App.Controllers
     [ApiController]
     public class WaslaBrowseController : ControllerBase
     {
-        private readonly CustomViewRendererService _viewService;
+        //private readonly CustomViewRendererService _viewService;
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
 
-        public WaslaBrowseController(CustomViewRendererService viewService,IWaslaService waslaService, ILogger<WaslaClientController> logger)
+        public WaslaBrowseController(IWaslaService waslaService, ILogger<WaslaClientController> logger)
         {
-            _viewService = viewService;
+           
             _waslaService = waslaService;
             _logger = logger;
         }

@@ -20,12 +20,13 @@ namespace Wasla_App.Controllers
     [ApiController]
     public class WaslaClientController : ControllerBase
     {
-        //private readonly CustomViewRendererService _viewService;
+        private readonly CustomViewRendererService _viewService;
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaClientController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
+        public WaslaClientController(CustomViewRendererService viewService, IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
         {
+            _viewService = viewService;
             _waslaService = waslaService;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
@@ -239,15 +240,24 @@ namespace Wasla_App.Controllers
 
             return Ok(await _waslaService.GetProduct_Tree(clientId, req.lang));
         }
-        //[HttpPost("SendInvoiceEmail")]
-        //public async Task<IActionResult> SendTestEmail2Async()
-        //{
-        //    var templatePath = Path.Combine("/Views/Email" + "/", "Test.cshtml");
-        //    //var templatePath = "~/Views/Email/Test.cshtml";
-        //    var msg = await _viewService.RenderViewToStringAsync(templatePath, ("Foo", "Bar"), ControllerContext);
+        [HttpPost("SendInvoiceEmail")]
+        public async Task<IActionResult> SendInvoiceEmail(LangReq req)
+        {
+            string? clientId = string.Empty;
 
-        //    return Ok(msg);
-        //}
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            string fileName = "Invoice_" + req.lang.ToLower() + ".cshtml";
+            var templatePath = Path.Combine("/Views/Email" + "/", fileName);
+            //var templatePath = "~/Views/Email/Test.cshtml";
+            HtmlInvoice model = new HtmlInvoice();
+            var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
+
+            return Ok(msg);
+        }
         #endregion
 
 

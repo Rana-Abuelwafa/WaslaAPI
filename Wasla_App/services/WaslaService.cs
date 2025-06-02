@@ -118,5 +118,10 @@ namespace Wasla_App.services
         {
             return _waslaDao.GetPricingPkgFeatures(req);
         }
+
+        public Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req)
+        {
+            return _waslaDao.GetPricingPackages(req);
+        }
     }
 }

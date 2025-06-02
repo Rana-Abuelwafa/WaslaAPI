@@ -1,0 +1,13 @@
+[2025-06-03 01:12:21.250 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - application/json 83
+[2025-06-03 01:12:21.262 +03:00  INF]  CORS policy execution successful.
+[2025-06-03 01:12:21.277 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-03 01:12:21.277 +03:00  INF]  Route matched with {action = "GetPricingPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackages(WaslaApp.Data.Models.PricingPackageReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-06-03 01:12:21.418 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_service_id_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s."productName" AS service_name
+FROM "PricingPackages" AS p
+INNER JOIN "Services" AS s ON p.service_id = s."productId" AND (p.lang_code = s.lang_code OR (p.lang_code IS NULL AND s.lang_code IS NULL))
+WHERE p.active = @__req_active_0 AND p.service_id = @__req_service_id_1 AND (p.lang_code = p.lang_code OR p.lang_code IS NULL) AND (p.curr_code = p.curr_code OR p.curr_code IS NULL) AND p.active = @__req_active_0
+[2025-06-03 01:12:21.440 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.PricingPackage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-03 01:12:21.463 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App) in 183.3937ms
+[2025-06-03 01:12:21.464 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-03 01:12:21.465 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - 200 null application/json; charset=utf-8 214.4843ms

@@ -191,6 +191,37 @@
         }
       }
     },
+    "/api/WaslaAdmin/GetPricingPackages": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingPackageReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaAdmin/GetPricingPackageWithService": {
       "post": {
         "tags": [
@@ -681,6 +712,37 @@
           }
         }
       }
+    },
+    "/api/WaslaClient/SendInvoiceEmail": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LangReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -880,6 +942,32 @@
           "service_id": {
             "type": "integer",
             "format": "int32"
+          },
+          "service_name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PricingPackageReq": {
+        "type": "object",
+        "properties": {
+          "service_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "curr_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false

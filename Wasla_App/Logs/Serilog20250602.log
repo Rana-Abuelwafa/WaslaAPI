@@ -369,3 +369,87 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13
 [2025-06-02 10:17:15.568 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App) in 6869.0941ms
 [2025-06-02 10:17:15.568 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SavePricingPackage (Wasla_App)'
 [2025-06-02 10:17:15.577 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SavePricingPackage - 200 null application/json; charset=utf-8 6882.8897ms
+[2025-06-02 10:36:17.195 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-02 10:36:17.545 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-02 10:36:17.721 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-02 10:36:17.721 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-02 10:36:17.934 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-02 10:36:17.935 +03:00  INF]  Hosting environment: Development
+[2025-06-02 10:36:17.935 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-02 10:36:18.962 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-02 10:36:19.408 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-02 10:36:19.430 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-02 10:36:19.450 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 501.9117ms
+[2025-06-02 10:36:19.450 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 42.2265ms
+[2025-06-02 10:36:19.542 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 111.9606ms
+[2025-06-02 10:36:19.673 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-02 10:36:19.721 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.7888ms
+[2025-06-02 22:47:13.793 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-02 22:47:14.843 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-02 22:47:15.134 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-02 22:47:15.136 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-02 22:47:16.204 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-02 22:47:16.205 +03:00  INF]  Hosting environment: Development
+[2025-06-02 22:47:16.205 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-02 22:47:16.505 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-02 22:47:17.127 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 638.535ms
+[2025-06-02 22:47:17.167 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-02 22:47:17.168 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-02 22:47:17.195 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 27.7513ms
+[2025-06-02 22:47:17.358 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 190.0833ms
+[2025-06-02 22:47:17.455 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-02 22:47:17.528 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 73.2715ms
+[2025-06-02 22:47:58.158 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - application/json 83
+[2025-06-02 22:47:58.172 +03:00  INF]  CORS policy execution successful.
+[2025-06-02 22:47:58.392 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:47:58.452 +03:00  INF]  Route matched with {action = "GetPricingPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackages(WaslaApp.Data.Models.PricingPackageReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-06-02 22:48:01.894 +03:00  INF]  Executed DbCommand (141ms) [Parameters=[@__req_active_0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s."productName" AS service_name
+FROM "PricingPackages" AS p
+INNER JOIN "Services" AS s ON p.service_id = s."productId" AND (p.lang_code = s.lang_code OR (p.lang_code IS NULL AND s.lang_code IS NULL))
+WHERE p.active = @__req_active_0 AND (p.lang_code = p.lang_code OR p.lang_code IS NULL) AND (p.curr_code = p.curr_code OR p.curr_code IS NULL) AND p.active = @__req_active_0
+[2025-06-02 22:48:01.983 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.PricingPackage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-02 22:48:02.038 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App) in 3580.4555ms
+[2025-06-02 22:48:02.038 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:48:02.056 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - 200 null application/json; charset=utf-8 3897.9214ms
+[2025-06-02 22:48:14.912 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - application/json 82
+[2025-06-02 22:48:14.913 +03:00  INF]  CORS policy execution successful.
+[2025-06-02 22:48:14.925 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:48:14.926 +03:00  INF]  Route matched with {action = "GetPricingPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackages(WaslaApp.Data.Models.PricingPackageReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-06-02 22:48:15.024 +03:00  INF]  Executed DbCommand (15ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_lang_code_1='?', @__req_curr_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s."productName" AS service_name
+FROM "PricingPackages" AS p
+INNER JOIN "Services" AS s ON p.service_id = s."productId" AND (p.lang_code = s.lang_code OR (p.lang_code IS NULL AND s.lang_code IS NULL))
+WHERE p.active = @__req_active_0 AND p.lang_code = @__req_lang_code_1 AND p.curr_code = @__req_curr_code_2 AND p.active = @__req_active_0
+[2025-06-02 22:48:15.026 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.PricingPackage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-02 22:48:15.027 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App) in 100.3228ms
+[2025-06-02 22:48:15.027 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:48:15.027 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - 200 null application/json; charset=utf-8 115.3465ms
+[2025-06-02 22:50:18.868 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-02 22:50:19.260 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-02 22:50:19.485 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-02 22:50:19.489 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-02 22:50:19.754 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-02 22:50:19.755 +03:00  INF]  Hosting environment: Development
+[2025-06-02 22:50:19.755 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-02 22:50:20.719 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-02 22:50:21.181 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 479.4819ms
+[2025-06-02 22:50:21.274 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-02 22:50:21.282 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-02 22:50:21.316 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 42.7382ms
+[2025-06-02 22:50:21.419 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 137.5377ms
+[2025-06-02 22:50:21.514 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-02 22:50:21.620 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 108.0119ms
+[2025-06-02 22:50:34.725 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - application/json 82
+[2025-06-02 22:50:34.735 +03:00  INF]  CORS policy execution successful.
+[2025-06-02 22:50:34.936 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:50:35.027 +03:00  INF]  Route matched with {action = "GetPricingPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackages(WaslaApp.Data.Models.PricingPackageReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-06-02 22:50:37.692 +03:00  INF]  Executed DbCommand (112ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_lang_code_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s."productName" AS service_name
+FROM "PricingPackages" AS p
+INNER JOIN "Services" AS s ON p.service_id = s."productId" AND (p.lang_code = s.lang_code OR (p.lang_code IS NULL AND s.lang_code IS NULL))
+WHERE p.active = @__req_active_0 AND p.lang_code = @__req_lang_code_1 AND (p.curr_code = p.curr_code OR p.curr_code IS NULL) AND p.active = @__req_active_0
+[2025-06-02 22:50:37.790 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.PricingPackage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-02 22:50:37.831 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App) in 2797.0891ms
+[2025-06-02 22:50:37.832 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
+[2025-06-02 22:50:37.849 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - 200 null application/json; charset=utf-8 3124.2406ms

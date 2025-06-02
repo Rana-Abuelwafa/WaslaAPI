@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "GetPricingPackages",
+    "RelativePath": "api/WaslaAdmin/GetPricingPackages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PricingPackageReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "GetPricingPackageWithService",
     "RelativePath": "api/WaslaAdmin/GetPricingPackageWithService",
     "HttpMethod": "POST",
@@ -348,6 +364,22 @@
       {
         "Name": "lst",
         "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.RegistrationAnswer, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "SendInvoiceEmail",
+    "RelativePath": "api/WaslaClient/SendInvoiceEmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.LangReq",
         "IsRequired": true
       }
     ],

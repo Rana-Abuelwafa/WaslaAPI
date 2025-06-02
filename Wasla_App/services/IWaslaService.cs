@@ -26,6 +26,7 @@ namespace Wasla_App.services
         #endregion
 
         #region "packages & services"
+        public Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req);
         public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst);
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
         public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req);

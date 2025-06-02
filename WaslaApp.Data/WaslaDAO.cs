@@ -251,8 +251,7 @@ namespace WaslaApp.Data
         #endregion
         #region "Profile"
 
-       
-
+        //get payment methods list
         public async Task<List<PaymentMethod>> GetPaymentMethods()
         {
 
@@ -267,6 +266,7 @@ namespace WaslaApp.Data
             }
         }
 
+        //get brands of specific client
         public async Task<List<ClientBrand>> GetClientBrands(string clientId)
         {
             try
@@ -280,6 +280,7 @@ namespace WaslaApp.Data
             }
         }
 
+        //get profile for the client
         public async Task<List<ClientProfileCast>> GetClientProfiles(string clientId)
         {
             try
@@ -444,6 +445,49 @@ namespace WaslaApp.Data
 
 
         #region "packages &services"
+        public async Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req)
+        {
+
+            try
+            {
+               return await _db.PricingPackages.Where(wr => wr.active == req.active &&
+                                                        wr.service_id == (req.service_id == 0 ? wr.service_id : req.service_id) &&
+                                                        wr.lang_code == (req.lang_code.ToLower() == "all" ? wr.lang_code : req.lang_code) &&
+                                                        wr.curr_code == (req.curr_code.ToLower() == "all" ? wr.curr_code : req.curr_code) &&
+                                                        wr.active == req.active)
+                   .Join(
+                       _db.Services,
+                        PKG => new { PKG.service_id , PKG.lang_code},
+                        Service => new { service_id = Service.productId, Service.lang_code },
+                       (PKG, Service) => new PricingPackage
+                       {
+                           service_id = PKG.service_id,
+                           curr_code = PKG.curr_code,
+                           lang_code = PKG.lang_code,
+                           package_sale_price = PKG.package_sale_price,
+                           active = PKG.active,
+                           discount_amount = PKG.discount_amount,
+                           discount_type = PKG.discount_type,
+                           package_price = PKG.package_price,
+                           package_name = PKG.package_name,
+                           package_id = PKG.package_id,
+                           package_desc = PKG.package_desc,
+                           start_date = PKG.start_date,
+                           end_date = PKG.end_date,
+                           order = PKG.order,
+                           package_details = PKG.package_details,
+                           service_name = Service.productName,
+                         
+                       }
+                   ).ToListAsync();
+               
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req)
         {
 
@@ -860,6 +904,7 @@ namespace WaslaApp.Data
 
                 if (count == lst.Count)
                 {
+                    //send mail with invoice
                     response = new ResponseCls { errors = null, success = true };
                 }
                 else

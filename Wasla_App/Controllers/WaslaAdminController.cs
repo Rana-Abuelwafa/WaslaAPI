@@ -76,6 +76,11 @@ namespace Wasla_App.Controllers
         //{
         //    return Ok(await _waslaService.GetPricingPkgCurrency(req));
         //}
+        [HttpPost("GetPricingPackages")]
+        public async Task<IActionResult> GetPricingPackages(PricingPackageReq req)
+        {
+            return Ok(await _waslaService.GetPricingPackages(req));
+        }
         [HttpPost("GetPricingPackageWithService")]
         public async Task<IActionResult> GetPricingPackageWithService(LangReq req)
         {
