@@ -26,14 +26,6 @@ namespace Wasla_App.Controllers
         {
             return Ok(await _waslaService.GetPricingPackageWithService(req));
         }
-        [HttpPost("SendTestEmail2Async")]
-        public async Task<IActionResult> SendTestEmail2Async()
-        {
-            var templatePath = Path.Combine("/Views/Email" + "/", "Test.cshtml");
-            //var templatePath = "~/Views/Email/Test.cshtml";
-            var msg = await _viewService.RenderViewToStringAsync(templatePath, ("Foo", "Bar"), ControllerContext);
-
-            return Ok(msg);
-        }
+      
     }
 }

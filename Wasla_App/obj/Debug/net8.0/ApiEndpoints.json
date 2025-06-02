@@ -49,15 +49,15 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
-    "Method": "GetPricingPkgCurrency",
-    "RelativePath": "api/WaslaAdmin/GetPricingPkgCurrency",
+    "Method": "GetPricingPkgFeatures",
+    "RelativePath": "api/WaslaAdmin/GetPricingPkgFeatures",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.PricingPkgCurrencyReq",
+        "Type": "WaslaApp.Data.Models.PricingPkgFeatureReq",
         "IsRequired": true
       }
     ],
@@ -113,31 +113,15 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
-    "Method": "SavePricingPackageCurrency",
-    "RelativePath": "api/WaslaAdmin/SavePricingPackageCurrency",
+    "Method": "SavePricingPKgFeatureLst",
+    "RelativePath": "api/WaslaAdmin/SavePricingPKgFeatureLst",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "req",
-        "Type": "WaslaApp.Data.Models.PricingPkgCurrencyCast",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
-    "Method": "SavePricingPKgServices",
-    "RelativePath": "api/WaslaAdmin/SavePricingPKgServices",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "service",
-        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.PricingPkgService, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Name": "lst",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.PricingPkgFeature, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -189,16 +173,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_App.Controllers.WaslaBrowseController",
-    "Method": "SendTestEmail2Async",
-    "RelativePath": "api/WaslaBrowse/SendTestEmail2Async",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

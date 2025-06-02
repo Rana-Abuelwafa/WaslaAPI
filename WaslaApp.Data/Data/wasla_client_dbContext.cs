@@ -34,7 +34,7 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<PricingPkgCurrency> PricingPkgCurrencies { get; set; }
 
-    public virtual DbSet<PricingPkgService> PricingPkgServices { get; set; }
+    public virtual DbSet<PricingPkgFeature> PricingPkgFeatures { get; set; }
 
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
 
@@ -127,6 +127,8 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.package_id).HasName("PricingPackages_pkey");
 
             entity.Property(e => e.package_id).ValueGeneratedNever();
+            entity.Property(e => e.curr_code).HasMaxLength(20);
+            entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
             entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.package_desc).HasMaxLength(100);
@@ -147,9 +149,12 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
         });
 
-        modelBuilder.Entity<PricingPkgService>(entity =>
+        modelBuilder.Entity<PricingPkgFeature>(entity =>
         {
             entity.HasKey(e => e.id).HasName("PricingPkgServices_pkey");
+
+            entity.Property(e => e.feature_desc).HasMaxLength(100);
+            entity.Property(e => e.feature_name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>
@@ -176,6 +181,8 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.productId).ValueGeneratedNever();
             entity.Property(e => e.active).HasDefaultValue(true);
             entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.leaf).HasDefaultValue(true);
+            entity.Property(e => e.price).HasDefaultValueSql("0");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -99,7 +99,7 @@ namespace Wasla_App.services
             return _waslaDao.GetProduct(req);
         }
 
-        public Task<List<PricingPackageCast>> GetPricingPackageWithService(LangReq req)
+        public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
         {
             return _waslaDao.GetPricingPackageWithService(req);
         }
@@ -109,19 +109,14 @@ namespace Wasla_App.services
             return _waslaDao.SavePricingPackage(package);
         }
 
-        public ResponseCls SavePricingPKgServices(List<PricingPkgService> service)
+        public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst)
         {
-            return _waslaDao.SavePricingPKgServicesLst(service);
+            return _waslaDao.SavePricingPKgFeatureLst(lst);
         }
 
-        public Task<List<PricingPkgCurrencyCast>> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
+        public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req)
         {
-            return _waslaDao.GetPricingPkgCurrency(req);
-        }
-
-        public ResponseCls SavePricingPackageCurrency(PricingPkgCurrencyCast currency)
-        {
-            return _waslaDao.SavePricingPackageCurrency(currency);
+            return _waslaDao.GetPricingPkgFeatures(req);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace WaslaApp.Data.Entities;
@@ -25,6 +24,8 @@ public partial class PricingPkgCurrency
     public decimal? package_price { get; set; }
 
     public decimal? package_sale_price { get; set; }
-    public int package_id { get; set; }
+
+    public int? package_id { get; set; }
+
     public bool? active { get; set; }
 }

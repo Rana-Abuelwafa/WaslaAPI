@@ -10,5 +10,6 @@ public partial class PricingPkgService
     public int? package_id { get; set; }
 
     public int? service_id { get; set; }
+
     public string? service_name { get; set; }
 }

@@ -20,6 +20,7 @@ namespace Wasla_App.Controllers
     [ApiController]
     public class WaslaClientController : ControllerBase
     {
+        //private readonly CustomViewRendererService _viewService;
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -238,6 +239,15 @@ namespace Wasla_App.Controllers
 
             return Ok(await _waslaService.GetProduct_Tree(clientId, req.lang));
         }
+        //[HttpPost("SendInvoiceEmail")]
+        //public async Task<IActionResult> SendTestEmail2Async()
+        //{
+        //    var templatePath = Path.Combine("/Views/Email" + "/", "Test.cshtml");
+        //    //var templatePath = "~/Views/Email/Test.cshtml";
+        //    var msg = await _viewService.RenderViewToStringAsync(templatePath, ("Foo", "Bar"), ControllerContext);
+
+        //    return Ok(msg);
+        //}
         #endregion
 
 

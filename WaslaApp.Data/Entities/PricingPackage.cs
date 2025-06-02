@@ -24,4 +24,18 @@ public partial class PricingPackage
     public string? lang_code { get; set; }
 
     public bool? active { get; set; }
+
+    public int? order { get; set; }
+
+    public string? curr_code { get; set; }
+
+    public decimal? discount_amount { get; set; }
+
+    /// <summary>
+    /// 1 = percentage
+    /// 2 = amount
+    /// </summary>
+    public short? discount_type { get; set; }
+
+    public int service_id { get; set; }
 }

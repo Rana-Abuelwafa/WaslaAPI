@@ -26,10 +26,9 @@ namespace Wasla_App.services
         #endregion
 
         #region "packages & services"
-        public  Task<List<PricingPkgCurrencyCast>> GetPricingPkgCurrency(PricingPkgCurrencyReq req);
-        public ResponseCls SavePricingPackageCurrency(PricingPkgCurrencyCast currency);
-        public ResponseCls SavePricingPKgServices(List<PricingPkgService> service);
-        public Task<List<PricingPackageCast>> GetPricingPackageWithService(LangReq req);
+        public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst);
+        public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
+        public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req);
         public ResponseCls SavePricingPackage(PricingPackage package);
         public Task<List<Service>> GetProduct(ServiceReq req);
         public ResponseCls SaveProduct(Service service);

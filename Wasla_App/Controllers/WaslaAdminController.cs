@@ -65,17 +65,17 @@ namespace Wasla_App.Controllers
 
         #region "packages & services"
 
-        [HttpPost("SavePricingPackageCurrency")]
-        public IActionResult SavePricingPackageCurrency(PricingPkgCurrencyCast req)
-        {
-            return Ok( _waslaService.SavePricingPackageCurrency(req));
-        }
+        //[HttpPost("SavePricingPackageCurrency")]
+        //public IActionResult SavePricingPackageCurrency(PricingPkgCurrencyCast req)
+        //{
+        //    return Ok( _waslaService.SavePricingPackageCurrency(req));
+        //}
 
-        [HttpPost("GetPricingPkgCurrency")]
-        public async Task<IActionResult> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
-        {
-            return Ok(await _waslaService.GetPricingPkgCurrency(req));
-        }
+        //[HttpPost("GetPricingPkgCurrency")]
+        //public async Task<IActionResult> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
+        //{
+        //    return Ok(await _waslaService.GetPricingPkgCurrency(req));
+        //}
         [HttpPost("GetPricingPackageWithService")]
         public async Task<IActionResult> GetPricingPackageWithService(LangReq req)
         {
@@ -87,10 +87,15 @@ namespace Wasla_App.Controllers
         {
             return Ok(_waslaService.SavePricingPackage(req));
         }
-        [HttpPost("SavePricingPKgServices")]
-        public IActionResult SavePricingPKgServices(List<PricingPkgService> service)
+        [HttpPost("SavePricingPKgFeatureLst")]
+        public IActionResult SavePricingPKgFeatureLst(List<PricingPkgFeature> lst)
         {
-            return Ok(_waslaService.SavePricingPKgServices(service));
+            return Ok(_waslaService.SavePricingPKgFeatureLst(lst));
+        }
+        [HttpPost("GetPricingPkgFeatures")]
+        public  IActionResult GetPricingPkgFeatures(PricingPkgFeatureReq req)
+        {
+            return Ok( _waslaService.GetPricingPkgFeatures(req));
         }
         #endregion
     }
