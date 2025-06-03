@@ -12,6 +12,8 @@ public partial class PricingPkgFeature
     public string? feature_name { get; set; }
 
     public string? feature_desc { get; set; }
+
     public string? lang_code { get; set; }
+
     public bool? active { get; set; }
 }

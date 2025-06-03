@@ -153,8 +153,7 @@ public partial class wasla_client_dbContext : DbContext
         {
             entity.HasKey(e => e.id).HasName("PricingPkgServices_pkey");
 
-            entity.Property(e => e.feature_desc).HasMaxLength(100);
-            entity.Property(e => e.feature_name).HasMaxLength(50);
+            entity.Property(e => e.lang_code).HasMaxLength(20);
         });
 
         modelBuilder.Entity<RegistrationAnswer>(entity =>
