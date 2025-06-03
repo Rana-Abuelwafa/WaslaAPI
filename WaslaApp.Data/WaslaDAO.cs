@@ -517,7 +517,7 @@ namespace WaslaApp.Data
                         if (_db.PricingPkgFeatures.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.PricingPkgFeatures.Where(wr => wr.package_id == row.package_id && wr.feature_name == row.feature_name).SingleOrDefault();
+                            var result = _db.PricingPkgFeatures.Where(wr => wr.package_id == row.package_id && wr.feature_name == row.feature_name && wr.active == row.active).SingleOrDefault();
                             if (result != null)
                             {
                                 return new ResponseCls { success = false, errors = "duplicate data" };
@@ -568,7 +568,7 @@ namespace WaslaApp.Data
             try
             {
             
-                var fullEntries = await _db.PricingPackages.Where(wr => wr.lang_code == req.lang &&  wr.curr_code.ToLower() == req.curr_code.ToLower())
+                var fullEntries = await _db.PricingPackages.Where(wr => wr.lang_code == req.lang &&  wr.curr_code.ToLower() == req.curr_code.ToLower() && wr.active == true)
                     .Join(
                         _db.Services.Where(wr => wr.lang_code == req.lang),
                          PKG => new { PKG.service_id },
@@ -818,7 +818,7 @@ namespace WaslaApp.Data
                     if (_db.Services.Count() > 0)
                     {
                         //check duplicate validation
-                        var result = _db.Services.Where(wr => wr.productId == service.productId && wr.productParent == service.productParent).SingleOrDefault();
+                        var result = _db.Services.Where(wr => wr.productId == service.productId && wr.productParent == service.productParent && wr.active == service.active).SingleOrDefault();
                         if (result != null)
                         {
                             return new ResponseCls { success = false, errors = "duplicate data" };
@@ -870,7 +870,7 @@ namespace WaslaApp.Data
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId).SingleOrDefault();
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id).SingleOrDefault();
                             if (result != null)
                             {
                                 return new ResponseCls { success = false, errors = "duplicate data" };

@@ -11,3 +11,30 @@ WHERE p.active = @__req_active_0 AND p.service_id = @__req_service_id_1 AND (p.l
 [2025-06-03 01:12:21.463 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App) in 183.3937ms
 [2025-06-03 01:12:21.464 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetPricingPackages (Wasla_App)'
 [2025-06-03 01:12:21.465 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetPricingPackages - 200 null application/json; charset=utf-8 214.4843ms
+[2025-06-03 11:31:18.751 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-03 11:31:19.225 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-03 11:31:19.521 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-03 11:31:19.521 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-03 11:31:19.800 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-03 11:31:19.800 +03:00  INF]  Hosting environment: Development
+[2025-06-03 11:31:19.800 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-03 11:31:20.941 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-03 11:31:21.468 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 543.8114ms
+[2025-06-03 11:31:21.529 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-03 11:31:21.530 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-03 11:31:21.538 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 8.8743ms
+[2025-06-03 11:31:21.698 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 167.4189ms
+[2025-06-03 11:31:21.784 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-03 11:31:21.836 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.6836ms
+[2025-06-03 11:31:32.565 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetProduct - application/json 51
+[2025-06-03 11:31:32.579 +03:00  INF]  CORS policy execution successful.
+[2025-06-03 11:31:34.940 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.GetProduct (Wasla_App)'
+[2025-06-03 11:31:34.986 +03:00  INF]  Route matched with {action = "GetProduct", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProduct(WaslaApp.Data.Models.ServiceReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-06-03 11:31:45.883 +03:00  INF]  Executed DbCommand (123ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_parent_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."productId", s.active, s.lang_code, s.leaf, s.price, s."productName", s."productParent", s.product_desc
+FROM "Services" AS s
+WHERE s.active = @__req_active_0 AND s."productParent" = @__req_parent_1
+[2025-06-03 11:31:48.380 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.Service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-03 11:31:48.427 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.GetProduct (Wasla_App) in 13426.6025ms
+[2025-06-03 11:31:48.428 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.GetProduct (Wasla_App)'
+[2025-06-03 11:31:48.452 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/GetProduct - 200 null application/json; charset=utf-8 15887.7717ms
