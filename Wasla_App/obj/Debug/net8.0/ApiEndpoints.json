@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "Type": "WaslaApp.Data.Models.profile.QuesLstReq",
         "IsRequired": true
       }
     ],
@@ -41,7 +41,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.PricingPackageReq",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PricingPackageReq",
         "IsRequired": true
       }
     ],
@@ -57,7 +57,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
+        "Type": "WaslaApp.Data.Models.global.LangReq",
         "IsRequired": true
       }
     ],
@@ -73,7 +73,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.PricingPkgFeatureReq",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PricingPkgFeatureReq",
         "IsRequired": true
       }
     ],
@@ -89,7 +89,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.ServiceReq",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.ServiceReq",
         "IsRequired": true
       }
     ],
@@ -105,7 +105,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
+        "Type": "WaslaApp.Data.Models.global.LangReq",
         "IsRequired": true
       }
     ],
@@ -185,7 +185,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
+        "Type": "WaslaApp.Data.Models.global.LangReq",
         "IsRequired": true
       }
     ],
@@ -231,7 +231,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
+        "Type": "WaslaApp.Data.Models.global.LangReq",
         "IsRequired": true
       }
     ],
@@ -257,7 +257,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "Type": "WaslaApp.Data.Models.profile.QuesLstReq",
         "IsRequired": true
       }
     ],
@@ -273,7 +273,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WaslaApp.Data.Models.QuesLstReq",
+        "Type": "WaslaApp.Data.Models.profile.QuesLstReq",
         "IsRequired": true
       }
     ],
@@ -289,7 +289,7 @@
     "Parameters": [
       {
         "Name": "lst",
-        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.InvoiceReq, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.PackagesAndServices.InvoiceReq, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -331,7 +331,7 @@
     "Parameters": [
       {
         "Name": "lst",
-        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.ClientServiceCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.PackagesAndServices.ClientServiceCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -347,7 +347,7 @@
     "Parameters": [
       {
         "Name": "profile",
-        "Type": "WaslaApp.Data.Models.ClientProfileCast",
+        "Type": "WaslaApp.Data.Models.profile.ClientProfileCast",
         "IsRequired": true
       }
     ],

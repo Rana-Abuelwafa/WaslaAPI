@@ -724,7 +724,7 @@ namespace WaslaApp.Data
                             start_dateStr=PKG.start_date.ToString(),
                             is_recommend = PKG.is_recommend,
                             package_code = PKG.package_code,
-                            isSelected=false,
+                            isSelected= false,
                             service_code = Service.service_code,
                             //features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= PKG.package_id }).ToList()
                         }
@@ -751,7 +751,7 @@ namespace WaslaApp.Data
                     start_dateStr = s.start_date.ToString(),
                     is_recommend = s.is_recommend,
                     package_code = s.package_code,
-                    isSelected = s.isSelected,
+                    isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
                     features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
                 }).ToList();
                 return fullEntries.GroupBy(grp => new
@@ -1087,12 +1087,12 @@ namespace WaslaApp.Data
         }
 
 
-        public async Task<ClientService> CheckServiceSelected(int productId, string clientId)
+        public async Task<ClientService> CheckServiceSelected(int productId, int package_id, string clientId)
         {
 
             try
             {
-                var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.productId == productId).SingleOrDefaultAsync();
+                var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.package_id == (package_id == 0 ? wr.package_id : package_id) &&  wr.productId == productId).SingleOrDefaultAsync();
                 if (result == null)
                 {
                     return new ClientService();
@@ -1124,8 +1124,8 @@ namespace WaslaApp.Data
                       product_desc = s.product_desc,
                       active = s.active,
                       children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
-                      clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId, clientId).Result.id,
-                      isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, clientId).Result.id > 0 ? true : false)
+                      clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId,0, clientId).Result.id,
+                      isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, 0,clientId).Result.id > 0 ? true : false)
                   })
                 .ToList();
         }

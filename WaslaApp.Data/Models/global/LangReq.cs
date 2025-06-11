@@ -10,5 +10,6 @@ namespace WaslaApp.Data.Models.global
     {
         public string? lang { get; set; }
         public string? curr_code { get; set; }
+        public string? client_id { get; set; }
     }
 }

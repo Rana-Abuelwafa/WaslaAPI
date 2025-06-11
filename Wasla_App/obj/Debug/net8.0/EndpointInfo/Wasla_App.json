@@ -938,6 +938,10 @@
           "curr_code": {
             "type": "string",
             "nullable": true
+          },
+          "client_id": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
