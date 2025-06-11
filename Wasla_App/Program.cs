@@ -9,6 +9,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using Wasla_App.services;
+using Wasla_App.Services;
 using WaslaApp.Data;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
@@ -80,7 +81,7 @@ builder.Services.AddScoped<WaslaDAO>();
 builder.Services.AddScoped<MailSettingDao>();
 builder.Services.AddScoped<IWaslaService, WaslaService>();
 builder.Services.AddScoped<CustomViewRendererService>();
-
+builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddAuthentication()
     .AddJwtBearer(options =>
 {

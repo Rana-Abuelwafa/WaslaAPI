@@ -1,6 +1,8 @@
 ﻿using WaslaApp.Data;
 using WaslaApp.Data.Entities;
-using WaslaApp.Data.Models;
+using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.services
 {
@@ -119,9 +121,14 @@ namespace Wasla_App.services
             return _waslaDao.GetPricingPkgFeatures(req);
         }
 
-        public Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req)
+        public Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req)
         {
             return _waslaDao.GetPricingPackages(req);
+        }
+
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email)
+        {
+            return _waslaDao.MakeClientInvoiceForPackages(lst,client_id,client_name,client_email);
         }
     }
 }

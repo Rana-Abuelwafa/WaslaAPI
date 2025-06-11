@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Entities;
 
-namespace WaslaApp.Data.Models
+namespace WaslaApp.Data.Models.PackagesAndServices
 {
-    public class HtmlInvoice
+    public class HtmlInvoice 
     {
         public string? user {  get; set; }
         public string? contact { get; set; }
@@ -17,6 +17,6 @@ namespace WaslaApp.Data.Models
         public string? SubTtotal { get; set; }
         public string? Discount { get; set; }
         public string? Total { get; set; }
-        public List<Service> services { get; set; }
+        public List<InvoiceReq> services { get; set; }
     }
 }

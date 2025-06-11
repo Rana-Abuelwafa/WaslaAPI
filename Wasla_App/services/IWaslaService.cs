@@ -1,5 +1,7 @@
 ﻿using WaslaApp.Data.Entities;
-using WaslaApp.Data.Models;
+using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.services
 {
@@ -26,7 +28,8 @@ namespace Wasla_App.services
         #endregion
 
         #region "packages & services"
-        public Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req);
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email);
+        public Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req);
         public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst);
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
         public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req);

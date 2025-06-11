@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Wasla_App.services;
 using WaslaApp.Data.Entities;
-using WaslaApp.Data.Models;
+using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {

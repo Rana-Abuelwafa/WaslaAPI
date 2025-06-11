@@ -20,4 +20,6 @@ public partial class Service
     public bool? leaf { get; set; }
 
     public decimal? price { get; set; }
+
+    public string? service_code { get; set; }
 }

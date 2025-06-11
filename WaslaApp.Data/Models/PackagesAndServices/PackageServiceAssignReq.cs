@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WaslaApp.Data.Models
+namespace WaslaApp.Data.Models.PackagesAndServices
 {
     public  class PackageServiceAssignReq
     {

@@ -713,7 +713,7 @@
         }
       }
     },
-    "/api/WaslaClient/SendInvoiceEmail": {
+    "/api/WaslaClient/MakeClientInvoiceForPackages": {
       "post": {
         "tags": [
           "WaslaClient"
@@ -722,17 +722,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LangReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/InvoiceReq"
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LangReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/InvoiceReq"
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LangReq"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/InvoiceReq"
+                }
               }
             }
           }
@@ -853,8 +862,68 @@
             "format": "int32",
             "nullable": true
           },
+          "invoice_id": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
           "isSelected": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceReq": {
+        "type": "object",
+        "properties": {
+          "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "curr_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "discount_amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_sale_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "service_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "service_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -943,8 +1012,12 @@
             "type": "integer",
             "format": "int32"
           },
-          "service_name": {
+          "package_code": {
             "type": "string",
+            "nullable": true
+          },
+          "is_recommend": {
+            "type": "boolean",
             "nullable": true
           }
         },
@@ -1119,6 +1192,10 @@
           "price": {
             "type": "number",
             "format": "double",
+            "nullable": true
+          },
+          "service_code": {
+            "type": "string",
             "nullable": true
           }
         },

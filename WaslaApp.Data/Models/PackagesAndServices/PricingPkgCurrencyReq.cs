@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WaslaApp.Data.Models
+namespace WaslaApp.Data.Models.PackagesAndServices
 {
-    public class LangReq
+    public class PricingPkgCurrencyReq
     {
-        public string? lang { get; set; }
         public string? curr_code { get; set; }
+        public int package_id { get; set; }
+        public bool? active { get; set; }
     }
 }

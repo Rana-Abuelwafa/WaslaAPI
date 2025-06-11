@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wasla_App.services;
 using WaslaApp.Data;
-using WaslaApp.Data.Models;
+using WaslaApp.Data.Models.global;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Wasla_App.Controllers

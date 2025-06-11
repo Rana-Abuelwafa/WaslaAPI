@@ -8,7 +8,10 @@ namespace Mails_App
 {
     public class UtilsCls
     {
-        //this type config is static in code, 1 = confirmation mail , 2 = otp verify
+        //this type config is static in code,
+        //1 = confirmation mail ,
+        //2 = otp verify
+        //3 = invoice mail
         
         public static string GetMailSubjectByLang(string lang,int type)
         {
@@ -33,6 +36,17 @@ namespace Mails_App
                     return "Waslaa - Verify Your Email";
                 else if (lang == "de")
                     return "Waslaa - Bestätigen Sie Ihre E-Mail";
+                else return "";
+            }
+            else if (type == 3)
+            {
+                //mean invoice
+                if (lang == "ar")
+                    return "   فاتوره - وصلة";
+                else if (lang == "en")
+                    return "Waslaa - Packages' Invoice";
+                else if (lang == "de")
+                    return "Waslaa - Packages' Invoice";
                 else return "";
             }
             else return "";

@@ -26,6 +26,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<ClientService> ClientServices { get; set; }
 
+    public virtual DbSet<InvoiceMain> InvoiceMains { get; set; }
+
     public virtual DbSet<MailTemp> MailTemps { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
@@ -103,6 +105,21 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.client_id).HasColumnType("character varying");
         });
 
+        modelBuilder.Entity<InvoiceMain>(entity =>
+        {
+            entity.HasKey(e => e.invoice_id).HasName("InvoiceMain_pkey");
+
+            entity.ToTable("InvoiceMain");
+
+            entity.Property(e => e.client_email).HasMaxLength(50);
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.client_name).HasMaxLength(100);
+            entity.Property(e => e.curr_code).HasMaxLength(20);
+            entity.Property(e => e.invoice_code).HasMaxLength(50);
+            entity.Property(e => e.invoice_code_auto).HasMaxLength(20);
+            entity.Property(e => e.invoice_date).HasColumnType("timestamp without time zone");
+        });
+
         modelBuilder.Entity<MailTemp>(entity =>
         {
             entity.HasKey(e => e.id).HasName("MailTemps_pkey");
@@ -131,6 +148,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
             entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
             entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.package_code).HasMaxLength(20);
             entity.Property(e => e.package_desc).HasMaxLength(100);
             entity.Property(e => e.package_name).HasMaxLength(50);
             entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
@@ -182,6 +200,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.leaf).HasDefaultValue(true);
             entity.Property(e => e.price).HasDefaultValueSql("0");
+            entity.Property(e => e.service_code).HasMaxLength(20);
         });
 
         OnModelCreatingPartial(modelBuilder);

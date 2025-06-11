@@ -281,6 +281,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "MakeClientInvoiceForPackages",
+    "RelativePath": "api/WaslaClient/MakeClientInvoiceForPackages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lst",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.InvoiceReq, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "saveClientBrand",
     "RelativePath": "api/WaslaClient/saveClientBrand",
     "HttpMethod": "POST",
@@ -364,22 +380,6 @@
       {
         "Name": "lst",
         "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.RegistrationAnswer, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
-    "Method": "SendInvoiceEmail",
-    "RelativePath": "api/WaslaClient/SendInvoiceEmail",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "req",
-        "Type": "WaslaApp.Data.Models.LangReq",
         "IsRequired": true
       }
     ],

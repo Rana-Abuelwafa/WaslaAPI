@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Entities;
 
-namespace WaslaApp.Data.Models
+namespace WaslaApp.Data.Models.profile
 {
     public class ClientProfileCast : ClientProfile
     {

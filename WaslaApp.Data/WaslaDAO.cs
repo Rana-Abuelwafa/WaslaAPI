@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
-using WaslaApp.Data.Models;
+using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.profile;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace WaslaApp.Data
@@ -445,7 +447,131 @@ namespace WaslaApp.Data
 
 
         #region "packages &services"
-        public async Task<List<PricingPackage>> GetPricingPackages(PricingPackageReq req)
+
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
+        {
+            InvoiceResponse response;
+            int count = 0;
+            decimal maxId = 0;
+            decimal servicemaxId = 0;
+            //concatenate each package code together + date now to make unique and readable code
+            string invCode = string.Join("-", lst.Select(e => e.package_code == null ? "00" : e.package_code)) + "-" + DateTime.Now.ToString("yyyyMMdd");
+
+            //first save in InvoiceMain (make invoice)
+            InvoiceMain main = new InvoiceMain
+            {
+                invoice_id = 0,
+                client_id = client_id,
+                client_email = client_email,
+                active = true,
+                client_name = client_name,
+                invoice_date = DateTime.Now,
+                curr_code = lst.FirstOrDefault().curr_code,
+                dicount = lst.Sum(s => s.discount_amount),
+                total_price = lst.Sum(s => s.package_sale_price),
+                invoice_code = invCode
+
+            };
+            try
+            {
+              
+                if (_db.InvoiceMains.Count() > 0)
+                {
+                    //check duplicate validation
+                    var result = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.active == main.active && wr.invoice_code == main.invoice_code && wr.invoice_date == main.invoice_date).SingleOrDefault();
+                    if (result != null)
+                    {
+                        return new InvoiceResponse { success = false, errors = "duplicate data" };
+                    }
+
+                    maxId = _db.InvoiceMains.Max(d => d.invoice_id);
+
+
+
+                }
+                main.invoice_id = maxId + 1;
+                main.invoice_code_auto = "INV" + main.invoice_id;
+                _db.InvoiceMains.Add(main);
+                _db.SaveChanges();
+
+                
+                response = new InvoiceResponse { success = true, idOut = main.invoice_id };
+            }
+            catch (Exception ex) {
+                response = new InvoiceResponse { errors = ex.Message, success = false, idOut = 0 };
+            }
+            // if invoice main sucess continue to save packages details
+            if (response.success) {
+                //second save Client services List
+                foreach (InvoiceReq row in lst)
+                {
+
+                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut };
+                        if (_db.ClientServices.Count() > 0)
+                        {
+                            //check duplicate validation
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id).SingleOrDefault();
+                            if (result != null)
+                            {
+                                return new InvoiceResponse { success = false, errors = "duplicate data" };
+                            }
+
+                        servicemaxId = _db.ClientServices.Max(d => d.id);
+
+
+                        }
+                        service.id = servicemaxId + 1;
+                        _db.ClientServices.Add(service);
+                        _db.SaveChanges();
+                   
+                    count++;
+                }
+
+
+                if (count == lst.Count)
+                {
+                    //start send invoice mail
+
+                    response = new InvoiceResponse
+                    { 
+                        errors = null, 
+                        success = true ,
+                        invoice = new HtmlInvoice
+                        {
+                            Discount="0",
+                            services=lst,
+                            InvoiceNo= main.invoice_code,
+                            IssuedDate=main.invoice_date?.ToString("yyyy-MM-dd"),
+                            Total=main.total_price.ToString(),
+                            SubTtotal = main.total_price.ToString(),
+                            user=client_name
+
+                        }
+
+                    };
+                }
+                else
+                {
+                    response = new InvoiceResponse { errors = "Error in saving data Check Admin", success = false };
+                }
+            }
+            return response;
+        }
+        //get all invoices
+        public async Task<List<InvoiceMain>> GetInvoices()
+        {
+
+            try
+            {
+                return await _db.InvoiceMains.ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req)
         {
 
             try
@@ -459,7 +585,7 @@ namespace WaslaApp.Data
                        _db.Services,
                         PKG => new { PKG.service_id , PKG.lang_code},
                         Service => new { service_id = Service.productId, Service.lang_code },
-                       (PKG, Service) => new PricingPackage
+                       (PKG, Service) => new PricingPackageWithService
                        {
                            service_id = PKG.service_id,
                            curr_code = PKG.curr_code,
@@ -477,6 +603,9 @@ namespace WaslaApp.Data
                            order = PKG.order,
                            package_details = PKG.package_details,
                            service_name = Service.productName,
+                           service_code=Service.service_code,
+                           is_recommend=PKG.is_recommend,
+                           package_code=PKG.package_code
                          
                        }
                    ).ToListAsync();
@@ -593,6 +722,10 @@ namespace WaslaApp.Data
                             package_details= PKG.package_details,
                             service_name= Service.productName,
                             start_dateStr=PKG.start_date.ToString(),
+                            is_recommend = PKG.is_recommend,
+                            package_code = PKG.package_code,
+                            isSelected=false,
+                            service_code = Service.service_code,
                             //features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= PKG.package_id }).ToList()
                         }
                     ).ToListAsync();
@@ -616,7 +749,10 @@ namespace WaslaApp.Data
                     package_details = s.package_details,
                     service_name = s.service_name,
                     start_dateStr = s.start_date.ToString(),
-                    features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
+                    is_recommend = s.is_recommend,
+                    package_code = s.package_code,
+                    isSelected = s.isSelected,
+                    features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
                 }).ToList();
                 return fullEntries.GroupBy(grp => new
                 {
@@ -853,7 +989,7 @@ namespace WaslaApp.Data
         }
 
 
-        //save Client's services List
+        //save Client's services List (used to save services's packages selected by user)
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
         {
             int count = 0;
@@ -904,7 +1040,7 @@ namespace WaslaApp.Data
 
                 if (count == lst.Count)
                 {
-                    //send mail with invoice
+                   
                     response = new ResponseCls { errors = null, success = true };
                 }
                 else
@@ -993,6 +1129,9 @@ namespace WaslaApp.Data
                   })
                 .ToList();
         }
+       
+        
+        
         #endregion "packages &services"
 
     }
