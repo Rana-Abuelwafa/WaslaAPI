@@ -15,6 +15,7 @@ using Wasla_App.Services;
 using WaslaApp.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
@@ -99,6 +100,57 @@ namespace Wasla_App.Controllers
 
 
         #region "Profile"
+        [HttpPost("RemoveInvoice")]
+        public IActionResult RemoveInvoice(InvRemoveReq req)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(_waslaService.RemoveInvoice(req, clientId));
+        }
+
+        [HttpPost("CheckoutInvoice")]
+        public IActionResult CheckoutInvoice(CheckoutReq req)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(_waslaService.CheckoutInvoice(req, clientId));
+        }
+
+        [HttpPost("GetInvoicesByClient")]
+        public async Task<IActionResult> GetInvoicesByClient()
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+
+            return Ok(await _waslaService.GetInvoicesByClient(clientId));
+        }
+        [HttpPost("ValidateClientCopoun")]
+        public async Task<IActionResult> ValidateClientCopoun(ClientCopounReq req)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(await _waslaService.ValidateClientCopoun(req, clientId));
+        }
 
         [HttpPost("GetPaymentMethods")]
         public async Task<IActionResult> GetPaymentMethods()
@@ -218,6 +270,7 @@ namespace Wasla_App.Controllers
         #endregion
 
         #region "packages & services"
+
      
 
         [HttpPost("SaveClientServices")]

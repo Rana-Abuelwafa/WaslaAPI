@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WaslaApp.Data.Models.PackagesAndServices
+namespace WaslaApp.Data.Models.invoices
 {
     public class InvoiceReq
     {

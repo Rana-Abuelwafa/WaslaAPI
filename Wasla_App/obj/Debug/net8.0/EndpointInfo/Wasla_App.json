@@ -500,6 +500,111 @@
         }
       }
     },
+    "/api/WaslaClient/RemoveInvoice": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvRemoveReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvRemoveReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvRemoveReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/CheckoutInvoice": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetInvoicesByClient": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/ValidateClientCopoun": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientCopounReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientCopounReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientCopounReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/GetPaymentMethods": {
       "post": {
         "tags": [
@@ -756,6 +861,36 @@
   },
   "components": {
     "schemas": {
+      "CheckoutReq": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "grand_total_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "copoun_id": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "invoice_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "copoun_discount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ClientBrand": {
         "type": "object",
         "properties": {
@@ -776,6 +911,16 @@
             "nullable": true
           },
           "brand_desc": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientCopounReq": {
+        "type": "object",
+        "properties": {
+          "copoun": {
             "type": "string",
             "nullable": true
           }
@@ -834,6 +979,10 @@
             "format": "date",
             "nullable": true
           },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
           "client_birthdayStr": {
             "type": "string",
             "nullable": true
@@ -864,11 +1013,32 @@
           },
           "invoice_id": {
             "type": "number",
-            "format": "double",
+            "format": "double"
+          },
+          "service_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_name": {
+            "type": "string",
             "nullable": true
           },
           "isSelected": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvRemoveReq": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "invoice_id": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

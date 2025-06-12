@@ -14,4 +14,12 @@ public partial class ClientCopoun
     public DateOnly? end_date { get; set; }
 
     public string? client_id { get; set; }
+
+    public decimal? discount_value { get; set; }
+
+    /// <summary>
+    /// 1 = percentage
+    /// 2 = amount
+    /// </summary>
+    public short? discount_type { get; set; }
 }

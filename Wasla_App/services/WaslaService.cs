@@ -1,6 +1,7 @@
 ﻿using WaslaApp.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
@@ -129,6 +130,26 @@ namespace Wasla_App.services
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email)
         {
             return _waslaDao.MakeClientInvoiceForPackages(lst,client_id,client_name,client_email);
+        }
+
+        public Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req, string client_id)
+        {
+            return _waslaDao.ValidateClientCopoun(req,client_id);
+        }
+
+        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id)
+        {
+            return _waslaDao.GetInvoicesByClient(client_id);
+        }
+
+        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
+        {
+            return _waslaDao.CheckoutInvoice(req,client_id);
+        }
+
+        public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id)
+        {
+            return _waslaDao.RemoveInvoice(req,client_id);
         }
     }
 }

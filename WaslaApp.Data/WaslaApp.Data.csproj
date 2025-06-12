@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Mails_App\Mails_App.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\admin\" />
+  </ItemGroup>
+
 </Project>

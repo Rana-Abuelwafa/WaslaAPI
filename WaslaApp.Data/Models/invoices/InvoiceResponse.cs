@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Models.global;
 
-namespace WaslaApp.Data.Models.PackagesAndServices
+namespace WaslaApp.Data.Models.invoices
 {
     public class InvoiceResponse : ResponseCls
     {

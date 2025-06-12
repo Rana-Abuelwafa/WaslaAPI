@@ -23,7 +23,20 @@ public partial class InvoiceMain
 
     public decimal? total_price { get; set; }
 
-    public decimal? dicount { get; set; }
+    public decimal? discount { get; set; }
 
     public string? curr_code { get; set; }
+
+    /// <summary>
+    /// 1 = pending
+    /// 2=checkout
+    /// 3=confirmed
+    /// </summary>
+    public short? status { get; set; }
+
+    public decimal? grand_total_price { get; set; }
+
+    public decimal? copoun_id { get; set; }
+
+    public int? tax_id { get; set; }
 }

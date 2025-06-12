@@ -16,6 +16,8 @@ public partial class wasla_client_dbContext : DbContext
     {
     }
 
+    public virtual DbSet<ApplyTax> ApplyTaxes { get; set; }
+
     public virtual DbSet<ClientBrand> ClientBrands { get; set; }
 
     public virtual DbSet<ClientCopoun> ClientCopouns { get; set; }
@@ -50,6 +52,17 @@ public partial class wasla_client_dbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ApplyTax>(entity =>
+        {
+            entity.HasKey(e => e.tax_id).HasName("ApplyTax_pkey");
+
+            entity.ToTable("ApplyTax");
+
+            entity.Property(e => e.tax_id).ValueGeneratedNever();
+            entity.Property(e => e.tax_code).HasMaxLength(20);
+            entity.Property(e => e.tax_name).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<ClientBrand>(entity =>
         {
             entity.HasKey(e => e.id).HasName("ClientBrand_pkey");
@@ -67,6 +80,7 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.copoun).HasMaxLength(50);
+            entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
         });
 
         modelBuilder.Entity<ClientImage>(entity =>
@@ -103,6 +117,8 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.id).HasDefaultValueSql("nextval('\"ClientServices_id_seq\"'::regclass)");
             entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.package_name).HasMaxLength(50);
+            entity.Property(e => e.service_name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<InvoiceMain>(entity =>
@@ -114,10 +130,14 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.client_email).HasMaxLength(50);
             entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.client_name).HasMaxLength(100);
+            entity.Property(e => e.copoun_id).HasDefaultValueSql("0");
             entity.Property(e => e.curr_code).HasMaxLength(20);
+            entity.Property(e => e.grand_total_price).HasDefaultValueSql("0");
             entity.Property(e => e.invoice_code).HasMaxLength(50);
             entity.Property(e => e.invoice_code_auto).HasMaxLength(20);
             entity.Property(e => e.invoice_date).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.status).HasComment("1 = pending\n2=checkout\n3=confirmed");
+            entity.Property(e => e.tax_id).HasDefaultValue(0);
         });
 
         modelBuilder.Entity<MailTemp>(entity =>

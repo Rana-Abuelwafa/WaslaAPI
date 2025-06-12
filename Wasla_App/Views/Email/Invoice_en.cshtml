@@ -1,5 +1,6 @@
 ﻿@using WaslaApp.Data.Models
 @using WaslaApp.Data.Models.PackagesAndServices
+@using WaslaApp.Data.Models.invoices
 @model HtmlInvoice
 @{
     Layout = null;  // explicitly no layout page here!
@@ -118,10 +119,10 @@
     <section class="bg"
              style="background: #f7f7f7;width: 800px;margin: 10px auto;background-image: url('https://waslaa.de:4431/images/gletter.png');background-position: center;background-repeat: no-repeat;background-size: contain;">
         <header style="display: flex; align-content: center;height: 70px;padding:20px;">
-            <div style="flex: 2;">
+            <div style="flex: 1;">
                 <h2 style="font-size: 40px;margin: 0;color:#00bc82">Invoice</h2>
             </div>
-            <div style="flex: 1;">
+            <div>
                 <img src="https://waslaa.de:4431/images/logo.png" alt="logo" style="width: 150px;height: auto;" />
             </div>
         </header>
@@ -166,7 +167,7 @@
                     var service = services[i];
                     <tr>
                         <td style="padding:10px 0;">@i</td>
-                        <td style="padding:10px 0;">@service.package_name</td>
+                        <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
                         <td style="padding:10px 0;">@service.package_sale_price</td>
                     </tr>
                 }
@@ -176,11 +177,11 @@
                     <th>Sub Total</th>
                     <td style="padding:10px 0;">@SubTtotal</td>
                 </tr>
-                @* <tr>
+                <tr>
                     <th colspan="2"></th>
                     <th>Discount</th>
                     <td>@Discount</td>
-                </tr> *@
+                </tr>
                 <tr>
                     <th colspan="2"></th>
                     <th>Total</th>

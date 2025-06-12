@@ -28,4 +28,6 @@ public partial class ClientProfile
     public string? twitter_link { get; set; }
 
     public DateOnly? client_birthday { get; set; }
+
+    public string? address { get; set; }
 }

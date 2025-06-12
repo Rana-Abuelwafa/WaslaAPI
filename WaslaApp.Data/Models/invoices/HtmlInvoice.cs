@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Entities;
 
-namespace WaslaApp.Data.Models.PackagesAndServices
+namespace WaslaApp.Data.Models.invoices
 {
     public class HtmlInvoice 
     {
@@ -14,9 +14,9 @@ namespace WaslaApp.Data.Models.PackagesAndServices
         public string? address { get; set; }
         public string? InvoiceNo { get; set; }
         public string? IssuedDate { get; set; }
-        public string? SubTtotal { get; set; }
-        public string? Discount { get; set; }
-        public string? Total { get; set; }
+        public decimal? SubTtotal { get; set; }
+        public decimal? Discount { get; set; }
+        public decimal? Total { get; set; }
         public List<InvoiceReq> services { get; set; }
     }
 }

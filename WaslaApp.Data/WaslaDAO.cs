@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 using static System.Net.Mime.MediaTypeNames;
@@ -121,7 +122,7 @@ namespace WaslaApp.Data
 
                     //generate & save coupon
                     string copounAuto = HelperCls.getCopounText();
-                    ClientCopoun copoun = new ClientCopoun { client_id = client_id, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2025-06-06") };
+                    ClientCopoun copoun = new ClientCopoun { client_id = client_id,discount_value=50,discount_type=1, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2026-06-06") };
                     if (saveClientCopoun(copoun).success)
                     {
                         //send confirmation mail
@@ -130,7 +131,7 @@ namespace WaslaApp.Data
                             string fileName = "ConfirmMail_" + lang + ".html";
                             string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
                             htmlBody = htmlBody.Replace("@user", FullName);
-                            htmlBody = htmlBody.Replace("@EXPIRY_DATE", "06/06/2025");
+                            htmlBody = htmlBody.Replace("@EXPIRY_DATE", copoun.end_date.ToString());
                             string htmlRes = htmlBody.Replace("@copoun", copounAuto);
                             MailData Mail_Data = new MailData { EmailToId = email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 1), EmailBody = htmlRes };
                             _mailSettingDao.SendMail(Mail_Data);
@@ -253,6 +254,144 @@ namespace WaslaApp.Data
         #endregion
         #region "Profile"
 
+        //get all invoices by client_id
+        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id)
+        {
+            try
+            {
+                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id)
+                                .Join(
+                                        _db.InvoiceMains.Where(wr => wr.active == true),
+                                        SERV => new { SERV.invoice_id, SERV.client_id },
+                                        INV => new { INV.invoice_id, INV.client_id },
+                                        (SERV, INV) => new { SERV, INV }
+                                     )
+                                 .Join(
+                                    _db.PricingPackages,
+                                    combinedEntry => combinedEntry.SERV.package_id,
+                                    PKG => PKG.package_id,
+                                    (combinedEntry, PKG) => new ClientInvoiceResponse
+                                    {
+                                        invoice_id = combinedEntry.INV.invoice_id,
+                                        curr_code = combinedEntry.INV.curr_code,
+                                        discount = combinedEntry.INV.discount,
+                                        total_price = combinedEntry.INV.total_price,
+                                        grand_total_price = combinedEntry.INV.grand_total_price,
+                                        service_id = combinedEntry.SERV.productId,
+                                        package_id = combinedEntry.SERV.package_id,
+                                        service_name = combinedEntry.SERV.service_name,
+                                        package_name = combinedEntry.SERV.package_name,
+                                        package_price = PKG.package_price,
+                                        package_sale_price = PKG.package_sale_price,  
+                                        package_desc = PKG.package_desc,
+                                        package_details = PKG.package_details,
+                                        invoice_code = combinedEntry.INV.invoice_code,
+                                        invoice_code_auto = combinedEntry.INV.invoice_code_auto,
+                                        status = combinedEntry.INV.status
+
+                                    }
+                                   ).ToListAsync();
+                var result = fullEntries.GroupBy(grp => new
+                {
+                    grp.invoice_id,
+                    grp.curr_code,
+                    grp.discount,
+                    grp.grand_total_price,
+                    grp.invoice_code,
+                    grp.invoice_code_auto,
+                    grp.status,
+                    grp.total_price
+                }).Select(s => new ClientInvoiceGrp
+                {
+                    invoice_id = s.Key.invoice_id,
+                    invoice_code_auto = s.Key.invoice_code_auto,
+                    status = s.Key.status,
+                    invoice_code = s.Key.invoice_code,
+                    curr_code = s.Key.curr_code,
+                    discount = s.Key.discount,
+                    grand_total_price = s.Key.grand_total_price,
+                    total_price = s.Key.total_price,
+                    pkgs = fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+                }).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id)
+        {
+            try
+            {
+                InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+                if (inv != null)
+                {
+                    inv.active = false;
+                    _db.Update(inv);
+                    _db.SaveChanges();
+                    return new ResponseCls { success = true, errors = null };
+                }
+                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseCls { success = false, errors = ex.Message };
+            }
+
+        }
+        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
+        {
+            try
+            {
+                InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+                if (inv != null)
+                {
+                    inv.status = 2;
+                    inv.copoun_id = req.copoun_id;
+                    inv.grand_total_price = inv.grand_total_price - (inv.total_price * req.copoun_discount / 100);
+                    _db.Update(inv);
+                    _db.SaveChanges();
+                    return new ResponseCls { success = true, errors = null };
+                }
+                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseCls { success = false, errors = ex.Message };
+            }
+
+        }
+        //validate client discount coupon
+        public async Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req,string client_id)
+        {
+
+            try
+            {
+                return await _db.ClientCopouns.Where(wr => wr.client_id == client_id && wr.copoun == req.copoun)
+                                              .Select(s => new ClientCopounCast
+                                              {
+                                                  client_id = s.client_id,
+                                                  copoun=req.copoun,
+                                                  discount_type=s.discount_type,
+                                                  discount_value=s.discount_value,
+                                                  end_date=s.end_date,
+                                                  end_dateStr=s.end_date.ToString(),
+                                                  id=s.id,
+                                                  start_date=s.start_date,
+                                                  start_dateStr=s.start_date.ToString(),
+                                                  valid=true
+                                              }
+                                                     )
+                                              .ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         //get payment methods list
         public async Task<List<PaymentMethod>> GetPaymentMethods()
         {
@@ -301,7 +440,8 @@ namespace WaslaApp.Data
                     pay_code = slc.pay_code,
                     phone_number = slc.phone_number,
                     profile_id = slc.profile_id,
-                    twitter_link = slc.twitter_link
+                    twitter_link = slc.twitter_link,
+                    address=slc.address
                 }).ToListAsync();
 
             }
@@ -447,7 +587,7 @@ namespace WaslaApp.Data
 
 
         #region "packages &services"
-
+        
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
         {
             InvoiceResponse response;
@@ -467,9 +607,13 @@ namespace WaslaApp.Data
                 client_name = client_name,
                 invoice_date = DateTime.Now,
                 curr_code = lst.FirstOrDefault().curr_code,
-                dicount = lst.Sum(s => s.discount_amount),
-                total_price = lst.Sum(s => s.package_sale_price),
-                invoice_code = invCode
+                discount = lst.Sum(s => s.discount_amount),
+                total_price = lst.Sum(s => s.package_price),
+                invoice_code = invCode,
+                copoun_id=0,
+                grand_total_price = lst.Sum(s => s.package_price) - lst.Sum(s => s.discount_amount),
+                status=1, //mean pending
+                tax_id=0
 
             };
             try
@@ -506,7 +650,7 @@ namespace WaslaApp.Data
                 foreach (InvoiceReq row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut };
+                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut,service_name=row.service_name,package_name=row.package_name };
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
@@ -530,6 +674,10 @@ namespace WaslaApp.Data
 
                 if (count == lst.Count)
                 {
+                    //get client profile data
+
+                    ClientProfileCast profile =  GetClientProfiles(client_id).Result.SingleOrDefault();
+                    
                     //start send invoice mail
 
                     response = new InvoiceResponse
@@ -538,12 +686,14 @@ namespace WaslaApp.Data
                         success = true ,
                         invoice = new HtmlInvoice
                         {
-                            Discount="0",
+                            address= profile !=null? profile.address : "",
+                            contact= profile != null ?  profile.phone_number : "",
+                            Discount =main.discount,
                             services=lst,
                             InvoiceNo= main.invoice_code,
                             IssuedDate=main.invoice_date?.ToString("yyyy-MM-dd"),
-                            Total=main.total_price.ToString(),
-                            SubTtotal = main.total_price.ToString(),
+                            Total=main.total_price - main.discount,
+                            SubTtotal = main.total_price,
                             user=client_name
 
                         }
@@ -557,20 +707,9 @@ namespace WaslaApp.Data
             }
             return response;
         }
-        //get all invoices
-        public async Task<List<InvoiceMain>> GetInvoices()
-        {
-
-            try
-            {
-                return await _db.InvoiceMains.ToListAsync();
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+       
+        
+       
         public async Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req)
         {
 
@@ -751,7 +890,8 @@ namespace WaslaApp.Data
                     start_dateStr = s.start_date.ToString(),
                     is_recommend = s.is_recommend,
                     package_code = s.package_code,
-                    isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
+                    isSelected=false,
+                   // isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
                     features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
                 }).ToList();
                 return fullEntries.GroupBy(grp => new
@@ -1000,7 +1140,7 @@ namespace WaslaApp.Data
                 foreach (ClientServiceCast row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id };
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,package_name=row.package_name,service_name=row.service_name,invoice_id=0 };
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)

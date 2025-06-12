@@ -193,6 +193,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "CheckoutInvoice",
+    "RelativePath": "api/WaslaClient/CheckoutInvoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.invoices.CheckoutReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "GetClientBrands",
     "RelativePath": "api/WaslaClient/GetClientBrands",
     "HttpMethod": "POST",
@@ -205,6 +221,16 @@
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "GetClientProfiles",
     "RelativePath": "api/WaslaClient/GetClientProfiles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetInvoicesByClient",
+    "RelativePath": "api/WaslaClient/GetInvoicesByClient",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -289,7 +315,23 @@
     "Parameters": [
       {
         "Name": "lst",
-        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.PackagesAndServices.InvoiceReq, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Models.invoices.InvoiceReq, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "RemoveInvoice",
+    "RelativePath": "api/WaslaClient/RemoveInvoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.invoices.InvRemoveReq",
         "IsRequired": true
       }
     ],
@@ -380,6 +422,22 @@
       {
         "Name": "lst",
         "Type": "System.Collections.Generic.List\u00601[[WaslaApp.Data.Entities.RegistrationAnswer, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "ValidateClientCopoun",
+    "RelativePath": "api/WaslaClient/ValidateClientCopoun",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.profile.ClientCopounReq",
         "IsRequired": true
       }
     ],

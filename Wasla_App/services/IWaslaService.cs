@@ -1,5 +1,6 @@
 ﻿using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
@@ -18,6 +19,10 @@ namespace Wasla_App.services
         #endregion
 
         #region "profile"
+        public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id);
+        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id);
+        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id);
+        public Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req,string client_id);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);
         public Task<List<ClientProfileCast>> GetClientProfiles(string clientId);
@@ -28,6 +33,7 @@ namespace Wasla_App.services
         #endregion
 
         #region "packages & services"
+       
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email);
         public Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req);
         public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst);
