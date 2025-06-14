@@ -1031,6 +1031,14 @@
           "invoice_id": {
             "type": "number",
             "format": "double"
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "service_id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

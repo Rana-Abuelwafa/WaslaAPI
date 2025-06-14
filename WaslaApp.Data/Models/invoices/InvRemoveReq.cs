@@ -11,5 +11,8 @@ namespace WaslaApp.Data.Models.invoices
         public bool? active { get; set; }
  
         public decimal invoice_id { get; set; }
+
+        public int package_id { get; set; }
+        public int service_id { get; set; }
     }
 }

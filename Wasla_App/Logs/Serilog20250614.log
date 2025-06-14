@@ -160,3 +160,1373 @@ WHERE c.client_id = @__client_id_0
 [2025-06-14 14:51:45.657 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1544.221ms
 [2025-06-14 14:51:45.658 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
 [2025-06-14 14:51:45.658 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1559.6048ms
+[2025-06-14 18:10:00.090 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-14 18:10:00.554 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-14 18:10:00.915 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-14 18:10:00.916 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-14 18:10:01.300 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-14 18:10:01.300 +03:00  INF]  Hosting environment: Development
+[2025-06-14 18:10:01.300 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-14 18:10:02.455 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-14 18:10:03.019 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-14 18:10:03.030 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-14 18:10:03.043 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 11.1773ms
+[2025-06-14 18:10:03.049 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 613.1588ms
+[2025-06-14 18:10:03.193 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 173.9036ms
+[2025-06-14 18:10:03.288 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-14 18:10:03.353 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 65.1673ms
+[2025-06-14 18:13:41.958 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:13:42.002 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:13:42.006 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 47.7208ms
+[2025-06-14 18:13:42.012 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 48
+[2025-06-14 18:13:42.013 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:13:42.233 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:13:42.296 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:13:45.407 +03:00  INF]  Executed DbCommand (130ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:13:45.580 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.691 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.692 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.693 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.694 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.695 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:45.716 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:13:45.798 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 3495.2268ms
+[2025-06-14 18:13:45.799 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:13:45.823 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 3810.892ms
+[2025-06-14 18:13:47.561 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:13:47.562 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:13:47.564 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 3.4313ms
+[2025-06-14 18:13:47.570 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 48
+[2025-06-14 18:13:47.571 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:13:47.578 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:13:47.579 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:13:47.622 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:13:47.624 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:47.626 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:13:47.628 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:13:47.629 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 48.9603ms
+[2025-06-14 18:13:47.629 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:13:47.629 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 59.101ms
+[2025-06-14 18:15:21.302 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:15:21.302 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:15:21.302 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.8752ms
+[2025-06-14 18:15:21.306 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:15:21.306 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:15:21.311 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:15:21.311 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:15:21.451 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:15:21.454 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:21.456 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:21.457 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:15:21.457 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 146.2002ms
+[2025-06-14 18:15:21.457 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:15:21.458 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 151.5909ms
+[2025-06-14 18:15:56.319 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:15:56.320 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:15:56.320 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.4739ms
+[2025-06-14 18:15:56.384 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:15:56.384 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:15:56.385 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:15:56.385 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:15:56.881 +03:00  INF]  Executed DbCommand (492ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:15:56.883 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.885 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.886 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.888 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.889 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.891 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:15:56.891 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:15:56.891 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 506.5962ms
+[2025-06-14 18:15:56.892 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:15:56.892 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 507.8012ms
+[2025-06-14 18:16:02.422 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:16:02.422 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:16:02.423 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.41ms
+[2025-06-14 18:16:02.440 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:16:02.440 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:16:02.441 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:16:02.441 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:16:02.446 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:16:02.447 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:16:02.452 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:16:02.453 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:16:02.453 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 12.0352ms
+[2025-06-14 18:16:02.453 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:16:02.453 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 13.1426ms
+[2025-06-14 18:17:06.220 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - null null
+[2025-06-14 18:17:06.220 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:17:06.220 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 204 null null 0.9797ms
+[2025-06-14 18:17:06.223 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - application/json 227
+[2025-06-14 18:17:06.224 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:17:06.430 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-06-14 18:17:06.440 +03:00  INF]  Route matched with {action = "MakeClientInvoiceForPackages", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MakeClientInvoiceForPackages(System.Collections.Generic.List`1[WaslaApp.Data.Models.invoices.InvoiceReq]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:17:06.540 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__taxId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT a.tax_id, a.tax_amount, a.tax_code, a.tax_name, a.tax_sign
+FROM "ApplyTax" AS a
+WHERE a.tax_id = @__taxId_0
+LIMIT 2
+[2025-06-14 18:17:06.636 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "InvoiceMain" AS i
+[2025-06-14 18:17:06.665 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__client_id_0='?', @__main_active_1='?' (DbType = Boolean), @__main_invoice_code_2='?', @__main_invoice_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__client_id_0 AND i.active = @__main_active_1 AND i.invoice_code = @__main_invoice_code_2 AND i.invoice_date = @__main_invoice_date_3
+LIMIT 2
+[2025-06-14 18:17:06.688 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(i.invoice_id)
+FROM "InvoiceMain" AS i
+[2025-06-14 18:17:07.037 +03:00  INF]  Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Boolean), @p2='?', @p3='?', @p4='?', @p5='?' (DbType = Decimal), @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?', @p10='?', @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int16), @p13='?' (DbType = Int32), @p14='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "InvoiceMain" (invoice_id, active, client_email, client_id, client_name, copoun_id, curr_code, discount, grand_total_price, invoice_code, invoice_code_auto, invoice_date, status, tax_id, total_price)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+[2025-06-14 18:17:07.061 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientServices" AS c
+[2025-06-14 18:17:07.075 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__service_client_id_0='?', @__service_productId_1='?' (DbType = Int32), @__service_package_id_2='?' (DbType = Int32), @__service_invoice_id_3='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.invoice_id, c.package_id, c."productId"
+FROM "ClientServices" AS c
+WHERE c.client_id = @__service_client_id_0 AND c."productId" = @__service_productId_1 AND c.package_id = @__service_package_id_2 AND c.invoice_id = @__service_invoice_id_3
+LIMIT 2
+[2025-06-14 18:17:07.083 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientServices" AS c
+[2025-06-14 18:17:07.133 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?', @p2='?' (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientServices" (id, client_id, invoice_id, package_id, "productId")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2025-06-14 18:17:07.172 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:17:15.002 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2025-06-14 18:17:15.007 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App) in 8566.5648ms
+[2025-06-14 18:17:15.007 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-06-14 18:17:15.014 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 200 null application/json; charset=utf-8 8790.4328ms
+[2025-06-14 18:17:17.096 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:17:17.096 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:17:17.097 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 1.108ms
+[2025-06-14 18:17:17.115 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:17:17.116 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:17:17.116 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:17:17.116 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:17:17.172 +03:00  INF]  Executed DbCommand (24ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:17:17.173 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:17:17.174 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:17:17.175 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:17:17.175 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 59.2611ms
+[2025-06-14 18:17:17.175 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:17:17.175 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 60.0663ms
+[2025-06-14 18:20:40.661 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:20:40.661 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:40.661 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:20:40.661 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:40.661 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.2827ms
+[2025-06-14 18:20:40.661 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 1.0157ms
+[2025-06-14 18:20:40.671 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:20:40.671 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:40.684 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:20:40.684 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:40.700 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:20:40.700 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:20:40.706 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:20:40.706 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:20:40.837 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:20:40.837 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:20:40.838 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:20:40.838 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:20:40.847 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 140.9651ms
+[2025-06-14 18:20:40.847 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:20:40.847 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 164.0119ms
+[2025-06-14 18:20:40.848 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 141.5958ms
+[2025-06-14 18:20:40.848 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:20:40.848 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 176.9267ms
+[2025-06-14 18:20:49.064 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProduct_Tree - null null
+[2025-06-14 18:20:49.064 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:49.064 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProduct_Tree - 204 null null 0.3698ms
+[2025-06-14 18:20:49.067 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProduct_Tree - application/json 2
+[2025-06-14 18:20:49.068 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:49.071 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App)'
+[2025-06-14 18:20:49.078 +03:00  INF]  Route matched with {action = "GetProduct_Tree", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProduct_Tree(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:20:49.111 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."productId", s.active, s.lang_code, s.leaf, s.price, s."productName", s."productParent", s.product_desc, s.service_code
+FROM "Services" AS s
+WHERE s.active AND s.lang_code IS NULL
+[2025-06-14 18:20:49.115 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.Service_Tree, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:20:49.117 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App) in 38.4794ms
+[2025-06-14 18:20:49.117 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App)'
+[2025-06-14 18:20:49.117 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProduct_Tree - 200 null application/json; charset=utf-8 49.9113ms
+[2025-06-14 18:20:51.475 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:20:51.476 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:51.476 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.3444ms
+[2025-06-14 18:20:51.481 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:20:51.481 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:20:51.481 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:20:51.491 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:20:51.556 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:20:51.577 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:20:51.592 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 100.9669ms
+[2025-06-14 18:20:51.592 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:20:51.592 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 111.3432ms
+[2025-06-14 18:23:05.167 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:23:05.167 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:23:05.167 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.5248ms
+[2025-06-14 18:23:05.176 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:23:05.179 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:23:05.179 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:23:05.180 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:23:05.192 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:23:05.197 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.200 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.201 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.202 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.203 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.204 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:05.205 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:23:05.205 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 25.3917ms
+[2025-06-14 18:23:05.205 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:23:05.206 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 33.761ms
+[2025-06-14 18:23:07.010 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:23:07.010 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:23:07.010 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:23:07.011 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:23:07.030 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:23:07.032 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:07.033 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:23:07.033 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:23:07.034 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 23.6839ms
+[2025-06-14 18:23:07.034 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:23:07.035 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 25.0967ms
+[2025-06-14 18:23:13.849 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - null null
+[2025-06-14 18:23:13.849 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:23:13.849 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 204 null null 0.4998ms
+[2025-06-14 18:23:13.852 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - application/json 229
+[2025-06-14 18:23:13.852 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:23:13.853 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-06-14 18:23:13.853 +03:00  INF]  Route matched with {action = "MakeClientInvoiceForPackages", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MakeClientInvoiceForPackages(System.Collections.Generic.List`1[WaslaApp.Data.Models.invoices.InvoiceReq]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:23:30.316 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__taxId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT a.tax_id, a.tax_amount, a.tax_code, a.tax_name, a.tax_sign
+FROM "ApplyTax" AS a
+WHERE a.tax_id = @__taxId_0
+LIMIT 2
+[2025-06-14 18:24:06.952 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "InvoiceMain" AS i
+[2025-06-14 18:24:06.958 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__client_id_0='?', @__main_active_1='?' (DbType = Boolean), @__main_invoice_code_2='?', @__main_invoice_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__client_id_0 AND i.active = @__main_active_1 AND i.invoice_code = @__main_invoice_code_2 AND i.invoice_date = @__main_invoice_date_3
+LIMIT 2
+[2025-06-14 18:24:06.962 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(i.invoice_id)
+FROM "InvoiceMain" AS i
+[2025-06-14 18:24:06.969 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Boolean), @p2='?', @p3='?', @p4='?', @p5='?' (DbType = Decimal), @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?', @p10='?', @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int16), @p13='?' (DbType = Int32), @p14='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "InvoiceMain" (invoice_id, active, client_email, client_id, client_name, copoun_id, curr_code, discount, grand_total_price, invoice_code, invoice_code_auto, invoice_date, status, tax_id, total_price)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+[2025-06-14 18:24:06.970 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientServices" AS c
+[2025-06-14 18:24:06.974 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__service_client_id_0='?', @__service_productId_1='?' (DbType = Int32), @__service_package_id_2='?' (DbType = Int32), @__service_invoice_id_3='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.invoice_id, c.package_id, c."productId"
+FROM "ClientServices" AS c
+WHERE c.client_id = @__service_client_id_0 AND c."productId" = @__service_productId_1 AND c.package_id = @__service_package_id_2 AND c.invoice_id = @__service_invoice_id_3
+LIMIT 2
+[2025-06-14 18:24:06.975 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientServices" AS c
+[2025-06-14 18:24:06.978 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?', @p2='?' (DbType = Decimal), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientServices" (id, client_id, invoice_id, package_id, "productId")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2025-06-14 18:24:06.981 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:24:12.984 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2025-06-14 18:24:12.984 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App) in 59131.0847ms
+[2025-06-14 18:24:12.984 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-06-14 18:24:12.984 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 200 null application/json; charset=utf-8 59133.0162ms
+[2025-06-14 18:24:15.226 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-06-14 18:24:15.227 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:15.227 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.4307ms
+[2025-06-14 18:24:15.257 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-06-14 18:24:15.257 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:15.258 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:24:15.258 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-06-14 18:24:15.269 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.service_id, p.curr_code, p.lang_code, p.package_sale_price, p.active, p.discount_amount, p.discount_type, COALESCE(p.start_date::text, '') AS "end_dateStr", p.package_price, p.package_name, p.package_id, p.package_desc, p.start_date, p.end_date, p."order", p.package_details, s0."productName" AS service_name, p.is_recommend, p.package_code, FALSE AS "isSelected", s0.service_code
+FROM "PricingPackages" AS p
+INNER JOIN (
+    SELECT s."productId", s."productName", s.service_code
+    FROM "Services" AS s
+    WHERE s.lang_code = @__req_lang_0
+) AS s0 ON p.service_id = s0."productId"
+WHERE p.lang_code = @__req_lang_0 AND lower(p.curr_code) = @__ToLower_1 AND p.active
+[2025-06-14 18:24:15.271 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:24:15.272 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_active_0='?' (DbType = Boolean), @__req_package_id_1='?' (DbType = Int32), @__req_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.feature_desc, p.feature_name, p.lang_code, p.package_id
+FROM "PricingPkgFeatures" AS p
+WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.lang_code = @__req_lang_code_2
+[2025-06-14 18:24:15.273 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:24:15.273 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 15.5228ms
+[2025-06-14 18:24:15.273 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-06-14 18:24:15.274 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 null application/json; charset=utf-8 16.5376ms
+[2025-06-14 18:24:18.958 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:24:18.958 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:24:18.958 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:18.958 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:18.958 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.3055ms
+[2025-06-14 18:24:18.958 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.3056ms
+[2025-06-14 18:24:18.961 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:24:18.961 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:24:18.961 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:18.961 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:18.962 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:24:18.962 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:24:18.962 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:24:18.962 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:24:18.969 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:24:18.969 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 7.4214ms
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 7.4023ms
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:24:18.969 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:24:18.970 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 8.7551ms
+[2025-06-14 18:24:18.970 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 8.8017ms
+[2025-06-14 18:24:23.756 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProduct_Tree - null null
+[2025-06-14 18:24:23.756 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:23.757 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProduct_Tree - 204 null null 0.6073ms
+[2025-06-14 18:24:23.760 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProduct_Tree - application/json 2
+[2025-06-14 18:24:23.760 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:23.760 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App)'
+[2025-06-14 18:24:23.761 +03:00  INF]  Route matched with {action = "GetProduct_Tree", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProduct_Tree(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:24:23.773 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."productId", s.active, s.lang_code, s.leaf, s.price, s."productName", s."productParent", s.product_desc, s.service_code
+FROM "Services" AS s
+WHERE s.active AND s.lang_code IS NULL
+[2025-06-14 18:24:23.775 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.Service_Tree, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:24:23.775 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App) in 14.7491ms
+[2025-06-14 18:24:23.775 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProduct_Tree (Wasla_App)'
+[2025-06-14 18:24:23.776 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProduct_Tree - 200 null application/json; charset=utf-8 15.9531ms
+[2025-06-14 18:24:27.862 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:24:27.862 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:27.862 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2942ms
+[2025-06-14 18:24:27.864 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:24:27.864 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:24:27.865 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:24:27.865 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:24:27.875 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:24:27.876 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:24:27.876 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 11.4136ms
+[2025-06-14 18:24:27.877 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:24:27.877 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 13.0914ms
+[2025-06-14 18:25:08.631 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - null null
+[2025-06-14 18:25:08.631 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:08.632 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - 204 null null 0.6704ms
+[2025-06-14 18:25:08.632 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:25:08.632 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:08.632 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2106ms
+[2025-06-14 18:25:08.636 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:25:08.636 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:08.637 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:25:08.637 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:25:08.651 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - application/json 45
+[2025-06-14 18:25:08.651 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:08.658 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:25:08.659 +03:00  INF]  Executed DbCommand (19ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:25:08.662 +03:00  INF]  Route matched with {action = "RemoveInvoice", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoveInvoice(WaslaApp.Data.Models.invoices.InvRemoveReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:25:08.662 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:25:08.665 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 27.525ms
+[2025-06-14 18:25:08.665 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:25:08.665 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 28.9963ms
+[2025-06-14 18:25:08.706 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__client_id_0='?', @__req_invoice_id_1='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__client_id_0 AND i.invoice_id = @__req_invoice_id_1
+LIMIT 2
+[2025-06-14 18:25:08.722 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p14='?' (DbType = Decimal), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?', @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?', @p9='?', @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int16), @p12='?' (DbType = Int32), @p13='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "InvoiceMain" SET active = @p0, client_email = @p1, client_id = @p2, client_name = @p3, copoun_id = @p4, curr_code = @p5, discount = @p6, grand_total_price = @p7, invoice_code = @p8, invoice_code_auto = @p9, invoice_date = @p10, status = @p11, tax_id = @p12, total_price = @p13
+WHERE invoice_id = @p14;
+[2025-06-14 18:25:08.723 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-06-14 18:25:08.725 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App) in 62.8314ms
+[2025-06-14 18:25:08.725 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:25:08.725 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - 200 null application/json; charset=utf-8 73.9814ms
+[2025-06-14 18:25:56.452 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:25:56.453 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:56.453 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.8136ms
+[2025-06-14 18:25:56.453 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:25:56.454 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:56.454 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.5745ms
+[2025-06-14 18:25:56.573 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:25:56.573 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:56.574 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:25:56.574 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:25:56.611 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:25:56.611 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:25:56.612 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:25:56.612 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:25:56.712 +03:00  INF]  Executed DbCommand (134ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:25:56.712 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:25:56.712 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 138.2761ms
+[2025-06-14 18:25:56.712 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:25:56.713 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 139.375ms
+[2025-06-14 18:25:56.713 +03:00  INF]  Executed DbCommand (99ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:25:56.713 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:25:56.713 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 100.7678ms
+[2025-06-14 18:25:56.713 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:25:56.713 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 102.7729ms
+[2025-06-14 18:26:06.811 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:26:06.811 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:26:06.811 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.8735ms
+[2025-06-14 18:26:06.816 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:26:06.816 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:26:06.819 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:26:06.820 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:26:06.827 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:26:06.828 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:26:06.829 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 9.7336ms
+[2025-06-14 18:26:06.829 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:26:06.830 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 14.1354ms
+[2025-06-14 18:29:30.114 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:29:30.114 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:29:30.114 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.5152ms
+[2025-06-14 18:29:30.118 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:29:30.118 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:29:30.120 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:29:30.120 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:29:32.120 +03:00  INF]  Executed DbCommand (14ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:29:32.121 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:29:32.121 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 2001.0136ms
+[2025-06-14 18:29:32.121 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:29:32.121 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 2003.1366ms
+[2025-06-14 18:29:32.607 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:29:32.607 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:29:32.607 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2693ms
+[2025-06-14 18:29:32.609 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:29:32.609 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:29:32.610 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:29:32.610 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:29:34.529 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:29:34.529 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:29:34.529 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1919.359ms
+[2025-06-14 18:29:34.529 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:29:34.529 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1920.408ms
+[2025-06-14 18:30:02.080 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:30:02.081 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:02.081 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.3324ms
+[2025-06-14 18:30:02.081 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:30:02.081 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:02.081 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.4611ms
+[2025-06-14 18:30:02.110 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:30:02.110 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:02.111 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:30:02.111 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:30:02.118 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:30:02.118 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:30:02.119 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 7.4067ms
+[2025-06-14 18:30:02.119 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:30:02.119 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 8.6757ms
+[2025-06-14 18:30:02.119 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:30:02.119 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:02.119 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:30:02.119 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:30:02.175 +03:00  INF]  Executed DbCommand (54ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:30:02.175 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:30:02.176 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 56.1531ms
+[2025-06-14 18:30:02.176 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:30:02.176 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 57.0627ms
+[2025-06-14 18:30:10.839 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:30:10.839 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:10.839 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2156ms
+[2025-06-14 18:30:10.867 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:30:10.867 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:10.868 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:30:10.868 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:30:13.717 +03:00  INF]  Executed DbCommand (22ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:30:13.727 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:30:13.727 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 2858.2265ms
+[2025-06-14 18:30:13.727 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:30:13.727 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 2860.3382ms
+[2025-06-14 18:30:22.279 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - null null
+[2025-06-14 18:30:22.279 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:22.279 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - 204 null null 0.3916ms
+[2025-06-14 18:30:22.310 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:30:22.313 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - application/json 45
+[2025-06-14 18:30:22.313 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:22.313 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:22.313 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 3.3143ms
+[2025-06-14 18:30:22.313 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:30:22.313 +03:00  INF]  Route matched with {action = "RemoveInvoice", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoveInvoice(WaslaApp.Data.Models.invoices.InvRemoveReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:30:22.316 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:30:22.316 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:30:22.317 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:30:22.317 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:30:22.319 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__client_id_0='?', @__req_invoice_id_1='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__client_id_0 AND i.invoice_id = @__req_invoice_id_1
+LIMIT 2
+[2025-06-14 18:30:26.090 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p14='?' (DbType = Decimal), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?', @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?', @p9='?', @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int16), @p12='?' (DbType = Int32), @p13='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "InvoiceMain" SET active = @p0, client_email = @p1, client_id = @p2, client_name = @p3, copoun_id = @p4, curr_code = @p5, discount = @p6, grand_total_price = @p7, invoice_code = @p8, invoice_code_auto = @p9, invoice_date = @p10, status = @p11, tax_id = @p12, total_price = @p13
+WHERE invoice_id = @p14;
+[2025-06-14 18:30:26.090 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-06-14 18:30:26.090 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App) in 3776.7944ms
+[2025-06-14 18:30:26.090 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:30:26.091 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - 200 null application/json; charset=utf-8 3777.9834ms
+[2025-06-14 18:30:26.223 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:30:26.227 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:30:26.230 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 3913.4174ms
+[2025-06-14 18:30:26.230 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:30:26.231 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 3914.8299ms
+[2025-06-14 18:40:08.034 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-14 18:40:08.491 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-14 18:40:08.785 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-14 18:40:08.786 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-14 18:40:09.313 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-14 18:40:09.314 +03:00  INF]  Hosting environment: Development
+[2025-06-14 18:40:09.314 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-14 18:40:10.363 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-14 18:40:10.916 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 570.841ms
+[2025-06-14 18:40:14.133 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-14 18:40:14.141 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 7.3775ms
+[2025-06-14 18:40:14.197 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-14 18:40:14.274 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.3753ms
+[2025-06-14 18:40:15.435 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-14 18:40:15.485 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.5709ms
+[2025-06-14 18:40:32.077 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:40:32.086 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:32.089 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 12.4933ms
+[2025-06-14 18:40:32.095 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:40:32.096 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:32.120 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:40:32.121 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:32.122 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 1.4996ms
+[2025-06-14 18:40:32.134 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:40:32.134 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:32.706 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:40:32.713 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:40:32.754 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:40:32.755 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:40:37.282 +03:00  INF]  Executed DbCommand (1,026ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:40:37.282 +03:00  INF]  Executed DbCommand (1,052ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:40:37.369 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:40:37.410 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:40:37.502 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 4739.8144ms
+[2025-06-14 18:40:37.502 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 4740.0091ms
+[2025-06-14 18:40:37.503 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:40:37.503 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:40:37.516 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 5422.7821ms
+[2025-06-14 18:40:37.516 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 5381.7729ms
+[2025-06-14 18:40:53.024 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:40:53.033 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:53.033 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 9.2757ms
+[2025-06-14 18:40:53.053 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:40:53.054 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:40:53.072 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:40:53.081 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:40:55.710 +03:00  INF]  Executed DbCommand (190ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:40:55.758 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:40:55.797 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 2716.4428ms
+[2025-06-14 18:40:55.798 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:40:55.798 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 2756.2072ms
+[2025-06-14 18:41:02.914 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - null null
+[2025-06-14 18:41:02.914 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:02.914 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - 204 null null 0.8604ms
+[2025-06-14 18:41:02.915 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:41:02.915 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:02.915 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2737ms
+[2025-06-14 18:41:02.924 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - application/json 45
+[2025-06-14 18:41:02.924 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:02.925 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:41:02.925 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:41:02.926 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:02.927 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:41:02.928 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:41:04.212 +03:00  INF]  Route matched with {action = "RemoveInvoice", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoveInvoice(WaslaApp.Data.Models.invoices.InvRemoveReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:41:04.224 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:41:04.225 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:41:04.226 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1297.9549ms
+[2025-06-14 18:41:04.226 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:41:04.226 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1301.4916ms
+[2025-06-14 18:41:04.444 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__req_invoice_id_0='?' (DbType = Decimal), @__req_package_id_1='?' (DbType = Int32), @__req_service_id_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.invoice_id, c.package_id, c."productId"
+FROM "ClientServices" AS c
+WHERE c.invoice_id = @__req_invoice_id_0 AND c.package_id = @__req_package_id_1 AND c."productId" = @__req_service_id_2
+LIMIT 2
+[2025-06-14 18:41:04.448 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-06-14 18:41:04.451 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App) in 238.141ms
+[2025-06-14 18:41:04.451 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:41:04.451 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - 200 null application/json; charset=utf-8 1527.066ms
+[2025-06-14 18:41:28.418 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:41:28.419 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:28.419 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.8233ms
+[2025-06-14 18:41:28.419 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:41:28.419 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:28.419 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.1791ms
+[2025-06-14 18:41:28.427 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:41:28.427 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:28.427 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:41:28.427 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:28.427 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:41:28.427 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:41:28.427 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:41:28.428 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:41:28.447 +03:00  INF]  Executed DbCommand (17ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:41:28.448 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:41:28.448 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 20.6116ms
+[2025-06-14 18:41:28.448 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:41:28.448 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 21.9535ms
+[2025-06-14 18:41:28.462 +03:00  INF]  Executed DbCommand (11ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:41:28.484 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:41:28.485 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 56.9305ms
+[2025-06-14 18:41:28.485 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:41:28.485 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 57.9267ms
+[2025-06-14 18:41:33.658 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:41:33.658 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:33.659 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 13.0119ms
+[2025-06-14 18:41:33.665 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:41:33.665 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:41:33.666 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:41:33.666 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:41:35.192 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:41:35.193 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:41:35.193 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1527.4747ms
+[2025-06-14 18:41:35.193 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:41:35.194 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1528.8862ms
+[2025-06-14 18:42:24.606 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:42:24.607 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:42:24.607 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.6436ms
+[2025-06-14 18:42:24.613 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:42:24.613 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:42:24.615 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - null null
+[2025-06-14 18:42:24.615 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:42:24.615 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - 204 null null 1.3805ms
+[2025-06-14 18:42:24.617 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:42:24.618 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:42:26.148 +03:00  INF]  Executed DbCommand (16ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:42:26.149 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:42:26.149 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1531.4526ms
+[2025-06-14 18:42:26.149 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:42:26.149 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1536.3518ms
+[2025-06-14 18:42:26.150 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - application/json 45
+[2025-06-14 18:42:26.150 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:42:26.150 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:42:26.150 +03:00  INF]  Route matched with {action = "RemoveInvoice", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoveInvoice(WaslaApp.Data.Models.invoices.InvRemoveReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:42:29.232 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_invoice_id_0='?' (DbType = Decimal), @__req_package_id_1='?' (DbType = Int32), @__req_service_id_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.invoice_id, c.package_id, c."productId"
+FROM "ClientServices" AS c
+WHERE c.invoice_id = @__req_invoice_id_0 AND c.package_id = @__req_package_id_1 AND c."productId" = @__req_service_id_2
+LIMIT 2
+[2025-06-14 18:42:29.232 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-06-14 18:42:29.232 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App) in 3081.8735ms
+[2025-06-14 18:42:29.232 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:42:29.232 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - 200 null application/json; charset=utf-8 3082.8335ms
+[2025-06-14 18:43:02.133 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:43:02.133 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:43:02.133 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.4601ms
+[2025-06-14 18:43:02.137 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:43:02.137 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:43:02.138 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:43:02.138 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:43:02.148 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:43:02.148 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:43:02.149 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 10.372ms
+[2025-06-14 18:43:02.149 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:43:02.149 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 12.1667ms
+[2025-06-14 18:43:02.208 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:43:02.208 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:43:02.208 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.4069ms
+[2025-06-14 18:43:02.211 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:43:02.211 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:43:02.211 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:43:02.211 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:43:02.216 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:43:02.219 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:43:02.219 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 7.5702ms
+[2025-06-14 18:43:02.219 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:43:02.220 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 8.6666ms
+[2025-06-14 18:45:06.386 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-06-14 18:45:09.254 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-06-14 18:45:09.501 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-06-14 18:45:09.502 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-06-14 18:45:09.862 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-06-14 18:45:09.862 +03:00  INF]  Hosting environment: Development
+[2025-06-14 18:45:09.862 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-06-14 18:45:10.361 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-06-14 18:45:10.865 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 507.2243ms
+[2025-06-14 18:45:10.907 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-06-14 18:45:10.933 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 25.6644ms
+[2025-06-14 18:45:10.935 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-06-14 18:45:11.059 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 123.9129ms
+[2025-06-14 18:45:11.155 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-06-14 18:45:11.222 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 67.489ms
+[2025-06-14 18:45:38.344 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:45:38.365 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:45:38.384 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 39.747ms
+[2025-06-14 18:45:38.395 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:45:38.396 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:45:38.814 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:45:38.936 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:45:46.631 +03:00  INF]  Executed DbCommand (142ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:45:46.734 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:45:46.826 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 7840.6171ms
+[2025-06-14 18:45:46.827 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:45:46.843 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 8448.1359ms
+[2025-06-14 18:47:06.415 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:47:06.416 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:47:06.417 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 2.1583ms
+[2025-06-14 18:47:06.417 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:47:06.418 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:47:06.418 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.3846ms
+[2025-06-14 18:47:06.521 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:47:06.521 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:47:06.521 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:47:06.521 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:47:06.546 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:47:06.546 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:47:06.553 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:47:06.553 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:47:06.628 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:47:06.629 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:47:06.631 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 78.2797ms
+[2025-06-14 18:47:06.631 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:47:06.632 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 111.1317ms
+[2025-06-14 18:47:06.669 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:47:06.673 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:47:06.682 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 129.1775ms
+[2025-06-14 18:47:06.682 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:47:06.683 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 161.6291ms
+[2025-06-14 18:48:37.502 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:48:37.502 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:37.503 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 1.2186ms
+[2025-06-14 18:48:37.503 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:48:37.503 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:37.503 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.3631ms
+[2025-06-14 18:48:37.576 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:48:37.576 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:37.627 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:48:37.628 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:48:37.635 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:37.635 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:48:37.635 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:48:37.635 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:48:37.771 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:48:37.771 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:48:37.772 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 136.6712ms
+[2025-06-14 18:48:37.772 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:48:37.772 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 196.3088ms
+[2025-06-14 18:48:37.782 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:48:37.782 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:48:37.782 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 146.9606ms
+[2025-06-14 18:48:37.783 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:48:37.783 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 156.0112ms
+[2025-06-14 18:48:47.344 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:48:47.344 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:47.344 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.8294ms
+[2025-06-14 18:48:47.359 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:48:47.359 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:48:47.360 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:48:47.360 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:48:49.126 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:48:49.128 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:48:49.128 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 1768.5838ms
+[2025-06-14 18:48:49.129 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:48:49.129 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 1770.5301ms
+[2025-06-14 18:49:01.699 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - null null
+[2025-06-14 18:49:01.699 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:01.699 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/RemoveInvoice - 204 null null 0.4424ms
+[2025-06-14 18:49:01.700 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:49:01.700 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:01.700 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.2637ms
+[2025-06-14 18:49:01.710 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:49:01.712 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - application/json 60
+[2025-06-14 18:49:01.712 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:01.712 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:01.712 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:49:01.712 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:49:01.712 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:49:03.843 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__client_id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT i0.invoice_id, i0.curr_code, i0.discount, i0.total_price, i0.grand_total_price, c."productId" AS service_id, c.package_id, s."productName" AS service_name, p.package_name, p.package_price, p.package_sale_price, p.package_desc, p.package_details, i0.invoice_code, i0.invoice_code_auto, i0.status, a.tax_amount, a.tax_code
+FROM "ClientServices" AS c
+INNER JOIN (
+    SELECT i.invoice_id, i.client_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.status, i.tax_id, i.total_price
+    FROM "InvoiceMain" AS i
+    WHERE i.active AND i.status = 1
+) AS i0 ON c.invoice_id = i0.invoice_id AND (c.client_id = i0.client_id OR (c.client_id IS NULL AND i0.client_id IS NULL))
+INNER JOIN "ApplyTax" AS a ON i0.tax_id = a.tax_id
+INNER JOIN "PricingPackages" AS p ON c.package_id = p.package_id
+INNER JOIN "Services" AS s ON c."productId" = s."productId"
+WHERE c.client_id = @__client_id_0
+[2025-06-14 18:49:03.844 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:49:03.844 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 2132.0377ms
+[2025-06-14 18:49:03.845 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-06-14 18:49:03.845 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 null application/json; charset=utf-8 2134.804ms
+[2025-06-14 18:49:03.857 +03:00  INF]  Route matched with {action = "RemoveInvoice", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoveInvoice(WaslaApp.Data.Models.invoices.InvRemoveReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:49:13.844 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__req_invoice_id_0='?' (DbType = Decimal), @__req_package_id_1='?' (DbType = Int32), @__req_service_id_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.invoice_id, c.package_id, c."productId"
+FROM "ClientServices" AS c
+WHERE c.invoice_id = @__req_invoice_id_0 AND c.package_id = @__req_package_id_1 AND c."productId" = @__req_service_id_2
+LIMIT 2
+[2025-06-14 18:49:14.128 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "ClientServices"
+WHERE id = @p0;
+[2025-06-14 18:49:14.207 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_invoice_id_0='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientServices" AS c
+WHERE c.invoice_id = @__req_invoice_id_0
+[2025-06-14 18:49:16.467 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__client_id_0='?', @__req_invoice_id_1='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__client_id_0 AND i.invoice_id = @__req_invoice_id_1
+LIMIT 2
+[2025-06-14 18:49:16.677 +03:00  INF]  Executed DbCommand (23ms) [Parameters=[@p14='?' (DbType = Decimal), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Decimal), @p5='?', @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal), @p8='?', @p9='?', @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int16), @p12='?' (DbType = Int32), @p13='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "InvoiceMain" SET active = @p0, client_email = @p1, client_id = @p2, client_name = @p3, copoun_id = @p4, curr_code = @p5, discount = @p6, grand_total_price = @p7, invoice_code = @p8, invoice_code_auto = @p9, invoice_date = @p10, status = @p11, tax_id = @p12, total_price = @p13
+WHERE invoice_id = @p14;
+[2025-06-14 18:49:16.681 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-06-14 18:49:16.684 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App) in 12827.172ms
+[2025-06-14 18:49:16.684 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.RemoveInvoice (Wasla_App)'
+[2025-06-14 18:49:16.684 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/RemoveInvoice - 200 null application/json; charset=utf-8 14975.0914ms
+[2025-06-14 18:49:46.297 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:49:46.301 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:46.302 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 5.3314ms
+[2025-06-14 18:49:46.311 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:49:46.316 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:46.320 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:49:46.320 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:49:46.325 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-06-14 18:49:46.325 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:49:46.325 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 5.0519ms
+[2025-06-14 18:49:46.325 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-06-14 18:49:46.325 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 14.4929ms
+[2025-06-14 18:49:46.435 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:49:46.436 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:46.436 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.3121ms
+[2025-06-14 18:49:46.439 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:49:46.440 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:49:46.440 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:49:46.441 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-06-14 18:49:46.443 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-06-14 18:49:46.445 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-06-14 18:49:46.445 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 4.6507ms
+[2025-06-14 18:49:46.445 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-06-14 18:49:46.446 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 null application/json; charset=utf-8 6.202ms
+[2025-06-14 18:52:21.772 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:52:21.773 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:52:21.783 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.5527ms
+[2025-06-14 18:52:21.792 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:52:21.792 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:52:21.824 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:52:21 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:52:21.862 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:52:21 PM'.
+[2025-06-14 18:52:21.864 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:52:21.877 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:52:21.877 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 401 0 null 85.3582ms
+[2025-06-14 18:54:09.599 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:54:09.599 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:09.599 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.4878ms
+[2025-06-14 18:54:09.600 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:54:09.600 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:09.600 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.2098ms
+[2025-06-14 18:54:09.833 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:54:09.833 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:09.963 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:09 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:54:09.963 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:09 PM'.
+[2025-06-14 18:54:09.964 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:54:09.964 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:54:09.964 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 401 0 null 131.0721ms
+[2025-06-14 18:54:09.964 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:54:09.964 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:10.012 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:09 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:54:10.012 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:09 PM'.
+[2025-06-14 18:54:10.013 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:54:10.013 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:54:10.013 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 401 0 null 48.5041ms
+[2025-06-14 18:54:22.387 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:54:22.388 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:22.389 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 1.5146ms
+[2025-06-14 18:54:22.394 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:54:22.394 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:54:22.406 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:22 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:54:22.407 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:54:22 PM'.
+[2025-06-14 18:54:22.407 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:54:22.407 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:54:22.407 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 401 0 null 12.8206ms
+[2025-06-14 18:55:08.281 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:55:08.281 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:08.282 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.4339ms
+[2025-06-14 18:55:08.282 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:55:08.282 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:08.282 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.3195ms
+[2025-06-14 18:55:08.500 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:55:08.500 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:08.516 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:08 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:55:08.516 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:08 PM'.
+[2025-06-14 18:55:08.516 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:55:08.516 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:55:08.517 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 401 0 null 16.9397ms
+[2025-06-14 18:55:08.517 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:55:08.517 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:08.518 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:08 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:55:08.519 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:08 PM'.
+[2025-06-14 18:55:08.519 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:55:08.519 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:55:08.520 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 401 0 null 2.8366ms
+[2025-06-14 18:55:15.307 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:55:15.307 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:15.308 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 7.1139ms
+[2025-06-14 18:55:15.317 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:55:15.317 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:55:15.365 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:15 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:55:15.366 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:55:15 PM'.
+[2025-06-14 18:55:15.366 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:55:15.366 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:55:15.366 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 401 0 null 49.2127ms
+[2025-06-14 18:56:10.850 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:56:10.850 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:10.850 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.6273ms
+[2025-06-14 18:56:10.866 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:56:10.868 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:10.878 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 1.8553ms
+[2025-06-14 18:56:18.672 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-06-14 18:56:18.672 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:18.672 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 0.3895ms
+[2025-06-14 18:56:18.676 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-06-14 18:56:18.677 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:18.677 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-06-14 18:56:18.677 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 0.2599ms
+[2025-06-14 18:56:18.677 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:18.678 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:18 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:56:18.679 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:18 PM'.
+[2025-06-14 18:56:18.679 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:56:18.679 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:56:18.679 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 401 0 null 3.425ms
+[2025-06-14 18:56:18.689 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-06-14 18:56:18.689 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:18.703 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:18 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:56:18.703 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:18 PM'.
+[2025-06-14 18:56:18.704 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:56:18.704 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:56:18.704 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 401 0 null 14.7919ms
+[2025-06-14 18:56:25.413 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-06-14 18:56:25.413 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:25.413 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.4909ms
+[2025-06-14 18:56:25.422 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 2
+[2025-06-14 18:56:25.422 +03:00  INF]  CORS policy execution successful.
+[2025-06-14 18:56:25.423 +03:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:25 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-06-14 18:56:25.423 +03:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/14/2025 3:45:21 PM', Current time (UTC): '6/14/2025 3:56:25 PM'.
+[2025-06-14 18:56:25.424 +03:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-06-14 18:56:25.424 +03:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-06-14 18:56:25.424 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 401 0 null 2.0763ms

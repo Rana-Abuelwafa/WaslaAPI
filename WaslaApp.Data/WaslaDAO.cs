@@ -342,14 +342,27 @@ namespace WaslaApp.Data
         {
             try
             {
-                InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
-                if (inv != null)
+                ClientService service = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id && wr.package_id == req.package_id && wr.productId == req.service_id).SingleOrDefault();
+                if(service != null)
                 {
-                    inv.active = false;
-                    _db.Update(inv);
+                    _db.Remove(service);
                     _db.SaveChanges();
+                    int count = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id).Count();
+                    if (count == 0)
+                    {
+                        InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+                        if (inv != null)
+                        {
+                            inv.active = false;
+                            _db.Update(inv);
+                            _db.SaveChanges();
+
+                        }
+                    }
                     return new ResponseCls { success = true, errors = null };
                 }
+                
+               
                 return new ResponseCls { success = false, errors = "no Invoice Founded" };
             }
             catch (Exception ex)
