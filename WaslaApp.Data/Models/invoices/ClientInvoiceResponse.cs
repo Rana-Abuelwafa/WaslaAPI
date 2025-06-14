@@ -11,8 +11,9 @@ namespace WaslaApp.Data.Models.invoices
     {
         public decimal invoice_id { get; set; }
 
-       // public decimal? tax_amount { get; set; }
-       // public string? copoun { get; set; }
+         public decimal? tax_amount { get; set; }
+        public string? tax_code { get; set; }
+        // public string? copoun { get; set; }
         //public decimal? copoun_discount { get; set; }
         public decimal? total_price { get; set; }
 
@@ -38,7 +39,7 @@ namespace WaslaApp.Data.Models.invoices
     {
         public decimal invoice_id { get; set; }
         public short? status { get; set; }
-        //public decimal? tax_amount { get; set; }
+        public decimal? tax_amount { get; set; }
         //public string? copoun { get; set; }
         //public decimal? copoun_discount { get; set; }
         public decimal? total_price { get; set; }
@@ -46,7 +47,7 @@ namespace WaslaApp.Data.Models.invoices
 
         public string? invoice_code { get; set; }
         public decimal? discount { get; set; }
-
+        public string? tax_code { get; set; }
         public string? curr_code { get; set; }
         public decimal? grand_total_price { get; set; }
         public List<ClientInvoiceResponse> pkgs { get; set; }

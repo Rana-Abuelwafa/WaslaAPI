@@ -261,33 +261,47 @@ namespace WaslaApp.Data
             {
                 var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id)
                                 .Join(
-                                        _db.InvoiceMains.Where(wr => wr.active == true),
+                                        _db.InvoiceMains.Where(wr => wr.active == true && wr.status ==1),
                                         SERV => new { SERV.invoice_id, SERV.client_id },
                                         INV => new { INV.invoice_id, INV.client_id },
                                         (SERV, INV) => new { SERV, INV }
                                      )
+                                .Join(
+                                     _db.ApplyTaxes,
+                                     SERV_INV => SERV_INV.INV.tax_id,
+                                     TAX => TAX.tax_id,
+                                     (SERV_INV, TAX) => new { SERV_INV, TAX }
+                                    )
                                  .Join(
                                     _db.PricingPackages,
-                                    combinedEntry => combinedEntry.SERV.package_id,
+                                    SERV_PKG => SERV_PKG.SERV_INV.SERV.package_id,
                                     PKG => PKG.package_id,
-                                    (combinedEntry, PKG) => new ClientInvoiceResponse
+                                    (SERV_PKG, PKG) => new { SERV_PKG, PKG }
+                                    )
+                                 .Join(
+                                    _db.Services,
+                                    combinedEntry => combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
+                                    PRODUCT => PRODUCT.productId,
+                                    (combinedEntry, PRODUCT) => new ClientInvoiceResponse
                                     {
-                                        invoice_id = combinedEntry.INV.invoice_id,
-                                        curr_code = combinedEntry.INV.curr_code,
-                                        discount = combinedEntry.INV.discount,
-                                        total_price = combinedEntry.INV.total_price,
-                                        grand_total_price = combinedEntry.INV.grand_total_price,
-                                        service_id = combinedEntry.SERV.productId,
-                                        package_id = combinedEntry.SERV.package_id,
-                                        service_name = combinedEntry.SERV.service_name,
-                                        package_name = combinedEntry.SERV.package_name,
-                                        package_price = PKG.package_price,
-                                        package_sale_price = PKG.package_sale_price,  
-                                        package_desc = PKG.package_desc,
-                                        package_details = PKG.package_details,
-                                        invoice_code = combinedEntry.INV.invoice_code,
-                                        invoice_code_auto = combinedEntry.INV.invoice_code_auto,
-                                        status = combinedEntry.INV.status
+                                        invoice_id = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_id,
+                                        curr_code = combinedEntry.SERV_PKG.SERV_INV.INV.curr_code,
+                                        discount = combinedEntry.SERV_PKG.SERV_INV.INV.discount,
+                                        total_price = combinedEntry.SERV_PKG.SERV_INV.INV.total_price,
+                                        grand_total_price = combinedEntry.SERV_PKG.SERV_INV.INV.grand_total_price,
+                                        service_id = combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
+                                        package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id,
+                                        service_name = PRODUCT.productName,
+                                        package_name = combinedEntry.PKG.package_name,
+                                        package_price = combinedEntry.PKG.package_price,
+                                        package_sale_price = combinedEntry.PKG.package_sale_price,  
+                                        package_desc = combinedEntry.PKG.package_desc,
+                                        package_details = combinedEntry.PKG.package_details,
+                                        invoice_code = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code,
+                                        invoice_code_auto = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code_auto,
+                                        status = combinedEntry.SERV_PKG.SERV_INV.INV.status,
+                                        tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
+                                        tax_code= combinedEntry.SERV_PKG.TAX.tax_code
 
                                     }
                                    ).ToListAsync();
@@ -300,7 +314,9 @@ namespace WaslaApp.Data
                     grp.invoice_code,
                     grp.invoice_code_auto,
                     grp.status,
-                    grp.total_price
+                    grp.total_price,
+                    grp.tax_code,
+                    grp.tax_amount
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -311,6 +327,8 @@ namespace WaslaApp.Data
                     discount = s.Key.discount,
                     grand_total_price = s.Key.grand_total_price,
                     total_price = s.Key.total_price,
+                    tax_amount=s.Key.tax_amount,
+                    tax_code=s.Key.tax_code,
                     pkgs = fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
                 }).ToList();
                 return result;
@@ -349,7 +367,7 @@ namespace WaslaApp.Data
                 {
                     inv.status = 2;
                     inv.copoun_id = req.copoun_id;
-                    inv.grand_total_price = inv.grand_total_price - (inv.total_price * req.copoun_discount / 100);
+                    inv.grand_total_price = inv.grand_total_price - (inv.grand_total_price * req.copoun_discount / 100);
                     _db.Update(inv);
                     _db.SaveChanges();
                     return new ResponseCls { success = true, errors = null };
@@ -588,6 +606,30 @@ namespace WaslaApp.Data
 
         #region "packages &services"
         
+        public async Task<decimal?> CalculatePriceWithTax(int taxId, decimal? price)
+        {
+            decimal? total = 0;
+            try
+            {
+                var taxApply = await _db.ApplyTaxes.Where(wr => wr.tax_id == taxId).SingleOrDefaultAsync();
+                if (taxApply != null)
+                {
+                    if (taxApply.tax_sign.Equals("+"))
+                    {
+                        total = price + (price * taxApply.tax_amount);
+                    }
+                    else
+                    {
+                        total = price - (price * taxApply.tax_amount);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return total;
+        }
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
         {
             InvoiceResponse response;
@@ -598,6 +640,9 @@ namespace WaslaApp.Data
             string invCode = string.Join("-", lst.Select(e => e.package_code == null ? "00" : e.package_code)) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
             //first save in InvoiceMain (make invoice)
+            var totalPrice = lst.Sum(s => s.package_sale_price);
+            //var totalDiscount = lst.Sum(s => s.discount_amount);
+            var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
             InvoiceMain main = new InvoiceMain
             {
                 invoice_id = 0,
@@ -607,13 +652,13 @@ namespace WaslaApp.Data
                 client_name = client_name,
                 invoice_date = DateTime.Now,
                 curr_code = lst.FirstOrDefault().curr_code,
-                discount = lst.Sum(s => s.discount_amount),
-                total_price = lst.Sum(s => s.package_price),
+                discount = 0,
+                total_price = totalPrice,
                 invoice_code = invCode,
                 copoun_id=0,
-                grand_total_price = lst.Sum(s => s.package_price) - lst.Sum(s => s.discount_amount),
+                grand_total_price = TotalPriceAfterTax,
                 status=1, //mean pending
-                tax_id=0
+                tax_id=1
 
             };
             try
@@ -650,7 +695,7 @@ namespace WaslaApp.Data
                 foreach (InvoiceReq row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut,service_name=row.service_name,package_name=row.package_name };
+                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut };
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
@@ -692,7 +737,7 @@ namespace WaslaApp.Data
                             services=lst,
                             InvoiceNo= main.invoice_code,
                             IssuedDate=main.invoice_date?.ToString("yyyy-MM-dd"),
-                            Total=main.total_price - main.discount,
+                            Total=main.total_price,
                             SubTtotal = main.total_price,
                             user=client_name
 
@@ -1140,7 +1185,7 @@ namespace WaslaApp.Data
                 foreach (ClientServiceCast row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,package_name=row.package_name,service_name=row.service_name,invoice_id=0 };
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,invoice_id=0 };
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)
@@ -1263,6 +1308,8 @@ namespace WaslaApp.Data
                       productName = s.productName,
                       product_desc = s.product_desc,
                       active = s.active,
+                      service_code=s.service_code,
+                      price=s.price,
                       children = GetProduct_TreeMain(lst, s.productId, clientId).ToList(),
                       clientServiceId = clientId == "admin" ? 0 : CheckServiceSelected(s.productId,0, clientId).Result.id,
                       isSelected = clientId == "admin" ? false : (CheckServiceSelected(s.productId, 0,clientId).Result.id > 0 ? true : false)

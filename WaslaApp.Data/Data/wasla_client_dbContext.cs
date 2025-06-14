@@ -61,6 +61,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.tax_id).ValueGeneratedNever();
             entity.Property(e => e.tax_code).HasMaxLength(20);
             entity.Property(e => e.tax_name).HasMaxLength(50);
+            entity.Property(e => e.tax_sign).HasColumnType("char");
         });
 
         modelBuilder.Entity<ClientBrand>(entity =>
@@ -117,8 +118,6 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.id).HasDefaultValueSql("nextval('\"ClientServices_id_seq\"'::regclass)");
             entity.Property(e => e.client_id).HasColumnType("character varying");
-            entity.Property(e => e.package_name).HasMaxLength(50);
-            entity.Property(e => e.service_name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<InvoiceMain>(entity =>

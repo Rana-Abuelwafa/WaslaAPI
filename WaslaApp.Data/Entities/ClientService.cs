@@ -14,8 +14,4 @@ public partial class ClientService
     public int? package_id { get; set; }
 
     public decimal invoice_id { get; set; }
-
-    public string? service_name { get; set; }
-
-    public string? package_name { get; set; }
 }

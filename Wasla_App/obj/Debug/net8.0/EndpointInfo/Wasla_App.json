@@ -1015,14 +1015,6 @@
             "type": "number",
             "format": "double"
           },
-          "service_name": {
-            "type": "string",
-            "nullable": true
-          },
-          "package_name": {
-            "type": "string",
-            "nullable": true
-          },
           "isSelected": {
             "type": "boolean"
           }

@@ -12,4 +12,6 @@ public partial class ApplyTax
     public string? tax_name { get; set; }
 
     public decimal? tax_amount { get; set; }
+
+    public char? tax_sign { get; set; }
 }
