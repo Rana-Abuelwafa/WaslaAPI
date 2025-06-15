@@ -1015,6 +1015,10 @@
             "type": "number",
             "format": "double"
           },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
           "isSelected": {
             "type": "boolean"
           }

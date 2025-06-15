@@ -259,7 +259,7 @@ namespace WaslaApp.Data
         {
             try
             {
-                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id)
+                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == true)
                                 .Join(
                                         _db.InvoiceMains.Where(wr => wr.active == true && wr.status ==1),
                                         SERV => new { SERV.invoice_id, SERV.client_id },
@@ -342,12 +342,14 @@ namespace WaslaApp.Data
         {
             try
             {
-                ClientService service = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id && wr.package_id == req.package_id && wr.productId == req.service_id).SingleOrDefault();
+                ClientService service = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id && wr.package_id == req.package_id && wr.productId == req.service_id && wr.active == true).SingleOrDefault();
                 if(service != null)
                 {
-                    _db.Remove(service);
+                   // _db.Remove(service);
+                    service.active = false;
+                    _db.Update(service);
                     _db.SaveChanges();
-                    int count = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id).Count();
+                    int count = _db.ClientServices.Where(wr => wr.invoice_id == req.invoice_id && wr.active == true).Count();
                     if (count == 0)
                     {
                         InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
@@ -627,7 +629,7 @@ namespace WaslaApp.Data
                 var taxApply = await _db.ApplyTaxes.Where(wr => wr.tax_id == taxId).SingleOrDefaultAsync();
                 if (taxApply != null)
                 {
-                    if (taxApply.tax_sign.Equals("+"))
+                    if (taxApply.tax_sign.Equals('+'))
                     {
                         total = price + (price * taxApply.tax_amount);
                     }
@@ -708,11 +710,11 @@ namespace WaslaApp.Data
                 foreach (InvoiceReq row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut };
+                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut,active=true };
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id).SingleOrDefault();
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id && wr.active == true).SingleOrDefault();
                             if (result != null)
                             {
                                 return new InvoiceResponse { success = false, errors = "duplicate data" };
@@ -1198,13 +1200,13 @@ namespace WaslaApp.Data
                 foreach (ClientServiceCast row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,invoice_id=0 };
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,invoice_id=0,active=true };
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id).SingleOrDefault();
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.active == true).SingleOrDefault();
                             if (result != null)
                             {
                                 return new ResponseCls { success = false, errors = "duplicate data" };
@@ -1290,7 +1292,7 @@ namespace WaslaApp.Data
 
             try
             {
-                var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.package_id == (package_id == 0 ? wr.package_id : package_id) &&  wr.productId == productId).SingleOrDefaultAsync();
+                var result = await _db.ClientServices.Where(wr => wr.client_id == clientId && wr.package_id == (package_id == 0 ? wr.package_id : package_id) &&  wr.productId == productId && wr.active == true).SingleOrDefaultAsync();
                 if (result == null)
                 {
                     return new ClientService();
