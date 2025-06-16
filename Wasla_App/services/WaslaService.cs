@@ -151,5 +151,10 @@ namespace Wasla_App.services
         {
             return _waslaDao.RemoveInvoice(req,client_id);
         }
+
+        public ResponseCls UpdateInvoicePrices(InvUpdatePriceReq req, string client_id)
+        {
+            return _waslaDao.UpdateInvoicePrices(req,client_id);
+        }
     }
 }

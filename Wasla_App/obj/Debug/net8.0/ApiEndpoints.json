@@ -429,6 +429,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "UpdateInvoicePrices",
+    "RelativePath": "api/WaslaClient/UpdateInvoicePrices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.invoices.InvUpdatePriceReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "ValidateClientCopoun",
     "RelativePath": "api/WaslaClient/ValidateClientCopoun",
     "HttpMethod": "POST",

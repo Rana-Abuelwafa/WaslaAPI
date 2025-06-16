@@ -500,6 +500,37 @@
         }
       }
     },
+    "/api/WaslaClient/UpdateInvoicePrices": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvUpdatePriceReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvUpdatePriceReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvUpdatePriceReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/RemoveInvoice": {
       "post": {
         "tags": [
@@ -869,24 +900,9 @@
             "format": "int32",
             "nullable": true
           },
-          "grand_total_price": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "copoun_id": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
           "invoice_id": {
             "type": "number",
             "format": "double"
-          },
-          "copoun_discount": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1043,6 +1059,40 @@
           "service_id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvUpdatePriceReq": {
+        "type": "object",
+        "properties": {
+          "copoun_id": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "invoice_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "copoun_discount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "tax_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "deduct_amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "total_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false

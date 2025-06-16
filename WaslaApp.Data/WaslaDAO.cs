@@ -1,5 +1,6 @@
 ﻿using Mails_App;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -254,6 +255,32 @@ namespace WaslaApp.Data
         #endregion
         #region "Profile"
 
+        //update Invoice total & grand total after remove package & apply Copoun
+        public ResponseCls UpdateInvoicePrices(InvUpdatePriceReq req , string client_id)
+        {
+            try
+            {
+                InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+                if (inv != null)
+                {
+                    var totalPrice = req.total_price - req.deduct_amount;
+                    var TotalPriceAfterTax = CalculatePriceWithTax(req.tax_id, totalPrice).Result;
+                    var totalAfterCopoun = TotalPriceAfterTax - (TotalPriceAfterTax * req.copoun_discount / 100); ;
+                    inv.copoun_id = req.copoun_id;
+                    inv.total_price = totalPrice;
+                    inv.grand_total_price = totalAfterCopoun;
+                    _db.Update(inv);
+                    _db.SaveChanges();
+                    return new ResponseCls { success = true, errors = null };
+                }
+                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseCls { success = false, errors = ex.Message };
+            }
+        }
+
         //get all invoices by client_id
         public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id)
         {
@@ -301,7 +328,8 @@ namespace WaslaApp.Data
                                         invoice_code_auto = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code_auto,
                                         status = combinedEntry.SERV_PKG.SERV_INV.INV.status,
                                         tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
-                                        tax_code= combinedEntry.SERV_PKG.TAX.tax_code
+                                        tax_code= combinedEntry.SERV_PKG.TAX.tax_code,
+                                        tax_id = combinedEntry.SERV_PKG.TAX.tax_id
 
                                     }
                                    ).ToListAsync();
@@ -316,7 +344,8 @@ namespace WaslaApp.Data
                     grp.status,
                     grp.total_price,
                     grp.tax_code,
-                    grp.tax_amount
+                    grp.tax_amount,
+                    grp.tax_id
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -329,6 +358,7 @@ namespace WaslaApp.Data
                     total_price = s.Key.total_price,
                     tax_amount=s.Key.tax_amount,
                     tax_code=s.Key.tax_code,
+                    tax_id=s.Key.tax_id,
                     pkgs = fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
                 }).ToList();
                 return result;
@@ -373,16 +403,19 @@ namespace WaslaApp.Data
             }
 
         }
-        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
+      
+       public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
         {
             try
             {
+               // var totalPrice = req.pkgs.Sum(s => s.package_sale_price);
+                //var totalDiscount = req.pkgs.Sum(s => s.discount);
+               // var totalAfterCopoun = totalPrice - (totalPrice * req.copoun_discount / 100); ;
+               // var TotalPriceAfterTax = CalculatePriceWithTax(1, totalAfterCopoun).Result;
                 InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
                 if (inv != null)
                 {
                     inv.status = 2;
-                    inv.copoun_id = req.copoun_id;
-                    inv.grand_total_price = inv.grand_total_price - (inv.grand_total_price * req.copoun_discount / 100);
                     _db.Update(inv);
                     _db.SaveChanges();
                     return new ResponseCls { success = true, errors = null };
@@ -656,7 +689,7 @@ namespace WaslaApp.Data
 
             //first save in InvoiceMain (make invoice)
             var totalPrice = lst.Sum(s => s.package_sale_price);
-            //var totalDiscount = lst.Sum(s => s.discount_amount);
+            var totalDiscount = lst.Sum(s => s.discount_amount);
             var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
             InvoiceMain main = new InvoiceMain
             {

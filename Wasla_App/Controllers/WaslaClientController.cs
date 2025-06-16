@@ -100,6 +100,18 @@ namespace Wasla_App.Controllers
 
 
         #region "Profile"
+        [HttpPost("UpdateInvoicePrices")]
+        public IActionResult UpdateInvoicePrices(InvUpdatePriceReq req)
+        {
+            string? clientId = string.Empty;
+
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+
+            }
+            return Ok(_waslaService.UpdateInvoicePrices(req, clientId));
+        }
         [HttpPost("RemoveInvoice")]
         public IActionResult RemoveInvoice(InvRemoveReq req)
         {
