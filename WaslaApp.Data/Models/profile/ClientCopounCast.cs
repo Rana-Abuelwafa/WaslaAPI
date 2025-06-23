@@ -10,6 +10,7 @@ namespace WaslaApp.Data.Models.profile
     public class ClientCopounCast : ClientCopoun
     {
         public bool? valid { get; set; }
+        public string? msg { get; set; }
         public string? start_dateStr { get; set; }
 
         public string? end_dateStr { get; set; }

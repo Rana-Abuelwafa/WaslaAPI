@@ -1148,6 +1148,10 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "is_custom": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1245,6 +1249,10 @@
             "nullable": true
           },
           "is_recommend": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "is_custom": {
             "type": "boolean",
             "nullable": true
           }

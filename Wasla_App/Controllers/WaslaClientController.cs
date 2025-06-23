@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Wasla_App.services;
+using Wasla_App.services.Client;
 using Wasla_App.Services;
 using WaslaApp.Data;
 using WaslaApp.Data.Entities;

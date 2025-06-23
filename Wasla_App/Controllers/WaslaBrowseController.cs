@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Wasla_App.services;
+using Wasla_App.services.Client;
 using WaslaApp.Data;
 using WaslaApp.Data.Models.global;
 using static System.Net.Mime.MediaTypeNames;

@@ -1,11 +1,12 @@
-﻿using WaslaApp.Data;
+﻿
+using WaslaApp.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
-namespace Wasla_App.services
+namespace Wasla_App.services.Client
 {
     public class WaslaService : IWaslaService
     {
@@ -132,7 +133,7 @@ namespace Wasla_App.services
             return _waslaDao.MakeClientInvoiceForPackages(lst,client_id,client_name,client_email);
         }
 
-        public Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req, string client_id)
+        public Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req, string client_id)
         {
             return _waslaDao.ValidateClientCopoun(req,client_id);
         }

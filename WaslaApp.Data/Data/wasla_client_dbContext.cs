@@ -167,6 +167,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.curr_code).HasMaxLength(20);
             entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
             entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.is_custom).HasDefaultValue(false);
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.package_code).HasMaxLength(20);
             entity.Property(e => e.package_desc).HasMaxLength(100);

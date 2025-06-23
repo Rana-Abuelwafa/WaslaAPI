@@ -9,6 +9,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using Wasla_App.services;
+using Wasla_App.services.Client;
 using Wasla_App.Services;
 using WaslaApp.Data;
 using WaslaApp.Data.Data;

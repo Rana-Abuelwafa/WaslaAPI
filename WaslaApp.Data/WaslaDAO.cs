@@ -429,27 +429,52 @@ namespace WaslaApp.Data
 
         }
         //validate client discount coupon
-        public async Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req,string client_id)
+        public async Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req,string client_id)
         {
 
             try
             {
-                return await _db.ClientCopouns.Where(wr => wr.client_id == client_id && wr.copoun == req.copoun)
-                                              .Select(s => new ClientCopounCast
-                                              {
-                                                  client_id = s.client_id,
-                                                  copoun=req.copoun,
-                                                  discount_type=s.discount_type,
-                                                  discount_value=s.discount_value,
-                                                  end_date=s.end_date,
-                                                  end_dateStr=s.end_date.ToString(),
-                                                  id=s.id,
-                                                  start_date=s.start_date,
-                                                  start_dateStr=s.start_date.ToString(),
-                                                  valid=true
-                                              }
-                                                     )
-                                              .ToListAsync();
+                var nowDate = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                var result = await _db.ClientCopouns.Where(wr => wr.client_id == client_id && wr.copoun == req.copoun).SingleOrDefaultAsync();
+                if (result != null)
+                {
+                    if (nowDate >= result.start_date && nowDate <= result.end_date)
+                    {
+                        return new ClientCopounCast
+                        {
+                            client_id = result.client_id,
+                            copoun = req.copoun,
+                            discount_type = result.discount_type,
+                            discount_value = result.discount_value,
+                            end_date = result.end_date,
+                            end_dateStr = result.end_date.ToString(),
+                            id = result.id,
+                            start_date = result.start_date,
+                            start_dateStr = result.start_date.ToString(),
+                            valid = true,
+                            msg = "Copoun is valid"
+                        };
+                    }
+                    else
+                    {
+                        return new ClientCopounCast
+                        {
+                           
+                            valid = false,
+                            msg = "Copoun is expired"
+                        };
+                    }
+
+                }
+                else
+                {
+                    return new ClientCopounCast
+                    {
+
+                        valid = false,
+                        msg = "You donnot have any copoun"
+                    };
+                }
 
             }
             catch (Exception ex)
@@ -680,70 +705,88 @@ namespace WaslaApp.Data
         }
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
         {
-            InvoiceResponse response;
-            int count = 0;
-            decimal maxId = 0;
-            decimal servicemaxId = 0;
-            //concatenate each package code together + date now to make unique and readable code
-            string invCode = string.Join("-", lst.Select(e => e.package_code == null ? "00" : e.package_code)) + "-" + DateTime.Now.ToString("yyyyMMdd");
-
-            //first save in InvoiceMain (make invoice)
-            var totalPrice = lst.Sum(s => s.package_sale_price);
-            var totalDiscount = lst.Sum(s => s.discount_amount);
-            var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
-            InvoiceMain main = new InvoiceMain
+            InvoiceResponse response = null; ;
+            //list with custom package => no make invoice directly send contact mail to client
+            var customLst = lst.Where(wr => wr.is_custom == true).ToList();
+            if(customLst != null)
             {
-                invoice_id = 0,
-                client_id = client_id,
-                client_email = client_email,
-                active = true,
-                client_name = client_name,
-                invoice_date = DateTime.Now,
-                curr_code = lst.FirstOrDefault().curr_code,
-                discount = 0,
-                total_price = totalPrice,
-                invoice_code = invCode,
-                copoun_id=0,
-                grand_total_price = TotalPriceAfterTax,
-                status=1, //mean pending
-                tax_id=1
-
-            };
-            try
+                string? lang = lst.First().lang_code?.ToLower();
+                //send contact mail to client
+                string fileName = "CustomerSupport_" + lang + ".html";
+                string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                htmlBody = htmlBody.Replace("@user", client_name);
+                MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = client_name, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 4), EmailBody = htmlBody };
+                _mailSettingDao.SendMail(Mail_Data);
+            }
+            //exclude custom package from Invoice 
+            var newList = lst.Where(wr => wr.is_custom == false).ToList();
+            if (newList != null)
             {
-              
-                if (_db.InvoiceMains.Count() > 0)
+                int count = 0;
+                decimal maxId = 0;
+                decimal servicemaxId = 0;
+                //concatenate each package code together + date now to make unique and readable code
+                string invCode = string.Join("-", newList.Select(e => String.IsNullOrEmpty(e.package_code) ? "00" : e.package_code)) + "-" + DateTime.Now.ToString("yyyyMMdd");
+
+                //first save in InvoiceMain (make invoice)
+                var totalPrice = newList.Sum(s => s.package_sale_price);
+                var totalDiscount = newList.Sum(s => s.discount_amount);
+                var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
+                InvoiceMain main = new InvoiceMain
                 {
-                    //check duplicate validation
-                    var result = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.active == main.active && wr.invoice_code == main.invoice_code && wr.invoice_date == main.invoice_date).SingleOrDefault();
-                    if (result != null)
+                    invoice_id = 0,
+                    client_id = client_id,
+                    client_email = client_email,
+                    active = true,
+                    client_name = client_name,
+                    invoice_date = DateTime.Now,
+                    curr_code = lst.FirstOrDefault().curr_code,
+                    discount = 0,
+                    total_price = totalPrice,
+                    invoice_code = invCode,
+                    copoun_id = 0,
+                    grand_total_price = TotalPriceAfterTax,
+                    status = 1, //mean pending
+                    tax_id = 1
+
+                };
+                try
+                {
+
+                    if (_db.InvoiceMains.Count() > 0)
                     {
-                        return new InvoiceResponse { success = false, errors = "duplicate data" };
+                        //check duplicate validation
+                        var result = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.active == main.active && wr.invoice_code == main.invoice_code && wr.invoice_date == main.invoice_date).SingleOrDefault();
+                        if (result != null)
+                        {
+                            return new InvoiceResponse { success = false, errors = "duplicate data" };
+                        }
+
+                        maxId = _db.InvoiceMains.Max(d => d.invoice_id);
+
+
+
                     }
+                    main.invoice_id = maxId + 1;
+                    main.invoice_code_auto = "INV" + main.invoice_id;
+                    _db.InvoiceMains.Add(main);
+                    _db.SaveChanges();
 
-                    maxId = _db.InvoiceMains.Max(d => d.invoice_id);
 
-
-
+                    response = new InvoiceResponse { success = true, idOut = main.invoice_id };
                 }
-                main.invoice_id = maxId + 1;
-                main.invoice_code_auto = "INV" + main.invoice_id;
-                _db.InvoiceMains.Add(main);
-                _db.SaveChanges();
-
-                
-                response = new InvoiceResponse { success = true, idOut = main.invoice_id };
-            }
-            catch (Exception ex) {
-                response = new InvoiceResponse { errors = ex.Message, success = false, idOut = 0 };
-            }
-            // if invoice main sucess continue to save packages details
-            if (response.success) {
-                //second save Client services List
-                foreach (InvoiceReq row in lst)
+                catch (Exception ex)
                 {
+                    response = new InvoiceResponse { errors = ex.Message, success = false, idOut = 0 };
+                }
+                // if invoice main sucess continue to save packages details
+                if (response.success)
+                {
+                    //second save Client services List
+                    foreach (InvoiceReq row in newList)
+                    {
 
-                    ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id,invoice_id = response.idOut,active=true };
+                        ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id, invoice_id = response.idOut, active = true };
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
@@ -753,49 +796,50 @@ namespace WaslaApp.Data
                                 return new InvoiceResponse { success = false, errors = "duplicate data" };
                             }
 
-                        servicemaxId = _db.ClientServices.Max(d => d.id);
+                            servicemaxId = _db.ClientServices.Max(d => d.id);
 
 
                         }
                         service.id = servicemaxId + 1;
                         _db.ClientServices.Add(service);
                         _db.SaveChanges();
-                   
-                    count++;
-                }
+
+                        count++;
+                    }
 
 
-                if (count == lst.Count)
-                {
-                    //get client profile data
+                    if (count == newList.Count)
+                    {
+                        //get client profile data
 
-                    ClientProfileCast profile =  GetClientProfiles(client_id).Result.SingleOrDefault();
-                    
-                    //start send invoice mail
+                        ClientProfileCast profile = GetClientProfiles(client_id).Result.SingleOrDefault();
 
-                    response = new InvoiceResponse
-                    { 
-                        errors = null, 
-                        success = true ,
-                        invoice = new HtmlInvoice
+                        //start send invoice mail
+
+                        response = new InvoiceResponse
                         {
-                            address= profile !=null? profile.address : "",
-                            contact= profile != null ?  profile.phone_number : "",
-                            Discount =main.discount,
-                            services=lst,
-                            InvoiceNo= main.invoice_code,
-                            IssuedDate=main.invoice_date?.ToString("yyyy-MM-dd"),
-                            Total=main.total_price,
-                            SubTtotal = main.total_price,
-                            user=client_name
+                            errors = null,
+                            success = true,
+                            invoice = new HtmlInvoice
+                            {
+                                address = profile != null ? profile.address : "",
+                                contact = profile != null ? profile.phone_number : "",
+                                Discount = main.discount,
+                                services = newList,
+                                InvoiceNo = main.invoice_code,
+                                IssuedDate = main.invoice_date?.ToString("yyyy-MM-dd"),
+                                Total = main.total_price,
+                                SubTtotal = main.total_price,
+                                user = client_name
 
-                        }
+                            }
 
-                    };
-                }
-                else
-                {
-                    response = new InvoiceResponse { errors = "Error in saving data Check Admin", success = false };
+                        };
+                    }
+                    else
+                    {
+                        response = new InvoiceResponse { errors = "Error in saving data Check Admin", success = false };
+                    }
                 }
             }
             return response;
@@ -837,8 +881,9 @@ namespace WaslaApp.Data
                            service_name = Service.productName,
                            service_code=Service.service_code,
                            is_recommend=PKG.is_recommend,
-                           package_code=PKG.package_code
-                         
+                           package_code=PKG.package_code,
+                           is_custom= PKG.is_custom
+
                        }
                    ).ToListAsync();
                
@@ -957,6 +1002,7 @@ namespace WaslaApp.Data
                             is_recommend = PKG.is_recommend,
                             package_code = PKG.package_code,
                             isSelected= false,
+                            is_custom=PKG.is_custom,
                             service_code = Service.service_code,
                             //features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= PKG.package_id }).ToList()
                         }
@@ -984,6 +1030,7 @@ namespace WaslaApp.Data
                     is_recommend = s.is_recommend,
                     package_code = s.package_code,
                     isSelected=false,
+                    is_custom=s.is_custom,
                    // isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
                     features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
                 }).ToList();

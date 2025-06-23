@@ -4,7 +4,7 @@ using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
-namespace Wasla_App.services
+namespace Wasla_App.services.Client
 {
     public interface IWaslaService
     {
@@ -23,7 +23,7 @@ namespace Wasla_App.services
         public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id);
         public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id);
         public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id);
-        public Task<List<ClientCopounCast>> ValidateClientCopoun(ClientCopounReq req,string client_id);
+        public Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req,string client_id);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);
         public Task<List<ClientProfileCast>> GetClientProfiles(string clientId);

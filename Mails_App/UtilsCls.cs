@@ -12,7 +12,8 @@ namespace Mails_App
         //1 = confirmation mail ,
         //2 = otp verify
         //3 = invoice mail
-        
+        //4 = CUSTOMER SUPPORT mail
+
         public static string GetMailSubjectByLang(string lang,int type)
         {
             
@@ -46,7 +47,18 @@ namespace Mails_App
                 else if (lang == "en")
                     return "Waslaa - Packages' Invoice";
                 else if (lang == "de")
-                    return "Waslaa - Packages' Invoice";
+                    return "Waslaa - Factuur van pakketten";
+                else return "";
+            }
+            else if (type == 4)
+            {
+                //mean invoice
+                if (lang == "ar")
+                    return "   خدمة عملاء - وصلة";
+                else if (lang == "en")
+                    return "Waslaa - Customer Support";
+                else if (lang == "de")
+                    return "Waslaa - Klantenondersteuning";
                 else return "";
             }
             else return "";

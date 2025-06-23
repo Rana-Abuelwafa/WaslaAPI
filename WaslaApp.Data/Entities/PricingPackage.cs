@@ -42,4 +42,6 @@ public partial class PricingPackage
     public string? package_code { get; set; }
 
     public bool? is_recommend { get; set; }
+
+    public bool? is_custom { get; set; }
 }
