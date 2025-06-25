@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Org.BouncyCastle.Asn1.Pkcs;
 using Org.BouncyCastle.Ocsp;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using Wasla_App.services.Client;
 using Wasla_App.Services;
 using WaslaApp.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
@@ -27,6 +29,7 @@ namespace Wasla_App.Controllers
     [ApiController]
     public class WaslaClientController : ControllerBase
     {
+        private readonly IStringLocalizer<Messages> _localizer;
         IMailService Mail_Service = null;
         private readonly CustomViewRendererService _viewService;
         private readonly ILogger<WaslaClientController> _logger;
@@ -140,7 +143,7 @@ namespace Wasla_App.Controllers
         }
 
         [HttpPost("GetInvoicesByClient")]
-        public async Task<IActionResult> GetInvoicesByClient()
+        public async Task<IActionResult> GetInvoicesByClient(ClientInvoiceReq req)
         {
             string? clientId = string.Empty;
 
@@ -150,7 +153,7 @@ namespace Wasla_App.Controllers
 
             }
 
-            return Ok(await _waslaService.GetInvoicesByClient(clientId));
+            return Ok(await _waslaService.GetInvoicesByClient(req,clientId));
         }
         [HttpPost("ValidateClientCopoun")]
         public async Task<IActionResult> ValidateClientCopoun(ClientCopounReq req)

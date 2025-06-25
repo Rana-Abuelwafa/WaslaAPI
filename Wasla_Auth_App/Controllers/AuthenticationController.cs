@@ -2,35 +2,42 @@
 using Mails_App;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Wasla_Auth_App.Models;
 using Wasla_Auth_App.Services;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Wasla_Auth_App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
+        private readonly ILogger<AuthenticationController> _logger;
+        private readonly IStringLocalizer<Messages> _localizer;
         IMailService Mail_Service = null;
         private readonly RoleManager<IdentityRole>? _roleManager;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        public AuthenticationController(RoleManager<IdentityRole>? roleManager, UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IMailService _MailService)
+        public AuthenticationController(IStringLocalizer<Messages> localizer,RoleManager<IdentityRole>? roleManager, UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IMailService _MailService, ILogger<AuthenticationController> logger)
         {
+            _localizer = localizer;
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             Mail_Service = _MailService;
+            _logger = logger;
 
         }
         [HttpPost("CreateRole")]
@@ -57,81 +64,95 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TwoFactorEnabled = true };
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
+            try
             {
-                //add rule to user
-                await _userManager.AddToRoleAsync(user, model.Role);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TwoFactorEnabled = true };
+                var result = await _userManager.CreateAsync(user, model.Password);
 
-                await _signInManager.SignOutAsync();
-                await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
-                if (model.Role == "Admin")
+                if (result.Succeeded)
                 {
+                    //add rule to user
+                    await _userManager.AddToRoleAsync(user, model.Role);
 
-                    await _signInManager.SignInAsync(user, false);
-                    var token = await GenerateJwtTokenAsync(user);
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
+                    if (model.Role == "Admin")
+                    {
+
+                        await _signInManager.SignInAsync(user, false);
+                        var token = await GenerateJwtTokenAsync(user);
+                        return Ok(new User
+                        {
+                            UserName = user.UserName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            Email = user.Email,
+                            isSuccessed = true,
+                            msg = _localizer["SuccessLogin"],
+                            AccessToken = token,
+                            RefreshToken = token,
+                            Id = user.Id,
+                            EmailConfirmed = user.EmailConfirmed,
+                            GoogleId = user.GoogleId,
+                            TwoFactorEnabled = user.TwoFactorEnabled,
+                            completeprofile = user.completeprofile,
+                        });
+                    }
+                    //genertae otp code and send to user by email to verify email
+                    var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+
+                    string fileName = "OTPMail_" + model.lang + ".html";
+                    MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+                    Mail_Service.SendMail(mailData);
+                    //generate response without token until user verify email
                     return Ok(new User
                     {
                         UserName = user.UserName,
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Email = user.Email,
-                        isSuccessed = true,
-                        msg = "User login successfully",
-                        AccessToken = token,
-                        RefreshToken = token,
+                        isSuccessed = result.Succeeded,
+                        msg = _localizer["SuccessRegister"],
+                        AccessToken = null,
+                        RefreshToken = null,
                         Id = user.Id,
                         EmailConfirmed = user.EmailConfirmed,
                         GoogleId = user.GoogleId,
                         TwoFactorEnabled = user.TwoFactorEnabled,
                         completeprofile = user.completeprofile,
+
                     });
                 }
-                //genertae otp code and send to user by email to verify email
-                var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-
-                string fileName = "OTPMail_" + model.lang + ".html";
-                MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
-                Mail_Service.SendMail(mailData);
-                //generate response without token until user verify email
-                return Ok(new User
+                else
                 {
-                    UserName = user.UserName,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    isSuccessed = result.Succeeded,
-                    msg = "User created successfully",
-                    AccessToken = null,
-                    RefreshToken = null,
-                    Id = user.Id,
-                    EmailConfirmed = user.EmailConfirmed,
-                    GoogleId = user.GoogleId,
-                    TwoFactorEnabled = user.TwoFactorEnabled,
-                    completeprofile = user.completeprofile,
+                    List<IdentityError> errorList = result.Errors.ToList();
+                    var errors = string.Join(", ", errorList.Select(e => e.Description));
+                    //_logger.LogError(errors);
+                    return Ok(new User
+                    {
+                        UserName = "",
+                        Email = "",
+                        FirstName = "",
+                        LastName = "",
+                        isSuccessed = result.Succeeded,
+                        msg = errors,
+                        AccessToken = "",
+                        RefreshToken = "",
+                        Id = null,
+                        completeprofile = 0
+                    });
+                }
+            }
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     new User
+                     {
+                         isSuccessed = false,
+                         msg = _localizer["CheckAdmin"],
 
-                });
+                     });
             }
-            else
-            {
-                List<IdentityError> errorList = result.Errors.ToList();
-                var errors = string.Join(", ", errorList.Select(e => e.Description));
-                return Ok(new User
-                {
-                    UserName = "",
-                    Email = "",
-                    FirstName = "",
-                    LastName = "",
-                    isSuccessed = result.Succeeded,
-                    msg = errors,
-                    AccessToken = "",
-                    RefreshToken = "",
-                    Id = null,
-                    completeprofile = 0
-                });
-            }
+           
 
         }
 
@@ -141,6 +162,10 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("LoginUser")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
+            var lang = Request.Headers["Accept-Language"].ToString();
+            //var culture = new CultureInfo(model.lang); // or "de", "en"
+            //CultureInfo.CurrentCulture = culture;
+            //CultureInfo.CurrentUICulture = culture;
             //check if user exist or not first
             var user = await _userManager.FindByEmailAsync(model.Email);
             try
@@ -161,7 +186,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = "User login successfully",
+                            msg = _localizer["SuccessLogin"],
                             AccessToken = token,
                             RefreshToken = token,
                             Id = user.Id,
@@ -188,7 +213,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = $"We have sent an OTP to your Email {user.Email}",
+                            msg = _localizer["OTPMSG"] + user.Email,
                             AccessToken = null,
                             RefreshToken = null,
                             Id = user.Id,
@@ -210,7 +235,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = "User login successfully",
+                            msg = _localizer["SuccessLogin"],
                             AccessToken = token,
                             RefreshToken = token,
                             Id = user.Id,
@@ -227,7 +252,7 @@ namespace Wasla_Auth_App.Controllers
                     return Unauthorized(new User
                     {
                         isSuccessed = false,
-                        msg = "mail or password is incorrect",
+                        msg = _localizer["MailPasswordIncorrect"],
 
                     });
 
@@ -239,7 +264,7 @@ namespace Wasla_Auth_App.Controllers
                 {
 
                     isSuccessed = false,
-                    msg = "mail or password is incorrect",
+                    msg = _localizer["MailPasswordIncorrect"],
 
                 });
             }
@@ -286,51 +311,65 @@ namespace Wasla_Auth_App.Controllers
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GoogleId = "1", TwoFactorEnabled = true };
-            var result = await _userManager.CreateAsync(user);
-            if (result.Succeeded)
+            try
             {
-                //generate otp and send it to user's email to verify email
-                var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
-                MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GoogleId = "1", TwoFactorEnabled = true };
+                var result = await _userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    //generate otp and send it to user's email to verify email
+                    var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
+                    MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
 
-                Mail_Service.SendMail(mailData);
-                //generate response without token until user verify email
-                return Ok(new User
+                    Mail_Service.SendMail(mailData);
+                    //generate response without token until user verify email
+                    return Ok(new User
+                    {
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        isSuccessed = result.Succeeded,
+                        msg = _localizer["SuccessRegister"],
+                        AccessToken = null,
+                        RefreshToken = null,
+                        Id = user.Id,
+                        EmailConfirmed = user.EmailConfirmed,
+                        GoogleId = user.GoogleId,
+                        TwoFactorEnabled = user.TwoFactorEnabled,
+                        completeprofile = user.completeprofile,
+                    });
+                }
+                else
                 {
-                    UserName = user.UserName,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    isSuccessed = result.Succeeded,
-                    msg = "User created successfully",
-                    AccessToken = null,
-                    RefreshToken = null,
-                    Id = user.Id,
-                    EmailConfirmed = user.EmailConfirmed,
-                    GoogleId = user.GoogleId,
-                    TwoFactorEnabled = user.TwoFactorEnabled,
-                    completeprofile = user.completeprofile,
-                });
+                    List<IdentityError> errorList = result.Errors.ToList();
+                    var errors = string.Join(", ", errorList.Select(e => e.Description));
+                    //_logger.LogError(errors);
+                    return Ok(new User
+                    {
+                        UserName = "",
+                        Email = "",
+                        FirstName = "",
+                        LastName = "",
+                        isSuccessed = result.Succeeded,
+                        msg = errors,
+                        AccessToken = "",
+                        RefreshToken = "",
+                        Id = null,
+                        completeprofile = 0
+                    });
+                }
             }
-            else
-            {
-                List<IdentityError> errorList = result.Errors.ToList();
-                var errors = string.Join(", ", errorList.Select(e => e.Description));
-                return Ok(new User
-                {
-                    UserName = "",
-                    Email = "",
-                    FirstName = "",
-                    LastName = "",
-                    isSuccessed = result.Succeeded,
-                    msg = errors,
-                    AccessToken = "",
-                    RefreshToken = "",
-                    Id = null,
-                    completeprofile = 0
-                });
+            catch (Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                      new User
+                      {
+                          isSuccessed = false,
+                          msg = _localizer["CheckAdmin"],
+
+                      });
             }
+            
 
         }
 
@@ -361,7 +400,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = $"We have sent an OTP to your Email {user.Email}",
+                            msg = _localizer["OTPMSG"] +  user.Email,
                             AccessToken = null,
                             RefreshToken = null,
                             Id = user.Id,
@@ -383,7 +422,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = "User login successfully",
+                            msg = _localizer["SuccessLogin"],
                             AccessToken = token,
                             RefreshToken = token,
                             Id = user.Id,
@@ -399,7 +438,7 @@ namespace Wasla_Auth_App.Controllers
                       new User
                       {
                           isSuccessed = false,
-                          msg = "user Not Found",
+                          msg = _localizer["UserNotFound"],
 
                       });
 
@@ -410,7 +449,7 @@ namespace Wasla_Auth_App.Controllers
                       new User
                       {
                           isSuccessed = false,
-                          msg = e.Message,
+                          msg = _localizer["CheckAdmin"],
 
                       });
             }
@@ -442,7 +481,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = "Password is changed successfully",
+                            msg = _localizer["SuccessPassChange"],
                             AccessToken = token,
                             RefreshToken = token,
                             Id = user.Id,
@@ -453,6 +492,7 @@ namespace Wasla_Auth_App.Controllers
                     {
                         List<IdentityError> errorList = result.Errors.ToList();
                         var errors = string.Join(", ", errorList.Select(e => e.Description));
+                       // _logger.LogError(errors);
                         return BadRequest(new User
                         {
 
@@ -470,7 +510,7 @@ namespace Wasla_Auth_App.Controllers
                     {
 
                         isSuccessed = false,
-                        msg = "User Not Found",
+                        msg = _localizer["UserNotFound"],
 
                     });
                 }
@@ -479,11 +519,12 @@ namespace Wasla_Auth_App.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return Unauthorized(new User
                 {
 
                     isSuccessed = false,
-                    msg = e.Message,
+                    msg = _localizer["CheckAdmin"],
 
                 });
             }
@@ -514,7 +555,7 @@ namespace Wasla_Auth_App.Controllers
                             LastName = user.LastName,
                             Email = user.Email,
                             isSuccessed = true,
-                            msg = "User login successfully",
+                            msg = _localizer["SuccessLogin"],
                             AccessToken = token,
                             RefreshToken = token,
                             Id = user.Id,
@@ -537,7 +578,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             isSuccessed = false,
-                            msg = $"Invalid Code",
+                            msg = _localizer["InvalidCode"],
                             AccessToken = "",
                             RefreshToken = "",
                             completeprofile = user.completeprofile,
@@ -549,7 +590,7 @@ namespace Wasla_Auth_App.Controllers
                 {
 
                     isSuccessed = false,
-                    msg = "user Not Found",
+                    msg = _localizer["UserNotFound"],
 
                 });
 
@@ -557,6 +598,7 @@ namespace Wasla_Auth_App.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return Ok(new User
                 {
                     UserName = "",
@@ -564,7 +606,7 @@ namespace Wasla_Auth_App.Controllers
                     FirstName = "",
                     LastName = "",
                     isSuccessed = false,
-                    msg = e.Message,
+                    msg = _localizer["CheckAdmin"],
                     AccessToken = "",
                     RefreshToken = "",
                     Id = null,
@@ -593,7 +635,7 @@ namespace Wasla_Auth_App.Controllers
                         LastName = user.LastName,
                         Email = user.Email,
                         isSuccessed = true,
-                        msg = "updated successfully",
+                        msg = _localizer["UpdateSuccess"],
                         AccessToken = token,
                         RefreshToken = token,
                         Id = user.Id,
@@ -609,7 +651,7 @@ namespace Wasla_Auth_App.Controllers
                     {
 
                         isSuccessed = false,
-                        msg = "User Not Found",
+                        msg = _localizer["UserNotFound"],
 
                     });
                 }
@@ -618,7 +660,8 @@ namespace Wasla_Auth_App.Controllers
             }
             catch (Exception e)
             {
-                return Ok(new User { isSuccessed = false, msg = e.Message, });
+                _logger.LogError(e.Message);
+                return Ok(new User { isSuccessed = false, msg = _localizer["CheckAdmin"], });
             }
         }
         private async Task<string> GetUserRoles(ApplicationUser user)

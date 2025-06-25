@@ -22,7 +22,7 @@ namespace Wasla_App.services.Client
         public ResponseCls UpdateInvoicePrices(InvUpdatePriceReq req, string client_id);
         public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id);
         public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id);
-        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id);
+        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req ,string client_id);
         public Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req,string client_id);
         public  Task<List<PaymentMethod>> GetPaymentMethods();
         public Task<List<ClientBrand>> GetClientBrands(string clientId);

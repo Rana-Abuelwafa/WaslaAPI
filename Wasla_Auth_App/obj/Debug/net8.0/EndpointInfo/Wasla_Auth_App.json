@@ -1,14 +1,25 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Wasla_Auth_App",
-    "version": "1.0"
+    "title": "AUTH API",
+    "version": "v1"
   },
   "paths": {
     "/api/Authentication/CreateRole": {
       "post": {
         "tags": [
           "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -41,6 +52,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -71,6 +93,17 @@
       "post": {
         "tags": [
           "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -103,6 +136,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -134,6 +178,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -164,6 +219,17 @@
       "post": {
         "tags": [
           "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -213,6 +279,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -243,6 +320,17 @@
       "post": {
         "tags": [
           "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -275,6 +363,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -306,6 +405,17 @@
         "tags": [
           "Authentication"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -317,6 +427,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -363,6 +484,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
           }
         ],
         "requestBody": {
@@ -392,6 +522,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -443,6 +584,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
           }
         ],
         "responses": {
@@ -456,6 +606,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -477,6 +638,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -509,6 +681,17 @@
         "tags": [
           "Wasla_Auth_App"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -539,6 +722,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -581,6 +775,17 @@
         "tags": [
           "Wasla_Auth_App"
         ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -610,6 +815,17 @@
       "post": {
         "tags": [
           "Wasla_Auth_App"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
         ],
         "requestBody": {
           "content": {

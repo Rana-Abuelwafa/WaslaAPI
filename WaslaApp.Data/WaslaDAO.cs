@@ -1,5 +1,6 @@
 ﻿using Mails_App;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
@@ -20,13 +22,15 @@ namespace WaslaApp.Data
 {
     public class WaslaDAO
     {
+        private readonly IStringLocalizer<Messages> _localizer;
         private readonly MailSettingDao _mailSettingDao;
         private readonly wasla_client_dbContext _db;
         
-        public WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao)
+        public WaslaDAO(wasla_client_dbContext db, MailSettingDao mailSettingDao, IStringLocalizer<Messages> localizer)
         {
             _db = db;
             _mailSettingDao = mailSettingDao;
+            _localizer = localizer;
         }
 
         #region "questions"
@@ -282,13 +286,13 @@ namespace WaslaApp.Data
         }
 
         //get all invoices by client_id
-        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id)
+        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req,string client_id)
         {
             try
             {
-                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == true)
+                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
                                 .Join(
-                                        _db.InvoiceMains.Where(wr => wr.active == true && wr.status ==1),
+                                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
                                         SERV => new { SERV.invoice_id, SERV.client_id },
                                         INV => new { INV.invoice_id, INV.client_id },
                                         (SERV, INV) => new { SERV, INV }

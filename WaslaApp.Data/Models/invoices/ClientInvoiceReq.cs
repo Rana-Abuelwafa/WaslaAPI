@@ -8,7 +8,10 @@ namespace WaslaApp.Data.Models.invoices
 {
     public class ClientInvoiceReq
     {
-        public string? client_id {  get; set; }
+        /// 1 = pending
+        /// 2=checkout
+        /// 3=confirmed
+        public int? status { get; set; }
         public bool? active { get; set; }
 
     }

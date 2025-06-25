@@ -138,9 +138,9 @@ namespace Wasla_App.services.Client
             return _waslaDao.ValidateClientCopoun(req,client_id);
         }
 
-        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(string client_id)
+        public Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req,string client_id)
         {
-            return _waslaDao.GetInvoicesByClient(client_id);
+            return _waslaDao.GetInvoicesByClient(req,client_id);
         }
 
         public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
