@@ -34,3 +34,13 @@ D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\refint\WaslaApp.Data.dll
 D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.pdb
 D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.genruntimeconfig.cache
 D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\ref\WaslaApp.Data.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\bin\Release\net8.0\ar\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\bin\Release\net8.0\de\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\bin\Release\net8.0\en\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.Resources.Messages.ar.resources
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.Resources.Messages.de.resources
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.Resources.Messages.en.resources
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\WaslaApp.Data.csproj.GenerateResource.cache
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\ar\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\de\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\WaslaApp.Data\obj\Release\net8.0\en\WaslaApp.Data.resources.dll

@@ -651,7 +651,6 @@ D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.build.jso
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.development.json
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\Wasla_Au.7CCA85BA.Up2Date
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\Wasla_Auth_App.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\refint\Wasla_Auth_App.dll
@@ -681,3 +680,4 @@ D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Settings.Configur
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.File.dll
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

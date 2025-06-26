@@ -108,7 +108,7 @@ namespace WaslaApp.Data
                         var result = _db.RegistrationAnswers.Where(wr => wr.client_id == answer.client_id && wr.ques_id == answer.ques_id && wr.lang_code == answer.lang_code).SingleOrDefault();
                         if (result != null)
                         {
-                            return new RegsistrationQuesResponse { success = false, errors = "duplicate data",WelcomeMsg=null };
+                            return new RegsistrationQuesResponse { success = false, errors = _localizer["DuplicateData"], WelcomeMsg=null };
                         }
                         _db.RegistrationAnswers.Add(answer);
                     }
@@ -143,27 +143,27 @@ namespace WaslaApp.Data
                         }
                         catch (Exception e)
                         {
-                            return new RegsistrationQuesResponse { success = false, errors = "error in send mail" };
+                            return new RegsistrationQuesResponse { success = false, errors = _localizer["SendMailError"]};
                         }
 
                         //end send mail
                     }
                     else
                     {
-                        return new RegsistrationQuesResponse { success = false, errors = "error in generate copoun" };
+                        return new RegsistrationQuesResponse { success = false, errors = _localizer["CopounError"]};
 
                     }
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = HelperCls.getResponseMsg(lang) };
                 }
                 else
                 {
-                    response = new RegsistrationQuesResponse { errors = "Error in saving List Check Admin", success = false, WelcomeMsg = null };
+                    response = new RegsistrationQuesResponse { errors = _localizer["CheckAdmin"], success = false, WelcomeMsg = null };
                 }
             }
 
             catch (Exception ex)
             {
-                response = new RegsistrationQuesResponse { errors = ex.Message, success = false, WelcomeMsg = null };
+                response = new RegsistrationQuesResponse { errors = _localizer["CheckAdmin"], success = false, WelcomeMsg = null };
             }
             return response;
         }
@@ -190,7 +190,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
             return response;
         }
@@ -210,7 +210,7 @@ namespace WaslaApp.Data
                         var result = _db.ClientCopouns.Where(wr => wr.client_id == copoun.client_id && wr.start_date == copoun.start_date && wr.end_date == copoun.end_date).SingleOrDefault();
                         if (result != null)
                         {
-                            return new ResponseCls { success = false, errors = "duplicate data" };
+                            return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                         }
 
                         maxId = _db.ClientCopouns.Max(d => d.id);
@@ -230,7 +230,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
             return response;
         }
@@ -249,7 +249,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
             return response;
         }
@@ -277,11 +277,11 @@ namespace WaslaApp.Data
                     _db.SaveChanges();
                     return new ResponseCls { success = true, errors = null };
                 }
-                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+                return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
             }
             catch (Exception ex)
             {
-                return new ResponseCls { success = false, errors = ex.Message };
+                return new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
         }
 
@@ -399,11 +399,11 @@ namespace WaslaApp.Data
                 }
                 
                
-                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+                return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
             }
             catch (Exception ex)
             {
-                return new ResponseCls { success = false, errors = ex.Message };
+                return new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
 
         }
@@ -424,18 +424,18 @@ namespace WaslaApp.Data
                     _db.SaveChanges();
                     return new ResponseCls { success = true, errors = null };
                 }
-                return new ResponseCls { success = false, errors = "no Invoice Founded" };
+                return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
             }
             catch (Exception ex)
             {
-                return new ResponseCls { success = false, errors = ex.Message };
+                return new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
             }
 
         }
         //validate client discount coupon
         public async Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req,string client_id)
         {
-
+            var msg = _localizer["NoCopoun"];
             try
             {
                 var nowDate = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
@@ -456,7 +456,7 @@ namespace WaslaApp.Data
                             start_date = result.start_date,
                             start_dateStr = result.start_date.ToString(),
                             valid = true,
-                            msg = "Copoun is valid"
+                            msg = _localizer["CopounValid"]
                         };
                     }
                     else
@@ -465,7 +465,7 @@ namespace WaslaApp.Data
                         {
                            
                             valid = false,
-                            msg = "Copoun is expired"
+                            msg = _localizer["CopounExpired"]
                         };
                     }
 
@@ -476,7 +476,7 @@ namespace WaslaApp.Data
                     {
 
                         valid = false,
-                        msg = "You donnot have any copoun"
+                        msg = _localizer["NoCopoun"]
                     };
                 }
 
@@ -566,7 +566,7 @@ namespace WaslaApp.Data
                         else
                         {
                             //do no thing duplicate data
-                            return new ResponseCls { success = false, errors = "duplicate data" };
+                            return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
 
                         }
 
@@ -584,7 +584,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"], idOut = 0 };
             }
             return response;
         }
@@ -617,7 +617,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"], idOut = 0 };
             }
             return response;
         }
@@ -654,7 +654,7 @@ namespace WaslaApp.Data
             }
             catch (Exception ex)
             {
-                response = new ResponseCls { success = false, errors = ex.Message, idOut = 0 };
+                response = new ResponseCls { success = false, errors = _localizer["CheckAdmin"], idOut = 0 };
             }
             return response;
         }
@@ -763,7 +763,7 @@ namespace WaslaApp.Data
                         var result = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.active == main.active && wr.invoice_code == main.invoice_code && wr.invoice_date == main.invoice_date).SingleOrDefault();
                         if (result != null)
                         {
-                            return new InvoiceResponse { success = false, errors = "duplicate data" };
+                            return new InvoiceResponse { success = false, errors = _localizer["DuplicateData"] };
                         }
 
                         maxId = _db.InvoiceMains.Max(d => d.invoice_id);
@@ -797,7 +797,7 @@ namespace WaslaApp.Data
                             var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id && wr.active == true).SingleOrDefault();
                             if (result != null)
                             {
-                                return new InvoiceResponse { success = false, errors = "duplicate data" };
+                                return new InvoiceResponse { success = false, errors = _localizer["DuplicateData"] };
                             }
 
                             servicemaxId = _db.ClientServices.Max(d => d.id);
@@ -842,7 +842,7 @@ namespace WaslaApp.Data
                     }
                     else
                     {
-                        response = new InvoiceResponse { errors = "Error in saving data Check Admin", success = false };
+                        response = new InvoiceResponse { errors = _localizer["CheckAdmin"], success = false };
                     }
                 }
             }
@@ -930,7 +930,7 @@ namespace WaslaApp.Data
                             var result = _db.PricingPkgFeatures.Where(wr => wr.package_id == row.package_id && wr.feature_name == row.feature_name && wr.active == row.active).SingleOrDefault();
                             if (result != null)
                             {
-                                return new ResponseCls { success = false, errors = "duplicate data" };
+                                return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                             }
 
                             maxId = _db.PricingPkgFeatures.Max(d => d.id);
@@ -958,13 +958,13 @@ namespace WaslaApp.Data
                 }
                 else
                 {
-                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
+                    response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
                 }
             }
 
             catch (Exception ex)
             {
-                response = new ResponseCls { errors = ex.Message, success = false };
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
             }
 
             return response;
@@ -1090,7 +1090,7 @@ namespace WaslaApp.Data
                         var result = _db.PricingPackages.Where(wr => wr.package_name == package.package_name && wr.active == package.active && wr.lang_code == package.lang_code && wr.curr_code.ToLower() == package.curr_code.ToLower() && wr.service_id == package.service_id).SingleOrDefault();
                         if (result != null)
                         {
-                            return new ResponseCls { success = false, errors = "duplicate data" };
+                            return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                         }
 
                         maxId = _db.PricingPackages.Max(d => d.package_id);
@@ -1115,7 +1115,7 @@ namespace WaslaApp.Data
 
             catch (Exception ex)
             {
-                response = new ResponseCls { errors = ex.Message, success = false,idOut=0 };
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false,idOut=0 };
             }
 
             return response;
@@ -1241,7 +1241,7 @@ namespace WaslaApp.Data
                         var result = _db.Services.Where(wr => wr.productId == service.productId && wr.productParent == service.productParent && wr.active == service.active).SingleOrDefault();
                         if (result != null)
                         {
-                            return new ResponseCls { success = false, errors = "duplicate data" };
+                            return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                         }
 
                         maxId = _db.Services.Max(d => d.productId);
@@ -1266,7 +1266,7 @@ namespace WaslaApp.Data
 
             catch (Exception ex)
             {
-                response = new ResponseCls { errors = ex.Message, success = false };
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
             }
 
             return response;
@@ -1293,7 +1293,7 @@ namespace WaslaApp.Data
                             var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.active == true).SingleOrDefault();
                             if (result != null)
                             {
-                                return new ResponseCls { success = false, errors = "duplicate data" };
+                                return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                             }
 
                             maxId = _db.ClientServices.Max(d => d.id);
@@ -1329,13 +1329,13 @@ namespace WaslaApp.Data
                 }
                 else
                 {
-                    response = new ResponseCls { errors = "Error in saving data Check Admin", success = false };
+                    response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
                 }
             }
 
             catch (Exception ex)
             {
-                response = new ResponseCls { errors = ex.Message, success = false };
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
             }
 
             return response;

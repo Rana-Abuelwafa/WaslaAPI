@@ -13,10 +13,22 @@
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Design": "9.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.2",
+          "Microsoft.Extensions.Localization.Abstractions": "9.0.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.3"
         },
         "runtime": {
           "WaslaApp.Data.dll": {}
+        },
+        "resources": {
+          "ar/WaslaApp.Data.resources.dll": {
+            "locale": "ar"
+          },
+          "de/WaslaApp.Data.resources.dll": {
+            "locale": "de"
+          },
+          "en/WaslaApp.Data.resources.dll": {
+            "locale": "en"
+          }
         }
       },
       "BouncyCastle.Cryptography/2.5.1": {
@@ -488,6 +500,14 @@
           }
         }
       },
+      "Microsoft.Extensions.Localization.Abstractions/9.0.6": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26701"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/9.0.2": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.2",
@@ -912,6 +932,13 @@
       "sha512": "sha512-3ImbcbS68jy9sKr9Z9ToRbEEX0bvIRdb8zyf5ebtL9Av2CUCGHvaO5wsSXfRfAjr60Vrq0tlmNji9IzAxW6EOw==",
       "path": "microsoft.extensions.dependencymodel/9.0.2",
       "hashPath": "microsoft.extensions.dependencymodel.9.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Localization.Abstractions/9.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v7+PuyK4tt96CZfrOpLvKBTjngDZg93EXJ0X6g+js7WW19QZHqQgHGl7o7TOJ0PDaJ3MlHdsMWfFJ5GsHaqFaA==",
+      "path": "microsoft.extensions.localization.abstractions/9.0.6",
+      "hashPath": "microsoft.extensions.localization.abstractions.9.0.6.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/9.0.2": {
       "type": "package",

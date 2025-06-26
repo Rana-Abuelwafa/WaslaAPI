@@ -353,3 +353,6 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.csproj.GenerateResou
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\ar\Wasla_App.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\de\Wasla_App.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\en\Wasla_App.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\ar\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\de\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\en\WaslaApp.Data.resources.dll

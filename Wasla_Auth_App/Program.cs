@@ -117,6 +117,7 @@ app.UseHttpsRedirection();
 //localization
 var locOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(locOptions.Value);
+app.UseMiddleware<LocalizedExceptionMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRouting();

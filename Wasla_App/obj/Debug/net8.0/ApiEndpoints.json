@@ -234,7 +234,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.invoices.ClientInvoiceReq",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

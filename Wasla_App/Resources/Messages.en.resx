@@ -126,7 +126,28 @@
   <data name="SuccessRegister" xml:space="preserve">
     <value>User created successfully</value>
   </data>
-  <data name="mailPasswordIncorrect" xml:space="preserve">
-    <value>mail or password is incorrect</value>
+  <data name="SendMailError" xml:space="preserve">
+    <value>error in send mail</value>
+  </data>
+  <data name="CopounError" xml:space="preserve">
+    <value>error in generate copoun</value>
+  </data>
+  <data name="CheckAdmin" xml:space="preserve">
+    <value>Internal Error Please Check Admin</value>
+  </data>
+  <data name="duplicateData" xml:space="preserve">
+    <value>duplicate data</value>
+  </data>
+  <data name="NoCopoun" xml:space="preserve">
+    <value>You donnot have any copoun</value>
+  </data>
+  <data name="CopounExpired" xml:space="preserve">
+    <value>Copoun is expired</value>
+  </data>
+  <data name="CopounValid" xml:space="preserve">
+    <value>Copoun Valid</value>
+  </data>
+  <data name="NoInvoice" xml:space="preserve">
+    <value>no Invoice Founded</value>
   </data>
 </root>

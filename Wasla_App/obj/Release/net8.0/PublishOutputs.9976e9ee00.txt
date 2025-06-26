@@ -4,6 +4,9 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\appsettings.json
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.runtimeconfig.json
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.pdb
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\ar\Wasla_App.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\de\Wasla_App.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\en\Wasla_App.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\MailKit.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -20,6 +23,7 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensi
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Localization.Abstractions.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
@@ -62,4 +66,7 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Mails_App.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\WaslaApp.Data.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\WaslaApp.Data.pdb
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Mails_App.pdb
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\ar\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\de\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\en\WaslaApp.Data.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.deps.json
