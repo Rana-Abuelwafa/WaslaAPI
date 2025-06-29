@@ -1,6 +1,54 @@
 [
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "AssignFeaturesToPackage",
+    "RelativePath": "api/WaslaAdmin/AssignFeaturesToPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Entities.packages_feature",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "AssignPackagesToService",
+    "RelativePath": "api/WaslaAdmin/AssignPackagesToService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.ServicePackageReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "AssignPriceToPackage",
+    "RelativePath": "api/WaslaAdmin/AssignPriceToPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PackagePriceSaveReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "deleteQuestions",
     "RelativePath": "api/WaslaAdmin/deleteQuestions",
     "HttpMethod": "POST",
@@ -26,6 +74,52 @@
       {
         "Name": "req",
         "Type": "WaslaApp.Data.Models.profile.QuesLstReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getMainFeatures",
+    "RelativePath": "api/WaslaAdmin/getMainFeatures",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getMainPackages",
+    "RelativePath": "api/WaslaAdmin/getMainPackages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getMainServices",
+    "RelativePath": "api/WaslaAdmin/getMainServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getPackageFeatures",
+    "RelativePath": "api/WaslaAdmin/getPackageFeatures",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PackageFeatureReq",
         "IsRequired": true
       }
     ],
@@ -106,6 +200,48 @@
       {
         "Name": "req",
         "Type": "WaslaApp.Data.Models.global.LangReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getServiceGrpWithPkgs",
+    "RelativePath": "api/WaslaAdmin/getServiceGrpWithPkgs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getServicePackagePrice",
+    "RelativePath": "api/WaslaAdmin/getServicePackagePrice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PackagesPriceReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveMainPackage",
+    "RelativePath": "api/WaslaAdmin/SaveMainPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PackageSaveReq",
         "IsRequired": true
       }
     ],

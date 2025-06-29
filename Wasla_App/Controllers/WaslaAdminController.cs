@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Wasla_App.services.Admin;
 using Wasla_App.services.Client;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.global;
@@ -8,16 +9,18 @@ using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
     {
         private readonly IWaslaService _waslaService;
+        private readonly IAdminWaslaService _adminWaslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaAdminController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor)
+        public WaslaAdminController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, IAdminWaslaService adminWaslaService)
         {
             _waslaService = waslaService;
+            _adminWaslaService = adminWaslaService;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -103,6 +106,66 @@ namespace Wasla_App.Controllers
         public  IActionResult GetPricingPkgFeatures(PricingPkgFeatureReq req)
         {
             return Ok( _waslaService.GetPricingPkgFeatures(req));
+        }
+        #endregion
+
+        #region new Services &packages
+        [HttpPost("SaveMainPackage")]
+        public IActionResult SaveMainPackage(PackageSaveReq row)
+        {
+            return Ok(_adminWaslaService.SaveMainPackage(row));
+        }
+
+        [HttpPost("AssignPackagesToService")]
+        public IActionResult AssignPackagesToService(ServicePackageReq row)
+        {
+            return Ok(_adminWaslaService.AssignPackagesToService(row));
+        }
+
+        [HttpPost("AssignPriceToPackage")]
+        public IActionResult AssignPriceToPackage(PackagePriceSaveReq row)
+        {
+            return Ok(_adminWaslaService.AssignPriceToPackage(row));
+        }
+
+        [HttpPost("getMainPackages")]
+        public async Task<IActionResult> getMainPackages()
+        {
+            return Ok(await _adminWaslaService.getMainPackages());
+        }
+
+        [HttpPost("getMainServices")]
+        public async Task<IActionResult> getMainServices()
+        {
+            return Ok(await _adminWaslaService.getMainServices());
+        }
+
+        [HttpPost("getServiceGrpWithPkgs")]
+        public IActionResult getServiceGrpWithPkgs()
+        {
+            return Ok(_adminWaslaService.getServiceGrpWithPkgs());
+        }
+        [HttpPost("getServicePackagePrice")]
+        public async Task<IActionResult> getServicePackagePrice(PackagesPriceReq req)
+        {
+            return Ok(await _adminWaslaService.getServicePackagePrice(req.service_package_id));
+        }
+
+        [HttpPost("getMainFeatures")]
+        public async Task<IActionResult> getMainFeatures()
+        {
+            return Ok(await _adminWaslaService.getMainFeatures());
+        }
+        [HttpPost("getPackageFeatures")]
+        public async Task<IActionResult> getPackageFeatures(PackageFeatureReq req)
+        {
+            return Ok(await _adminWaslaService.getPackageFeatures(req));
+        }
+
+        [HttpPost("AssignFeaturesToPackage")]
+        public IActionResult AssignFeaturesToPackage(packages_feature row)
+        {
+            return Ok(_adminWaslaService.AssignFeaturesToPackage(row));
         }
         #endregion
     }

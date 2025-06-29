@@ -333,7 +333,8 @@ namespace WaslaApp.Data
                                         status = combinedEntry.SERV_PKG.SERV_INV.INV.status,
                                         tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
                                         tax_code= combinedEntry.SERV_PKG.TAX.tax_code,
-                                        tax_id = combinedEntry.SERV_PKG.TAX.tax_id
+                                        tax_id = combinedEntry.SERV_PKG.TAX.tax_id,
+                                       // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
                                     }
                                    ).ToListAsync();
@@ -363,7 +364,30 @@ namespace WaslaApp.Data
                     tax_amount=s.Key.tax_amount,
                     tax_code=s.Key.tax_code,
                     tax_id=s.Key.tax_id,
-                    pkgs = fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+                    pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
+                                      .Select(s => new ClientInvoiceResponse {
+                                          invoice_id = s.invoice_id,
+                                          curr_code = s.curr_code,
+                                          discount = s.discount,
+                                          total_price = s.total_price,
+                                          grand_total_price = s.grand_total_price,
+                                          service_id = s.service_id,
+                                          package_id = s.package_id,
+                                          service_name = s.service_name,
+                                          package_name = s.package_name,
+                                          package_price = s.package_price,
+                                          package_sale_price = s.package_sale_price,
+                                          package_desc = s.package_desc,
+                                          package_details = s.package_details,
+                                          invoice_code = s.invoice_code,
+                                          invoice_code_auto = s.invoice_code_auto,
+                                          status = s.status,
+                                          tax_amount = s.tax_amount,
+                                          tax_code = s.tax_code,
+                                          tax_id = s.tax_id,
+                                          features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
+                                      }).ToList() ): fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+
                 }).ToList();
                 return result;
             }

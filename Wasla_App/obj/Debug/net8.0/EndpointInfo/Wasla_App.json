@@ -476,6 +476,350 @@
         }
       }
     },
+    "/api/WaslaAdmin/SaveMainPackage": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageSaveReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageSaveReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageSaveReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/AssignPackagesToService": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePackageReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePackageReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePackageReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/AssignPriceToPackage": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagePriceSaveReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagePriceSaveReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagePriceSaveReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getMainPackages": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getMainServices": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getServiceGrpWithPkgs": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getServicePackagePrice": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagesPriceReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagesPriceReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackagesPriceReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getMainFeatures": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/getPackageFeatures": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageFeatureReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageFeatureReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageFeatureReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaAdmin/AssignFeaturesToPackage": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/packages_feature"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/packages_feature"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/packages_feature"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaBrowse/GetPricingPackageWithService": {
       "post": {
         "tags": [
@@ -1314,6 +1658,10 @@
           "active": {
             "type": "boolean",
             "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1549,6 +1897,96 @@
         },
         "additionalProperties": false
       },
+      "PackageFeatureReq": {
+        "type": "object",
+        "properties": {
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PackagePriceSaveReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "service_package_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "curr_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "package_price": {
+            "type": "number",
+            "format": "double"
+          },
+          "package_sale_price": {
+            "type": "number",
+            "format": "double"
+          },
+          "discount_amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "discount_type": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PackageSaveReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "package_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_recommend": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "is_custom": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "default_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PackagesPriceReq": {
+        "type": "object",
+        "properties": {
+          "service_package_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PricingPackage": {
         "type": "object",
         "properties": {
@@ -1692,7 +2130,8 @@
         "properties": {
           "package_id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "active": {
             "type": "boolean",
@@ -1812,6 +2251,24 @@
         },
         "additionalProperties": false
       },
+      "ServicePackageReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "service_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ServiceReq": {
         "type": "object",
         "properties": {
@@ -1825,6 +2282,25 @@
           "lang": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "packages_feature": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "feature_id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

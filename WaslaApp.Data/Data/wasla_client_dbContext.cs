@@ -46,6 +46,24 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<Service> Services { get; set; }
 
+    public virtual DbSet<features_translation> features_translations { get; set; }
+
+    public virtual DbSet<main_feature> main_features { get; set; }
+
+    public virtual DbSet<main_service> main_services { get; set; }
+
+    public virtual DbSet<package> packages { get; set; }
+
+    public virtual DbSet<package_translation> package_translations { get; set; }
+
+    public virtual DbSet<packages_feature> packages_features { get; set; }
+
+    public virtual DbSet<service_package> service_packages { get; set; }
+
+    public virtual DbSet<service_package_price> service_package_prices { get; set; }
+
+    public virtual DbSet<service_translation> service_translations { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseNpgsql("Host=localhost:5432;Database=wasla_client_db;Username=postgres;Password=Berlin2020");
@@ -222,6 +240,109 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.leaf).HasDefaultValue(true);
             entity.Property(e => e.price).HasDefaultValueSql("0");
             entity.Property(e => e.service_code).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<features_translation>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("features_translation_pkey");
+
+            entity.ToTable("features_translation");
+
+            entity.Property(e => e.lang_code).HasMaxLength(5);
+        });
+
+        modelBuilder.Entity<main_feature>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("packages_features_pkey");
+
+            entity.Property(e => e.id).HasDefaultValueSql("nextval('packages_features_id_seq'::regclass)");
+            entity.Property(e => e.feature_code).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<main_service>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("main_services_pkey");
+
+            entity.HasIndex(e => e.service_code, "main_services_service_code_key").IsUnique();
+        });
+
+        modelBuilder.Entity<package>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("packages_pkey");
+
+            entity.HasIndex(e => e.package_code, "packages_package_code_key").IsUnique();
+
+            entity.Property(e => e.order).HasDefaultValue((short)0);
+        });
+
+        modelBuilder.Entity<package_translation>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("package_translations_pkey");
+
+            entity.HasIndex(e => e.lang_code, "idx_package_translations_lang");
+
+            entity.HasIndex(e => new { e.package_id, e.lang_code }, "package_translations_package_id_lang_code_key").IsUnique();
+
+            entity.Property(e => e.lang_code).HasMaxLength(5);
+
+            entity.HasOne(d => d.package).WithMany(p => p.package_translations)
+                .HasForeignKey(d => d.package_id)
+                .HasConstraintName("package_translations_package_id_fkey");
+        });
+
+        modelBuilder.Entity<packages_feature>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("packages_features_pkey1");
+
+            entity.Property(e => e.id).HasDefaultValueSql("nextval('packages_features_id_seq1'::regclass)");
+        });
+
+        modelBuilder.Entity<service_package>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("service_packages_pkey");
+
+            entity.HasIndex(e => new { e.service_id, e.package_id }, "service_packages_service_id_package_id_key").IsUnique();
+
+            entity.HasOne(d => d.package).WithMany(p => p.service_packages)
+                .HasForeignKey(d => d.package_id)
+                .HasConstraintName("service_packages_package_id_fkey");
+
+            entity.HasOne(d => d.service).WithMany(p => p.service_packages)
+                .HasForeignKey(d => d.service_id)
+                .HasConstraintName("service_packages_service_id_fkey");
+        });
+
+        modelBuilder.Entity<service_package_price>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("service_package_prices_pkey");
+
+            entity.HasIndex(e => e.curr_code, "idx_prices_currency");
+
+            entity.HasIndex(e => new { e.service_package_id, e.curr_code }, "service_package_prices_service_package_id_curr_code_key").IsUnique();
+
+            entity.Property(e => e.curr_code).HasMaxLength(3);
+            entity.Property(e => e.discount_amount).HasPrecision(10, 2);
+            entity.Property(e => e.package_price).HasPrecision(10, 2);
+            entity.Property(e => e.package_sale_price).HasPrecision(10, 2);
+
+            entity.HasOne(d => d.service_package).WithMany(p => p.service_package_prices)
+                .HasForeignKey(d => d.service_package_id)
+                .HasConstraintName("service_package_prices_service_package_id_fkey");
+        });
+
+        modelBuilder.Entity<service_translation>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("service_translations_pkey");
+
+            entity.HasIndex(e => e.lang_code, "idx_service_translations_lang");
+
+            entity.HasIndex(e => new { e.service_id, e.lang_code }, "service_translations_service_id_lang_code_key").IsUnique();
+
+            entity.Property(e => e.lang_code).HasMaxLength(5);
+
+            entity.HasOne(d => d.service).WithMany(p => p.service_translations)
+                .HasForeignKey(d => d.service_id)
+                .HasConstraintName("service_translations_service_id_fkey");
         });
 
         OnModelCreatingPartial(modelBuilder);

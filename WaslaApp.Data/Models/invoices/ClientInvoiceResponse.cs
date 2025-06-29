@@ -34,6 +34,7 @@ namespace WaslaApp.Data.Models.invoices
         public string? invoice_code { get; set; }
         public string? package_details { get; set; }
         public short? status { get; set; }
+        public List<PricingPkgFeature> features { get; set; }
     }
 
     public class ClientInvoiceGrp

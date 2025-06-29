@@ -10,6 +10,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using Wasla_App.services;
+using Wasla_App.services.Admin;
 using Wasla_App.services.Client;
 using Wasla_App.Services;
 using WaslaApp.Data;
@@ -81,8 +82,10 @@ builder.Services.AddDbContext<wasla_client_dbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WaslaConnection")));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<WaslaDAO>();
+builder.Services.AddScoped<WaslaAdminDao>();
 builder.Services.AddScoped<MailSettingDao>();
 builder.Services.AddScoped<IWaslaService, WaslaService>();
+builder.Services.AddScoped<IAdminWaslaService, AdminWaslaService>();
 builder.Services.AddScoped<CustomViewRendererService>();
 builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddAuthentication()
