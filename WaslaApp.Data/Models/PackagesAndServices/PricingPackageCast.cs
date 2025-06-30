@@ -15,5 +15,7 @@ namespace WaslaApp.Data.Models.PackagesAndServices
         public string? end_dateStr { get; set; }
         public bool? isSelected { get; set; }
         public List<PricingPkgFeature> features { get; set; }
+        //public List<PackagesFeatureRes> features { get; set; }
+        
     }
 }

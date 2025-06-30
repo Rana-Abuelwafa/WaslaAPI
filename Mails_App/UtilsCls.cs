@@ -61,6 +61,17 @@ namespace Mails_App
                     return "Waslaa - Klantenondersteuning";
                 else return "";
             }
+            else if (type == 5)
+            {
+                //mean checkout notify to customer care
+                if (lang == "ar")
+                    return "   اخطار الدفع - وصلة";
+                else if (lang == "en")
+                    return "Waslaa - Checkout Notify";
+                else if (lang == "de")
+                    return "Waslaa - Checkout-Benachrichtigung";
+                else return "";
+            }
             else return "";
             
         }

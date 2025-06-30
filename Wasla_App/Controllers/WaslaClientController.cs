@@ -133,13 +133,15 @@ namespace Wasla_App.Controllers
         public IActionResult CheckoutInvoice(CheckoutReq req)
         {
             string? clientId = string.Empty;
-
+            string? email = string.Empty;
+            string? completeprofile = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-
+                email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
+                completeprofile = _httpContextAccessor.HttpContext.User.FindFirstValue("completeprofile");
             }
-            return Ok(_waslaService.CheckoutInvoice(req, clientId));
+            return Ok(_waslaService.CheckoutInvoice(req, clientId, email , completeprofile));
         }
 
         [HttpPost("GetInvoicesByClient")]

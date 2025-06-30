@@ -1087,6 +1087,10 @@
           "email": {
             "minLength": 1,
             "type": "string"
+          },
+          "completeprofile": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

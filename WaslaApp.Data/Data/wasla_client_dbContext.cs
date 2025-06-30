@@ -58,6 +58,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<packages_feature> packages_features { get; set; }
 
+    public virtual DbSet<packagesdetailswithservice> packagesdetailswithservices { get; set; }
+
     public virtual DbSet<service_package> service_packages { get; set; }
 
     public virtual DbSet<service_package_price> service_package_prices { get; set; }
@@ -295,6 +297,19 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("packages_features_pkey1");
 
             entity.Property(e => e.id).HasDefaultValueSql("nextval('packages_features_id_seq1'::regclass)");
+        });
+
+        modelBuilder.Entity<packagesdetailswithservice>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("packagesdetailswithservices");
+
+            entity.Property(e => e.curr_code).HasMaxLength(3);
+            entity.Property(e => e.discount_amount).HasPrecision(10, 2);
+            entity.Property(e => e.lang_code).HasMaxLength(5);
+            entity.Property(e => e.package_price).HasPrecision(10, 2);
+            entity.Property(e => e.package_sale_price).HasPrecision(10, 2);
         });
 
         modelBuilder.Entity<service_package>(entity =>

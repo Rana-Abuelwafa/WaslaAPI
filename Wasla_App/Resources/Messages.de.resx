@@ -150,4 +150,7 @@
   <data name="NoInvoice" xml:space="preserve">
     <value>no Invoice Founded</value>
   </data>
+  <data name="ProfileUncomplete" xml:space="preserve">
+    <value>Please Complete Your Profile First</value>
+  </data>
 </root>

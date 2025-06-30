@@ -284,6 +284,7 @@ namespace Wasla_Auth_App.Controllers
                         new Claim("ClientId", user.Id.ToString()),
                         new Claim("FullName", fullName),
                         new Claim("Email", user.Email),
+                        new Claim("completeprofile", user.completeprofile.ToString()),
                         //new Claim("ClientId", user.Id.ToString()),
                         new Claim("TimeStamp",timestamp.ToString()),
                         new Claim("ActivtationTokenExpiredAt",timestamp.AddMinutes(30).ToString()),
@@ -624,8 +625,10 @@ namespace Wasla_Auth_App.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
-                    //update user completeprofile = true, (mean user answer to registration's questions)
-                    user.completeprofile = 1;
+                    //update user completeprofile = true,
+                    //(1 = mean user answer to registration's questions)
+                    //(2 = mean user fill his profile data all)
+                    user.completeprofile = model.completeprofile;
                     await _userManager.UpdateAsync(user);
                     var token = await GenerateJwtTokenAsync(user);
                     return Ok(new User

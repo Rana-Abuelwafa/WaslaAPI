@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Org.BouncyCastle.Ocsp;
+using Org.BouncyCastle.Tls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -286,6 +287,115 @@ namespace WaslaApp.Data
         }
 
         //get all invoices by client_id
+
+        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClientNew(ClientInvoiceReq req, string client_id)
+        {
+            try
+            {
+                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
+                                .Join(
+                                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
+                                        SERV => new { SERV.invoice_id, SERV.client_id },
+                                        INV => new { INV.invoice_id, INV.client_id },
+                                        (SERV, INV) => new { SERV, INV }
+                                     )
+                                .Join(
+                                     _db.ApplyTaxes,
+                                     SERV_INV => SERV_INV.INV.tax_id,
+                                     TAX => TAX.tax_id,
+                                     (SERV_INV, TAX) => new { SERV_INV, TAX }
+                                    )
+                                 .Join(
+                                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
+                                    combinedEntry => new { combinedEntry.SERV_INV.SERV.package_id,
+                                                          service_id = combinedEntry.SERV_INV.SERV.productId,
+                                                          combinedEntry.SERV_INV.INV.curr_code
+                                    },
+                                    PKG => new { PKG.package_id, PKG.service_id , PKG.curr_code },
+                                    (combinedEntry, PKG) =>  new ClientInvoiceResponse
+                                    {
+                                        invoice_id = combinedEntry.SERV_INV.INV.invoice_id,
+                                        curr_code = combinedEntry.SERV_INV.INV.curr_code,
+                                        discount = combinedEntry.SERV_INV.INV.discount,
+                                        total_price = combinedEntry.SERV_INV.INV.total_price,
+                                        grand_total_price = combinedEntry.SERV_INV.INV.grand_total_price,
+                                        service_id = combinedEntry.SERV_INV.SERV.productId,
+                                        package_id = combinedEntry.SERV_INV.SERV.package_id,
+                                        service_name = PKG.service_name,
+                                        package_name = PKG.package_name,
+                                        package_price = PKG.package_price,
+                                        package_sale_price = PKG.package_sale_price,
+                                        package_desc = PKG.package_desc,
+                                        package_details = PKG.package_details,
+                                        invoice_code = combinedEntry.SERV_INV.INV.invoice_code,
+                                        invoice_code_auto = combinedEntry.SERV_INV.INV.invoice_code_auto,
+                                        status = combinedEntry.SERV_INV.INV.status,
+                                        tax_amount = combinedEntry.TAX.tax_amount,
+                                        tax_code = combinedEntry.TAX.tax_code,
+                                        tax_id = combinedEntry.TAX.tax_id,
+                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+
+                                    }
+                                   ).ToListAsync();
+                var result = fullEntries.GroupBy(grp => new
+                {
+                    grp.invoice_id,
+                    grp.curr_code,
+                    grp.discount,
+                    grp.grand_total_price,
+                    grp.invoice_code,
+                    grp.invoice_code_auto,
+                    grp.status,
+                    grp.total_price,
+                    grp.tax_code,
+                    grp.tax_amount,
+                    grp.tax_id
+                }).Select(s => new ClientInvoiceGrp
+                {
+                    invoice_id = s.Key.invoice_id,
+                    invoice_code_auto = s.Key.invoice_code_auto,
+                    status = s.Key.status,
+                    invoice_code = s.Key.invoice_code,
+                    curr_code = s.Key.curr_code,
+                    discount = s.Key.discount,
+                    grand_total_price = s.Key.grand_total_price,
+                    total_price = s.Key.total_price,
+                    tax_amount = s.Key.tax_amount,
+                    tax_code = s.Key.tax_code,
+                    tax_id = s.Key.tax_id,
+                    pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
+                                      .Select(s => new ClientInvoiceResponse
+                                      {
+                                          invoice_id = s.invoice_id,
+                                          curr_code = s.curr_code,
+                                          discount = s.discount,
+                                          total_price = s.total_price,
+                                          grand_total_price = s.grand_total_price,
+                                          service_id = s.service_id,
+                                          package_id = s.package_id,
+                                          service_name = s.service_name,
+                                          package_name = s.package_name,
+                                          package_price = s.package_price,
+                                          package_sale_price = s.package_sale_price,
+                                          package_desc = s.package_desc,
+                                          package_details = s.package_details,
+                                          invoice_code = s.invoice_code,
+                                          invoice_code_auto = s.invoice_code_auto,
+                                          status = s.status,
+                                          tax_amount = s.tax_amount,
+                                          tax_code = s.tax_code,
+                                          tax_id = s.tax_id,
+                                          features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
+                                      }).ToList()) : fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+
+                }).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req,string client_id)
         {
             try
@@ -334,7 +444,10 @@ namespace WaslaApp.Data
                                         tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
                                         tax_code= combinedEntry.SERV_PKG.TAX.tax_code,
                                         tax_id = combinedEntry.SERV_PKG.TAX.tax_id,
-                                       // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+                                        client_name = combinedEntry.SERV_PKG.SERV_INV.INV.client_name,
+                                        client_email= combinedEntry.SERV_PKG.SERV_INV.INV.client_email,
+                                        invoice_date= combinedEntry.SERV_PKG.SERV_INV.INV.invoice_date.ToString(),
+                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
                                     }
                                    ).ToListAsync();
@@ -350,7 +463,10 @@ namespace WaslaApp.Data
                     grp.total_price,
                     grp.tax_code,
                     grp.tax_amount,
-                    grp.tax_id
+                    grp.tax_id,
+                    grp.invoice_date,
+                    grp.client_email,
+                    grp.client_name
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -385,6 +501,9 @@ namespace WaslaApp.Data
                                           tax_amount = s.tax_amount,
                                           tax_code = s.tax_code,
                                           tax_id = s.tax_id,
+                                          client_name=s.client_name,
+                                          client_email=s.client_email,
+                                          invoice_date=s.invoice_date,
                                           features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
                                       }).ToList() ): fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
 
@@ -432,10 +551,14 @@ namespace WaslaApp.Data
 
         }
       
-       public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
+       public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id,string client_name , string completeprofile)
         {
             try
             {
+                if(completeprofile.Trim() != "2")
+                {
+                    return new ResponseCls { success = false, errors = _localizer["ProfileUncomplete"] };
+                }
                // var totalPrice = req.pkgs.Sum(s => s.package_sale_price);
                 //var totalDiscount = req.pkgs.Sum(s => s.discount);
                // var totalAfterCopoun = totalPrice - (totalPrice * req.copoun_discount / 100); ;
@@ -446,6 +569,13 @@ namespace WaslaApp.Data
                     inv.status = 2;
                     _db.Update(inv);
                     _db.SaveChanges();
+                    //send mail to customer care to notify him
+                    string fileName = "CustomerNotify.html";
+                    string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                    htmlBody = htmlBody.Replace("@user", client_name);
+                    htmlBody = htmlBody.Replace("@invoiceNo", req.invoice_code);
+                    MailData Mail_Data = new MailData { EmailToId = "Customer.Care@waslaa.de", EmailToName = "Customer.Care@waslaa.de", EmailSubject = UtilsCls.GetMailSubjectByLang("en", 5), EmailBody = htmlBody };
+                    _mailSettingDao.SendMail(Mail_Data);
                     return new ResponseCls { success = true, errors = null };
                 }
                 return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
@@ -922,6 +1052,7 @@ namespace WaslaApp.Data
                 return null;
             }
         }
+      
         public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req)
         {
 
@@ -994,9 +1125,88 @@ namespace WaslaApp.Data
             return response;
         }
 
-       
-        //get packages data by lang and currency
+        //get feature list for specific service package
+        public List<PackagesFeatureRes> getPackageFeatures(PackageFeatureReq req)
+        {
+            try
+            {
+                return  _db.packages_features.Where(wr => wr.package_id == req.package_id)
+                                                  .Join(_db.main_features,
+                                                         PKGF => new { PKGF.feature_id },
+                                                         FEAT => new { feature_id = FEAT.id },
+                                                         (PKGF, FEAT) => new { PKGF, FEAT }
+                                                          )
+                                                    .Join(_db.features_translations.Where(wr => wr.lang_code == req.lang_code),
+                                                          combined => new { feature_id = combined.FEAT.id},
+                                                          Trans => new { Trans.feature_id},
+                                                          (combined, Trans) => new PackagesFeatureRes
+                                                          {
+                                                              feature_id = combined.PKGF.feature_id,
+                                                              package_id = combined.PKGF.package_id,
+                                                              id = combined.PKGF.id,
+                                                              feature_code = combined.FEAT.feature_code,
+                                                              feature_default_name = combined.FEAT.feature_default_name,
+                                                              feature_description= Trans.feature_description,
+                                                              feature_name= Trans.feature_name,
+                                                              lang_code= Trans.lang_code
+                                                          })
+                                                  .ToList();
+               
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
+        }
+        //get packages data by lang and currency
+        //public async Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
+        //{
+        //    try
+        //    {
+        //        var result = await _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang && wr.curr_code.ToLower() == req.curr_code.ToLower() && wr.active == true).ToListAsync();
+        //       var fullEntries = result.Select(s => new PricingPackageCast
+        //        {
+        //            service_id = (int)s.service_id,
+        //            curr_code = s.curr_code,
+        //            lang_code = s.lang_code,
+        //            package_sale_price = s.package_sale_price,
+        //            active = s.active,
+        //            discount_amount = s.discount_amount,
+        //            discount_type = (short?)s.discount_type,
+        //            package_price = s.package_price,
+        //            package_name = s.package_name,
+        //            package_id = (int)s.package_id,
+        //            package_desc = s.package_desc,
+        //            order = s.order,
+        //            package_details = s.package_details,
+        //            service_name = s.service_name,
+        //            is_recommend = s.is_recommend,
+        //            package_code = s.package_code,
+        //            isSelected = false,
+        //            is_custom = s.is_custom,
+        //           features =  getPackageFeatures(new PackageFeatureReq {package_id = s.package_id,lang_code=req.lang }).ToList()
+                  
+        //        }).ToList();
+
+        //        return fullEntries.GroupBy(grp => new
+        //        {
+        //            grp.service_id,
+        //            grp.service_name,
+        //        }).Select(s => new ServicesWithPkg
+        //        {
+        //            service_id = s.Key.service_id,
+        //            service_name = s.Key.service_name,
+        //            pkgs = fullEntries.Where(wr => wr.service_id == s.Key.service_id).ToList()
+        //        }).ToList();
+              
+        //    }
+        //    catch (Exception ex) {
+        //        return null;
+        //    }
+           
+       
+        //}
         public async Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
         {
             try

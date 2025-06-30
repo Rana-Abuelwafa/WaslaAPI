@@ -10,6 +10,8 @@ namespace WaslaApp.Data.Models.invoices
     {
         public short? status { get; set; }
         public decimal invoice_id { get; set; }
+        public string? lang { get; set; }
+        public string? invoice_code { get; set; }
 
     }
 }

@@ -403,7 +403,7 @@ namespace WaslaApp.Data
 
         }
 
-        //get price list for specific service package
+        //get feature list for specific service package
         public async Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req)
         {
             try

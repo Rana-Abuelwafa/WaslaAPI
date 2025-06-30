@@ -143,9 +143,9 @@ namespace Wasla_App.services.Client
             return _waslaDao.GetInvoicesByClient(req,client_id);
         }
 
-        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id)
+        public ResponseCls CheckoutInvoice(CheckoutReq req, string client_id, string client_name,string completeprofile)
         {
-            return _waslaDao.CheckoutInvoice(req,client_id);
+            return _waslaDao.CheckoutInvoice(req,client_id,client_name, completeprofile);
         }
 
         public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id)

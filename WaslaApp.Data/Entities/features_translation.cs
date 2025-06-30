@@ -7,7 +7,7 @@ public partial class features_translation
 {
     public int id { get; set; }
 
-    public int? feature_id { get; set; }
+    public int feature_id { get; set; }
 
     public string? feature_name { get; set; }
 

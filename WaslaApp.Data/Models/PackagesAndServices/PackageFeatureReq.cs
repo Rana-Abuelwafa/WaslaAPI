@@ -8,6 +8,7 @@ namespace WaslaApp.Data.Models.PackagesAndServices
 {
     public class PackageFeatureReq
     {
-        public int  package_id { get; set; }
+        public int?  package_id { get; set; }
+        public string lang_code { get; set; }
     }
 }

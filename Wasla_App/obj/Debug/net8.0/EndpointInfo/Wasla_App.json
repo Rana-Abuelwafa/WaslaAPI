@@ -1607,6 +1607,14 @@
           "invoice_id": {
             "type": "number",
             "format": "double"
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice_code": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1660,6 +1668,10 @@
             "nullable": true
           },
           "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "curr_code": {
             "type": "string",
             "nullable": true
           }
@@ -1902,7 +1914,12 @@
         "properties": {
           "package_id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
+          },
+          "lang_code": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
