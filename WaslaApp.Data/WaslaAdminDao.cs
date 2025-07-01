@@ -251,7 +251,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                service_package service_Package= new service_package { id = row.id ,package_id=row.package_id,service_id=row.service_id};
+                service_package service_Package= new service_package { id = row.id ,package_id=row.package_id,service_id=row.service_id,is_recommend=row.is_recommend};
                 if (row.id == 0)
                 {
                     //check duplicate validation
@@ -305,6 +305,13 @@ namespace WaslaApp.Data
                     package_sale_price= row.package_sale_price,
                     service_package_id=row.service_package_id
                 };
+             
+                if (row.delete)
+                {
+                    _db.Remove(price);
+                    _db.SaveChanges();
+                  return  new ResponseCls { errors = null, success = true };
+                }
                 if (row.id == 0)
                 {
                     //check duplicate validation
@@ -363,7 +370,7 @@ namespace WaslaApp.Data
                                             service_code= SERV.service_code,
                                             package_code= combinedEntry.PKG.package_code,
                                             is_custom= combinedEntry.PKG.is_custom,
-                                            is_recommend= combinedEntry.PKG.is_recommend,
+                                            is_recommend= combinedEntry.SP.is_recommend,
                                             package_default_name= combinedEntry.PKG.default_name,
                                             service_default_name= SERV.default_name,
                                             order= combinedEntry.PKG.order
@@ -432,12 +439,19 @@ namespace WaslaApp.Data
 
 
         //assign features to package
-        public ResponseCls AssignFeaturesToPackage(packages_feature row)
+        public ResponseCls AssignFeaturesToPackage(PkgFeatureSaveDelete row)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
+                packages_feature feat = new packages_feature { feature_id=row.feature_id,id=row.id,package_id=row.package_id};
+                if (row.delete)
+                {
+                    _db.Remove(feat);
+                    _db.SaveChanges();
+                    return new ResponseCls { errors = null, success = true };
+                }
                 
                 if (row.id == 0)
                 {
@@ -447,12 +461,12 @@ namespace WaslaApp.Data
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
-                    _db.packages_features.Add(row);
+                    _db.packages_features.Add(feat);
                     _db.SaveChanges();
                 }
                 else
                 {
-                    _db.packages_features.Update(row);
+                    _db.packages_features.Update(feat);
                     _db.SaveChanges();
                 }
 

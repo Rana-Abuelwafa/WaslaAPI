@@ -151,7 +151,6 @@
     <value>no Invoice Founded</value>
   </data>
   <data name="ProfileUncomplete" xml:space="preserve">
-    <value>Bitte vervollständigen Sie zuerst Ihr Profil
-</value>
+    <value>Please Complete Your Profile First</value>
   </data>
 </root>

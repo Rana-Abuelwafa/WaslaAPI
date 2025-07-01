@@ -163,7 +163,7 @@ namespace Wasla_App.Controllers
         }
 
         [HttpPost("AssignFeaturesToPackage")]
-        public IActionResult AssignFeaturesToPackage(packages_feature row)
+        public IActionResult AssignFeaturesToPackage(PkgFeatureSaveDelete row)
         {
             return Ok(_adminWaslaService.AssignFeaturesToPackage(row));
         }

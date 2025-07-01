@@ -19,6 +19,6 @@ namespace Wasla_App.services.Admin
 
         public Task<List<main_feature>> getMainFeatures();
         public Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req);
-        public ResponseCls AssignFeaturesToPackage(packages_feature row);
+        public ResponseCls AssignFeaturesToPackage(PkgFeatureSaveDelete row);
     }
 }

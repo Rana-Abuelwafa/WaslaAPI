@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "row",
-        "Type": "WaslaApp.Data.Entities.packages_feature",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.PkgFeatureSaveDelete",
         "IsRequired": true
       }
     ],

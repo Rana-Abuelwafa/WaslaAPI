@@ -151,7 +151,6 @@
     <value>لا يوجد فاتورة</value>
   </data>
   <data name="ProfileUncomplete" xml:space="preserve">
-    <value>الرجاء إكمال ملفك الشخصي أولاً
-</value>
+    <value>الرجاء إكمال ملفك الشخصي أولاً</value>
   </data>
 </root>

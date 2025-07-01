@@ -21,5 +21,6 @@ namespace WaslaApp.Data.Models.PackagesAndServices
         public decimal discount_amount { get; set; }
 
         public int? discount_type { get; set; }
+        public bool delete { get; set; }
     }
 }

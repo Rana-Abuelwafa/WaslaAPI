@@ -342,17 +342,7 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\ref\Wasla_App.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.RazorAssemblyInfo.cache
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.RazorAssemblyInfo.cs
-D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\ar\Wasla_App.resources.dll
-D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\de\Wasla_App.resources.dll
-D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\en\Wasla_App.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.Resources.Messages.ar.resources
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.Resources.Messages.de.resources
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.Resources.Messages.en.resources
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\Wasla_App.csproj.GenerateResource.cache
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\ar\Wasla_App.resources.dll
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\de\Wasla_App.resources.dll
-D:\waslaa\api\WaslaAPI\Wasla_App\obj\Debug\net8.0\en\Wasla_App.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\ar\WaslaApp.Data.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\de\WaslaApp.Data.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Debug\net8.0\en\WaslaApp.Data.resources.dll

@@ -15,7 +15,7 @@ namespace Wasla_App.services.Admin
 
         }
 
-        public ResponseCls AssignFeaturesToPackage(packages_feature row)
+        public ResponseCls AssignFeaturesToPackage(PkgFeatureSaveDelete row)
         {
             return _waslaAdminDao.AssignFeaturesToPackage(row);
         }

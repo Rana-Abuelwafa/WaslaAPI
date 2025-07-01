@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace WaslaApp.Data.Models.PackagesAndServices
 {
-    public class ServicePackageReq
+    public class PkgFeatureSaveDelete
     {
         public int id { get; set; }
-        public int service_id { get; set; }
 
-        public int package_id { get; set; }
-        public bool is_recommend { get; set; }
+        public int? package_id { get; set; }
+
+        public int feature_id { get; set; }
+        public bool delete { get; set; }    
     }
 }
