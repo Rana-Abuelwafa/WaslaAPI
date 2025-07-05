@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UserNotFound" xml:space="preserve">
-    <value>UserNotFound</value>
+    <value>Benutzer nicht gefunden</value>
   </data>
   <data name="SuccessLogin" xml:space="preserve">
-    <value>User Login successfully</value>
+    <value>Benutzeranmeldung erfolgreich</value>
   </data>
   <data name="SuccessRegister" xml:space="preserve">
-    <value>User created successfully</value>
+    <value>Benutzer erfolgreich erstellt</value>
   </data>
   <data name="MailPasswordIncorrect" xml:space="preserve">
-    <value>Mail Or Password is Incorrect</value>
+    <value>E-Mail oder Passwort ist falsch</value>
   </data>
   <data name="OTPMSG" xml:space="preserve">
-    <value>We have sent an OTP to your Email</value>
+    <value>Wir haben ein OTP an Ihre E-Mail gesendet</value>
   </data>
   <data name="CheckAdmin" xml:space="preserve">
-    <value>Internal Error Please Check Admin</value>
+    <value>Interner Fehler. Bitte überprüfen Sie den Administrator.</value>
   </data>
   <data name="SuccessPassChange" xml:space="preserve">
-    <value>Password is changed successfully</value>
+    <value>Das Passwort wurde erfolgreich geändert. Bitte melden Sie sich erneut an.</value>
   </data>
   <data name="InvalidCode" xml:space="preserve">
-    <value>Invalid Code</value>
+    <value>Ungültiger Code</value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
-    <value>Updated Successfully</value>
+    <value>Erfolgreich aktualisiert</value>
   </data>
 </root>

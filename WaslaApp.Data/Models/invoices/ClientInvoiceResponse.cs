@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.PackagesAndServices;
 
 namespace WaslaApp.Data.Models.invoices
 {
     public class ClientInvoiceResponse 
     {
         public decimal invoice_id { get; set; }
-        public string invoice_date { get; set; }
+        public string? invoice_date { get; set; }
         public decimal? tax_amount { get; set; }
         public string? tax_code { get; set; }
         public int? tax_id { get; set; }
@@ -37,7 +38,9 @@ namespace WaslaApp.Data.Models.invoices
         public string? client_email { get; set; }
 
         public string? client_name { get; set; }
-        public List<PricingPkgFeature> features { get; set; }
+        public int? service_package_id { get; set; }
+        //public List<PricingPkgFeature> features { get; set; }
+        public List<PackagesFeatureRes> features { get; set; }
     }
 
     public class ClientInvoiceGrp
@@ -50,7 +53,7 @@ namespace WaslaApp.Data.Models.invoices
         public decimal? tax_amount { get; set; }
         //public string? copoun { get; set; }
         //public decimal? copoun_discount { get; set; }
-        public string invoice_date { get; set; }
+        public string? invoice_date { get; set; }
         public int? tax_id { get; set; }
         public decimal? total_price { get; set; }
         public string? invoice_code_auto { get; set; }

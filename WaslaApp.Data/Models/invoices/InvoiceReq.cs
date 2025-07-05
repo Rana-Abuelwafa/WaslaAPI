@@ -20,5 +20,6 @@ namespace WaslaApp.Data.Models.invoices
         public int? productId { get; set; }
         public int? package_id { get; set; }
         public bool? is_custom { get; set; }
+        public int? service_package_id { get; set; }
     }
 }

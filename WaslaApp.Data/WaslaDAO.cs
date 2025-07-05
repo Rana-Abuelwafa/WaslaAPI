@@ -288,7 +288,7 @@ namespace WaslaApp.Data
 
         //get all invoices by client_id
 
-        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClientNew(ClientInvoiceReq req, string client_id)
+        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req, string client_id)
         {
             try
             {
@@ -333,120 +333,11 @@ namespace WaslaApp.Data
                                         tax_amount = combinedEntry.TAX.tax_amount,
                                         tax_code = combinedEntry.TAX.tax_code,
                                         tax_id = combinedEntry.TAX.tax_id,
-                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
-
-                                    }
-                                   ).ToListAsync();
-                var result = fullEntries.GroupBy(grp => new
-                {
-                    grp.invoice_id,
-                    grp.curr_code,
-                    grp.discount,
-                    grp.grand_total_price,
-                    grp.invoice_code,
-                    grp.invoice_code_auto,
-                    grp.status,
-                    grp.total_price,
-                    grp.tax_code,
-                    grp.tax_amount,
-                    grp.tax_id
-                }).Select(s => new ClientInvoiceGrp
-                {
-                    invoice_id = s.Key.invoice_id,
-                    invoice_code_auto = s.Key.invoice_code_auto,
-                    status = s.Key.status,
-                    invoice_code = s.Key.invoice_code,
-                    curr_code = s.Key.curr_code,
-                    discount = s.Key.discount,
-                    grand_total_price = s.Key.grand_total_price,
-                    total_price = s.Key.total_price,
-                    tax_amount = s.Key.tax_amount,
-                    tax_code = s.Key.tax_code,
-                    tax_id = s.Key.tax_id,
-                    pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
-                                      .Select(s => new ClientInvoiceResponse
-                                      {
-                                          invoice_id = s.invoice_id,
-                                          curr_code = s.curr_code,
-                                          discount = s.discount,
-                                          total_price = s.total_price,
-                                          grand_total_price = s.grand_total_price,
-                                          service_id = s.service_id,
-                                          package_id = s.package_id,
-                                          service_name = s.service_name,
-                                          package_name = s.package_name,
-                                          package_price = s.package_price,
-                                          package_sale_price = s.package_sale_price,
-                                          package_desc = s.package_desc,
-                                          package_details = s.package_details,
-                                          invoice_code = s.invoice_code,
-                                          invoice_code_auto = s.invoice_code_auto,
-                                          status = s.status,
-                                          tax_amount = s.tax_amount,
-                                          tax_code = s.tax_code,
-                                          tax_id = s.tax_id,
-                                          features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
-                                      }).ToList()) : fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
-
-                }).ToList();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-        public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req,string client_id)
-        {
-            try
-            {
-                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
-                                .Join(
-                                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
-                                        SERV => new { SERV.invoice_id, SERV.client_id },
-                                        INV => new { INV.invoice_id, INV.client_id },
-                                        (SERV, INV) => new { SERV, INV }
-                                     )
-                                .Join(
-                                     _db.ApplyTaxes,
-                                     SERV_INV => SERV_INV.INV.tax_id,
-                                     TAX => TAX.tax_id,
-                                     (SERV_INV, TAX) => new { SERV_INV, TAX }
-                                    )
-                                 .Join(
-                                    _db.PricingPackages,
-                                    SERV_PKG => SERV_PKG.SERV_INV.SERV.package_id,
-                                    PKG => PKG.package_id,
-                                    (SERV_PKG, PKG) => new { SERV_PKG, PKG }
-                                    )
-                                 .Join(
-                                    _db.Services,
-                                    combinedEntry => combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
-                                    PRODUCT => PRODUCT.productId,
-                                    (combinedEntry, PRODUCT) => new ClientInvoiceResponse
-                                    {
-                                        invoice_id = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_id,
-                                        curr_code = combinedEntry.SERV_PKG.SERV_INV.INV.curr_code,
-                                        discount = combinedEntry.SERV_PKG.SERV_INV.INV.discount,
-                                        total_price = combinedEntry.SERV_PKG.SERV_INV.INV.total_price,
-                                        grand_total_price = combinedEntry.SERV_PKG.SERV_INV.INV.grand_total_price,
-                                        service_id = combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
-                                        package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id,
-                                        service_name = PRODUCT.productName,
-                                        package_name = combinedEntry.PKG.package_name,
-                                        package_price = combinedEntry.PKG.package_price,
-                                        package_sale_price = combinedEntry.PKG.package_sale_price,  
-                                        package_desc = combinedEntry.PKG.package_desc,
-                                        package_details = combinedEntry.PKG.package_details,
-                                        invoice_code = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code,
-                                        invoice_code_auto = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code_auto,
-                                        status = combinedEntry.SERV_PKG.SERV_INV.INV.status,
-                                        tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
-                                        tax_code= combinedEntry.SERV_PKG.TAX.tax_code,
-                                        tax_id = combinedEntry.SERV_PKG.TAX.tax_id,
-                                        client_name = combinedEntry.SERV_PKG.SERV_INV.INV.client_name,
-                                        client_email= combinedEntry.SERV_PKG.SERV_INV.INV.client_email,
-                                        invoice_date= combinedEntry.SERV_PKG.SERV_INV.INV.invoice_date.ToString(),
+                                        service_package_id = PKG.service_package_id,
+                                        client_name = combinedEntry.SERV_INV.INV.client_name,
+                                        client_email = combinedEntry.SERV_INV.INV.client_email,
+                                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd")
+                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                         // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
                                     }
@@ -477,11 +368,15 @@ namespace WaslaApp.Data
                     discount = s.Key.discount,
                     grand_total_price = s.Key.grand_total_price,
                     total_price = s.Key.total_price,
-                    tax_amount=s.Key.tax_amount,
-                    tax_code=s.Key.tax_code,
-                    tax_id=s.Key.tax_id,
+                    tax_amount = s.Key.tax_amount,
+                    tax_code = s.Key.tax_code,
+                    tax_id = s.Key.tax_id,
+                    client_email=s.Key.client_email,
+                    client_name=s.Key.client_name,
+                    invoice_date=s.Key.invoice_date,
                     pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
-                                      .Select(s => new ClientInvoiceResponse {
+                                      .Select(s => new ClientInvoiceResponse
+                                      {
                                           invoice_id = s.invoice_id,
                                           curr_code = s.curr_code,
                                           discount = s.discount,
@@ -501,11 +396,8 @@ namespace WaslaApp.Data
                                           tax_amount = s.tax_amount,
                                           tax_code = s.tax_code,
                                           tax_id = s.tax_id,
-                                          client_name=s.client_name,
-                                          client_email=s.client_email,
-                                          invoice_date=s.invoice_date,
-                                          features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
-                                      }).ToList() ): fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+                                          features = getPackageFeatures(new PackageFeatureReq { service_package_id= s.service_package_id,lang_code=req.lang_code }).ToList()
+                                      }).ToList()) : fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
 
                 }).ToList();
                 return result;
@@ -515,6 +407,125 @@ namespace WaslaApp.Data
                 return null;
             }
         }
+        //public async Task<List<ClientInvoiceGrp>> GetInvoicesByClientOld(ClientInvoiceReq req,string client_id)
+        //{
+        //    try
+        //    {
+        //        var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
+        //                        .Join(
+        //                                _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
+        //                                SERV => new { SERV.invoice_id, SERV.client_id },
+        //                                INV => new { INV.invoice_id, INV.client_id },
+        //                                (SERV, INV) => new { SERV, INV }
+        //                             )
+        //                        .Join(
+        //                             _db.ApplyTaxes,
+        //                             SERV_INV => SERV_INV.INV.tax_id,
+        //                             TAX => TAX.tax_id,
+        //                             (SERV_INV, TAX) => new { SERV_INV, TAX }
+        //                            )
+        //                         .Join(
+        //                            _db.PricingPackages,
+        //                            SERV_PKG => SERV_PKG.SERV_INV.SERV.package_id,
+        //                            PKG => PKG.package_id,
+        //                            (SERV_PKG, PKG) => new { SERV_PKG, PKG }
+        //                            )
+        //                         .Join(
+        //                            _db.Services,
+        //                            combinedEntry => combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
+        //                            PRODUCT => PRODUCT.productId,
+        //                            (combinedEntry, PRODUCT) => new ClientInvoiceResponse
+        //                            {
+        //                                invoice_id = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_id,
+        //                                curr_code = combinedEntry.SERV_PKG.SERV_INV.INV.curr_code,
+        //                                discount = combinedEntry.SERV_PKG.SERV_INV.INV.discount,
+        //                                total_price = combinedEntry.SERV_PKG.SERV_INV.INV.total_price,
+        //                                grand_total_price = combinedEntry.SERV_PKG.SERV_INV.INV.grand_total_price,
+        //                                service_id = combinedEntry.SERV_PKG.SERV_INV.SERV.productId,
+        //                                package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id,
+        //                                service_name = PRODUCT.productName,
+        //                                package_name = combinedEntry.PKG.package_name,
+        //                                package_price = combinedEntry.PKG.package_price,
+        //                                package_sale_price = combinedEntry.PKG.package_sale_price,  
+        //                                package_desc = combinedEntry.PKG.package_desc,
+        //                                package_details = combinedEntry.PKG.package_details,
+        //                                invoice_code = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code,
+        //                                invoice_code_auto = combinedEntry.SERV_PKG.SERV_INV.INV.invoice_code_auto,
+        //                                status = combinedEntry.SERV_PKG.SERV_INV.INV.status,
+        //                                tax_amount= combinedEntry.SERV_PKG.TAX.tax_amount,
+        //                                tax_code= combinedEntry.SERV_PKG.TAX.tax_code,
+        //                                tax_id = combinedEntry.SERV_PKG.TAX.tax_id,
+        //                                client_name = combinedEntry.SERV_PKG.SERV_INV.INV.client_name,
+        //                                client_email= combinedEntry.SERV_PKG.SERV_INV.INV.client_email,
+        //                                invoice_date= combinedEntry.SERV_PKG.SERV_INV.INV.invoice_date.ToString(),
+        //                                // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+
+        //                            }
+        //                           ).ToListAsync();
+        //        var result = fullEntries.GroupBy(grp => new
+        //        {
+        //            grp.invoice_id,
+        //            grp.curr_code,
+        //            grp.discount,
+        //            grp.grand_total_price,
+        //            grp.invoice_code,
+        //            grp.invoice_code_auto,
+        //            grp.status,
+        //            grp.total_price,
+        //            grp.tax_code,
+        //            grp.tax_amount,
+        //            grp.tax_id,
+        //            grp.invoice_date,
+        //            grp.client_email,
+        //            grp.client_name
+        //        }).Select(s => new ClientInvoiceGrp
+        //        {
+        //            invoice_id = s.Key.invoice_id,
+        //            invoice_code_auto = s.Key.invoice_code_auto,
+        //            status = s.Key.status,
+        //            invoice_code = s.Key.invoice_code,
+        //            curr_code = s.Key.curr_code,
+        //            discount = s.Key.discount,
+        //            grand_total_price = s.Key.grand_total_price,
+        //            total_price = s.Key.total_price,
+        //            tax_amount=s.Key.tax_amount,
+        //            tax_code=s.Key.tax_code,
+        //            tax_id=s.Key.tax_id,
+        //            pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
+        //                              .Select(s => new ClientInvoiceResponse {
+        //                                  invoice_id = s.invoice_id,
+        //                                  curr_code = s.curr_code,
+        //                                  discount = s.discount,
+        //                                  total_price = s.total_price,
+        //                                  grand_total_price = s.grand_total_price,
+        //                                  service_id = s.service_id,
+        //                                  package_id = s.package_id,
+        //                                  service_name = s.service_name,
+        //                                  package_name = s.package_name,
+        //                                  package_price = s.package_price,
+        //                                  package_sale_price = s.package_sale_price,
+        //                                  package_desc = s.package_desc,
+        //                                  package_details = s.package_details,
+        //                                  invoice_code = s.invoice_code,
+        //                                  invoice_code_auto = s.invoice_code_auto,
+        //                                  status = s.status,
+        //                                  tax_amount = s.tax_amount,
+        //                                  tax_code = s.tax_code,
+        //                                  tax_id = s.tax_id,
+        //                                  client_name=s.client_name,
+        //                                  client_email=s.client_email,
+        //                                  invoice_date=s.invoice_date,
+        //                                  features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = s.package_id }).ToList()
+        //                              }).ToList() ): fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
+
+        //        }).ToList();
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
         public ResponseCls RemoveInvoice(InvRemoveReq req, string client_id)
         {
             try
@@ -558,11 +569,7 @@ namespace WaslaApp.Data
                 if(completeprofile.Trim() != "2")
                 {
                     return new ResponseCls { success = false, errors = _localizer["ProfileUncomplete"] };
-                }
-               // var totalPrice = req.pkgs.Sum(s => s.package_sale_price);
-                //var totalDiscount = req.pkgs.Sum(s => s.discount);
-               // var totalAfterCopoun = totalPrice - (totalPrice * req.copoun_discount / 100); ;
-               // var TotalPriceAfterTax = CalculatePriceWithTax(1, totalAfterCopoun).Result;
+                }    
                 InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
                 if (inv != null)
                 {
@@ -707,7 +714,11 @@ namespace WaslaApp.Data
             decimal maxId = 0;
             try
             {
-                profile.client_birthday = DateOnly.Parse(profile.client_birthdayStr, CultureInfo.InvariantCulture);
+                if(profile.client_birthdayStr != null)
+                {
+                    profile.client_birthday = DateOnly.Parse(profile.client_birthdayStr, CultureInfo.InvariantCulture);
+                }
+               
                 if (profile.profile_id == 0)
                 {
                     if (_db.ClientProfiles.Count() > 0)
@@ -866,7 +877,7 @@ namespace WaslaApp.Data
             InvoiceResponse response = null; ;
             //list with custom package => no make invoice directly send contact mail to client
             var customLst = lst.Where(wr => wr.is_custom == true).ToList();
-            if(customLst != null)
+            if(customLst != null && customLst.Count > 0)
             {
                 string? lang = lst.First().lang_code?.ToLower();
                 //send contact mail to client
@@ -878,7 +889,7 @@ namespace WaslaApp.Data
             }
             //exclude custom package from Invoice 
             var newList = lst.Where(wr => wr.is_custom == false).ToList();
-            if (newList != null)
+            if (newList != null && newList.Count > 0)
             {
                 int count = 0;
                 decimal maxId = 0;
@@ -944,11 +955,11 @@ namespace WaslaApp.Data
                     foreach (InvoiceReq row in newList)
                     {
 
-                        ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id, invoice_id = response.idOut, active = true };
+                        ClientService service = new ClientService { client_id = client_id, id = 0, productId = row.productId, package_id = row.package_id, invoice_id = response.idOut, active = true ,service_package_id=row.service_package_id};
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id && wr.active == true).SingleOrDefault();
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.invoice_id == service.invoice_id && wr.active == true && wr.service_package_id==row.service_package_id).SingleOrDefault();
                             if (result != null)
                             {
                                 return new InvoiceResponse { success = false, errors = _localizer["DuplicateData"] };
@@ -1130,7 +1141,7 @@ namespace WaslaApp.Data
         {
             try
             {
-                return  _db.packages_features.Where(wr => wr.package_id == req.package_id)
+                return  _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
                                                          PKGF => new { PKGF.feature_id },
                                                          FEAT => new { feature_id = FEAT.id },
@@ -1142,7 +1153,7 @@ namespace WaslaApp.Data
                                                           (combined, Trans) => new PackagesFeatureRes
                                                           {
                                                               feature_id = combined.PKGF.feature_id,
-                                                              package_id = combined.PKGF.package_id,
+                                                              service_package_id = combined.PKGF.service_package_id,
                                                               id = combined.PKGF.id,
                                                               feature_code = combined.FEAT.feature_code,
                                                               feature_default_name = combined.FEAT.feature_default_name,
@@ -1160,118 +1171,37 @@ namespace WaslaApp.Data
 
         }
         //get packages data by lang and currency
-        //public async Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
-        //{
-        //    try
-        //    {
-        //        var result = await _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang && wr.curr_code.ToLower() == req.curr_code.ToLower() && wr.active == true).ToListAsync();
-        //       var fullEntries = result.Select(s => new PricingPackageCast
-        //        {
-        //            service_id = (int)s.service_id,
-        //            curr_code = s.curr_code,
-        //            lang_code = s.lang_code,
-        //            package_sale_price = s.package_sale_price,
-        //            active = s.active,
-        //            discount_amount = s.discount_amount,
-        //            discount_type = (short?)s.discount_type,
-        //            package_price = s.package_price,
-        //            package_name = s.package_name,
-        //            package_id = (int)s.package_id,
-        //            package_desc = s.package_desc,
-        //            order = s.order,
-        //            package_details = s.package_details,
-        //            service_name = s.service_name,
-        //            is_recommend = s.is_recommend,
-        //            package_code = s.package_code,
-        //            isSelected = false,
-        //            is_custom = s.is_custom,
-        //           features =  getPackageFeatures(new PackageFeatureReq {package_id = s.package_id,lang_code=req.lang }).ToList()
-                  
-        //        }).ToList();
-
-        //        return fullEntries.GroupBy(grp => new
-        //        {
-        //            grp.service_id,
-        //            grp.service_name,
-        //        }).Select(s => new ServicesWithPkg
-        //        {
-        //            service_id = s.Key.service_id,
-        //            service_name = s.Key.service_name,
-        //            pkgs = fullEntries.Where(wr => wr.service_id == s.Key.service_id).ToList()
-        //        }).ToList();
-              
-        //    }
-        //    catch (Exception ex) {
-        //        return null;
-        //    }
-           
-       
-        //}
         public async Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
         {
             try
             {
-            
-                var fullEntries = await _db.PricingPackages.Where(wr => wr.lang_code == req.lang &&  wr.curr_code.ToLower() == req.curr_code.ToLower() && wr.active == true)
-                    .Join(
-                        _db.Services.Where(wr => wr.lang_code == req.lang),
-                         PKG => new { PKG.service_id },
-                         Service => new { service_id = Service.productId },
-                        (PKG, Service) => new PricingPackageCast
-                        {
-                            service_id= PKG.service_id,
-                            curr_code= PKG.curr_code,
-                            lang_code= PKG.lang_code,
-                            package_sale_price= PKG.package_sale_price,
-                            active= PKG.active,
-                            discount_amount = PKG.discount_amount,
-                            discount_type= PKG.discount_type,
-                            end_dateStr= PKG.start_date.ToString(),
-                            package_price= PKG.package_price,
-                            package_name= PKG.package_name,
-                            package_id= PKG.package_id,
-                            package_desc= PKG.package_desc,
-                            start_date=PKG.start_date,
-                            end_date = PKG.end_date,
-                            order= PKG.order,
-                            package_details= PKG.package_details,
-                            service_name= Service.productName,
-                            start_dateStr=PKG.start_date.ToString(),
-                            is_recommend = PKG.is_recommend,
-                            package_code = PKG.package_code,
-                            isSelected= false,
-                            is_custom=PKG.is_custom,
-                            service_code = Service.service_code,
-                            //features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= PKG.package_id }).ToList()
-                        }
-                    ).ToListAsync();
-                fullEntries = fullEntries.Select(s => new PricingPackageCast
+                var result = await _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang &&  wr.curr_code.ToLower() == (wr.curr_code == null ? wr.curr_code : req.curr_code.ToLower()) && wr.active == true).ToListAsync();
+                var fullEntries = result.Select(s => new PricingPackageCast
                 {
-                    service_id = s.service_id,
+                    service_id = (int)s.service_id,
                     curr_code = s.curr_code,
                     lang_code = s.lang_code,
                     package_sale_price = s.package_sale_price,
                     active = s.active,
                     discount_amount = s.discount_amount,
-                    discount_type = s.discount_type,
-                    end_dateStr = s.start_date.ToString(),
+                    discount_type = (short?)s.discount_type,
                     package_price = s.package_price,
                     package_name = s.package_name,
-                    package_id = s.package_id,
+                    package_id = (int)s.package_id,
                     package_desc = s.package_desc,
-                    start_date = s.start_date,
-                    end_date = s.end_date,
                     order = s.order,
                     package_details = s.package_details,
                     service_name = s.service_name,
-                    start_dateStr = s.start_date.ToString(),
                     is_recommend = s.is_recommend,
                     package_code = s.package_code,
-                    isSelected=false,
-                    is_custom=s.is_custom,
-                   // isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
-                    features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
+                    isSelected = false,
+                    is_custom = s.is_custom,
+                    service_package_id=s.service_package_id,
+                    service_code=s.service_code,
+                    features = getPackageFeatures(new PackageFeatureReq { lang_code = req.lang,service_package_id=s.service_package_id }).ToList()
+
                 }).ToList();
+
                 return fullEntries.GroupBy(grp => new
                 {
                     grp.service_id,
@@ -1282,12 +1212,96 @@ namespace WaslaApp.Data
                     service_name = s.Key.service_name,
                     pkgs = fullEntries.Where(wr => wr.service_id == s.Key.service_id).ToList()
                 }).ToList();
+
             }
             catch (Exception ex)
             {
                 return null;
             }
+
+
         }
+        //public async Task<List<ServicesWithPkg>> GetPricingPackageWithServiceOld(LangReq req)
+        //{
+        //    try
+        //    {
+            
+        //        var fullEntries = await _db.PricingPackages.Where(wr => wr.lang_code == req.lang &&  wr.curr_code.ToLower() == req.curr_code.ToLower() && wr.active == true)
+        //            .Join(
+        //                _db.Services.Where(wr => wr.lang_code == req.lang),
+        //                 PKG => new { PKG.service_id },
+        //                 Service => new { service_id = Service.productId },
+        //                (PKG, Service) => new PricingPackageCast
+        //                {
+        //                    service_id= PKG.service_id,
+        //                    curr_code= PKG.curr_code,
+        //                    lang_code= PKG.lang_code,
+        //                    package_sale_price= PKG.package_sale_price,
+        //                    active= PKG.active,
+        //                    discount_amount = PKG.discount_amount,
+        //                    discount_type= PKG.discount_type,
+        //                    end_dateStr= PKG.start_date.ToString(),
+        //                    package_price= PKG.package_price,
+        //                    package_name= PKG.package_name,
+        //                    package_id= PKG.package_id,
+        //                    package_desc= PKG.package_desc,
+        //                    start_date=PKG.start_date,
+        //                    end_date = PKG.end_date,
+        //                    order= PKG.order,
+        //                    package_details= PKG.package_details,
+        //                    service_name= Service.productName,
+        //                    start_dateStr=PKG.start_date.ToString(),
+        //                    is_recommend = PKG.is_recommend,
+        //                    package_code = PKG.package_code,
+        //                    isSelected= false,
+        //                    is_custom=PKG.is_custom,
+        //                    service_code = Service.service_code,
+        //                    //features=  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= PKG.package_id }).ToList()
+        //                }
+        //            ).ToListAsync();
+        //        fullEntries = fullEntries.Select(s => new PricingPackageCast
+        //        {
+        //            service_id = s.service_id,
+        //            curr_code = s.curr_code,
+        //            lang_code = s.lang_code,
+        //            package_sale_price = s.package_sale_price,
+        //            active = s.active,
+        //            discount_amount = s.discount_amount,
+        //            discount_type = s.discount_type,
+        //            end_dateStr = s.start_date.ToString(),
+        //            package_price = s.package_price,
+        //            package_name = s.package_name,
+        //            package_id = s.package_id,
+        //            package_desc = s.package_desc,
+        //            start_date = s.start_date,
+        //            end_date = s.end_date,
+        //            order = s.order,
+        //            package_details = s.package_details,
+        //            service_name = s.service_name,
+        //            start_dateStr = s.start_date.ToString(),
+        //            is_recommend = s.is_recommend,
+        //            package_code = s.package_code,
+        //            isSelected=false,
+        //            is_custom=s.is_custom,
+        //           // isSelected = req.client_id == null ? false : (CheckServiceSelected(s.service_id, s.package_id, req.client_id).Result.id > 0 ? true : false),
+        //            features =  GetPricingPkgFeatures(new PricingPkgFeatureReq { active=true,lang_code=req.lang,package_id= s.package_id }).ToList()
+        //        }).ToList();
+        //        return fullEntries.GroupBy(grp => new
+        //        {
+        //            grp.service_id,
+        //            grp.service_name,
+        //        }).Select(s => new ServicesWithPkg
+        //        {
+        //            service_id = s.Key.service_id,
+        //            service_name = s.Key.service_name,
+        //            pkgs = fullEntries.Where(wr => wr.service_id == s.Key.service_id).ToList()
+        //        }).ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
         
         //save main Package data by admin 
         public ResponseCls SavePricingPackage(PricingPackage package)
@@ -1518,13 +1532,13 @@ namespace WaslaApp.Data
                 foreach (ClientServiceCast row in lst)
                 {
 
-                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,invoice_id=0,active=true };
+                    ClientService service = new ClientService { client_id = client_id, id = row.id, productId = row.productId,package_id=row.package_id,invoice_id=0,active=true,service_package_id=row.service_package_id };
                     if (service.id == 0)
                     {
                         if (_db.ClientServices.Count() > 0)
                         {
                             //check duplicate validation
-                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.active == true).SingleOrDefault();
+                            var result = _db.ClientServices.Where(wr => wr.client_id == service.client_id && wr.productId == service.productId && wr.package_id == service.package_id && wr.active == true && wr.service_package_id == row.service_package_id).SingleOrDefault();
                             if (result != null)
                             {
                                 return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };

@@ -7,7 +7,7 @@ public partial class packages_feature
 {
     public int id { get; set; }
 
-    public int? package_id { get; set; }
+    public int? service_package_id { get; set; }
 
     public int feature_id { get; set; }
 }

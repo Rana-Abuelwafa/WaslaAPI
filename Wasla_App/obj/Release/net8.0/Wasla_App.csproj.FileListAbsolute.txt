@@ -346,3 +346,6 @@ D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\Microsoft.Extensions.Localiz
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\ar\WaslaApp.Data.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\de\WaslaApp.Data.resources.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\en\WaslaApp.Data.resources.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\bin\Release\net8.0\Newtonsoft.Json.Bson.dll

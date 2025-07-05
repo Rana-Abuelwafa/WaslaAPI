@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
@@ -31,12 +32,13 @@ namespace WaslaApp.Data
         #region services & packages
 
         //save main services data by admin
-        public ResponseCls SaveMainServices(main_service service)
+        public ResponseCls SaveMainServices(MServiceSaveReq row)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
+                main_service service = new main_service { id= row.id,active=row.active,default_name=row.default_name,service_code=row.service_code };
                 if (service.id == 0)
                 {
                     //check duplicate validation
@@ -45,12 +47,16 @@ namespace WaslaApp.Data
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
+                    if (_db.main_services.Count() > 0)
+                    {
+                        maxId = _db.main_services.Max(d => d.id);
 
+                    }
                     //    maxId = _db.Services.Max(d => d.productId);
 
 
 
-                    //service.productId = maxId + 1;
+                    service.id = maxId + 1;
                     _db.main_services.Add(service);
                     _db.SaveChanges();
                 }
@@ -73,26 +79,36 @@ namespace WaslaApp.Data
             return response;
         }
         //save services with translations
-        public ResponseCls SaveServices(service_translation service)
+        public ResponseCls SaveServicesTranslations(ServiceTranslationSaveReq row)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
+                
+                service_translation service = new service_translation { service_id = row.service_id, id = row.id, product_desc = row.product_desc, productname = row.productname, lang_code = row.lang_code };
+                if (row.delete == true)
+                {
+                    _db.Remove(service);
+                    _db.SaveChanges();
+                    return new ResponseCls { errors = null, success = true };
+                }
+
                 if (service.id == 0)
                 {
                     //check duplicate validation
-                    var result = _db.service_translations.Where(wr => wr.service_id == service.service_id && wr.productname == service.productname).SingleOrDefault();
+                    var result = _db.service_translations.Where(wr => wr.service_id == service.service_id && wr.productname == service.productname && wr.lang_code == service.lang_code).SingleOrDefault();
                     if (result != null)
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
 
-                    //    maxId = _db.Services.Max(d => d.productId);
+                    if (_db.service_translations.Count() > 0)
+                    {
+                        maxId = _db.service_translations.Max(d => d.id);
 
-
-
-                    //service.productId = maxId + 1;
+                    }
+                    service.id = maxId + 1;
                     _db.service_translations.Add(service);
                     _db.SaveChanges();
                 }
@@ -116,11 +132,21 @@ namespace WaslaApp.Data
         }
 
         //service dropdown
-        public async Task<List<main_service>> getMainServices()
+        public async Task<List<main_service>> getMainServices(PackageAndServicesGetReq req)
         {
             try
             {
-                return await _db.main_services.Where(wr => wr.active == true).ToListAsync();
+                if (req.isDropDown == true)
+                {
+                    return await _db.main_services.Where(wr => wr.active == true).ToListAsync();
+                }
+                else
+                {
+                    return await _db.main_services.Where(wr => wr.active == true)
+                                                  .Include(i => i.service_translations)
+                                                   .ToListAsync();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -130,11 +156,21 @@ namespace WaslaApp.Data
         }
 
         //packages dropdown
-        public async Task<List<package>> getMainPackages()
+        public async Task<List<package>> getMainPackages(PackageAndServicesGetReq req)
         {
             try
             {
-                return await _db.packages.Where(wr => wr.active == true).ToListAsync();
+                if (req.isDropDown == true)
+                {
+                    return await _db.packages.Where(wr => wr.active == true).ToListAsync();
+                }
+                else
+                {
+                    return await _db.packages.Where(wr => wr.active == true)
+                    .Include(i => i.package_translations)
+                                         .ToListAsync();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -155,7 +191,7 @@ namespace WaslaApp.Data
             }
 
         }
-        //save main services data by admin
+        //save main package data by admin
         public ResponseCls SaveMainPackage(PackageSaveReq row)
         {
             ResponseCls response;
@@ -182,11 +218,12 @@ namespace WaslaApp.Data
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
 
-                    //    maxId = _db.Services.Max(d => d.productId);
+                    if (_db.packages.Count() > 0)
+                    {
+                        maxId = _db.packages.Max(d => d.id);
 
-
-
-                    //service.productId = maxId + 1;
+                    }
+                    pkg.id = maxId + 1;
                     _db.packages.Add(pkg);
                     _db.SaveChanges();
                 }
@@ -208,30 +245,41 @@ namespace WaslaApp.Data
 
             return response;
         }
-        //save services with translations
-        public ResponseCls SavePackageTranslations(package_translation row)
+        //save packages with translations
+        public ResponseCls SavePackageTranslations(PackageTranslationSaveReq row)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
+                package_translation package = new package_translation { lang_code=row.lang_code,id=row.id,package_desc=row.package_desc,package_details=row.package_details,package_id=row.package_id,package_name=row.package_name};
+                if (row.delete == true)
+                {
+                    _db.Remove(package);
+                    _db.SaveChanges();
+                   return new ResponseCls { errors = null, success = true };
+                }
                 if (row.id == 0)
                 {
                     //check duplicate validation
-                    var result = _db.package_translations.Where(wr =>  wr.package_id == row.package_id && wr.package_name == row.package_name).SingleOrDefault();
+                    var result = _db.package_translations.Where(wr =>  wr.package_id == row.package_id && wr.package_name == row.package_name && wr.lang_code == row.lang_code).SingleOrDefault();
                     if (result != null)
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
 
-                    //    maxId = _db.Services.Max(d => d.productId);
-                    //service.productId = maxId + 1;
-                    _db.package_translations.Add(row);
+                    if (_db.package_translations.Count() > 0)
+                    {
+                        maxId = _db.package_translations.Max(d => d.id);
+
+                    }
+                    package.id = maxId + 1;
+                    _db.package_translations.Add(package);
                     _db.SaveChanges();
                 }
                 else
                 {
-                    _db.package_translations.Update(row);
+                    _db.package_translations.Update(package);
                     _db.SaveChanges();
                 }
 
@@ -401,7 +449,10 @@ namespace WaslaApp.Data
         {
             try
             {
-                return await _db.main_features.Where(wr => wr.active == true).ToListAsync();
+               
+                    return await _db.main_features.Where(wr => wr.active == true).ToListAsync();
+               
+         
             }
             catch (Exception ex)
             {
@@ -409,20 +460,60 @@ namespace WaslaApp.Data
             }
 
         }
+        //get features with different translations
+        public async Task<List<FeaturesWithTranslationGrp>> getFeaturesWithTranslations()
+        {
+            try
+            {
 
+                var result =  await _db.features_translations
+                                              .Join(_db.main_features.Where(wr => wr.active == true),
+                                                     TRANS => new { TRANS.feature_id },
+                                                     FEAT => new { feature_id = FEAT.id },
+                                                     (TRANS, FEAT) => new FeaturesWithTranslation
+                                                     {
+                                                         feature_code = FEAT.feature_code,
+                                                         feature_default_name= FEAT.feature_default_name,
+                                                         feature_description = TRANS.feature_description,
+                                                         feature_name= TRANS.feature_name,
+                                                         feature_id= TRANS.feature_id,
+                                                         id= TRANS.id,
+                                                         lang_code= TRANS.lang_code
+
+                                                     }
+                                                    )
+                                              .ToListAsync();
+                return result.GroupBy(grp => new
+                {
+                    grp.feature_id,
+                    grp.feature_code,
+                    grp.feature_default_name
+                }).Select(s => new FeaturesWithTranslationGrp
+                {
+                   feature_default_name=s.Key.feature_default_name,
+                   feature_code=s.Key.feature_code,
+                   feature_id=s.Key.feature_id,
+                   features_Translations = result.Where(wr => wr.feature_id == s.Key.feature_id).ToList()
+                }).ToList();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
         //get feature list for specific service package
         public async Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req)
         {
             try
             {
-                return await _db.packages_features.Where(wr => wr.package_id == req.package_id)
+                return await _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
                                                          PKGF => new { PKGF.feature_id },
                                                          FEAT => new { feature_id = FEAT.id},
                                                          (PKGF, FEAT) => new PackagesFeatureRes
                                                          {
                                                              feature_id= PKGF.feature_id,
-                                                             package_id= PKGF.package_id,
+                                                             service_package_id = PKGF.service_package_id,
                                                              id= PKGF.id,
                                                              feature_code= FEAT.feature_code,
                                                              feature_default_name= FEAT.feature_default_name
@@ -445,7 +536,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                packages_feature feat = new packages_feature { feature_id=row.feature_id,id=row.id,package_id=row.package_id};
+                packages_feature feat = new packages_feature { feature_id=row.feature_id,id=row.id, service_package_id = row.service_package_id };
                 if (row.delete)
                 {
                     _db.Remove(feat);
@@ -456,7 +547,7 @@ namespace WaslaApp.Data
                 if (row.id == 0)
                 {
                     //check duplicate validation
-                    var result = _db.packages_features.Where(wr => wr.package_id == row.package_id && wr.feature_id == row.feature_id).SingleOrDefault();
+                    var result = _db.packages_features.Where(wr => wr.service_package_id == row.service_package_id && wr.feature_id == row.feature_id).SingleOrDefault();
                     if (result != null)
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
@@ -480,6 +571,102 @@ namespace WaslaApp.Data
                 response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
             }
 
+            return response;
+        }
+
+        public ResponseCls SaveMainFeature(MainFeatureSaveReq row)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                if (row.delete == true)
+                {
+                    _db.Remove(row);
+                    _db.SaveChanges();
+                    return new ResponseCls { errors = null, success = true };
+                }
+                if (row.id == 0)
+                {
+                    //check duplicate validation
+                    var result = _db.main_features.Where(wr => wr.feature_code == row.feature_code && wr.active == row.active).SingleOrDefault();
+                    if (result != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
+                    }
+
+                    if (_db.main_features.Count() > 0)
+                    {
+                        maxId = _db.main_features.Max(d => d.id);
+
+                    }
+                    row.id = maxId + 1;
+                    _db.main_features.Add(row);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.main_features.Update(row);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
+            }
+
+            return response;
+        }
+
+        //save packages with translations
+        public ResponseCls SaveFeatureTranslations(FeaturesTranslationSaveReq row)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+               
+                if (row.delete == true)
+                {
+                    _db.Remove(row);
+                    _db.SaveChanges();
+                    return new ResponseCls { errors = null, success = true };
+                }
+                if (row.id == 0)
+                {
+                    //check duplicate validation
+                    var result = _db.features_translations.Where(wr => wr.feature_id == row.feature_id && wr.feature_name == row.feature_name && wr.lang_code == row.lang_code).SingleOrDefault();
+                    if (result != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
+                    }
+
+                    if (_db.features_translations.Count() > 0)
+                    {
+                        maxId = _db.features_translations.Max(d => d.id);
+
+                    }
+                    row.id = maxId + 1;
+                    _db.features_translations.Add(row);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.features_translations.Update(row);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
+            }
             return response;
         }
         #endregion

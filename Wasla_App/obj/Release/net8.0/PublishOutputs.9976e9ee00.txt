@@ -7,6 +7,8 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Wasla_App.pdb
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\MailKit.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
@@ -34,6 +36,7 @@ D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.Identit
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\MimeKit.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Npgsql.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\waslaa\api\WaslaAPI\Wasla_App\obj\Release\net8.0\PubTmp\Out\Scrutor.dll

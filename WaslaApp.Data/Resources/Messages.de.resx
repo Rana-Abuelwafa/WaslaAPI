@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UserNotFound" xml:space="preserve">
-    <value>UserNotFound</value>
+    <value>Benutzer nicht gefunden</value>
   </data>
   <data name="SuccessLogin" xml:space="preserve">
-    <value>User Login successfully</value>
+    <value>Benutzeranmeldung erfolgreich</value>
   </data>
   <data name="SuccessRegister" xml:space="preserve">
-    <value>User created successfully</value>
+    <value>Benutzer erfolgreich erstellt</value>
   </data>
   <data name="SendMailError" xml:space="preserve">
-    <value>error in send mail</value>
+    <value>Fehler beim Senden der E-Mail</value>
   </data>
   <data name="CopounError" xml:space="preserve">
-    <value>error in generate copoun</value>
+    <value>Fehler beim Generieren des Dokuments</value>
   </data>
   <data name="CheckAdmin" xml:space="preserve">
-    <value>Internal Error Please Check Admin</value>
+    <value>Interner Fehler. Bitte überprüfen Sie den Administrator.</value>
   </data>
   <data name="duplicateData" xml:space="preserve">
-    <value>duplicate data</value>
+    <value>doppelte Daten</value>
   </data>
   <data name="NoCopoun" xml:space="preserve">
-    <value>You donnot have any copoun</value>
+    <value>Sie haben keinen Gutschein</value>
   </data>
   <data name="CopounExpired" xml:space="preserve">
-    <value>Copoun is expired</value>
+    <value>Coupon ist abgelaufen</value>
   </data>
   <data name="CopounValid" xml:space="preserve">
-    <value>Copoun Valid</value>
+    <value>Gutschein gültig</value>
   </data>
   <data name="NoInvoice" xml:space="preserve">
-    <value>no Invoice Founded</value>
+    <value>keine Rechnung gefunden</value>
   </data>
   <data name="ProfileUncomplete" xml:space="preserve">
     <value>Bitte vervollständigen Sie zuerst Ihr Profil</value>

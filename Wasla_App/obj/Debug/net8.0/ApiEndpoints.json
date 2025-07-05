@@ -81,6 +81,16 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "getFeaturesWithTranslations",
+    "RelativePath": "api/WaslaAdmin/getFeaturesWithTranslations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "getMainFeatures",
     "RelativePath": "api/WaslaAdmin/getMainFeatures",
     "HttpMethod": "POST",
@@ -96,7 +106,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -106,7 +122,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -233,6 +255,38 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveFeatureTranslations",
+    "RelativePath": "api/WaslaAdmin/SaveFeatureTranslations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.FeaturesTranslationSaveReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveMainFeature",
+    "RelativePath": "api/WaslaAdmin/SaveMainFeature",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.MainFeatureSaveReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "SaveMainPackage",
     "RelativePath": "api/WaslaAdmin/SaveMainPackage",
     "HttpMethod": "POST",
@@ -242,6 +296,38 @@
       {
         "Name": "row",
         "Type": "WaslaApp.Data.Models.PackagesAndServices.PackageSaveReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveMainServices",
+    "RelativePath": "api/WaslaAdmin/SaveMainServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.MServiceSaveReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SavePackageTranslations",
+    "RelativePath": "api/WaslaAdmin/SavePackageTranslations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.PackageTranslationSaveReq",
         "IsRequired": true
       }
     ],
@@ -306,6 +392,22 @@
       {
         "Name": "ques",
         "Type": "WaslaApp.Data.Entities.RegistrationQuestion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "SaveServicesTranslations",
+    "RelativePath": "api/WaslaAdmin/SaveServicesTranslations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Packages_Services.ServiceTranslationSaveReq",
         "IsRequired": true
       }
     ],

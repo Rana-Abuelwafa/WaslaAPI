@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Wasla_App.services.Admin;
 using Wasla_App.services.Client;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
@@ -110,12 +111,45 @@ namespace Wasla_App.Controllers
         #endregion
 
         #region new Services &packages
+        [HttpPost("getFeaturesWithTranslations")]
+        public async Task<IActionResult> getFeaturesWithTranslations()
+        {
+            return Ok(await _adminWaslaService.getFeaturesWithTranslations());
+        }
+
+        [HttpPost("SaveFeatureTranslations")]
+        public IActionResult SaveFeatureTranslations(FeaturesTranslationSaveReq row)
+        {
+            return Ok(_adminWaslaService.SaveFeatureTranslations(row));
+        }
+        [HttpPost("SaveMainFeature")]
+        public IActionResult SaveMainFeature(MainFeatureSaveReq row)
+        {
+            return Ok(_adminWaslaService.SaveMainFeature(row));
+        }
+
         [HttpPost("SaveMainPackage")]
         public IActionResult SaveMainPackage(PackageSaveReq row)
         {
             return Ok(_adminWaslaService.SaveMainPackage(row));
         }
 
+        [HttpPost("SavePackageTranslations")]
+        public IActionResult SavePackageTranslations(PackageTranslationSaveReq row)
+        {
+            return Ok(_adminWaslaService.SavePackageTranslations(row));
+        }
+        [HttpPost("SaveMainServices")]
+        public IActionResult SaveMainServices(MServiceSaveReq row)
+        {
+            return Ok(_adminWaslaService.SaveMainServices(row));
+        }
+
+        [HttpPost("SaveServicesTranslations")]
+        public IActionResult SaveServicesTranslations(ServiceTranslationSaveReq row)
+        {
+            return Ok(_adminWaslaService.SaveServicesTranslations(row));
+        }
         [HttpPost("AssignPackagesToService")]
         public IActionResult AssignPackagesToService(ServicePackageReq row)
         {
@@ -129,15 +163,15 @@ namespace Wasla_App.Controllers
         }
 
         [HttpPost("getMainPackages")]
-        public async Task<IActionResult> getMainPackages()
+        public async Task<IActionResult> getMainPackages(PackageAndServicesGetReq req)
         {
-            return Ok(await _adminWaslaService.getMainPackages());
+            return Ok(await _adminWaslaService.getMainPackages(req));
         }
 
         [HttpPost("getMainServices")]
-        public async Task<IActionResult> getMainServices()
+        public async Task<IActionResult> getMainServices(PackageAndServicesGetReq req)
         {
-            return Ok(await _adminWaslaService.getMainServices());
+            return Ok(await _adminWaslaService.getMainServices(req));
         }
 
         [HttpPost("getServiceGrpWithPkgs")]

@@ -18,6 +18,17 @@
         },
         "runtime": {
           "WaslaApp.Data.dll": {}
+        },
+        "resources": {
+          "ar/WaslaApp.Data.resources.dll": {
+            "locale": "ar"
+          },
+          "de/WaslaApp.Data.resources.dll": {
+            "locale": "de"
+          },
+          "en/WaslaApp.Data.resources.dll": {
+            "locale": "en"
+          }
         }
       },
       "BouncyCastle.Cryptography/2.5.1": {

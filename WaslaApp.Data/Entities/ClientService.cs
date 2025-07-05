@@ -16,4 +16,6 @@ public partial class ClientService
     public decimal invoice_id { get; set; }
 
     public bool? active { get; set; }
+    public int? service_package_id { get; set; }
+    
 }

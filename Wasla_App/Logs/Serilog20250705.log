@@ -1,0 +1,119 @@
+[2025-07-05 09:42:04.581 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-05 09:42:05.472 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-05 09:42:06.205 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-05 09:42:06.206 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-05 09:42:08.086 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-05 09:42:08.087 +03:00  INF]  Hosting environment: Development
+[2025-07-05 09:42:08.088 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-05 09:42:08.312 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-05 09:42:08.969 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 668.6849ms
+[2025-07-05 09:42:11.899 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-05 09:42:11.905 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 5.8416ms
+[2025-07-05 09:42:12.932 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-05 09:42:12.986 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.2866ms
+[2025-07-05 09:42:15.333 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-05 09:42:15.381 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.5128ms
+[2025-07-05 09:44:32.403 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - application/json-patch+json 110
+[2025-07-05 09:44:32.423 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:44:34.456 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:44:34.507 +03:00  INF]  Route matched with {action = "SaveMainFeature", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveMainFeature(WaslaApp.Data.Models.admin.Packages_Services.MainFeatureSaveReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:44:47.740 +03:00  INF]  Executed DbCommand (116ms) [Parameters=[@__row_feature_code_0='?', @__row_active_1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.feature_code, m.feature_default_name
+FROM main_features AS m
+WHERE m.feature_code = @__row_feature_code_0 AND m.active = @__row_active_1
+LIMIT 2
+[2025-07-05 09:44:52.045 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM main_features AS m
+[2025-07-05 09:44:53.782 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(m.id)
+FROM main_features AS m
+[2025-07-05 09:44:58.242 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO main_features (id, active, feature_code, feature_default_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-07-05 09:45:01.324 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-07-05 09:45:01.385 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App) in 26870.9236ms
+[2025-07-05 09:45:01.385 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:45:01.398 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - 200 42 application/json; charset=utf-8 28999.1447ms
+[2025-07-05 09:45:53.556 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - application/json-patch+json 109
+[2025-07-05 09:45:53.558 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:45:53.604 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:45:53.605 +03:00  INF]  Route matched with {action = "SaveMainFeature", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveMainFeature(WaslaApp.Data.Models.admin.Packages_Services.MainFeatureSaveReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:45:55.318 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM main_features
+WHERE id = @p0;
+[2025-07-05 09:45:55.325 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-07-05 09:45:55.326 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App) in 1720.7985ms
+[2025-07-05 09:45:55.326 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:45:55.326 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - 200 42 application/json; charset=utf-8 1769.8913ms
+[2025-07-05 09:46:29.942 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - application/json-patch+json 110
+[2025-07-05 09:46:29.943 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:46:29.945 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:46:29.946 +03:00  INF]  Route matched with {action = "SaveMainFeature", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveMainFeature(WaslaApp.Data.Models.admin.Packages_Services.MainFeatureSaveReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:46:32.920 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__row_feature_code_0='?', @__row_active_1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.feature_code, m.feature_default_name
+FROM main_features AS m
+WHERE m.feature_code = @__row_feature_code_0 AND m.active = @__row_active_1
+LIMIT 2
+[2025-07-05 09:46:32.921 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM main_features AS m
+[2025-07-05 09:46:32.922 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(m.id)
+FROM main_features AS m
+[2025-07-05 09:46:32.925 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO main_features (id, active, feature_code, feature_default_name)
+VALUES (@p0, @p1, @p2, @p3);
+[2025-07-05 09:46:32.925 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-07-05 09:46:32.926 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App) in 2978.9742ms
+[2025-07-05 09:46:32.926 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveMainFeature (Wasla_App)'
+[2025-07-05 09:46:32.926 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveMainFeature - 200 42 application/json; charset=utf-8 2984.3246ms
+[2025-07-05 09:47:16.078 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveFeatureTranslations - application/json-patch+json 130
+[2025-07-05 09:47:16.079 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:47:16.079 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App)'
+[2025-07-05 09:47:16.085 +03:00  INF]  Route matched with {action = "SaveFeatureTranslations", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveFeatureTranslations(WaslaApp.Data.Models.admin.Packages_Services.FeaturesTranslationSaveReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:47:22.109 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__row_feature_id_0='?' (DbType = Int32), @__row_feature_name_1='?', @__row_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT f.id, f.feature_description, f.feature_id, f.feature_name, f.lang_code
+FROM features_translation AS f
+WHERE f.feature_id = @__row_feature_id_0 AND f.feature_name = @__row_feature_name_1 AND f.lang_code = @__row_lang_code_2
+LIMIT 2
+[2025-07-05 09:47:22.114 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM features_translation AS f
+[2025-07-05 09:47:22.120 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(f.id)
+FROM features_translation AS f
+[2025-07-05 09:47:22.141 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?' (DbType = Int32), @p3='?', @p4='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO features_translation (id, feature_description, feature_id, feature_name, lang_code)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2025-07-05 09:47:22.142 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-07-05 09:47:22.142 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App) in 6057.4033ms
+[2025-07-05 09:47:22.142 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App)'
+[2025-07-05 09:47:22.143 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveFeatureTranslations - 200 42 application/json; charset=utf-8 6064.0693ms
+[2025-07-05 09:48:01.512 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveFeatureTranslations - application/json-patch+json 130
+[2025-07-05 09:48:01.512 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:48:01.512 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App)'
+[2025-07-05 09:48:01.512 +03:00  INF]  Route matched with {action = "SaveFeatureTranslations", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveFeatureTranslations(WaslaApp.Data.Models.admin.Packages_Services.FeaturesTranslationSaveReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:48:03.302 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM features_translation
+WHERE id = @p0;
+[2025-07-05 09:48:03.302 +03:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.global.ResponseCls'.
+[2025-07-05 09:48:03.303 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App) in 1790.4415ms
+[2025-07-05 09:48:03.303 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.SaveFeatureTranslations (Wasla_App)'
+[2025-07-05 09:48:03.303 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/SaveFeatureTranslations - 200 42 application/json; charset=utf-8 1791.2333ms
+[2025-07-05 09:48:24.491 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - null 0
+[2025-07-05 09:48:24.491 +03:00  INF]  CORS policy execution successful.
+[2025-07-05 09:48:24.491 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App)'
+[2025-07-05 09:48:24.502 +03:00  INF]  Route matched with {action = "getFeaturesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getFeaturesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-07-05 09:48:30.028 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m0.feature_code, m0.feature_default_name, f.feature_description, f.feature_name, f.feature_id, f.id, f.lang_code
+FROM features_translation AS f
+INNER JOIN (
+    SELECT m.id, m.feature_code, m.feature_default_name
+    FROM main_features AS m
+    WHERE m.active
+) AS m0 ON f.feature_id = m0.id
+[2025-07-05 09:48:30.057 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Packages_Services.FeaturesWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-05 09:48:30.098 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App) in 5596.279ms
+[2025-07-05 09:48:30.099 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App)'
+[2025-07-05 09:48:30.100 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - 200 4388 application/json; charset=utf-8 5609.4525ms

@@ -1,5 +1,6 @@
 ﻿using WaslaApp.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 
@@ -30,19 +31,24 @@ namespace Wasla_App.services.Admin
             return _waslaAdminDao.AssignPriceToPackage(row);
         }
 
+        public Task<List<FeaturesWithTranslationGrp>> getFeaturesWithTranslations()
+        {
+            return _waslaAdminDao.getFeaturesWithTranslations();
+        }
+
         public Task<List<main_feature>> getMainFeatures()
         {
             return _waslaAdminDao.getMainFeatures();
         }
 
-        public Task<List<package>> getMainPackages()
+        public Task<List<package>> getMainPackages(PackageAndServicesGetReq req)
         {
-            return _waslaAdminDao.getMainPackages();
+            return _waslaAdminDao.getMainPackages(req);
         }
 
-        public Task<List<main_service>> getMainServices()
+        public Task<List<main_service>> getMainServices(PackageAndServicesGetReq req)
         {
-            return _waslaAdminDao.getMainServices();
+            return _waslaAdminDao.getMainServices(req);
         }
 
         public Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req)
@@ -60,9 +66,34 @@ namespace Wasla_App.services.Admin
             return _waslaAdminDao.getServicePackagePrice(service_package_id);
         }
 
+        public ResponseCls SaveFeatureTranslations(FeaturesTranslationSaveReq row)
+        {
+            return _waslaAdminDao.SaveFeatureTranslations(row);
+        }
+
+        public ResponseCls SaveMainFeature(MainFeatureSaveReq row)
+        {
+            return _waslaAdminDao.SaveMainFeature(row);
+        }
+
         public ResponseCls SaveMainPackage(PackageSaveReq row)
         {
             return _waslaAdminDao.SaveMainPackage(row);
+        }
+
+        public ResponseCls SaveMainServices(MServiceSaveReq service)
+        {
+            return _waslaAdminDao.SaveMainServices(service);
+        }
+
+        public ResponseCls SavePackageTranslations(PackageTranslationSaveReq row)
+        {
+            return _waslaAdminDao.SavePackageTranslations(row);
+        }
+
+        public ResponseCls SaveServicesTranslations(ServiceTranslationSaveReq service)
+        {
+            return _waslaAdminDao.SaveServicesTranslations(service);
         }
     }
 }
