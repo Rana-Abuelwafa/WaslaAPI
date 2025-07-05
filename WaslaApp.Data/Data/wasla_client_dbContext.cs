@@ -139,6 +139,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.id).HasDefaultValueSql("nextval('\"ClientServices_id_seq\"'::regclass)");
             entity.Property(e => e.active).HasDefaultValue(false);
             entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.service_package_id).HasDefaultValue(0);
         });
 
         modelBuilder.Entity<InvoiceMain>(entity =>
@@ -265,14 +266,14 @@ public partial class wasla_client_dbContext : DbContext
         {
             entity.HasKey(e => e.id).HasName("main_services_pkey");
 
-            entity.HasIndex(e => e.service_code, "main_services_service_code_key").IsUnique();
+            entity.HasIndex(e => new { e.service_code, e.active }, "main_services_service_code_key").IsUnique();
         });
 
         modelBuilder.Entity<package>(entity =>
         {
             entity.HasKey(e => e.id).HasName("packages_pkey");
 
-            entity.HasIndex(e => e.package_code, "packages_package_code_key").IsUnique();
+            entity.HasIndex(e => new { e.package_code, e.active }, "packages_package_code_key").IsUnique();
 
             entity.Property(e => e.order).HasDefaultValue((short)0);
         });
@@ -317,6 +318,8 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("service_packages_pkey");
 
             entity.HasIndex(e => new { e.service_id, e.package_id }, "service_packages_service_id_package_id_key").IsUnique();
+
+            entity.Property(e => e.is_recommend).HasDefaultValue(false);
 
             entity.HasOne(d => d.package).WithMany(p => p.service_packages)
                 .HasForeignKey(d => d.package_id)
