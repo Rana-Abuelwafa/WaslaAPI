@@ -10,7 +10,7 @@ using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-   // [Authorize]
+   [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
