@@ -32,6 +32,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<MailTemp> MailTemps { get; set; }
 
+    public virtual DbSet<Main_RegistrationQuestion> Main_RegistrationQuestions { get; set; }
+
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
     public virtual DbSet<PricingPackage> PricingPackages { get; set; }
@@ -43,6 +45,8 @@ public partial class wasla_client_dbContext : DbContext
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
 
     public virtual DbSet<RegistrationQuestion> RegistrationQuestions { get; set; }
+
+    public virtual DbSet<RegistrationQuestions_Translation> RegistrationQuestions_Translations { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
 
@@ -171,6 +175,11 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.type).HasComment("1 => for mail Confirmation\n2 => for otp verify");
         });
 
+        modelBuilder.Entity<Main_RegistrationQuestion>(entity =>
+        {
+            entity.HasKey(e => e.ques_id).HasName("Main_RegistrationQuestions_pkey");
+        });
+
         modelBuilder.Entity<PaymentMethod>(entity =>
         {
             entity.HasKey(e => e.pay_id).HasName("PaymentMethods_pkey");
@@ -231,6 +240,13 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.order).HasDefaultValue(0);
             entity.Property(e => e.ques_type).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<RegistrationQuestions_Translation>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("RegistrationQuestions_Translations_pkey");
+
+            entity.Property(e => e.lang_code).HasMaxLength(20);
         });
 
         modelBuilder.Entity<Service>(entity =>

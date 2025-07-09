@@ -681,3 +681,7 @@ D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\bin\Debug\net8.0\Serilog.Sinks.File.dll
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

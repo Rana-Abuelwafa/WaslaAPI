@@ -153,4 +153,7 @@
   <data name="ProfileUncomplete" xml:space="preserve">
     <value>Please Complete Your Profile First</value>
   </data>
+  <data name="DuplicateOrder" xml:space="preserve">
+    <value>There is already data with same Order</value>
+  </data>
 </root>

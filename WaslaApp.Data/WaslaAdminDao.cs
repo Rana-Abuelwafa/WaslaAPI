@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.admin.Packages_Services;
+using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
@@ -28,6 +29,149 @@ namespace WaslaApp.Data
             _mailSettingDao = mailSettingDao;
             _localizer = localizer;
         }
+
+        #region "questions"
+        //save main questions
+        public ResponseCls SaveMainResigstraionQues(Main_RegistrationQuestion row)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+                //check duplicate order (in add new row or update)
+                if (_db.Main_RegistrationQuestions.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
+                {
+                    return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                }
+                if (row.ques_id == 0)
+                {
+                    //check duplicate validation
+                    var result = _db.Main_RegistrationQuestions.Where(wr => wr.ques_title_default == row.ques_title_default && wr.active == row.active).SingleOrDefault();
+                    if (result != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
+                    }
+                   
+                    if (_db.Main_RegistrationQuestions.Count() > 0)
+                    {
+                        maxId = _db.Main_RegistrationQuestions.Max(d => d.ques_id);
+
+                    }
+                    row.ques_id = maxId + 1;
+                    _db.Main_RegistrationQuestions.Add(row);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.Main_RegistrationQuestions.Update(row);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
+            }
+
+            return response;
+        }
+
+        //save questions with translations
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row)
+        {
+            ResponseCls response;
+            int maxId = 0;
+            try
+            {
+
+                if (row.id == 0)
+                {
+                    //check duplicate validation
+                    var result = _db.RegistrationQuestions_Translations.Where(wr => wr.ques_title == row.ques_title && wr.lang_code == row.lang_code).SingleOrDefault();
+                    if (result != null)
+                    {
+                        
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
+                    }
+
+                    if (_db.RegistrationQuestions_Translations.Count() > 0)
+                    {
+                        maxId = _db.RegistrationQuestions_Translations.Max(d => d.id);
+
+                    }
+                    row.id = maxId + 1;
+                    _db.RegistrationQuestions_Translations.Add(row);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    _db.RegistrationQuestions_Translations.Update(row);
+                    _db.SaveChanges();
+                }
+
+                response = new ResponseCls { errors = null, success = true };
+
+
+            }
+
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false };
+            }
+
+            return response;
+        }
+
+
+        //get questions with different translations
+        public async Task<List<QuestionsWithTranslationGrp>> getQuesWithTranslations()
+        {
+            try
+            {
+
+                var result = await _db.RegistrationQuestions_Translations
+                                              .Join(_db.Main_RegistrationQuestions.Where(wr => wr.active == true),
+                                                     TRANS => new { TRANS.ques_id },
+                                                     QUES => new { QUES.ques_id },
+                                                     (TRANS, QUES) => new QuestionsWithTranslation
+                                                     {
+                                                         ques_id= QUES.ques_id,
+                                                         ques_title_default= QUES.ques_title_default,
+                                                         active= QUES.active,
+                                                         order= QUES.order,
+                                                         ques_title= TRANS.ques_title,
+                                                         ques_type= QUES.ques_type,
+                                                         id = TRANS.id,
+                                                         lang_code = TRANS.lang_code
+
+                                                     }
+                                                    )
+                                              .ToListAsync();
+                return result.GroupBy(grp => new
+                {
+                    grp.ques_id,
+                    grp.ques_title_default,
+                    grp.order,
+                    grp.active
+                }).Select(s => new QuestionsWithTranslationGrp
+                {
+                   ques_id=s.Key.ques_id,
+                   active= s.Key.active,
+                   order= s.Key.order,
+                   ques_title_default= s.Key.ques_title_default,
+                    questions = result.Where(wr => wr.ques_id == s.Key.ques_id).ToList()
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
 
         #region services & packages
 
@@ -131,17 +275,19 @@ namespace WaslaApp.Data
             return response;
         }
 
-        //service dropdown
+        //service list with & without translation
         public async Task<List<main_service>> getMainServices(PackageAndServicesGetReq req)
         {
             try
             {
                 if (req.isDropDown == true)
                 {
+                    //mean get main services without its translation used in dropdown
                     return await _db.main_services.Where(wr => wr.active == true).ToListAsync();
                 }
                 else
                 {
+                    //mean get main services with its translation used in grid
                     return await _db.main_services.Where(wr => wr.active == true)
                                                   .Include(i => i.service_translations)
                                                    .ToListAsync();
@@ -155,17 +301,20 @@ namespace WaslaApp.Data
 
         }
 
-        //packages dropdown
+
+        //packages list with & without translation
         public async Task<List<package>> getMainPackages(PackageAndServicesGetReq req)
         {
             try
             {
                 if (req.isDropDown == true)
                 {
+                    //mean get main packages without its translation used in dropdown
                     return await _db.packages.Where(wr => wr.active == true).ToListAsync();
                 }
                 else
                 {
+                    //mean get main packages with its translation used in grid
                     return await _db.packages.Where(wr => wr.active == true)
                     .Include(i => i.package_translations)
                                          .ToListAsync();
@@ -209,6 +358,12 @@ namespace WaslaApp.Data
                     package_code=row.package_code
                     
                 };
+
+                //check duplicate order (in add new row or update)
+                if (_db.packages.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
+                {
+                    return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                }
                 if (row.id == 0)
                 {
                     //check duplicate validation
@@ -501,7 +656,7 @@ namespace WaslaApp.Data
                 return null;
             }
         }
-        //get feature list for specific service package
+        //get feature list for specific service-package
         public async Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req)
         {
             try
@@ -574,6 +729,7 @@ namespace WaslaApp.Data
             return response;
         }
 
+        //save main feature 
         public ResponseCls SaveMainFeature(MainFeatureSaveReq row)
         {
             ResponseCls response;
@@ -623,7 +779,7 @@ namespace WaslaApp.Data
             return response;
         }
 
-        //save packages with translations
+        //save feature with translations
         public ResponseCls SaveFeatureTranslations(FeaturesTranslationSaveReq row)
         {
             ResponseCls response;

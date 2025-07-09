@@ -153,4 +153,7 @@
   <data name="ProfileUncomplete" xml:space="preserve">
     <value>Bitte vervollständigen Sie zuerst Ihr Profil</value>
   </data>
+  <data name="DuplicateOrder" xml:space="preserve">
+    <value>Es sind bereits Daten mit derselben Bestellung vorhanden</value>
+  </data>
 </root>
