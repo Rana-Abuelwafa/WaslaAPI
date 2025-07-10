@@ -1,6 +1,7 @@
 ﻿using WaslaApp.Data;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.admin.Packages_Services;
+using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 
@@ -56,6 +57,11 @@ namespace Wasla_App.services.Admin
             return _waslaAdminDao.getPackageFeatures(req);  
         }
 
+        public Task<List<QuestionsWithTranslationGrp>> getQuesWithTranslations()
+        {
+            return _waslaAdminDao.getQuesWithTranslations();
+        }
+
         public List<ServiceGrpWithPkgs> getServiceGrpWithPkgs()
         {
             return _waslaAdminDao.getServiceGrpWithPkgs();
@@ -81,6 +87,11 @@ namespace Wasla_App.services.Admin
             return _waslaAdminDao.SaveMainPackage(row);
         }
 
+        public ResponseCls SaveMainResigstraionQues(Main_RegistrationQuestion row)
+        {
+            return _waslaAdminDao.SaveMainResigstraionQues(row);
+        }
+
         public ResponseCls SaveMainServices(MServiceSaveReq service)
         {
             return _waslaAdminDao.SaveMainServices(service);
@@ -89,6 +100,11 @@ namespace Wasla_App.services.Admin
         public ResponseCls SavePackageTranslations(PackageTranslationSaveReq row)
         {
             return _waslaAdminDao.SavePackageTranslations(row);
+        }
+
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row)
+        {
+            return _waslaAdminDao.SaveResigstraionQuesTranslations(row);
         }
 
         public ResponseCls SaveServicesTranslations(ServiceTranslationSaveReq service)

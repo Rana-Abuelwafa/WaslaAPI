@@ -18,11 +18,6 @@ namespace Wasla_App.services.Client
 
         }
 
-        public ResponseCls deleteQuestions(RegistrationQuestion ques)
-        {
-            return _waslaDao.deleteQuestions(ques);
-        }
-
         public Task<List<ClientBrand>> GetClientBrands(string clientId)
         {
             return _waslaDao.GetClientBrands(clientId);
@@ -63,10 +58,6 @@ namespace Wasla_App.services.Client
             return _waslaDao.saveMainProfile(profile);
         }
 
-        public ResponseCls saveQuestions(RegistrationQuestion ques)
-        {
-            return _waslaDao.saveQuestions(ques);
-        }
 
         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string clientId,string FullName,string email)
         {
@@ -83,50 +74,20 @@ namespace Wasla_App.services.Client
             return _waslaDao.saveClientCopoun(copoun);
         }
 
-        public Task<List<Service_Tree>> GetProduct_Tree(string clientId,string lang)
-        {
-           return _waslaDao.GetProduct_Tree(clientId,lang);
-        }
+      
 
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id)
         {
             return _waslaDao.saveClientServices(lst, client_id);
         }
 
-        public ResponseCls SaveProduct(Service service)
-        {
-            return _waslaDao.SaveProduct(service);
-        }
-
-        public Task<List<Service>> GetProduct(ServiceReq req)
-        {
-            return _waslaDao.GetProduct(req);
-        }
+ 
 
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req)
         {
             return _waslaDao.GetPricingPackageWithService(req);
         }
 
-        public ResponseCls SavePricingPackage(PricingPackage package)
-        {
-            return _waslaDao.SavePricingPackage(package);
-        }
-
-        public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst)
-        {
-            return _waslaDao.SavePricingPKgFeatureLst(lst);
-        }
-
-        public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req)
-        {
-            return _waslaDao.GetPricingPkgFeatures(req);
-        }
-
-        public Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req)
-        {
-            return _waslaDao.GetPricingPackages(req);
-        }
 
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email)
         {

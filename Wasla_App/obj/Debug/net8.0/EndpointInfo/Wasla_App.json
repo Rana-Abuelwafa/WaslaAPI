@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/WaslaAdmin/saveQuestions": {
+    "/api/WaslaAdmin/saveMainQuestions": {
       "post": {
         "tags": [
           "WaslaAdmin"
@@ -25,22 +25,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/Main_RegistrationQuestion"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/Main_RegistrationQuestion"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/Main_RegistrationQuestion"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/Main_RegistrationQuestion"
               }
             }
           }
@@ -52,7 +52,7 @@
         }
       }
     },
-    "/api/WaslaAdmin/deleteQuestions": {
+    "/api/WaslaAdmin/saveQuestionsTranslation": {
       "post": {
         "tags": [
           "WaslaAdmin"
@@ -72,22 +72,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/RegistrationQuestions_Translation"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/RegistrationQuestions_Translation"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/RegistrationQuestions_Translation"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationQuestion"
+                "$ref": "#/components/schemas/RegistrationQuestions_Translation"
               }
             }
           }
@@ -115,418 +115,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QuesLstReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QuesLstReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QuesLstReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QuesLstReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/GetProduct": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/GetProduct_Tree": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/SaveProduct": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Service"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Service"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Service"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Service"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/GetPricingPackages": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackageReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackageReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackageReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackageReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/GetPricingPackageWithService": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/SavePricingPackage": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackage"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackage"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackage"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPackage"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/SavePricingPKgFeatureLst": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PricingPkgFeature"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PricingPkgFeature"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PricingPkgFeature"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PricingPkgFeature"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/WaslaAdmin/GetPricingPkgFeatures": {
-      "post": {
-        "tags": [
-          "WaslaAdmin"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPkgFeatureReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPkgFeatureReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPkgFeatureReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PricingPkgFeatureReq"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1960,53 +1548,6 @@
         }
       }
     },
-    "/api/WaslaClient/GetProduct_Tree": {
-      "post": {
-        "tags": [
-          "WaslaClient"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LangReq"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/WaslaClient/MakeClientInvoiceForPackages": {
       "post": {
         "tags": [
@@ -2466,6 +2007,33 @@
         },
         "additionalProperties": false
       },
+      "Main_RegistrationQuestion": {
+        "type": "object",
+        "properties": {
+          "ques_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ques_title_default": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "ques_type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PackageAndServicesGetReq": {
         "type": "object",
         "properties": {
@@ -2630,163 +2198,6 @@
         },
         "additionalProperties": false
       },
-      "PricingPackage": {
-        "type": "object",
-        "properties": {
-          "package_id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "package_name": {
-            "type": "string",
-            "nullable": true
-          },
-          "package_desc": {
-            "type": "string",
-            "nullable": true
-          },
-          "package_details": {
-            "type": "string",
-            "nullable": true
-          },
-          "package_sale_price": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "package_price": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "start_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "end_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "lang_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "order": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "curr_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "discount_amount": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "discount_type": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "service_id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "package_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "is_recommend": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "is_custom": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PricingPackageReq": {
-        "type": "object",
-        "properties": {
-          "service_id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "curr_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "lang_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PricingPkgFeature": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "package_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "feature_name": {
-            "type": "string",
-            "nullable": true
-          },
-          "feature_desc": {
-            "type": "string",
-            "nullable": true
-          },
-          "lang_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PricingPkgFeatureReq": {
-        "type": "object",
-        "properties": {
-          "package_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "lang_code": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "QuesLstReq": {
         "type": "object",
         "properties": {
@@ -2823,71 +2234,23 @@
         },
         "additionalProperties": false
       },
-      "RegistrationQuestion": {
+      "RegistrationQuestions_Translation": {
         "type": "object",
         "properties": {
-          "ques_id": {
+          "id": {
             "type": "integer",
             "format": "int32"
+          },
+          "ques_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "ques_title": {
             "type": "string",
             "nullable": true
           },
-          "ques_type": {
-            "type": "string",
-            "nullable": true
-          },
           "lang_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "order": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Service": {
-        "type": "object",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "productParent": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "product_desc": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "lang_code": {
-            "type": "string",
-            "nullable": true
-          },
-          "leaf": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "price": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "service_code": {
             "type": "string",
             "nullable": true
           }
@@ -2911,23 +2274,6 @@
           },
           "is_recommend": {
             "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ServiceReq": {
-        "type": "object",
-        "properties": {
-          "parent": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "active": {
-            "type": "boolean"
-          },
-          "lang": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

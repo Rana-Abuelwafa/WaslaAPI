@@ -10,105 +10,41 @@ using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-   [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
     {
-        private readonly IWaslaService _waslaService;
         private readonly IAdminWaslaService _adminWaslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaAdminController(IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, IAdminWaslaService adminWaslaService)
+        public WaslaAdminController(IHttpContextAccessor httpContextAccessor, IAdminWaslaService adminWaslaService)
         {
-            _waslaService = waslaService;
             _adminWaslaService = adminWaslaService;
             _httpContextAccessor = httpContextAccessor;
         }
 
         #region "questions"
-        [HttpPost("saveQuestions")]
-        public IActionResult saveQuestions(RegistrationQuestion ques)
+
+        [HttpPost("saveMainQuestions")]
+        public IActionResult SaveMainResigstraionQues(Main_RegistrationQuestion ques)
         {
 
-            return Ok(_waslaService.saveQuestions(ques));
+            return Ok(_adminWaslaService.SaveMainResigstraionQues(ques));
         }
-        [HttpPost("deleteQuestions")]
-        public IActionResult deleteQuestions(RegistrationQuestion ques)
+        [HttpPost("saveQuestionsTranslation")]
+        public IActionResult SaveResigstraionQuesTranslations(RegistrationQuestions_Translation ques)
         {
 
-            return Ok(_waslaService.deleteQuestions(ques));
+            return Ok(_adminWaslaService.SaveResigstraionQuesTranslations(ques));
         }
+       
+ 
         [HttpPost("getAdminQuesList")]
-        public async Task<IActionResult> getQuesList(QuesLstReq req)
+        public async Task<IActionResult> getQuesWithTranslations()
         {
-            
-
-            return Ok(await _waslaService.getRegistrationQuestionList(req.lang));
+            return Ok(await _adminWaslaService.getQuesWithTranslations());
         }
-
         #endregion "questions"
-
-        #region "product"
-
-        [HttpPost("GetProduct")]
-        public async Task<IActionResult> GetProduct(ServiceReq req)
-        {
-            return Ok(await _waslaService.GetProduct(req));
-        }
-        [HttpPost("GetProduct_Tree")]
-        public async Task<IActionResult> GetProduct_Tree(LangReq req)
-        {
-            return Ok(await _waslaService.GetProduct_Tree("admin",req.lang));
-        }
-
-        [HttpPost("SaveProduct")]
-        public IActionResult SaveProduct(Service service)
-        {
-            return Ok(_waslaService.SaveProduct(service));
-        }
-        #endregion "product"
-
-
-        #region "packages & services"
-
-        //[HttpPost("SavePricingPackageCurrency")]
-        //public IActionResult SavePricingPackageCurrency(PricingPkgCurrencyCast req)
-        //{
-        //    return Ok( _waslaService.SavePricingPackageCurrency(req));
-        //}
-
-        //[HttpPost("GetPricingPkgCurrency")]
-        //public async Task<IActionResult> GetPricingPkgCurrency(PricingPkgCurrencyReq req)
-        //{
-        //    return Ok(await _waslaService.GetPricingPkgCurrency(req));
-        //}
-        [HttpPost("GetPricingPackages")]
-        public async Task<IActionResult> GetPricingPackages(PricingPackageReq req)
-        {
-            return Ok(await _waslaService.GetPricingPackages(req));
-        }
-        [HttpPost("GetPricingPackageWithService")]
-        public async Task<IActionResult> GetPricingPackageWithService(LangReq req)
-        {
-            return Ok(await _waslaService.GetPricingPackageWithService(req));
-        }
-
-        [HttpPost("SavePricingPackage")]
-        public IActionResult SavePricingPackage(PricingPackage req)
-        {
-            return Ok(_waslaService.SavePricingPackage(req));
-        }
-        [HttpPost("SavePricingPKgFeatureLst")]
-        public IActionResult SavePricingPKgFeatureLst(List<PricingPkgFeature> lst)
-        {
-            return Ok(_waslaService.SavePricingPKgFeatureLst(lst));
-        }
-        [HttpPost("GetPricingPkgFeatures")]
-        public  IActionResult GetPricingPkgFeatures(PricingPkgFeatureReq req)
-        {
-            return Ok( _waslaService.GetPricingPkgFeatures(req));
-        }
-        #endregion
 
         #region new Services &packages
         [HttpPost("getFeaturesWithTranslations")]

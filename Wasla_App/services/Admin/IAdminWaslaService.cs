@@ -1,5 +1,6 @@
 ﻿using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.admin.Packages_Services;
+using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 
@@ -7,6 +8,13 @@ namespace Wasla_App.services.Admin
 {
     public interface IAdminWaslaService
     {
+        #region "questions"
+        public ResponseCls SaveMainResigstraionQues(Main_RegistrationQuestion row);
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row);
+        public Task<List<QuestionsWithTranslationGrp>> getQuesWithTranslations();
+        #endregion
+
+        #region "Packages & services"
         public ResponseCls SaveMainFeature(MainFeatureSaveReq row);
         public ResponseCls SaveFeatureTranslations(FeaturesTranslationSaveReq row);
         public  Task<List<FeaturesWithTranslationGrp>> getFeaturesWithTranslations();
@@ -24,5 +32,7 @@ namespace Wasla_App.services.Admin
         public Task<List<main_feature>> getMainFeatures();
         public Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req);
         public ResponseCls AssignFeaturesToPackage(PkgFeatureSaveDelete row);
+
+        #endregion
     }
 }

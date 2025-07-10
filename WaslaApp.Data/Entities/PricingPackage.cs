@@ -37,7 +37,7 @@ public partial class PricingPackage
     /// </summary>
     public short? discount_type { get; set; }
 
-    public int service_id { get; set; }
+    public int? service_id { get; set; }
 
     public string? package_code { get; set; }
 

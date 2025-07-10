@@ -38,13 +38,14 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                //check duplicate order (in add new row or update)
-                if (_db.Main_RegistrationQuestions.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
-                {
-                    return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
-                }
+               
                 if (row.ques_id == 0)
                 {
+                    //check duplicate order (in add new row)
+                    if (_db.Main_RegistrationQuestions.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                    }
                     //check duplicate validation
                     var result = _db.Main_RegistrationQuestions.Where(wr => wr.ques_title_default == row.ques_title_default && wr.active == row.active).SingleOrDefault();
                     if (result != null)
@@ -63,6 +64,11 @@ namespace WaslaApp.Data
                 }
                 else
                 {
+                    //check duplicate order (in update row)
+                    if (_db.Main_RegistrationQuestions.Where(wr => wr.order == row.order && wr.active == row.active && wr.ques_id != row.ques_id).SingleOrDefault() != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                    }
                     _db.Main_RegistrationQuestions.Update(row);
                     _db.SaveChanges();
                 }
@@ -133,24 +139,25 @@ namespace WaslaApp.Data
             try
             {
 
-                var result = await _db.RegistrationQuestions_Translations
-                                              .Join(_db.Main_RegistrationQuestions.Where(wr => wr.active == true),
-                                                     TRANS => new { TRANS.ques_id },
-                                                     QUES => new { QUES.ques_id },
-                                                     (TRANS, QUES) => new QuestionsWithTranslation
-                                                     {
-                                                         ques_id= QUES.ques_id,
-                                                         ques_title_default= QUES.ques_title_default,
-                                                         active= QUES.active,
-                                                         order= QUES.order,
-                                                         ques_title= TRANS.ques_title,
-                                                         ques_type= QUES.ques_type,
-                                                         id = TRANS.id,
-                                                         lang_code = TRANS.lang_code
+                //var result = await _db.RegistrationQuestions_Translations
+                //                              .Join(_db.Main_RegistrationQuestions.Where(wr => wr.active == true),
+                //                                     TRANS => new { TRANS.ques_id },
+                //                                     QUES => new { QUES.ques_id },
+                //                                     (TRANS, QUES) => new QuestionsWithTranslation
+                //                                     {
+                //                                         ques_id= QUES.ques_id,
+                //                                         ques_title_default= QUES.ques_title_default,
+                //                                         active= QUES.active,
+                //                                         order= QUES.order,
+                //                                         ques_title= TRANS.ques_title,
+                //                                         ques_type= QUES.ques_type,
+                //                                         id = TRANS.id,
+                //                                         lang_code = TRANS.lang_code
 
-                                                     }
-                                                    )
-                                              .ToListAsync();
+                //                                     }
+                //                                    )
+                //                              .ToListAsync();
+                var result  = await _db.registrationqueswithlangs.ToListAsync();
                 return result.GroupBy(grp => new
                 {
                     grp.ques_id,
@@ -359,13 +366,14 @@ namespace WaslaApp.Data
                     
                 };
 
-                //check duplicate order (in add new row or update)
-                if (_db.packages.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
-                {
-                    return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
-                }
+               
                 if (row.id == 0)
                 {
+                    //check duplicate order (in add new row )
+                    if (_db.packages.Where(wr => wr.order == row.order && wr.active == row.active).SingleOrDefault() != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                    }
                     //check duplicate validation
                     var result = _db.packages.Where(wr => wr.package_code == row.package_code && wr.active == row.active).SingleOrDefault();
                     if (result != null)
@@ -384,6 +392,11 @@ namespace WaslaApp.Data
                 }
                 else
                 {
+                    //check duplicate order (in update row )
+                    if (_db.packages.Where(wr => wr.order == row.order && wr.active == row.active && wr.id != row.id).SingleOrDefault() != null)
+                    {
+                        return new ResponseCls { success = false, errors = _localizer["DuplicateOrder"] };
+                    }
                     _db.packages.Update(pkg);
                     _db.SaveChanges();
                 }

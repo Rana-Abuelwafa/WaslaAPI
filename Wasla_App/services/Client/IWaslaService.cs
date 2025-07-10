@@ -11,8 +11,6 @@ namespace Wasla_App.services.Client
         #region "registration questions"
         public ResponseCls saveClientCopoun(ClientCopoun copoun);
         public Task<List<RegistrationQuestion>> getRegistrationQuestionList(string lang);
-        public ResponseCls saveQuestions(RegistrationQuestion ques);
-        public ResponseCls deleteQuestions(RegistrationQuestion ques);
         public List<QuesWithAnswers> getQuesWithAnswers(string clientId, string lang);
         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst,string clientId,string FullName,string email);
 
@@ -36,15 +34,8 @@ namespace Wasla_App.services.Client
         #region "packages & services"
        
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email);
-        public Task<List<PricingPackageWithService>> GetPricingPackages(PricingPackageReq req);
-        public ResponseCls SavePricingPKgFeatureLst(List<PricingPkgFeature> lst);
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
-        public List<PricingPkgFeature> GetPricingPkgFeatures(PricingPkgFeatureReq req);
-        public ResponseCls SavePricingPackage(PricingPackage package);
-        public Task<List<Service>> GetProduct(ServiceReq req);
-        public ResponseCls SaveProduct(Service service);
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
-        public Task<List<Service_Tree>> GetProduct_Tree(string clientId, string lang);
         #endregion
 
     }

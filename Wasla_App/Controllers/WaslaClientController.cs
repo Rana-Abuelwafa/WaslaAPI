@@ -129,6 +129,7 @@ namespace Wasla_App.Controllers
             return Ok(_waslaService.RemoveInvoice(req, clientId));
         }
 
+        //make checkout to invoice 
         [HttpPost("CheckoutInvoice")]
         public IActionResult CheckoutInvoice(CheckoutReq req)
         {
@@ -144,6 +145,7 @@ namespace Wasla_App.Controllers
             return Ok(_waslaService.CheckoutInvoice(req, clientId, email , completeprofile));
         }
 
+        //get invoices made by specific client
         [HttpPost("GetInvoicesByClient")]
         public async Task<IActionResult> GetInvoicesByClient(ClientInvoiceReq req)
         {
@@ -305,19 +307,8 @@ namespace Wasla_App.Controllers
             return Ok(_waslaService.saveClientServices(lst, clientId));
         }
 
-        [HttpPost("GetProduct_Tree")]
-        public async Task<IActionResult> GetProduct_Tree(LangReq req)
-        {
-            string? clientId = string.Empty;
 
-            if (_httpContextAccessor.HttpContext is not null)
-            {
-                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
-
-            }
-
-            return Ok(await _waslaService.GetProduct_Tree(clientId, req.lang));
-        }
+        //make invoice for client and send mail contain packages which he selected
         [HttpPost("MakeClientInvoiceForPackages")]
         public async Task<IActionResult> MakeClientInvoiceForPackages(List<InvoiceReq> lst)
         {

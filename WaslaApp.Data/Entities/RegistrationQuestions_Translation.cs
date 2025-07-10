@@ -7,7 +7,7 @@ public partial class RegistrationQuestions_Translation
 {
     public int id { get; set; }
 
-    public int ques_id { get; set; }
+    public int? ques_id { get; set; }
 
     public string? ques_title { get; set; }
 

@@ -64,6 +64,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<packagesdetailswithservice> packagesdetailswithservices { get; set; }
 
+    public virtual DbSet<registrationqueswithlang> registrationqueswithlangs { get; set; }
+
     public virtual DbSet<service_package> service_packages { get; set; }
 
     public virtual DbSet<service_package_price> service_package_prices { get; set; }
@@ -178,6 +180,8 @@ public partial class wasla_client_dbContext : DbContext
         modelBuilder.Entity<Main_RegistrationQuestion>(entity =>
         {
             entity.HasKey(e => e.ques_id).HasName("Main_RegistrationQuestions_pkey");
+
+            entity.Property(e => e.ques_type).HasMaxLength(20);
         });
 
         modelBuilder.Entity<PaymentMethod>(entity =>
@@ -327,6 +331,16 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.lang_code).HasMaxLength(5);
             entity.Property(e => e.package_price).HasPrecision(10, 2);
             entity.Property(e => e.package_sale_price).HasPrecision(10, 2);
+        });
+
+        modelBuilder.Entity<registrationqueswithlang>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("registrationqueswithlangs");
+
+            entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.ques_type).HasMaxLength(20);
         });
 
         modelBuilder.Entity<service_package>(entity =>
