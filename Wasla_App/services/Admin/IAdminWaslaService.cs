@@ -10,7 +10,7 @@ namespace Wasla_App.services.Admin
     {
         #region "questions"
         public ResponseCls SaveMainResigstraionQues(Main_RegistrationQuestion row);
-        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row);
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_TranslationSaveReq row);
         public Task<List<QuestionsWithTranslationGrp>> getQuesWithTranslations();
         #endregion
 

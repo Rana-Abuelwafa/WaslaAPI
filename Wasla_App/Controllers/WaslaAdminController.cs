@@ -4,6 +4,7 @@ using Wasla_App.services.Admin;
 using Wasla_App.services.Client;
 using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.admin.Packages_Services;
+using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
@@ -24,7 +25,6 @@ namespace Wasla_App.Controllers
         }
 
         #region "questions"
-
         [HttpPost("saveMainQuestions")]
         public IActionResult SaveMainResigstraionQues(Main_RegistrationQuestion ques)
         {
@@ -32,13 +32,13 @@ namespace Wasla_App.Controllers
             return Ok(_adminWaslaService.SaveMainResigstraionQues(ques));
         }
         [HttpPost("saveQuestionsTranslation")]
-        public IActionResult SaveResigstraionQuesTranslations(RegistrationQuestions_Translation ques)
+        public IActionResult SaveResigstraionQuesTranslations(RegistrationQuestions_TranslationSaveReq ques)
         {
 
             return Ok(_adminWaslaService.SaveResigstraionQuesTranslations(ques));
         }
-       
- 
+
+
         [HttpPost("getAdminQuesList")]
         public async Task<IActionResult> getQuesWithTranslations()
         {

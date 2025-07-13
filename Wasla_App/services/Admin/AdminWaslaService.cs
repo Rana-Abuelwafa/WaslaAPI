@@ -102,7 +102,7 @@ namespace Wasla_App.services.Admin
             return _waslaAdminDao.SavePackageTranslations(row);
         }
 
-        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row)
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_TranslationSaveReq row)
         {
             return _waslaAdminDao.SaveResigstraionQuesTranslations(row);
         }

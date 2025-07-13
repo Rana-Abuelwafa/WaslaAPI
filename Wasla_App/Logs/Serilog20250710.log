@@ -392,3 +392,23 @@ WHERE r.lang_code = @__lang_0
 [2025-07-10 13:57:32.563 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App) in 78.2968ms
 [2025-07-10 13:57:32.563 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
 [2025-07-10 13:57:32.563 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 200 247 application/json; charset=utf-8 82.6418ms
+[2025-07-10 16:15:28.040 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-10 16:15:28.547 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-10 16:15:28.916 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-10 16:15:28.917 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-10 16:15:29.465 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-10 16:15:29.465 +03:00  INF]  Hosting environment: Development
+[2025-07-10 16:15:29.465 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-10 16:15:30.929 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-10 16:15:31.798 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 812.543ms
+[2025-07-10 16:15:31.799 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-10 16:15:31.799 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-10 16:15:31.817 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 18.3685ms
+[2025-07-10 16:15:32.120 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 321.1642ms
+[2025-07-10 16:15:32.381 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-10 16:15:32.465 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 84.5207ms
+[2025-07-10 16:15:46.149 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-10 16:15:46.272 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 123.7857ms
+[2025-07-10 16:15:46.386 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/favicon.ico - null null
+[2025-07-10 16:15:46.715 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/favicon.ico - 404 0 null 329.3629ms
+[2025-07-10 16:15:46.720 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/favicon.ico, Response status code: 404

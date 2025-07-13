@@ -681,3 +681,7 @@ D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\refint\Wasla_Auth_App.d
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\Wasla_Auth_App.pdb
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\Wasla_Auth_App.genruntimeconfig.cache
 D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\ref\Wasla_Auth_App.dll
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\rpswa.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\rjimswa.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\rjsmrazor.dswa.cache.json
+D:\waslaa\api\WaslaAPI\Wasla_Auth_App\obj\Release\net8.0\rjsmcshtml.dswa.cache.json

@@ -87,17 +87,29 @@ namespace WaslaApp.Data
         }
 
         //save questions with translations
-        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_Translation row)
+        public ResponseCls SaveResigstraionQuesTranslations(RegistrationQuestions_TranslationSaveReq row)
         {
             ResponseCls response;
             int maxId = 0;
             try
             {
-
+                RegistrationQuestions_Translation ques = new RegistrationQuestions_Translation
+                {
+                     id = row.id,
+                    lang_code =row.lang_code,
+                    ques_id=row.ques_id,
+                    ques_title= row.ques_title
+                };
+                if (row.delete == true)
+                {
+                    _db.Remove(ques);
+                    _db.SaveChanges();
+                    return new ResponseCls { errors = null, success = true };
+                }
                 if (row.id == 0)
                 {
                     //check duplicate validation
-                    var result = _db.RegistrationQuestions_Translations.Where(wr => wr.ques_title == row.ques_title && wr.lang_code == row.lang_code).SingleOrDefault();
+                    var result = _db.RegistrationQuestions_Translations.Where(wr => wr.ques_title == row.ques_title && wr.lang_code == row.lang_code && wr.ques_id == row.ques_id).SingleOrDefault();
                     if (result != null)
                     {
                         
@@ -110,12 +122,12 @@ namespace WaslaApp.Data
 
                     }
                     row.id = maxId + 1;
-                    _db.RegistrationQuestions_Translations.Add(row);
+                    _db.RegistrationQuestions_Translations.Add(ques);
                     _db.SaveChanges();
                 }
                 else
                 {
-                    _db.RegistrationQuestions_Translations.Update(row);
+                    _db.RegistrationQuestions_Translations.Update(ques);
                     _db.SaveChanges();
                 }
 
