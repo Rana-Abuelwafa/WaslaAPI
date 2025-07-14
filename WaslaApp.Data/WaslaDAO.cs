@@ -147,7 +147,9 @@ namespace WaslaApp.Data
                     //generate & save coupon
                     string copounAuto = HelperCls.getCopounText();
                     ClientCopoun copoun = new ClientCopoun { client_id = client_id, discount_value = 50, discount_type = 1, copoun = copounAuto, id = 0, start_date = DateOnly.Parse(DateTime.Now.ToString("yyyy-MM-dd")), end_date = DateOnly.Parse("2026-06-06") };
-                    if (saveClientCopoun(copoun).success)
+
+                    var Copounresult = saveClientCopoun(copoun);
+                    if (Copounresult.success)
                     {
                         //send confirmation mail
                         try
@@ -169,7 +171,8 @@ namespace WaslaApp.Data
                     }
                     else
                     {
-                        return new RegsistrationQuesResponse { success = false, errors = _localizer["CopounError"] };
+                        return new RegsistrationQuesResponse { success = false, errors = Copounresult.errors };
+                        //return new RegsistrationQuesResponse { success = false, errors = _localizer["CopounError"] };
 
                     }
                     response = new RegsistrationQuesResponse { errors = null, success = true, WelcomeMsg = HelperCls.getResponseMsg(lang) };
@@ -303,7 +306,9 @@ namespace WaslaApp.Data
                                         service_package_id = PKG.service_package_id,
                                         client_name = combinedEntry.SERV_INV.INV.client_name,
                                         client_email = combinedEntry.SERV_INV.INV.client_email,
-                                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd")
+                                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd"),
+                                        copoun_id= combinedEntry.SERV_INV.INV.copoun_id
+
                                         //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                         // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
@@ -324,7 +329,8 @@ namespace WaslaApp.Data
                     grp.tax_id,
                     grp.invoice_date,
                     grp.client_email,
-                    grp.client_name
+                    grp.client_name,
+                    grp.copoun_id
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -341,6 +347,7 @@ namespace WaslaApp.Data
                     client_email=s.Key.client_email,
                     client_name=s.Key.client_name,
                     invoice_date=s.Key.invoice_date,
+                    copoun_id=s.Key.copoun_id,
                     pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
                                       .Select(s => new ClientInvoiceResponse
                                       {
@@ -746,7 +753,7 @@ namespace WaslaApp.Data
                 decimal maxId = 0;
                 decimal servicemaxId = 0;
                 //concatenate each package code together + date now to make unique and readable code
-                string invCode = string.Join("-", newList.Select(e => String.IsNullOrEmpty(e.package_code) ? "00" : e.package_code)) + "-" + DateTime.Now.ToString("yyyyMMdd");
+                string invCode = string.Join("-", newList.Select(e => String.IsNullOrEmpty(e.package_code) ? "00" : (String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
                 //first save in InvoiceMain (make invoice)
                 var totalPrice = newList.Sum(s => s.package_sale_price);

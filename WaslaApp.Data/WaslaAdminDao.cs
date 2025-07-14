@@ -121,7 +121,7 @@ namespace WaslaApp.Data
                         maxId = _db.RegistrationQuestions_Translations.Max(d => d.id);
 
                     }
-                    row.id = maxId + 1;
+                    ques.id = maxId + 1;
                     _db.RegistrationQuestions_Translations.Add(ques);
                     _db.SaveChanges();
                 }
@@ -646,23 +646,24 @@ namespace WaslaApp.Data
             try
             {
 
-                var result =  await _db.features_translations
-                                              .Join(_db.main_features.Where(wr => wr.active == true),
-                                                     TRANS => new { TRANS.feature_id },
-                                                     FEAT => new { feature_id = FEAT.id },
-                                                     (TRANS, FEAT) => new FeaturesWithTranslation
-                                                     {
-                                                         feature_code = FEAT.feature_code,
-                                                         feature_default_name= FEAT.feature_default_name,
-                                                         feature_description = TRANS.feature_description,
-                                                         feature_name= TRANS.feature_name,
-                                                         feature_id= TRANS.feature_id,
-                                                         id= TRANS.id,
-                                                         lang_code= TRANS.lang_code
+                //var result =  await _db.features_translations
+                //                              .Join(_db.main_features.Where(wr => wr.active == true),
+                //                                     TRANS => new { TRANS.feature_id },
+                //                                     FEAT => new { feature_id = FEAT.id },
+                //                                     (TRANS, FEAT) => new FeaturesWithTranslation
+                //                                     {
+                //                                         feature_code = FEAT.feature_code,
+                //                                         feature_default_name= FEAT.feature_default_name,
+                //                                         feature_description = TRANS.feature_description,
+                //                                         feature_name= TRANS.feature_name,
+                //                                         feature_id= TRANS.feature_id,
+                //                                         id= TRANS.id,
+                //                                         lang_code= TRANS.lang_code
 
-                                                     }
-                                                    )
-                                              .ToListAsync();
+                //                                     }
+                //                                    )
+                //                              .ToListAsync();
+                var result = await _db.featureswithtranslations.ToListAsync();
                 return result.GroupBy(grp => new
                 {
                     grp.feature_id,
@@ -673,7 +674,7 @@ namespace WaslaApp.Data
                    feature_default_name=s.Key.feature_default_name,
                    feature_code=s.Key.feature_code,
                    feature_id=s.Key.feature_id,
-                   features_Translations = result.Where(wr => wr.feature_id == s.Key.feature_id).ToList()
+                   features_Translations = result.Where(wr => wr.feature_id == s.Key.feature_id && wr.id != null).ToList()
                 }).ToList();
             }
             catch(Exception ex)

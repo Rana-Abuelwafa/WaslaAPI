@@ -11,7 +11,7 @@ using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
@@ -50,7 +50,7 @@ namespace Wasla_App.Controllers
         [HttpPost("getFeaturesWithTranslations")]
         public async Task<IActionResult> getFeaturesWithTranslations()
         {
-            return Ok(await _adminWaslaService.getFeaturesWithTranslations());
+            return Ok( await _adminWaslaService.getFeaturesWithTranslations());
         }
 
         [HttpPost("SaveFeatureTranslations")]

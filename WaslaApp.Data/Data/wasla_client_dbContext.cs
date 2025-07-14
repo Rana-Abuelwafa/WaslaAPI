@@ -52,6 +52,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<features_translation> features_translations { get; set; }
 
+    public virtual DbSet<featureswithtranslation> featureswithtranslations { get; set; }
+
     public virtual DbSet<main_feature> main_features { get; set; }
 
     public virtual DbSet<main_service> main_services { get; set; }
@@ -271,6 +273,16 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.ToTable("features_translation");
 
+            entity.Property(e => e.lang_code).HasMaxLength(5);
+        });
+
+        modelBuilder.Entity<featureswithtranslation>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("featureswithtranslations");
+
+            entity.Property(e => e.feature_code).HasMaxLength(20);
             entity.Property(e => e.lang_code).HasMaxLength(5);
         });
 

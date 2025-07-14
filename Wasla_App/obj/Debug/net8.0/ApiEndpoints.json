@@ -257,7 +257,7 @@
     "Parameters": [
       {
         "Name": "ques",
-        "Type": "WaslaApp.Data.Entities.RegistrationQuestions_Translation",
+        "Type": "WaslaApp.Data.Models.admin.Questions.RegistrationQuestions_TranslationSaveReq",
         "IsRequired": true
       }
     ],
