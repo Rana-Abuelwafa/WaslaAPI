@@ -50,6 +50,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<Service> Services { get; set; }
 
+    public virtual DbSet<clientinvoiceswithdetail> clientinvoiceswithdetails { get; set; }
+
     public virtual DbSet<features_translation> features_translations { get; set; }
 
     public virtual DbSet<featureswithtranslation> featureswithtranslations { get; set; }
@@ -265,6 +267,25 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.leaf).HasDefaultValue(true);
             entity.Property(e => e.price).HasDefaultValueSql("0");
             entity.Property(e => e.service_code).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<clientinvoiceswithdetail>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("clientinvoiceswithdetails");
+
+            entity.Property(e => e.client_email).HasMaxLength(50);
+            entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.client_name).HasMaxLength(100);
+            entity.Property(e => e.copoun).HasMaxLength(50);
+            entity.Property(e => e.curr_code).HasMaxLength(20);
+            entity.Property(e => e.invoice_code).HasMaxLength(50);
+            entity.Property(e => e.invoice_code_auto).HasMaxLength(20);
+            entity.Property(e => e.invoice_date).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.tax_code).HasMaxLength(20);
+            entity.Property(e => e.tax_name).HasMaxLength(50);
+            entity.Property(e => e.tax_sign).HasColumnType("char");
         });
 
         modelBuilder.Entity<features_translation>(entity =>

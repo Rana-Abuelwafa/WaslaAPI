@@ -10,14 +10,14 @@ namespace WaslaApp.Data.Models.invoices
 {
     public class ClientInvoiceResponse 
     {
-        public decimal invoice_id { get; set; }
+        public decimal? invoice_id { get; set; }
         public string? invoice_date { get; set; }
         public decimal? tax_amount { get; set; }
         public string? tax_code { get; set; }
         public int? tax_id { get; set; }
         public decimal? copoun_id { get; set; }
-        // public string? copoun { get; set; }
-        //public decimal? copoun_discount { get; set; }
+         public string? copoun { get; set; }
+        public decimal? copoun_discount { get; set; }
         public decimal? total_price { get; set; }
 
         public decimal? discount { get; set; }
@@ -49,12 +49,12 @@ namespace WaslaApp.Data.Models.invoices
         public string? client_email { get; set; }
 
         public string? client_name { get; set; }
-        public decimal invoice_id { get; set; }
+        public decimal? invoice_id { get; set; }
         public short? status { get; set; }
         public decimal? tax_amount { get; set; }
         public decimal? copoun_id { get; set; }
-        //public string? copoun { get; set; }
-        //public decimal? copoun_discount { get; set; }
+        public string? copoun { get; set; }
+        public decimal? copoun_discount { get; set; }
         public string? invoice_date { get; set; }
         public int? tax_id { get; set; }
         public decimal? total_price { get; set; }

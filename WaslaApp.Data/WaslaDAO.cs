@@ -111,6 +111,7 @@ namespace WaslaApp.Data
         }
 
         //save user's answers for registerations questions 
+        //and send to his mail a coupon code used as offer 
         public RegsistrationQuesResponse saveRegistrationSteps(List<RegistrationAnswer> lst, string client_id, string FullName, string email)
         {
             int count = 0;
@@ -230,7 +231,7 @@ namespace WaslaApp.Data
         #endregion
         #region "Profile"
 
-        //update Invoice total & grand total after remove package & apply Copoun
+        //update Invoice;s total & grand total price after remove package or  apply Copoun
         public ResponseCls UpdateInvoicePrices(InvUpdatePriceReq req , string client_id)
         {
             try
@@ -257,63 +258,116 @@ namespace WaslaApp.Data
         }
 
         //get all invoices by client_id
+        //status =2 mean get invoices which checkout bu user
+        // status =1 mean  invoices not checkout by user 
 
         public async Task<List<ClientInvoiceGrp>> GetInvoicesByClient(ClientInvoiceReq req, string client_id)
         {
             try
             {
-                var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
-                                .Join(
-                                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
-                                        SERV => new { SERV.invoice_id, SERV.client_id },
-                                        INV => new { INV.invoice_id, INV.client_id },
-                                        (SERV, INV) => new { SERV, INV }
-                                     )
-                                .Join(
-                                     _db.ApplyTaxes,
-                                     SERV_INV => SERV_INV.INV.tax_id,
-                                     TAX => TAX.tax_id,
-                                     (SERV_INV, TAX) => new { SERV_INV, TAX }
-                                    )
-                                 .Join(
-                                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
-                                    combinedEntry => new { combinedEntry.SERV_INV.SERV.package_id,
-                                                          service_id = combinedEntry.SERV_INV.SERV.productId,
-                                                          combinedEntry.SERV_INV.INV.curr_code
-                                    },
-                                    PKG => new { PKG.package_id, PKG.service_id , PKG.curr_code },
-                                    (combinedEntry, PKG) =>  new ClientInvoiceResponse
-                                    {
-                                        invoice_id = combinedEntry.SERV_INV.INV.invoice_id,
-                                        curr_code = combinedEntry.SERV_INV.INV.curr_code,
-                                        discount = combinedEntry.SERV_INV.INV.discount,
-                                        total_price = combinedEntry.SERV_INV.INV.total_price,
-                                        grand_total_price = combinedEntry.SERV_INV.INV.grand_total_price,
-                                        service_id = combinedEntry.SERV_INV.SERV.productId,
-                                        package_id = combinedEntry.SERV_INV.SERV.package_id,
-                                        service_name = PKG.service_name,
-                                        package_name = PKG.package_name,
-                                        package_price = PKG.package_price,
-                                        package_sale_price = PKG.package_sale_price,
-                                        package_desc = PKG.package_desc,
-                                        package_details = PKG.package_details,
-                                        invoice_code = combinedEntry.SERV_INV.INV.invoice_code,
-                                        invoice_code_auto = combinedEntry.SERV_INV.INV.invoice_code_auto,
-                                        status = combinedEntry.SERV_INV.INV.status,
-                                        tax_amount = combinedEntry.TAX.tax_amount,
-                                        tax_code = combinedEntry.TAX.tax_code,
-                                        tax_id = combinedEntry.TAX.tax_id,
-                                        service_package_id = PKG.service_package_id,
-                                        client_name = combinedEntry.SERV_INV.INV.client_name,
-                                        client_email = combinedEntry.SERV_INV.INV.client_email,
-                                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd"),
-                                        copoun_id= combinedEntry.SERV_INV.INV.copoun_id
+                //var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
+                //                .Join(
+                //                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
+                //                        SERV => new { SERV.invoice_id, SERV.client_id },
+                //                        INV => new { INV.invoice_id, INV.client_id },
+                //                        (SERV, INV) => new { SERV, INV }
+                //                     )
+                //                .Join(
+                //                     _db.ApplyTaxes,
+                //                     SERV_INV => SERV_INV.INV.tax_id,
+                //                     TAX => TAX.tax_id,
+                //                     (SERV_INV, TAX) => new { SERV_INV, TAX }
+                //                    )
+                //                .Join(
+                //                     _db.ClientCopouns,
+                //                     SERV_INV_TAX => SERV_INV_TAX.SERV_INV.INV.copoun_id,
+                //                     COPOUN => COPOUN.id,
+                //                     (SERV_INV_TAX, COPOUN) => new { SERV_INV_TAX, COPOUN }
+                //                    )        
+                //                     .Join(
+                //                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
+                //                    combinedEntry => new { combinedEntry.SERV_INV_TAX.SERV_INV.SERV.package_id,
+                //                                          service_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.productId,
+                //                                          combinedEntry.SERV_INV_TAX.SERV_INV.INV.curr_code
+                //                    },
+                //                    PKG => new { PKG.package_id, PKG.service_id , PKG.curr_code },
+                //                    (combinedEntry, PKG) =>  new ClientInvoiceResponse
+                //                    {
+                //                        invoice_id = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_id,
+                //                        curr_code = combinedEntry.SERV_INV_TAX.SERV_INV.INV.curr_code,
+                //                        discount = combinedEntry.SERV_INV_TAX.SERV_INV.INV.discount,
+                //                        total_price = combinedEntry.SERV_INV_TAX.SERV_INV.INV.total_price,
+                //                        grand_total_price = combinedEntry.SERV_INV_TAX.SERV_INV.INV.grand_total_price,
+                //                        service_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.productId,
+                //                        package_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.package_id,
+                //                        service_name = PKG.service_name,
+                //                        package_name = PKG.package_name,
+                //                        package_price = PKG.package_price,
+                //                        package_sale_price = PKG.package_sale_price,
+                //                        package_desc = PKG.package_desc,
+                //                        package_details = PKG.package_details,
+                //                        invoice_code = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_code,
+                //                        invoice_code_auto = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_code_auto,
+                //                        status = combinedEntry.SERV_INV_TAX.SERV_INV.INV.status,
+                //                        tax_amount = combinedEntry.SERV_INV_TAX.TAX.tax_amount,
+                //                        tax_code = combinedEntry.SERV_INV_TAX.TAX.tax_code,
+                //                        tax_id = combinedEntry.SERV_INV_TAX.TAX.tax_id,
+                //                        service_package_id = PKG.service_package_id,
+                //                        client_name = combinedEntry.SERV_INV_TAX.SERV_INV.INV.client_name,
+                //                        client_email = combinedEntry.SERV_INV_TAX.SERV_INV.INV.client_email,
+                //                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd"),
+                //                        copoun_id= combinedEntry.SERV_INV_TAX.SERV_INV.INV.copoun_id,
+                //                        copoun = combinedEntry.COPOUN.copoun,
+                //                        copoun_discount= combinedEntry.COPOUN.discount_value,
+                //                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
+                //                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
-                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
-                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+                //                    }
+                //                   ).ToListAsync();
 
-                                    }
-                                   ).ToListAsync();
+                var fullEntries = await _db.clientinvoiceswithdetails.Where(wr => wr.client_id == client_id && wr.active == req.active && wr.status == req.status)
+                                    .Join(
+                                   _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
+                                   INV => new {
+                                       INV.package_id,
+                                       service_id = INV.productId,
+                                       INV.curr_code,
+                                       INV.service_package_id
+                                   },
+                                   PKG => new { PKG.package_id, PKG.service_id, PKG.curr_code, PKG.service_package_id },
+                                   (combinedEntry, PKG) => new ClientInvoiceResponse
+                                   {
+                                       invoice_id = combinedEntry.invoice_id,
+                                       curr_code = combinedEntry.curr_code,
+                                       discount = combinedEntry.discount,
+                                       total_price = combinedEntry.total_price,
+                                       grand_total_price = combinedEntry.grand_total_price,
+                                       service_id = combinedEntry.productId,
+                                       package_id = combinedEntry.package_id,
+                                       service_name = PKG.service_name,
+                                       package_name = PKG.package_name,
+                                       package_price = PKG.package_price,
+                                       package_sale_price = PKG.package_sale_price,
+                                       package_desc = PKG.package_desc,
+                                       package_details = PKG.package_details,
+                                       invoice_code = combinedEntry.invoice_code,
+                                       invoice_code_auto = combinedEntry.invoice_code_auto,
+                                       status = combinedEntry.status,
+                                       tax_amount = combinedEntry.tax_amount,
+                                       tax_code = combinedEntry.tax_code,
+                                       tax_id = combinedEntry.tax_id,
+                                       service_package_id = PKG.service_package_id,
+                                       client_name = combinedEntry.client_name,
+                                       client_email = combinedEntry.client_email,
+                                       invoice_date = DateTime.Parse(combinedEntry.invoice_date.ToString()).ToString("yyyy-MM-dd"),
+                                       copoun_id = combinedEntry.copoun_id,
+                                       copoun = combinedEntry.copoun,
+                                       copoun_discount = combinedEntry.copoun_discount_value,
+                                       //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
+                                       // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+
+                                   }
+                                  ).ToListAsync();
                 var result = fullEntries.GroupBy(grp => new
                 {
                     grp.invoice_id,
@@ -330,7 +384,9 @@ namespace WaslaApp.Data
                     grp.invoice_date,
                     grp.client_email,
                     grp.client_name,
-                    grp.copoun_id
+                    grp.copoun_id,
+                    grp.copoun_discount,
+                    grp.copoun
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -348,6 +404,8 @@ namespace WaslaApp.Data
                     client_name=s.Key.client_name,
                     invoice_date=s.Key.invoice_date,
                     copoun_id=s.Key.copoun_id,
+                    copoun=s.Key.copoun,
+                    copoun_discount=s.Key.copoun_discount,
                     pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
                                       .Select(s => new ClientInvoiceResponse
                                       {
