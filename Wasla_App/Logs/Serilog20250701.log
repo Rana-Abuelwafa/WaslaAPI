@@ -2101,7 +2101,7 @@ SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link,
 FROM "ClientProfile" AS c
 WHERE c.client_id = @__clientId_0
 [2025-07-01 16:54:26.285 +03:00  INF]  Executed DbCommand (112ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-01 16:54:26.334 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -2306,7 +2306,7 @@ WHERE c.client_id = @__8__locals1_client_id_0 AND c.active = @__8__locals1_req_a
 [2025-07-01 16:55:18.990 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
 [2025-07-01 16:55:18.990 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-01 16:55:18.993 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-01 16:55:18.994 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.

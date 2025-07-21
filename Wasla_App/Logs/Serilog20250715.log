@@ -62,11 +62,11 @@ SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link,
 FROM "ClientProfile" AS c
 WHERE c.client_id = @__clientId_0
 [2025-07-15 14:09:26.425 +03:00  INF]  Executed DbCommand (232ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:09:26.425 +03:00  INF]  Executed DbCommand (232ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:09:26.425 +03:00  INF]  Executed DbCommand (232ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -142,7 +142,7 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
 [2025-07-15 14:10:39.741 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:10:39.741 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:10:39.785 +03:00  INF]  Executed DbCommand (24ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:10:39.785 +03:00  INF]  Executed DbCommand (23ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -172,7 +172,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 14:11:04.324 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
 [2025-07-15 14:11:04.324 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:11:04.334 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:11:04.345 +03:00  INF]  Executed DbCommand (20ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -202,7 +202,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 14:11:05.802 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:11:05.803 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:11:05.807 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:11:05.807 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -322,7 +322,7 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
 [2025-07-15 14:12:15.830 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:12:15.830 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:12:15.840 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:12:15.841 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -513,7 +513,7 @@ WHERE p.service_package_id = @__req_service_package_id_0
 [2025-07-15 14:13:28.872 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
 [2025-07-15 14:13:28.872 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:13:28.876 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:13:28.876 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -973,7 +973,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 14:14:04.345 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 364 application/json; charset=utf-8 9.076ms
 [2025-07-15 14:14:04.345 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 14:14:04.349 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 14:14:04.352 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1206,7 +1206,7 @@ SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link,
 FROM "ClientProfile" AS c
 WHERE c.client_id = @__clientId_0
 [2025-07-15 15:43:57.604 +03:00  INF]  Executed DbCommand (100ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 15:43:57.604 +03:00  INF]  Executed DbCommand (119ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_client_id_0='?', @__8__locals1_req_active_1='?' (DbType = Boolean), @__8__locals1_req_status_2='?' (DbType = Int16)], CommandType='"Text"', CommandTimeout='30']
@@ -1313,7 +1313,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 15:49:59.341 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-07-15 15:49:59.341 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 364 application/json; charset=utf-8 180.8902ms
 [2025-07-15 15:49:59.515 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 15:49:59.516 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1343,7 +1343,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 16:58:53.663 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-07-15 16:58:53.664 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 364 application/json; charset=utf-8 121.6266ms
 [2025-07-15 16:58:53.695 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 16:58:53.695 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1405,7 +1405,7 @@ WHERE c.client_id = @__8__locals1_client_id_0 AND c.active = @__8__locals1_req_a
 [2025-07-15 17:01:51.711 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
 [2025-07-15 17:01:51.711 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 17:01:51.726 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 17:01:51.728 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1481,7 +1481,7 @@ SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link,
 FROM "ClientProfile" AS c
 WHERE c.client_id = @__clientId_0
 [2025-07-15 17:07:47.882 +03:00  INF]  Executed DbCommand (178ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 17:07:47.998 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1588,7 +1588,7 @@ WHERE c.client_id = @__clientId_0
 [2025-07-15 17:10:09.029 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-07-15 17:10:09.032 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 364 application/json; charset=utf-8 15.0677ms
 [2025-07-15 17:10:09.034 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 17:10:09.039 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1630,7 +1630,7 @@ WHERE c.client_id = @__8__locals1_client_id_0 AND c.active = @__8__locals1_req_a
 [2025-07-15 17:12:44.606 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-07-15 17:12:44.606 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-07-15 17:12:44.617 +03:00  INF]  Executed DbCommand (17ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-07-15 17:12:44.618 +03:00  INF]  Executed DbCommand (11ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
@@ -1665,3 +1665,607 @@ WHERE c.client_id = @__8__locals1_client_id_0 AND c.active = @__8__locals1_req_a
 [2025-07-15 17:12:48.225 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 143.9976ms
 [2025-07-15 17:12:48.226 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
 [2025-07-15 17:12:48.226 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 4719 application/json; charset=utf-8 146.2694ms
+[2025-07-15 19:49:00.535 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-15 19:49:00.876 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-15 19:49:01.065 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-15 19:49:01.066 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-15 19:49:01.320 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-15 19:49:01.321 +03:00  INF]  Hosting environment: Development
+[2025-07-15 19:49:01.321 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-15 19:49:03.056 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-15 19:49:03.459 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 414.4325ms
+[2025-07-15 19:49:03.509 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-15 19:49:03.516 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 6.9868ms
+[2025-07-15 19:49:04.509 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-15 19:49:04.823 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 313.8342ms
+[2025-07-15 19:49:04.947 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-15 19:49:05.009 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 61.4801ms
+[2025-07-15 19:49:16.472 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-07-15 19:49:16.484 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:49:16.485 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 12.9694ms
+[2025-07-15 19:49:16.487 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 48
+[2025-07-15 19:49:16.488 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:49:17.704 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:49:17.730 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-07-15 19:49:20.223 +03:00  INF]  Executed DbCommand (75ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.active, p.curr_code, p.discount_amount, p.discount_type, p.is_custom, p.is_recommend, p.lang_code, p."order", p.package_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_code, p.service_desc, p.service_id, p.service_name, p.service_package_id
+FROM packagesdetailswithservices AS p
+WHERE p.lang_code = @__req_lang_0 AND (lower(p.curr_code) = CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END OR (p.curr_code IS NULL AND CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END IS NULL)) AND p.active
+[2025-07-15 19:49:20.323 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.332 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.333 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.334 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.335 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.336 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.337 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.337 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.349 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:49:20.401 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 2667.7834ms
+[2025-07-15 19:49:20.401 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:49:20.414 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 4197 application/json; charset=utf-8 3926.9004ms
+[2025-07-15 19:49:20.723 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 48
+[2025-07-15 19:49:20.724 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:49:20.730 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:49:20.730 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-07-15 19:49:20.766 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.active, p.curr_code, p.discount_amount, p.discount_type, p.is_custom, p.is_recommend, p.lang_code, p."order", p.package_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_code, p.service_desc, p.service_id, p.service_name, p.service_package_id
+FROM packagesdetailswithservices AS p
+WHERE p.lang_code = @__req_lang_0 AND (lower(p.curr_code) = CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END OR (p.curr_code IS NULL AND CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END IS NULL)) AND p.active
+[2025-07-15 19:49:20.775 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.777 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.779 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.781 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.783 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.785 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.787 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.788 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.792 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.794 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.796 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:49:20.797 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:49:20.802 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 71.4829ms
+[2025-07-15 19:49:20.802 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:49:20.803 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 5893 application/json; charset=utf-8 79.4527ms
+[2025-07-15 19:50:16.522 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-07-15 19:50:16.523 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:16.523 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 1.3943ms
+[2025-07-15 19:50:16.525 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-07-15 19:50:16.526 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:16.531 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:50:16.531 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-07-15 19:50:16.626 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.active, p.curr_code, p.discount_amount, p.discount_type, p.is_custom, p.is_recommend, p.lang_code, p."order", p.package_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_code, p.service_desc, p.service_id, p.service_name, p.service_package_id
+FROM packagesdetailswithservices AS p
+WHERE p.lang_code = @__req_lang_0 AND (lower(p.curr_code) = CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END OR (p.curr_code IS NULL AND CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END IS NULL)) AND p.active
+[2025-07-15 19:50:16.629 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.631 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.633 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.634 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.635 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.636 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.637 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.638 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.639 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.640 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.641 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:16.641 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:50:16.643 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 111.6664ms
+[2025-07-15 19:50:16.647 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:50:16.650 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 5893 application/json; charset=utf-8 124.8848ms
+[2025-07-15 19:50:25.370 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - null null
+[2025-07-15 19:50:25.370 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:25.371 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 204 null null 0.7237ms
+[2025-07-15 19:50:25.372 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - application/json 263
+[2025-07-15 19:50:25.373 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:25.528 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-07-15 19:50:25.532 +03:00  INF]  Route matched with {action = "MakeClientInvoiceForPackages", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MakeClientInvoiceForPackages(System.Collections.Generic.List`1[WaslaApp.Data.Models.invoices.InvoiceReq]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-07-15 19:50:36.767 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__taxId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT a.tax_id, a.tax_amount, a.tax_code, a.tax_name, a.tax_sign
+FROM "ApplyTax" AS a
+WHERE a.tax_id = @__taxId_0
+LIMIT 2
+[2025-07-15 19:50:36.864 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "InvoiceMain" AS i
+[2025-07-15 19:50:36.878 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__8__locals1_client_id_0='?', @__main_active_1='?' (DbType = Boolean), @__main_invoice_code_2='?', @__main_invoice_date_3='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT i.invoice_id, i.active, i.client_email, i.client_id, i.client_name, i.copoun_id, i.curr_code, i.discount, i.grand_total_price, i.invoice_code, i.invoice_code_auto, i.invoice_date, i.status, i.tax_id, i.total_price
+FROM "InvoiceMain" AS i
+WHERE i.client_id = @__8__locals1_client_id_0 AND i.active = @__main_active_1 AND i.invoice_code = @__main_invoice_code_2 AND i.invoice_date = @__main_invoice_date_3
+LIMIT 2
+[2025-07-15 19:50:36.890 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(i.invoice_id)
+FROM "InvoiceMain" AS i
+[2025-07-15 19:50:37.068 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Boolean), @p2='?', @p3='?', @p4='?', @p5='?' (DbType = Decimal), @p6='?', @p7='?' (DbType = Decimal), @p8='?' (DbType = Decimal), @p9='?', @p10='?', @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int16), @p13='?' (DbType = Int32), @p14='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "InvoiceMain" (invoice_id, active, client_email, client_id, client_name, copoun_id, curr_code, discount, grand_total_price, invoice_code, invoice_code_auto, invoice_date, status, tax_id, total_price)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+[2025-07-15 19:50:37.080 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientServices" AS c
+[2025-07-15 19:50:37.089 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__service_client_id_0='?', @__service_productId_1='?' (DbType = Int32), @__service_package_id_2='?' (DbType = Int32), @__service_invoice_id_3='?' (DbType = Decimal), @__8__locals2_row_service_package_id_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.active, c.client_id, c.invoice_id, c.package_id, c."productId", c.service_package_id
+FROM "ClientServices" AS c
+WHERE c.client_id = @__service_client_id_0 AND c."productId" = @__service_productId_1 AND c.package_id = @__service_package_id_2 AND c.invoice_id = @__service_invoice_id_3 AND c.active AND c.service_package_id = @__8__locals2_row_service_package_id_4
+LIMIT 2
+[2025-07-15 19:50:37.093 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientServices" AS c
+[2025-07-15 19:50:37.122 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?' (DbType = Boolean), @p2='?', @p3='?' (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientServices" (id, active, client_id, invoice_id, package_id, "productId", service_package_id)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+[2025-07-15 19:50:37.141 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-07-15 19:50:47.336 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2025-07-15 19:50:47.337 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App) in 21804.6328ms
+[2025-07-15 19:50:47.337 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.MakeClientInvoiceForPackages (Wasla_App)'
+[2025-07-15 19:50:47.339 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/MakeClientInvoiceForPackages - 200 4 application/json; charset=utf-8 21967.3295ms
+[2025-07-15 19:50:49.417 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - null null
+[2025-07-15 19:50:49.418 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:49.418 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 204 null null 0.4783ms
+[2025-07-15 19:50:49.421 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - application/json 82
+[2025-07-15 19:50:49.421 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:49.421 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:50:49.422 +03:00  INF]  Route matched with {action = "GetPricingPackageWithService", controller = "WaslaBrowse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPricingPackageWithService(WaslaApp.Data.Models.global.LangReq) on controller Wasla_App.Controllers.WaslaBrowseController (Wasla_App).
+[2025-07-15 19:50:49.432 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__req_lang_0='?', @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT p.active, p.curr_code, p.discount_amount, p.discount_type, p.is_custom, p.is_recommend, p.lang_code, p."order", p.package_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_code, p.service_desc, p.service_id, p.service_name, p.service_package_id
+FROM packagesdetailswithservices AS p
+WHERE p.lang_code = @__req_lang_0 AND (lower(p.curr_code) = CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END OR (p.curr_code IS NULL AND CASE
+    WHEN p.curr_code IS NULL THEN p.curr_code
+    ELSE @__ToLower_1
+END IS NULL)) AND p.active
+[2025-07-15 19:50:49.436 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.437 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.439 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.440 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.441 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.442 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.443 +03:00  INF]  Executed DbCommand (0ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.444 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.446 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.447 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.448 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-07-15 19:50:49.449 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServicesWithPkg, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:50:49.450 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App) in 27.9845ms
+[2025-07-15 19:50:49.450 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaBrowseController.GetPricingPackageWithService (Wasla_App)'
+[2025-07-15 19:50:49.450 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaBrowse/GetPricingPackageWithService - 200 5893 application/json; charset=utf-8 28.98ms
+[2025-07-15 19:50:54.746 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - null null
+[2025-07-15 19:50:54.746 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:54.748 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetProfileImage - 204 null null 1.867ms
+[2025-07-15 19:50:54.748 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-07-15 19:50:54.748 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:54.748 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 3.508ms
+[2025-07-15 19:50:54.753 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - application/json 2
+[2025-07-15 19:50:54.759 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:54.768 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - application/json 2
+[2025-07-15 19:50:54.768 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:54.773 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-07-15 19:50:54.773 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-07-15 19:50:54.777 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-07-15 19:50:54.778 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-07-15 19:50:54.784 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link, c.gender, c.lang, c.nation, c.pay_code, c.phone_number, c.profile_id, c.twitter_link, c.address
+FROM "ClientProfile" AS c
+WHERE c.client_id = @__clientId_0
+[2025-07-15 19:50:54.785 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.ClientProfileCast, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:50:54.798 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App) in 20.2927ms
+[2025-07-15 19:50:54.798 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
+[2025-07-15 19:50:54.798 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 364 application/json; charset=utf-8 30.8146ms
+[2025-07-15 19:50:54.807 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
+FROM "ClientImages" AS c
+WHERE c.client_id = @__clientId_0 AND c.type = 1
+[2025-07-15 19:50:54.813 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:50:54.817 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App) in 39.6519ms
+[2025-07-15 19:50:54.817 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetProfileImage (Wasla_App)'
+[2025-07-15 19:50:54.818 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetProfileImage - 200 190 application/json; charset=utf-8 64.5867ms
+[2025-07-15 19:50:58.246 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-07-15 19:50:58.247 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:58.247 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 0.5118ms
+[2025-07-15 19:50:58.249 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 43
+[2025-07-15 19:50:58.249 +03:00  INF]  CORS policy execution successful.
+[2025-07-15 19:50:58.252 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-07-15 19:50:58.262 +03:00  INF]  Route matched with {action = "GetInvoicesByClient", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetInvoicesByClient(WaslaApp.Data.Models.invoices.ClientInvoiceReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-07-15 19:50:58.309 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_client_id_0='?', @__8__locals1_req_active_1='?' (DbType = Boolean), @__8__locals1_req_status_2='?' (DbType = Int16)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE c.client_id = @__8__locals1_client_id_0 AND c.active = @__8__locals1_req_active_1 AND c.status = @__8__locals1_req_status_2
+[2025-07-15 19:50:58.326 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-15 19:50:58.341 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App) in 78.6789ms
+[2025-07-15 19:50:58.341 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetInvoicesByClient (Wasla_App)'
+[2025-07-15 19:50:58.342 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 200 5359 application/json; charset=utf-8 93.3012ms

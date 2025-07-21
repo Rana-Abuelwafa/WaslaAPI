@@ -750,7 +750,7 @@ namespace WaslaApp.Data
                     client_id = s.client_id,
                     img_name = s.img_name,
                     type = s.type,
-                    img_path = "https://waslaa.de:4431//" + s.img_path
+                    img_path = "https://api.waslaa.de//" + s.img_path
                 }).ToListAsync();
 
             }
@@ -790,7 +790,7 @@ namespace WaslaApp.Data
         }
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
         {
-            InvoiceResponse response = null; ;
+            InvoiceResponse response = null;
             //list with custom package => no make invoice directly send contact mail to client
             var customLst = lst.Where(wr => wr.is_custom == true).ToList();
             if(customLst != null && customLst.Count > 0)
@@ -802,6 +802,7 @@ namespace WaslaApp.Data
                 htmlBody = htmlBody.Replace("@user", client_name);
                 MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = client_name, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 4), EmailBody = htmlBody };
                 _mailSettingDao.SendMail(Mail_Data);
+                response = new InvoiceResponse { success = true, idOut = 0 };
             }
             //exclude custom package from Invoice 
             var newList = lst.Where(wr => wr.is_custom == false).ToList();
@@ -927,6 +928,7 @@ namespace WaslaApp.Data
                     }
                 }
             }
+            
             return response;
         }
        

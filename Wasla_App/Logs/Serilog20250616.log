@@ -259,7 +259,7 @@ WHERE c.client_id = @__clientId_0
 [2025-06-16 13:53:04.848 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-06-16 13:53:04.848 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 97.4823ms
 [2025-06-16 13:53:04.939 +03:00  INF]  Executed DbCommand (7ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 13:53:04.940 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -387,7 +387,7 @@ WHERE c.client_id = @__clientId_0
 [2025-06-16 14:01:41.116 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-06-16 14:01:41.116 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 297.9814ms
 [2025-06-16 14:01:41.130 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:01:41.131 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -417,7 +417,7 @@ WHERE c.client_id = @__clientId_0
 [2025-06-16 14:01:49.101 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-06-16 14:01:49.101 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 24.6415ms
 [2025-06-16 14:01:49.200 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:01:49.201 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -507,7 +507,7 @@ SELECT c.client_birthday, c.client_email, c.client_id, c.client_name, c.fb_link,
 FROM "ClientProfile" AS c
 WHERE c.client_id = @__clientId_0
 [2025-06-16 14:03:24.295 +03:00  INF]  Executed DbCommand (114ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:03:24.352 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -695,7 +695,7 @@ WHERE c.client_id = @__clientId_0
 [2025-06-16 14:06:52.127 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-06-16 14:06:52.127 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 11.4557ms
 [2025-06-16 14:06:52.148 +03:00  INF]  Executed DbCommand (15ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:06:52.151 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -912,7 +912,7 @@ WHERE c.client_id = @__clientId_0
 [2025-06-16 14:10:56.940 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.GetClientProfiles (Wasla_App)'
 [2025-06-16 14:10:56.940 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 200 null application/json; charset=utf-8 17.7176ms
 [2025-06-16 14:10:57.031 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:10:57.031 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.ClientImage, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
@@ -1086,7 +1086,7 @@ WHERE p.active = @__req_active_0 AND p.package_id = @__req_package_id_1 AND p.la
 [2025-06-16 14:11:34.043 +03:00  INF]  Route matched with {action = "GetClientProfiles", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetClientProfiles() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-06-16 14:11:34.043 +03:00  INF]  Route matched with {action = "GetProfileImage", controller = "WaslaClient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfileImage() on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
 [2025-06-16 14:11:34.054 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']
-SELECT c.id, c.client_id, c.img_name, c.type, 'https://waslaa.de:4431//' || COALESCE(c.img_path, '') AS img_path
+SELECT c.id, c.client_id, c.img_name, c.type, 'https://api.waslaa.de//' || COALESCE(c.img_path, '') AS img_path
 FROM "ClientImages" AS c
 WHERE c.client_id = @__clientId_0 AND c.type = 1
 [2025-06-16 14:11:34.067 +03:00  INF]  Executed DbCommand (13ms) [Parameters=[@__clientId_0='?'], CommandType='"Text"', CommandTimeout='30']

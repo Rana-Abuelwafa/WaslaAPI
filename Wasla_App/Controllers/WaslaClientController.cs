@@ -324,10 +324,19 @@ namespace Wasla_App.Controllers
             }
             string fileName = "Invoice_" + lang.ToLower() + ".cshtml";
             var templatePath = Path.Combine("/Views/Email" + "/", fileName);
-            HtmlInvoice model =  _waslaService.MakeClientInvoiceForPackages(lst,clientId,FullName, client_email).invoice;
-            var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
-            MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 3), EmailBody = msg };
-            return Ok(Mail_Service.SendMail(Mail_Data));
+            InvoiceResponse response = _waslaService.MakeClientInvoiceForPackages(lst, clientId, FullName, client_email);
+            HtmlInvoice model = response.invoice;
+            if(model != null)
+            {
+                var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
+                MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 3), EmailBody = msg };
+                return Ok(Mail_Service.SendMail(Mail_Data));
+            }
+            else
+            {
+                return Ok(response);
+            }
+            
         }
         //[HttpPost("SendInvoiceEmail")]
         //public async Task<IActionResult> SendInvoiceEmail(LangReq req)
