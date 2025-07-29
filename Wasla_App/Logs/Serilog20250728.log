@@ -1,0 +1,23 @@
+[2025-07-28 13:12:06.069 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-28 13:12:06.520 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-28 13:12:06.964 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-28 13:12:06.964 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-28 13:12:07.504 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-28 13:12:07.505 +03:00  INF]  Hosting environment: Development
+[2025-07-28 13:12:07.505 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-28 13:12:11.031 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-28 13:12:11.504 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 486.336ms
+[2025-07-28 13:12:11.524 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-28 13:12:11.533 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-28 13:12:11.557 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 37.7907ms
+[2025-07-28 13:12:11.646 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 112.6648ms
+[2025-07-28 13:12:12.094 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-28 13:12:12.172 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.4623ms
+[2025-07-28 13:16:46.149 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/SendContactMail - application/json-patch+json 57
+[2025-07-28 13:16:46.186 +03:00  INF]  CORS policy execution successful.
+[2025-07-28 13:16:49.021 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.SendContactMail (Wasla_App)'
+[2025-07-28 13:16:49.080 +03:00  INF]  Route matched with {action = "SendContactMail", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SendContactMail(WaslaApp.Data.Models.global.ContactReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-07-28 13:17:19.115 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2025-07-28 13:17:19.220 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.SendContactMail (Wasla_App) in 30123.5337ms
+[2025-07-28 13:17:19.220 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.SendContactMail (Wasla_App)'
+[2025-07-28 13:17:19.225 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/SendContactMail - 200 4 application/json; charset=utf-8 33076.9774ms

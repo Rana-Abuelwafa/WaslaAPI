@@ -523,6 +523,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "SendContactMail",
+    "RelativePath": "api/WaslaClient/SendContactMail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.global.ContactReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "UpdateInvoicePrices",
     "RelativePath": "api/WaslaClient/UpdateInvoicePrices",
     "HttpMethod": "POST",

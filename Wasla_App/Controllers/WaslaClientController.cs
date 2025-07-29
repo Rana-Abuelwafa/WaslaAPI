@@ -35,7 +35,7 @@ namespace Wasla_App.Controllers
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaClientController(IMailService _MailService,CustomViewRendererService viewService, IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
+        public WaslaClientController(IMailService _MailService, CustomViewRendererService viewService, IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
         {
             _viewService = viewService;
             _waslaService = waslaService;
@@ -142,7 +142,7 @@ namespace Wasla_App.Controllers
                 email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
                 completeprofile = _httpContextAccessor.HttpContext.User.FindFirstValue("completeprofile");
             }
-            return Ok(_waslaService.CheckoutInvoice(req, clientId, email , completeprofile));
+            return Ok(_waslaService.CheckoutInvoice(req, clientId, email, completeprofile));
         }
 
         //get invoices made by specific client
@@ -157,7 +157,7 @@ namespace Wasla_App.Controllers
 
             }
 
-            return Ok(await _waslaService.GetInvoicesByClient(req,clientId));
+            return Ok(await _waslaService.GetInvoicesByClient(req, clientId));
         }
         [HttpPost("ValidateClientCopoun")]
         public async Task<IActionResult> ValidateClientCopoun(ClientCopounReq req)
@@ -291,7 +291,7 @@ namespace Wasla_App.Controllers
 
         #region "packages & services"
 
-     
+
 
         [HttpPost("SaveClientServices")]
         public IActionResult saveClientServices(List<ClientServiceCast> lst)
@@ -326,7 +326,7 @@ namespace Wasla_App.Controllers
             var templatePath = Path.Combine("/Views/Email" + "/", fileName);
             InvoiceResponse response = _waslaService.MakeClientInvoiceForPackages(lst, clientId, FullName, client_email);
             HtmlInvoice model = response.invoice;
-            if(model != null)
+            if (model != null)
             {
                 var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
                 MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 3), EmailBody = msg };
@@ -336,7 +336,7 @@ namespace Wasla_App.Controllers
             {
                 return Ok(response);
             }
-            
+
         }
         //[HttpPost("SendInvoiceEmail")]
         //public async Task<IActionResult> SendInvoiceEmail(LangReq req)
@@ -358,6 +358,24 @@ namespace Wasla_App.Controllers
         //}
         #endregion
 
+        #region "contact"
 
+        [HttpPost("SendContactMail")]
+        public IActionResult SendContactMail(ContactReq req)
+        {
+            string? clientId = string.Empty;
+            string? FullName = string.Empty;
+            string? client_email = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+                FullName = _httpContextAccessor.HttpContext.User.FindFirstValue("FullName");
+                client_email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
+            }
+            MailData Mail_Data = new MailData { EmailBody = req.message, EmailSubject = req.subject};
+          
+            return Ok(Mail_Service.ContactMail(Mail_Data, client_email));
+        }
+        #endregion
     }
-}
+    }

@@ -12,6 +12,11 @@ namespace Wasla_App.Services
             _mailSettingDao = mailSettingDao;
         }
 
+        public bool ContactMail(MailData Mail_Data, string sender)
+        {
+            return _mailSettingDao.ContactMail(Mail_Data, sender);
+        }
+
         public bool SendMail(MailData Mail_Data)
         {
             return _mailSettingDao.SendMail(Mail_Data);
