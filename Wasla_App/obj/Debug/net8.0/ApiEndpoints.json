@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "ChangeInvoiceStatus",
+    "RelativePath": "api/Accounting/ChangeInvoiceStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "row",
+        "Type": "WaslaApp.Data.Models.admin.Accounting.ChangeInvoiceStatusReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "GetAllInvoices",
+    "RelativePath": "api/Accounting/GetAllInvoices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "AssignFeaturesToPackage",
     "RelativePath": "api/WaslaAdmin/AssignFeaturesToPackage",

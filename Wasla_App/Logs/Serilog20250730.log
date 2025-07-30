@@ -1,0 +1,30 @@
+[2025-07-30 12:35:03.093 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-30 12:35:03.533 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-30 12:35:03.824 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-30 12:35:03.825 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-30 12:35:04.219 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-30 12:35:04.220 +03:00  INF]  Hosting environment: Development
+[2025-07-30 12:35:04.220 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-30 12:35:05.243 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-30 12:35:05.800 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 572.324ms
+[2025-07-30 12:35:06.105 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-30 12:35:06.116 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 11.271ms
+[2025-07-30 12:35:06.685 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-30 12:35:06.745 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.8228ms
+[2025-07-30 12:35:07.352 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-30 12:35:07.398 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.1803ms
+[2025-07-30 12:41:07.684 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-30 12:41:08.339 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-30 12:41:08.541 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-30 12:41:08.542 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-30 12:41:08.944 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-30 12:41:08.946 +03:00  INF]  Hosting environment: Development
+[2025-07-30 12:41:08.946 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-30 12:41:09.405 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-30 12:41:10.434 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 1044.8314ms
+[2025-07-30 12:41:10.578 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-30 12:41:10.585 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 7.1255ms
+[2025-07-30 12:41:10.687 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-30 12:41:10.837 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 150.6194ms
+[2025-07-30 12:41:14.406 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-30 12:41:14.484 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.966ms

@@ -1,8 +1,10 @@
 ﻿using WaslaApp.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.admin.Accounting;
 using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
+using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 
 namespace Wasla_App.services.Admin
@@ -30,6 +32,16 @@ namespace Wasla_App.services.Admin
         public ResponseCls AssignPriceToPackage(PackagePriceSaveReq row)
         {
             return _waslaAdminDao.AssignPriceToPackage(row);
+        }
+
+        public ResponseCls ChangeInvoiceStatus(ChangeInvoiceStatusReq req)
+        {
+            return _waslaAdminDao.ChangeInvoiceStatus(req);
+        }
+
+        public Task<List<ClientInvoiceGrp>> GetAllInvoices(GetInvoicesReq req)
+        {
+            return _waslaAdminDao.GetAllInvoices(req);
         }
 
         public Task<List<FeaturesWithTranslationGrp>> getFeaturesWithTranslations()

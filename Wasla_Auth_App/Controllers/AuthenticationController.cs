@@ -699,7 +699,47 @@ namespace Wasla_Auth_App.Controllers
                 return BadRequest(new UsersCls { success = false,users=null });
             }
         }
-        
+
+        [HttpPost("GetUsersGrp")]
+        public async Task<IActionResult> GetUsersGrp()
+        {
+            try
+            {
+                var roles = _roleManager.Roles.ToList();
+                var result = new List<UsersWithRolesGrp>();
+                foreach (var role in roles)
+                {
+                    UsersWithRolesGrp UserRole= new UsersWithRolesGrp();
+                    var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+                    UserRole.Roles = role.Name;
+                    UserRole.users = usersInRole.ToList();
+                    UserRole.count = usersInRole.Count();
+                    result.Add(UserRole);
+                }
+                //var users = _userManager.Users.ToList().Select(c => new UsersWithRoles
+                //{
+                //    completeprofile = c.completeprofile,
+                //    EmailConfirmed = c.EmailConfirmed,
+                //    Email = c.Email,
+                //    Roles = GetUserRoles(c).Result,
+                //    FirstName = c.FirstName,
+                //    LastName = c.LastName,
+                //    Id = c.Id,
+                //    PhoneNumber = c.PhoneNumber,
+                //    UserName = c.UserName,
+                //    GoogleId = c.GoogleId,
+                //    CloudId = c.CloudId,
+                //    FaceBookId = c.FaceBookId,
+
+                //}).ToList();
+                return Ok(new UsersResponse { success = true, result = result });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new UsersResponse { success = false, result = null });
+            }
+        }
+
 
     }
 }

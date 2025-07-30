@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaslaApp.Data.Data;
 using WaslaApp.Data.Entities;
+using WaslaApp.Data.Models.admin.Accounting;
 using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
@@ -682,6 +683,41 @@ namespace WaslaApp.Data
                 return null;
             }
         }
+
+        //get feature list for specific service package
+        public List<PackagesFeatureRes> getPackageFeaturesByLang(PackageFeatureReq req)
+        {
+            try
+            {
+                return _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
+                                                  .Join(_db.main_features,
+                                                         PKGF => new { PKGF.feature_id },
+                                                         FEAT => new { feature_id = FEAT.id },
+                                                         (PKGF, FEAT) => new { PKGF, FEAT }
+                                                          )
+                                                    .Join(_db.features_translations.Where(wr => wr.lang_code == req.lang_code),
+                                                          combined => new { feature_id = combined.FEAT.id },
+                                                          Trans => new { Trans.feature_id },
+                                                          (combined, Trans) => new PackagesFeatureRes
+                                                          {
+                                                              feature_id = combined.PKGF.feature_id,
+                                                              service_package_id = combined.PKGF.service_package_id,
+                                                              id = combined.PKGF.id,
+                                                              feature_code = combined.FEAT.feature_code,
+                                                              feature_default_name = combined.FEAT.feature_default_name,
+                                                              feature_description = Trans.feature_description,
+                                                              feature_name = Trans.feature_name,
+                                                              lang_code = Trans.lang_code
+                                                          })
+                                                  .ToList();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         //get feature list for specific service-package
         public async Task<List<PackagesFeatureRes>> getPackageFeatures(PackageFeatureReq req)
         {
@@ -853,5 +889,168 @@ namespace WaslaApp.Data
         }
         #endregion
 
+
+        #region "Accounting"
+        //get All invoices with some filteration (invoice_code, status, client_email, invoice_date)
+        //status =2 mean get invoices which checkout bu user
+        // status =1 mean  invoices not checkout by user 
+        public async Task<List<ClientInvoiceGrp>> GetAllInvoices(GetInvoicesReq req)
+        {
+            try
+            {
+                DateTime dateFrom = DateTime.Parse(req.date_from);
+                DateTime dateTo = DateTime.Parse(req.date_to);
+                var fullEntries = await _db.clientinvoiceswithdetails
+                                  .Where(wr => wr.client_email == (String.IsNullOrEmpty(req.client_email) ? wr.client_email : req.client_email) && 
+                                               wr.active == req.active && 
+                                               wr.status == req.status &&
+                                               (wr.invoice_date >= dateFrom && wr.invoice_date <= dateTo) &&
+                                               wr.invoice_code == (String.IsNullOrEmpty(req.invoice_code) ? wr.invoice_code : req.invoice_code)
+                                         )
+                                    .Join(
+                                   _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
+                                   INV => new {
+                                       INV.package_id,
+                                       service_id = INV.productId,
+                                       INV.curr_code,
+                                       INV.service_package_id
+                                   },
+                                   PKG => new { PKG.package_id, PKG.service_id, PKG.curr_code, PKG.service_package_id },
+                                   (combinedEntry, PKG) => new ClientInvoiceResponse
+                                   {
+                                       invoice_id = combinedEntry.invoice_id,
+                                       curr_code = combinedEntry.curr_code,
+                                       discount = combinedEntry.discount,
+                                       total_price = combinedEntry.total_price,
+                                       grand_total_price = combinedEntry.grand_total_price,
+                                       service_id = combinedEntry.productId,
+                                       package_id = combinedEntry.package_id,
+                                       service_name = PKG.service_name,
+                                       package_name = PKG.package_name,
+                                       package_price = PKG.package_price,
+                                       package_sale_price = PKG.package_sale_price,
+                                       package_desc = PKG.package_desc,
+                                       package_details = PKG.package_details,
+                                       invoice_code = combinedEntry.invoice_code,
+                                       invoice_code_auto = combinedEntry.invoice_code_auto,
+                                       status = combinedEntry.status,
+                                       tax_amount = combinedEntry.tax_amount,
+                                       tax_code = combinedEntry.tax_code,
+                                       tax_id = combinedEntry.tax_id,
+                                       service_package_id = PKG.service_package_id,
+                                       client_name = combinedEntry.client_name,
+                                       client_email = combinedEntry.client_email,
+                                       invoice_date = DateTime.Parse(combinedEntry.invoice_date.ToString()).ToString("yyyy-MM-dd"),
+                                       copoun_id = combinedEntry.copoun_id,
+                                       copoun = combinedEntry.copoun,
+                                       copoun_discount = combinedEntry.copoun_discount_value,
+                                       //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
+                                       // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
+
+                                   }
+                                  ).ToListAsync();
+                var result = fullEntries.GroupBy(grp => new
+                {
+                    grp.invoice_id,
+                    grp.curr_code,
+                    grp.discount,
+                    grp.grand_total_price,
+                    grp.invoice_code,
+                    grp.invoice_code_auto,
+                    grp.status,
+                    grp.total_price,
+                    grp.tax_code,
+                    grp.tax_amount,
+                    grp.tax_id,
+                    grp.invoice_date,
+                    grp.client_email,
+                    grp.client_name,
+                    grp.copoun_id,
+                    grp.copoun_discount,
+                    grp.copoun
+                }).Select(s => new ClientInvoiceGrp
+                {
+                    invoice_id = s.Key.invoice_id,
+                    invoice_code_auto = s.Key.invoice_code_auto,
+                    status = s.Key.status,
+                    invoice_code = s.Key.invoice_code,
+                    curr_code = s.Key.curr_code,
+                    discount = s.Key.discount,
+                    grand_total_price = s.Key.grand_total_price,
+                    total_price = s.Key.total_price,
+                    tax_amount = s.Key.tax_amount,
+                    tax_code = s.Key.tax_code,
+                    tax_id = s.Key.tax_id,
+                    client_email = s.Key.client_email,
+                    client_name = s.Key.client_name,
+                    invoice_date = s.Key.invoice_date,
+                    copoun_id = s.Key.copoun_id,
+                    copoun = s.Key.copoun,
+                    copoun_discount = s.Key.copoun_discount,
+                    pkgs = (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
+                                      .Select(s => new ClientInvoiceResponse
+                                      {
+                                          invoice_id = s.invoice_id,
+                                          curr_code = s.curr_code,
+                                          discount = s.discount,
+                                          total_price = s.total_price,
+                                          grand_total_price = s.grand_total_price,
+                                          service_id = s.service_id,
+                                          package_id = s.package_id,
+                                          service_name = s.service_name,
+                                          package_name = s.package_name,
+                                          package_price = s.package_price,
+                                          package_sale_price = s.package_sale_price,
+                                          package_desc = s.package_desc,
+                                          package_details = s.package_details,
+                                          invoice_code = s.invoice_code,
+                                          invoice_code_auto = s.invoice_code_auto,
+                                          status = s.status,
+                                          tax_amount = s.tax_amount,
+                                          tax_code = s.tax_code,
+                                          tax_id = s.tax_id,
+                                          features = getPackageFeaturesByLang(new PackageFeatureReq { service_package_id = s.service_package_id, lang_code = req.lang_code }).ToList()
+                                      }).ToList())
+
+                }).ToList();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        //status =2 checkout
+        // status =1 pending 
+        // status =1 confirmed
+        public ResponseCls ChangeInvoiceStatus(ChangeInvoiceStatusReq req)
+        {
+            try
+            {
+                
+                InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == req.client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+                if (inv != null)
+                {
+                    inv.status = req.status;
+                    _db.Update(inv);
+                    _db.SaveChanges();
+                    ////send mail to customer care to notify him
+                    //string fileName = "CustomerNotify.html";
+                    //string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                    //htmlBody = htmlBody.Replace("@user", client_name);
+                    //htmlBody = htmlBody.Replace("@invoiceNo", req.invoice_code);
+                    //MailData Mail_Data = new MailData { EmailToId = "Customer.Care@waslaa.de", EmailToName = "Customer.Care@waslaa.de", EmailSubject = UtilsCls.GetMailSubjectByLang("en", 5), EmailBody = htmlBody };
+                    //_mailSettingDao.SendMail(Mail_Data);
+                    return new ResponseCls { success = true, errors = null };
+                }
+                return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
+            }
+        }
+        #endregion
     }
 }
