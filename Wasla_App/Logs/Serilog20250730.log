@@ -28,3 +28,33 @@
 [2025-07-30 12:41:10.837 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 150.6194ms
 [2025-07-30 12:41:14.406 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
 [2025-07-30 12:41:14.484 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.966ms
+[2025-07-30 15:42:42.550 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-30 15:42:42.941 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-30 15:42:43.156 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-30 15:42:43.157 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-30 15:42:43.612 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-30 15:42:43.613 +03:00  INF]  Hosting environment: Development
+[2025-07-30 15:42:43.613 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-30 15:42:44.541 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-30 15:42:45.277 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 750.7665ms
+[2025-07-30 15:42:45.672 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-30 15:42:45.686 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 13.3344ms
+[2025-07-30 15:42:46.315 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-30 15:42:46.378 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.2767ms
+[2025-07-30 15:42:46.835 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-30 15:42:46.882 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.6436ms
+[2025-07-30 16:19:54.234 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-30 16:19:54.928 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-07-30 16:19:55.477 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-07-30 16:19:55.477 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-07-30 16:19:56.400 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-07-30 16:19:56.401 +03:00  INF]  Hosting environment: Development
+[2025-07-30 16:19:56.401 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-07-30 16:19:56.547 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-07-30 16:19:58.041 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 1512.1337ms
+[2025-07-30 16:19:58.294 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-07-30 16:19:58.314 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 20.1012ms
+[2025-07-30 16:20:01.820 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-07-30 16:20:01.882 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.1279ms
+[2025-07-30 16:20:04.356 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-07-30 16:20:04.420 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 64.2633ms

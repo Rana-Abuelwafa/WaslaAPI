@@ -65,6 +65,38 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "CreateUserByAdmin",
+    "RelativePath": "api/Authentication/CreateUserByAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Wasla_Auth_App.Models.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Authentication/DeleteUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "ExternalRegister",
     "RelativePath": "api/Authentication/ExternalRegister",
     "HttpMethod": "POST",
@@ -77,6 +109,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "GetRoles",
+    "RelativePath": "api/Authentication/GetRoles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

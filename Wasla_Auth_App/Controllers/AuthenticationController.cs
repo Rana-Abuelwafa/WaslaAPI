@@ -40,6 +40,11 @@ namespace Wasla_Auth_App.Controllers
             _logger = logger;
 
         }
+        [HttpPost("GetRoles")]
+        public IActionResult GetRoles()
+        { 
+            return Ok(_roleManager.Roles.ToList());
+        }
         [HttpPost("CreateRole")]
         public async Task<IActionResult> CreateRole([FromBody] RoleModel? roleModel)
         {
@@ -73,12 +78,10 @@ namespace Wasla_Auth_App.Controllers
                 {
                     //add rule to user
                     await _userManager.AddToRoleAsync(user, model.Role);
-
                     await _signInManager.SignOutAsync();
                     await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
                     if (model.Role == "Admin")
                     {
-
                         await _signInManager.SignInAsync(user, false);
                         var token = await GenerateJwtTokenAsync(user);
                         return Ok(new User
@@ -740,6 +743,58 @@ namespace Wasla_Auth_App.Controllers
             }
         }
 
+
+
+        // DELETE api/users/{id}
+        //[HttpDelete("{id}")]
+        [HttpPost("DeleteUser")]
+        public async Task<IActionResult> DeleteUser([FromQuery] string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+
+                return NotFound(new ResponseCls {success = false, message = "User Not Found" });
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (!result.Succeeded)
+                return BadRequest(new ResponseCls  { errors = string.Join(", ", result.Errors.Select(e => e.Description)), success=false , message="error" });
+
+            return Ok(new ResponseCls  { message = "User deleted successfully." ,success=true});
+        }
+
+        [HttpPost("CreateUserByAdmin")]
+        public async Task<IActionResult> CreateUserByAdmin([FromBody] RegisterModel model)
+        {
+            try
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TwoFactorEnabled = true,EmailConfirmed=true };
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    //add rule to user
+                    await _userManager.AddToRoleAsync(user, model.Role);
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.PasswordSignInAsync(user, model.Password, false, true);
+                    return Ok(new ResponseCls  { success =  true, message="User Created successfully.",errors=null });
+                }
+                else
+                {
+                    List<IdentityError> errorList = result.Errors.ToList();
+                    var errors = string.Join(", ", errorList.Select(e => e.Description));
+                    return BadRequest(new ResponseCls { success = false, message = errors, errors = errors });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     new ResponseCls { success = false, message = ex.Message, errors = ex.Message });
+            }
+
+
+        }
 
     }
 }
