@@ -8,6 +8,7 @@ namespace Wasla_Auth_App.Models
         public string? RefreshToken { get; set; }
         public string? msg { get; set; }
         public bool isSuccessed { get; set; }
+        public string role { get; set; }
 
 
     }

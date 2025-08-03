@@ -1829,3 +1829,1737 @@ WHERE p.service_package_id = @__req_service_package_id_0
 [2025-08-03 10:02:49.101 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 28.9162ms
 [2025-08-03 10:02:49.101 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
 [2025-08-03 10:02:49.101 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 30.0499ms
+[2025-08-03 11:06:16.222 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-08-03 11:06:16.644 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-08-03 11:06:16.803 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-08-03 11:06:16.804 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-08-03 11:06:16.969 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-08-03 11:06:16.969 +03:00  INF]  Hosting environment: Development
+[2025-08-03 11:06:16.969 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-08-03 11:06:18.172 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-08-03 11:06:18.869 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 713.0754ms
+[2025-08-03 11:06:18.897 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-08-03 11:06:18.905 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 7.7318ms
+[2025-08-03 11:06:18.947 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-08-03 11:06:19.051 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.6207ms
+[2025-08-03 11:06:19.807 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-08-03 11:06:19.858 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.7771ms
+[2025-08-03 13:14:40.434 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:14:40.434 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:14:40.434 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:14:40.468 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:40.468 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:40.468 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:40.470 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 36.1966ms
+[2025-08-03 13:14:40.470 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 36.2098ms
+[2025-08-03 13:14:40.470 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 36.1965ms
+[2025-08-03 13:14:40.475 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:14:40.475 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:14:40.475 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:14:40.476 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:40.476 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:40.476 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:42.900 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:42.900 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:42.900 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:42.906 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:42.906 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:42.906 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:42.907 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 403 0 null 2432.1329ms
+[2025-08-03 13:14:42.907 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 403 0 null 2432.4592ms
+[2025-08-03 13:14:42.907 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 403 0 null 2432.6661ms
+[2025-08-03 13:14:58.527 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:14:58.528 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.529 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 1.6301ms
+[2025-08-03 13:14:58.529 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:14:58.529 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.531 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 1.027ms
+[2025-08-03 13:14:58.535 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:14:58.536 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.536 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.7729ms
+[2025-08-03 13:14:58.536 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:14:58.539 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:14:58.539 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.540 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.569 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:14:58.569 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:14:58.571 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:58.572 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:58.573 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:58.573 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 403 0 null 4.5238ms
+[2025-08-03 13:14:58.572 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:58.573 +03:00  INF]  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+[2025-08-03 13:14:58.575 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 403 0 null 36.8993ms
+[2025-08-03 13:14:58.575 +03:00  INF]  AuthenticationScheme: Bearer was forbidden.
+[2025-08-03 13:14:58.575 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 403 0 null 39.1072ms
+[2025-08-03 13:16:33.305 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-08-03 13:16:34.294 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-08-03 13:16:34.593 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-08-03 13:16:34.594 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-08-03 13:16:35.023 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-08-03 13:16:35.023 +03:00  INF]  Hosting environment: Development
+[2025-08-03 13:16:35.023 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-08-03 13:16:35.472 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-08-03 13:16:36.106 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 651.6717ms
+[2025-08-03 13:16:36.214 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-08-03 13:16:36.220 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-08-03 13:16:36.238 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 25.1287ms
+[2025-08-03 13:16:36.360 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 139.5978ms
+[2025-08-03 13:16:36.440 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-08-03 13:16:36.524 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 83.8149ms
+[2025-08-03 13:17:03.591 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:17:03.596 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:17:03.622 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:17:03.657 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:03.657 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:03.657 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:03.659 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 63.7089ms
+[2025-08-03 13:17:03.659 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 68.5661ms
+[2025-08-03 13:17:03.659 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 37.6435ms
+[2025-08-03 13:17:03.663 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:17:03.663 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:17:03.663 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:17:03.665 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:03.665 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:03.665 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:04.100 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:17:04.100 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:17:04.100 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:17:04.151 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:04.151 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:04.151 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:09.502 +03:00  INF]  Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:17:09.502 +03:00  INF]  Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:17:09.502 +03:00  INF]  Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:17:09.699 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:09.846 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 5686.6029ms
+[2025-08-03 13:17:09.846 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:17:09.859 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 6195.87ms
+[2025-08-03 13:17:09.867 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:09.867 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:09.884 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 5731.5507ms
+[2025-08-03 13:17:09.884 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 5732.1528ms
+[2025-08-03 13:17:09.885 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:17:09.885 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:17:09.887 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 6224.2951ms
+[2025-08-03 13:17:09.887 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 6224.0304ms
+[2025-08-03 13:17:11.888 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 13:17:11.889 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:11.890 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 1.7572ms
+[2025-08-03 13:17:11.894 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 13:17:11.894 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:11.907 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 13:17:11.919 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 13:17:12.353 +03:00  INF]  Executed DbCommand (65ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 13:17:12.433 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:17:12.446 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:17:12.451 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:17:12.452 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:17:12.454 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:17:12.455 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:12.492 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 573.5732ms
+[2025-08-03 13:17:12.492 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 13:17:12.493 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 599.5518ms
+[2025-08-03 13:17:16.231 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:17:16.232 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.232 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 1.1183ms
+[2025-08-03 13:17:16.233 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:17:16.233 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.233 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.5372ms
+[2025-08-03 13:17:16.234 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:17:16.235 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.236 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 1.9349ms
+[2025-08-03 13:17:16.238 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:17:16.238 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:17:16.238 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.238 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.238 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:17:16.238 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:17:16.244 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:17:16.244 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:17:16.245 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:16.246 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:16.250 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:17:16.250 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:17:16.254 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:17:16.255 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:17:16.256 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:16.256 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:16.256 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 10.6142ms
+[2025-08-03 13:17:16.256 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:17:16.257 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 18.3118ms
+[2025-08-03 13:17:16.258 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 13.4512ms
+[2025-08-03 13:17:16.258 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:17:16.259 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 21.0285ms
+[2025-08-03 13:17:16.263 +03:00  INF]  Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:17:16.266 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:17:16.266 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 15.3833ms
+[2025-08-03 13:17:16.266 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:17:16.266 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 29.0553ms
+[2025-08-03 13:27:02.091 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:27:02.091 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.092 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.9572ms
+[2025-08-03 13:27:02.092 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:27:02.092 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.093 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.6704ms
+[2025-08-03 13:27:02.093 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:27:02.094 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.094 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.5219ms
+[2025-08-03 13:27:02.096 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:27:02.096 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:27:02.097 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.097 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.101 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:27:02.101 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:27:02.101 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:27:02.102 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:02.102 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:02.102 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:02.106 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:27:02.106 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:02.241 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:27:02.243 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:02.244 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 137.8351ms
+[2025-08-03 13:27:02.244 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:27:02.244 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 142.4829ms
+[2025-08-03 13:27:02.267 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:27:02.273 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:02.276 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 171.1656ms
+[2025-08-03 13:27:02.276 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:27:02.277 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:27:02.277 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 180.4831ms
+[2025-08-03 13:27:02.280 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:02.280 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 175.0829ms
+[2025-08-03 13:27:02.280 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:27:02.280 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 183.9688ms
+[2025-08-03 13:27:03.862 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 13:27:03.863 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:03.863 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 0.8973ms
+[2025-08-03 13:27:03.867 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 13:27:03.867 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:03.874 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 13:27:03.875 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 13:27:03.907 +03:00  INF]  Executed DbCommand (22ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 13:27:03.914 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:27:03.919 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:27:03.930 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:27:03.932 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:27:03.934 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 13:27:03.934 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:03.946 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 70.7713ms
+[2025-08-03 13:27:03.946 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 13:27:03.946 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 79.7631ms
+[2025-08-03 13:27:04.893 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:27:04.894 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.894 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.873ms
+[2025-08-03 13:27:04.896 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:27:04.896 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:27:04.896 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.896 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.896 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.8602ms
+[2025-08-03 13:27:04.896 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.6199ms
+[2025-08-03 13:27:04.897 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:27:04.897 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.898 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:27:04.898 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:04.899 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:27:04.899 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:27:04.899 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.899 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:04.900 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:27:04.900 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:27:04.900 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:04.900 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:04.902 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:27:04.904 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:27:04.905 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:04.905 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 6.1917ms
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 8.1609ms
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:27:04.906 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:04.906 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 7.7805ms
+[2025-08-03 13:27:04.906 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 9.9511ms
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 6.7375ms
+[2025-08-03 13:27:04.906 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:27:04.907 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 7.9183ms
+[2025-08-03 13:27:35.420 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - null null
+[2025-08-03 13:27:35.420 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:35.420 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 204 null null 1.0411ms
+[2025-08-03 13:27:35.424 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - application/json 2
+[2025-08-03 13:27:35.424 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:35.426 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 13:27:35.432 +03:00  INF]  Route matched with {action = "getQuesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getQuesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:35.467 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r.active, r.id, r.lang_code, r."order", r.ques_id, r.ques_title, r.ques_title_default, r.ques_type
+FROM registrationqueswithlangs AS r
+[2025-08-03 13:27:35.479 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Questions.QuestionsWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:35.488 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App) in 55.9634ms
+[2025-08-03 13:27:35.488 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 13:27:35.491 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 200 1125 application/json; charset=utf-8 66.9182ms
+[2025-08-03 13:27:53.959 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - null null
+[2025-08-03 13:27:53.959 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:53.960 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 204 null null 0.7096ms
+[2025-08-03 13:27:53.962 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - application/json 2
+[2025-08-03 13:27:53.962 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:27:53.963 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 13:27:53.963 +03:00  INF]  Route matched with {action = "getQuesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getQuesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:27:53.969 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r.active, r.id, r.lang_code, r."order", r.ques_id, r.ques_title, r.ques_title_default, r.ques_type
+FROM registrationqueswithlangs AS r
+[2025-08-03 13:27:53.970 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Questions.QuestionsWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:27:53.970 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App) in 7.1725ms
+[2025-08-03 13:27:53.970 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 13:27:53.971 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 200 1125 application/json; charset=utf-8 8.8703ms
+[2025-08-03 13:36:59.328 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:36:59.329 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.329 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.6981ms
+[2025-08-03 13:36:59.329 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:36:59.330 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.330 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.6674ms
+[2025-08-03 13:36:59.330 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:36:59.330 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.330 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.4449ms
+[2025-08-03 13:36:59.342 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:36:59.343 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.360 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:36:59.360 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:36:59.360 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:36:59.360 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.362 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:36:59.366 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:36:59.500 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:36:59.500 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:36:59.501 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:36:59.501 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:36:59.558 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:36:59.558 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:36:59.558 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 192.5967ms
+[2025-08-03 13:36:59.559 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:36:59.559 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 198.6809ms
+[2025-08-03 13:36:59.735 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:36:59.737 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:36:59.739 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 237.6092ms
+[2025-08-03 13:36:59.739 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:36:59.739 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 239.2462ms
+[2025-08-03 13:36:59.759 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:36:59.760 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:36:59.761 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 400.3303ms
+[2025-08-03 13:36:59.761 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:36:59.761 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 419.097ms
+[2025-08-03 13:37:52.949 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:37:52.953 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:52.954 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:37:52.954 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 4.7054ms
+[2025-08-03 13:37:52.954 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:52.954 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.4725ms
+[2025-08-03 13:37:52.964 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:37:52.964 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:37:52.965 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:52.965 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:52.965 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:37:52.966 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:37:52.980 +03:00  INF]  Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:37:52.981 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:37:52.981 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 15.5519ms
+[2025-08-03 13:37:52.981 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:37:52.982 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 17.2534ms
+[2025-08-03 13:37:52.983 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:37:52.983 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:52.983 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.3071ms
+[2025-08-03 13:37:52.984 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:37:52.985 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:37:52.995 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:37:52.995 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:37:52.996 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 11.194ms
+[2025-08-03 13:37:52.996 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:37:52.996 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 31.6829ms
+[2025-08-03 13:37:53.001 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:37:53.001 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:37:53.002 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:37:53.002 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:37:53.015 +03:00  INF]  Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:37:53.016 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:37:53.016 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 14.1162ms
+[2025-08-03 13:37:53.016 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:37:53.016 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 15.5055ms
+[2025-08-03 13:39:49.130 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:39:49.130 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.130 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.362ms
+[2025-08-03 13:39:49.134 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:39:49.134 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.135 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:39:49.135 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:39:49.151 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:39:49.156 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:39:49.157 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 22.4143ms
+[2025-08-03 13:39:49.157 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:39:49.158 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 23.891ms
+[2025-08-03 13:39:49.162 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:39:49.162 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.163 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.2856ms
+[2025-08-03 13:39:49.163 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:39:49.163 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.163 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.1687ms
+[2025-08-03 13:39:49.181 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:39:49.181 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:39:49.181 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.182 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:39:49.182 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:39:49.183 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:39:49.183 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:39:49.183 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:39:49.189 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:39:49.189 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:39:49.190 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 7.6721ms
+[2025-08-03 13:39:49.190 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:39:49.190 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 8.92ms
+[2025-08-03 13:39:49.217 +03:00  INF]  Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:39:49.219 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:39:49.223 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 39.0542ms
+[2025-08-03 13:39:49.223 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:39:49.223 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 42.6519ms
+[2025-08-03 13:53:36.458 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:53:36.459 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.459 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 1.5088ms
+[2025-08-03 13:53:36.459 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:53:36.459 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.460 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:53:36.460 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.2807ms
+[2025-08-03 13:53:36.460 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.466 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:53:36.466 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.468 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:53:36.468 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:53:36.487 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:53:36.488 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.489 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:53:36.489 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:53:36.508 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.2195ms
+[2025-08-03 13:53:36.551 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:53:36.552 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:53:36.553 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:53:36.556 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:53:36.732 +03:00  INF]  Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:53:36.732 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:53:36.733 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 177.1055ms
+[2025-08-03 13:53:36.733 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:53:36.733 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 182.1399ms
+[2025-08-03 13:53:36.753 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:53:36.753 +03:00  INF]  Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:53:36.753 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:53:36.754 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 264.4907ms
+[2025-08-03 13:53:36.754 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:53:36.754 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:53:36.754 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 266.7969ms
+[2025-08-03 13:53:36.754 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 286.2573ms
+[2025-08-03 13:53:36.754 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:53:36.754 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 288.5746ms
+[2025-08-03 13:55:47.044 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:55:47.044 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:55:47.045 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.045 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.045 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.5977ms
+[2025-08-03 13:55:47.045 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.9782ms
+[2025-08-03 13:55:47.053 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:55:47.053 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.053 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.8968ms
+[2025-08-03 13:55:47.063 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:55:47.063 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.064 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:55:47.064 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:55:47.064 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:55:47.064 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.065 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:55:47.065 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:55:47.086 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:55:47.087 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:55:47.091 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:55:47.091 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:55:47.097 +03:00  INF]  Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:55:47.097 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:55:47.098 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:55:47.098 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:55:47.098 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 33.7371ms
+[2025-08-03 13:55:47.098 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 33.0434ms
+[2025-08-03 13:55:47.098 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:55:47.098 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:55:47.099 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 35.7277ms
+[2025-08-03 13:55:47.099 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 34.2684ms
+[2025-08-03 13:55:47.104 +03:00  INF]  Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:55:47.105 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:55:47.105 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 13.6888ms
+[2025-08-03 13:55:47.105 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:55:47.105 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 27.9052ms
+[2025-08-03 13:59:19.578 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 13:59:19.579 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.579 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.8928ms
+[2025-08-03 13:59:19.580 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 13:59:19.580 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.580 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.3348ms
+[2025-08-03 13:59:19.582 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 13:59:19.582 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.583 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.3743ms
+[2025-08-03 13:59:19.596 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 13:59:19.596 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.596 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 13:59:19.597 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.597 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:59:19.596 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 13:59:19.597 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:59:19.600 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:59:19.600 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:59:19.601 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 13:59:19.602 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:59:19.602 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 13:59:19.805 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 13:59:19.805 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:59:19.807 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 206.7858ms
+[2025-08-03 13:59:19.807 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 13:59:19.807 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 210.9349ms
+[2025-08-03 13:59:19.941 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 13:59:19.942 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:59:19.943 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 342.3396ms
+[2025-08-03 13:59:19.943 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 13:59:19.943 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 348.6908ms
+[2025-08-03 13:59:19.947 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 13:59:19.948 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 13:59:19.948 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 346.1134ms
+[2025-08-03 13:59:19.948 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 13:59:19.948 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 354.135ms
+[2025-08-03 14:02:33.599 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:02:33.601 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.601 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 2.0178ms
+[2025-08-03 14:02:33.603 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:02:33.605 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.605 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 1.8383ms
+[2025-08-03 14:02:33.611 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:02:33.611 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.616 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:02:33.616 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:02:33.617 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.617 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:33.617 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:33.620 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.620 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:33.620 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:33.620 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 5.14ms
+[2025-08-03 14:02:33.637 +03:00  INF]  Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:02:33.641 +03:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:02:33.641 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:33.641 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:33.642 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 21.3589ms
+[2025-08-03 14:02:33.642 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 21.3285ms
+[2025-08-03 14:02:33.642 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:33.642 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:33.642 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 26.443ms
+[2025-08-03 14:02:33.642 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 30.9883ms
+[2025-08-03 14:02:33.642 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:02:33.642 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:33.643 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:33.643 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:33.661 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:02:33.662 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:33.662 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 18.7848ms
+[2025-08-03 14:02:33.662 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:33.662 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 19.8735ms
+[2025-08-03 14:02:44.399 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:02:44.400 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:44.401 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 1.4554ms
+[2025-08-03 14:02:44.403 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:02:44.403 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:44.404 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:44.404 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:02:44.440 +03:00  INF]  Executed DbCommand (31ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:02:44.445 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:44.450 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:44.457 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:44.458 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:44.459 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:44.460 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:44.461 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 57.1812ms
+[2025-08-03 14:02:44.462 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:44.462 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 58.7373ms
+[2025-08-03 14:02:46.785 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:02:46.785 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.785 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.4431ms
+[2025-08-03 14:02:46.788 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:02:46.788 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.790 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:46.790 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:46.790 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:02:46.790 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.790 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.4743ms
+[2025-08-03 14:02:46.793 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:02:46.793 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.794 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:46.794 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:46.801 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:02:46.802 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:46.803 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 8.1169ms
+[2025-08-03 14:02:46.803 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:46.803 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 10.0355ms
+[2025-08-03 14:02:46.803 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:02:46.804 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:02:46.804 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:46.804 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.804 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 14.7085ms
+[2025-08-03 14:02:46.805 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:46.805 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.8156ms
+[2025-08-03 14:02:46.805 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 16.9832ms
+[2025-08-03 14:02:46.808 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:02:46.808 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:46.811 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:46.813 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:46.819 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:02:46.820 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:46.820 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 7.3155ms
+[2025-08-03 14:02:46.820 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:46.821 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 12.5013ms
+[2025-08-03 14:02:48.714 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:02:48.715 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:48.715 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 1.7208ms
+[2025-08-03 14:02:48.718 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:02:48.718 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:48.718 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:48.718 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:02:48.727 +03:00  INF]  Executed DbCommand (7ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:02:48.735 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:48.738 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:48.740 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:48.741 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:48.743 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:48.743 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:48.745 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 26.8007ms
+[2025-08-03 14:02:48.745 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:48.746 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 28.2013ms
+[2025-08-03 14:02:49.672 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:02:49.672 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.672 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.647ms
+[2025-08-03 14:02:49.674 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:02:49.675 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.675 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:49.676 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:49.676 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:02:49.676 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.676 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.2103ms
+[2025-08-03 14:02:49.680 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:02:49.680 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:02:49.680 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.680 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.681 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.7955ms
+[2025-08-03 14:02:49.683 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:02:49.683 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:49.683 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:49.684 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:02:49.684 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:49.684 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:49.684 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:49.688 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:49.688 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:02:49.688 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 12.7291ms
+[2025-08-03 14:02:49.688 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:49.688 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 14.4846ms
+[2025-08-03 14:02:49.691 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:49.694 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:02:49.695 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:49.700 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 15.096ms
+[2025-08-03 14:02:49.700 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:49.700 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 16.0279ms
+[2025-08-03 14:02:49.729 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 45.5886ms
+[2025-08-03 14:02:49.729 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:49.731 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 50.9755ms
+[2025-08-03 14:02:50.262 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:02:50.262 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:50.263 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 0.5179ms
+[2025-08-03 14:02:50.266 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:02:50.266 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:50.267 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:50.267 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:02:50.277 +03:00  INF]  Executed DbCommand (8ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:02:50.280 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:50.283 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:50.284 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:50.286 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:50.288 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:02:50.289 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:50.290 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 23.4173ms
+[2025-08-03 14:02:50.290 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:02:50.291 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 24.6604ms
+[2025-08-03 14:02:52.317 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:02:52.317 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:02:52.317 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.317 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.2228ms
+[2025-08-03 14:02:52.317 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:02:52.318 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.318 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.1061ms
+[2025-08-03 14:02:52.319 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.319 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 2.0168ms
+[2025-08-03 14:02:52.330 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:02:52.330 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:02:52.330 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:02:52.330 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.330 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.331 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:52.331 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:52.331 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:52.331 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:52.333 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:02:52.333 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:02:52.334 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:52.334 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 3.5436ms
+[2025-08-03 14:02:52.334 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:02:52.335 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:52.335 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 4.8326ms
+[2025-08-03 14:02:52.335 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:02:52.336 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:02:52.338 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:02:52.339 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:52.340 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 9.438ms
+[2025-08-03 14:02:52.340 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:02:52.341 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 11.2105ms
+[2025-08-03 14:02:52.341 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:02:52.341 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 6.5874ms
+[2025-08-03 14:02:52.342 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:02:52.342 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 11.5413ms
+[2025-08-03 14:03:32.162 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:03:32.163 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.163 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.602ms
+[2025-08-03 14:03:32.164 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:03:32.165 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.165 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.553ms
+[2025-08-03 14:03:32.165 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:03:32.166 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.166 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:03:32.166 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.166 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.2034ms
+[2025-08-03 14:03:32.166 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:03:32.166 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:32.168 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:03:32.168 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.168 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:03:32.168 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:32.169 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:03:32.169 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:03:32.169 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:32.169 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:32.173 +03:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:03:32.176 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:03:32.177 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:32.177 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 10.4062ms
+[2025-08-03 14:03:32.177 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:03:32.177 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 11.9871ms
+[2025-08-03 14:03:32.178 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:03:32.178 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:32.178 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:32.179 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 9.7513ms
+[2025-08-03 14:03:32.179 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:03:32.179 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 10.4993ms
+[2025-08-03 14:03:32.179 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 10.4528ms
+[2025-08-03 14:03:32.180 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:03:32.180 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 12.5881ms
+[2025-08-03 14:03:33.245 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:03:33.245 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:33.246 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 0.9236ms
+[2025-08-03 14:03:33.248 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:03:33.248 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:33.248 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:03:33.248 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:03:33.262 +03:00  INF]  Executed DbCommand (12ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:03:33.264 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:33.266 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:33.267 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:33.268 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:33.269 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:33.270 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:33.272 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 23.4299ms
+[2025-08-03 14:03:33.272 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:03:33.272 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 24.5609ms
+[2025-08-03 14:03:34.166 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:03:34.166 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.166 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.5612ms
+[2025-08-03 14:03:34.168 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:03:34.168 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.168 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.6422ms
+[2025-08-03 14:03:34.168 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:03:34.169 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:03:34.169 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.169 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.169 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.4389ms
+[2025-08-03 14:03:34.169 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:03:34.169 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:34.170 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:03:34.170 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.171 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:03:34.171 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:03:34.171 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:34.171 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:34.172 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:03:34.172 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:03:34.174 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:03:34.179 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:03:34.179 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:34.179 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 7.6249ms
+[2025-08-03 14:03:34.179 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:03:34.180 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 9.5689ms
+[2025-08-03 14:03:34.181 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:34.182 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 13.0993ms
+[2025-08-03 14:03:34.183 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:03:34.184 +03:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:03:34.184 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 15.649ms
+[2025-08-03 14:03:34.188 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:34.188 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 17.0209ms
+[2025-08-03 14:03:34.188 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:03:34.188 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 18.4902ms
+[2025-08-03 14:03:35.004 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:03:35.005 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:35.007 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 2.7803ms
+[2025-08-03 14:03:35.010 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:03:35.010 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:03:35.010 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:03:35.010 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:03:35.024 +03:00  INF]  Executed DbCommand (11ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:03:35.030 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:35.032 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:35.033 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:35.034 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:35.036 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:03:35.036 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:03:35.038 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 27.4889ms
+[2025-08-03 14:03:35.038 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:03:35.038 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 28.4893ms
+[2025-08-03 14:04:14.266 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - null null
+[2025-08-03 14:04:14.270 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:14.271 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 204 null null 4.2912ms
+[2025-08-03 14:04:14.275 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - application/json 2
+[2025-08-03 14:04:14.275 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:14.276 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 14:04:14.276 +03:00  INF]  Route matched with {action = "getQuesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getQuesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:14.281 +03:00  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r.active, r.id, r.lang_code, r."order", r.ques_id, r.ques_title, r.ques_title_default, r.ques_type
+FROM registrationqueswithlangs AS r
+[2025-08-03 14:04:14.281 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Questions.QuestionsWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:14.282 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App) in 5.5617ms
+[2025-08-03 14:04:14.282 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 14:04:14.282 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 200 1125 application/json; charset=utf-8 6.916ms
+[2025-08-03 14:04:15.285 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - null null
+[2025-08-03 14:04:15.285 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:15.285 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - 204 null null 0.2685ms
+[2025-08-03 14:04:15.287 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - application/json 2
+[2025-08-03 14:04:15.288 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:15.288 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App)'
+[2025-08-03 14:04:15.294 +03:00  INF]  Route matched with {action = "getFeaturesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getFeaturesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:15.312 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT f.feature_code, f.feature_default_name, f.feature_description, f.feature_id, f.feature_name, f.id, f.lang_code
+FROM featureswithtranslations AS f
+[2025-08-03 14:04:15.324 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Packages_Services.FeaturesWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:15.334 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App) in 39.4576ms
+[2025-08-03 14:04:15.334 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getFeaturesWithTranslations (Wasla_App)'
+[2025-08-03 14:04:15.334 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getFeaturesWithTranslations - 200 4628 application/json; charset=utf-8 46.5343ms
+[2025-08-03 14:04:16.158 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:04:16.158 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:16.158 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 0.4965ms
+[2025-08-03 14:04:16.160 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:04:16.160 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:16.161 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:04:16.161 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:16.163 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:04:16.165 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:16.166 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 4.9931ms
+[2025-08-03 14:04:16.166 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:04:16.166 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 6.246ms
+[2025-08-03 14:04:16.794 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:04:16.795 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:16.795 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 0.6104ms
+[2025-08-03 14:04:16.799 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:04:16.803 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:16.803 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:04:16.803 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:16.806 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:04:16.807 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:16.808 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 4.4429ms
+[2025-08-03 14:04:16.808 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:04:16.808 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 9.0401ms
+[2025-08-03 14:04:17.435 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - null null
+[2025-08-03 14:04:17.435 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - null null
+[2025-08-03 14:04:17.436 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.436 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainServices - 204 null null 1.4249ms
+[2025-08-03 14:04:17.436 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.436 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getMainPackages - 204 null null 1.126ms
+[2025-08-03 14:04:17.438 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - null null
+[2025-08-03 14:04:17.438 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.438 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 204 null null 0.6582ms
+[2025-08-03 14:04:17.439 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - application/json 20
+[2025-08-03 14:04:17.439 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.440 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - application/json 20
+[2025-08-03 14:04:17.440 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:04:17.440 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.440 +03:00  INF]  Route matched with {action = "getMainServices", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainServices(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:17.440 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:04:17.440 +03:00  INF]  Route matched with {action = "getMainPackages", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getMainPackages(WaslaApp.Data.Models.admin.Packages_Services.PackageAndServicesGetReq) on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:17.447 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - application/json 2
+[2025-08-03 14:04:17.448 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.452 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:04:17.452 +03:00  INF]  Route matched with {action = "getServiceGrpWithPkgs", controller = "WaslaAdmin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getServiceGrpWithPkgs() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:04:17.456 +03:00  INF]  Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT m.id, m.active, m.default_name, m.service_code, s.id, s.lang_code, s.product_desc, s.productname, s.service_id
+FROM main_services AS m
+LEFT JOIN service_translations AS s ON m.id = s.service_id
+WHERE m.active
+ORDER BY m.id
+[2025-08-03 14:04:17.457 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.main_service, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:17.458 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App) in 17.5638ms
+[2025-08-03 14:04:17.458 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainServices (Wasla_App)'
+[2025-08-03 14:04:17.458 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s.service_id, s.package_id, s.id AS service_package_id, m0.service_code, p0.package_code, p0.is_custom, s.is_recommend, p0.default_name AS package_default_name, m0.default_name AS service_default_name, p0."order"
+FROM service_packages AS s
+INNER JOIN (
+    SELECT p.id, p.default_name, p.is_custom, p."order", p.package_code
+    FROM packages AS p
+    WHERE p.active
+) AS p0 ON s.package_id = p0.id
+INNER JOIN (
+    SELECT m.id, m.default_name, m.service_code
+    FROM main_services AS m
+    WHERE m.active
+) AS m0 ON s.service_id = m0.id
+[2025-08-03 14:04:17.458 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainServices - 200 1387 application/json; charset=utf-8 18.7448ms
+[2025-08-03 14:04:17.458 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.PackagesAndServices.ServiceGrpWithPkgs, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:17.458 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App) in 6.2476ms
+[2025-08-03 14:04:17.458 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getServiceGrpWithPkgs (Wasla_App)'
+[2025-08-03 14:04:17.458 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getServiceGrpWithPkgs - 200 2641 application/json; charset=utf-8 10.926ms
+[2025-08-03 14:04:17.491 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p.id, p.active, p.default_name, p.is_custom, p.is_recommend, p."order", p.package_code, p0.id, p0.lang_code, p0.package_desc, p0.package_details, p0.package_id, p0.package_name
+FROM packages AS p
+LEFT JOIN package_translations AS p0 ON p.id = p0.package_id
+WHERE p.active
+ORDER BY p.id
+[2025-08-03 14:04:17.493 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Entities.package, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:17.493 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App) in 52.7724ms
+[2025-08-03 14:04:17.493 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getMainPackages (Wasla_App)'
+[2025-08-03 14:04:17.493 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getMainPackages - 200 2247 application/json; charset=utf-8 53.6407ms
+[2025-08-03 14:04:17.953 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - null null
+[2025-08-03 14:04:17.953 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.953 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/Accounting/GetAllInvoices - 204 null null 0.2856ms
+[2025-08-03 14:04:17.955 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - application/json 145
+[2025-08-03 14:04:17.955 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:04:17.956 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:04:17.956 +03:00  INF]  Route matched with {action = "GetAllInvoices", controller = "Accounting"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllInvoices(WaslaApp.Data.Models.admin.Accounting.GetInvoicesReq) on controller Wasla_App.Controllers.AccountingController (Wasla_App).
+[2025-08-03 14:04:17.981 +03:00  INF]  Executed DbCommand (23ms) [Parameters=[@__8__locals1_req_lang_code_3='?', @__8__locals1_req_active_0='?' (DbType = Boolean), @__dateFrom_1='?' (DbType = DateTime2), @__dateTo_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.invoice_id, c.curr_code, c.discount, c.total_price, c.grand_total_price, c."productId", c.package_id, p0.service_name, p0.package_name, p0.package_price, p0.package_sale_price, p0.package_desc, p0.package_details, c.invoice_code, c.invoice_code_auto, c.status, c.tax_amount, c.tax_code, c.tax_id, p0.service_package_id, c.client_name, c.client_email, COALESCE(c.invoice_date::text, ''), c.copoun_id, c.copoun, c.copoun_discount_value, c.client_id
+FROM clientinvoiceswithdetails AS c
+INNER JOIN (
+    SELECT p.curr_code, p.package_desc, p.package_details, p.package_id, p.package_name, p.package_price, p.package_sale_price, p.service_id, p.service_name, p.service_package_id
+    FROM packagesdetailswithservices AS p
+    WHERE p.lang_code = @__8__locals1_req_lang_code_3
+) AS p0 ON (c.package_id = p0.package_id OR (c.package_id IS NULL AND p0.package_id IS NULL)) AND (c."productId" = p0.service_id OR (c."productId" IS NULL AND p0.service_id IS NULL)) AND (c.curr_code = p0.curr_code OR (c.curr_code IS NULL AND p0.curr_code IS NULL)) AND (c.service_package_id = p0.service_package_id OR (c.service_package_id IS NULL AND p0.service_package_id IS NULL))
+WHERE (c.client_email = c.client_email OR c.client_email IS NULL) AND c.active = @__8__locals1_req_active_0 AND (c.status = c.status OR c.status IS NULL) AND c.invoice_date >= @__dateFrom_1 AND c.invoice_date <= @__dateTo_2 AND (c.invoice_code = c.invoice_code OR c.invoice_code IS NULL)
+[2025-08-03 14:04:17.983 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:04:17.985 +03:00  INF]  Executed DbCommand (2ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:04:17.988 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:04:17.989 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:04:17.991 +03:00  INF]  Executed DbCommand (1ms) [Parameters=[@__req_lang_code_1='?', @__req_service_package_id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p.feature_id, p.service_package_id, p.id, m.feature_code, m.feature_default_name, f0.feature_description, f0.feature_name, f0.lang_code
+FROM packages_features AS p
+INNER JOIN main_features AS m ON p.feature_id = m.id
+INNER JOIN (
+    SELECT f.feature_description, f.feature_id, f.feature_name, f.lang_code
+    FROM features_translation AS f
+    WHERE f.lang_code = @__req_lang_code_1
+) AS f0 ON m.id = f0.feature_id
+WHERE p.service_package_id = @__req_service_package_id_0
+[2025-08-03 14:04:17.991 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.invoices.ClientInvoiceGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:04:17.992 +03:00  INF]  Executed action Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App) in 36.3629ms
+[2025-08-03 14:04:17.992 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.AccountingController.GetAllInvoices (Wasla_App)'
+[2025-08-03 14:04:17.993 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/Accounting/GetAllInvoices - 200 4488 application/json; charset=utf-8 37.4918ms
+[2025-08-03 14:11:05.067 +03:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - null null
+[2025-08-03 14:11:05.067 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:11:05.067 +03:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 204 null null 0.8202ms
+[2025-08-03 14:11:05.077 +03:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - application/json 2
+[2025-08-03 14:11:05.078 +03:00  INF]  CORS policy execution successful.
+[2025-08-03 14:11:05.078 +03:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 14:11:05.079 +03:00  INF]  Route matched with {action = "getQuesWithTranslations", controller = "WaslaAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getQuesWithTranslations() on controller Wasla_App.Controllers.WaslaAdminController (Wasla_App).
+[2025-08-03 14:11:05.189 +03:00  INF]  Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r.active, r.id, r.lang_code, r."order", r.ques_id, r.ques_title, r.ques_title_default, r.ques_type
+FROM registrationqueswithlangs AS r
+[2025-08-03 14:11:05.190 +03:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.admin.Questions.QuestionsWithTranslationGrp, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-08-03 14:11:05.190 +03:00  INF]  Executed action Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App) in 111.5255ms
+[2025-08-03 14:11:05.190 +03:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaAdminController.getQuesWithTranslations (Wasla_App)'
+[2025-08-03 14:11:05.191 +03:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaAdmin/getAdminQuesList - 200 1125 application/json; charset=utf-8 117.284ms

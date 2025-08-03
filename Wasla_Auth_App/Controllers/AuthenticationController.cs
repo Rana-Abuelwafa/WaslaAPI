@@ -99,6 +99,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role = model.Role,
                         });
                     }
                     //genertae otp code and send to user by email to verify email
@@ -123,6 +124,7 @@ namespace Wasla_Auth_App.Controllers
                         GoogleId = user.GoogleId,
                         TwoFactorEnabled = user.TwoFactorEnabled,
                         completeprofile = user.completeprofile,
+                        role= model.Role,
 
                     });
                 }
@@ -176,6 +178,7 @@ namespace Wasla_Auth_App.Controllers
                 var isAuth = await _userManager.CheckPasswordAsync(user, model.Password);
                 if (user != null && isAuth)
                 {
+                   var roles = await _userManager.GetRolesAsync(user);
                     var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
                     if (isAdmin)
                     {
@@ -197,6 +200,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role = roles.FirstOrDefault()
                         });
                     }
                     if (user.EmailConfirmed == false)
@@ -224,6 +228,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role = roles.FirstOrDefault()
                         });
                     }
                     else
@@ -246,6 +251,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
                     }
 
@@ -311,6 +317,7 @@ namespace Wasla_Auth_App.Controllers
                 claims.Add(roleClaim);
             }
         }
+     
         //used in gmail register
         [HttpPost("ExternalRegister")]
         public async Task<IActionResult> ExternalRegister([FromBody] AppsRegisterModel model)
@@ -321,6 +328,7 @@ namespace Wasla_Auth_App.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
                     //generate otp and send it to user's email to verify email
                     var otp = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                     MailData mailData = Utils.GetOTPMailData(model.lang, user.FirstName + " " + user.LastName, otp, model.Email);
@@ -342,6 +350,7 @@ namespace Wasla_Auth_App.Controllers
                         GoogleId = user.GoogleId,
                         TwoFactorEnabled = user.TwoFactorEnabled,
                         completeprofile = user.completeprofile,
+                        role=roles.FirstOrDefault()
                     });
                 }
                 else
@@ -360,7 +369,8 @@ namespace Wasla_Auth_App.Controllers
                         AccessToken = "",
                         RefreshToken = "",
                         Id = null,
-                        completeprofile = 0
+                        completeprofile = 0,
+                        role=""
                     });
                 }
             }
@@ -388,6 +398,7 @@ namespace Wasla_Auth_App.Controllers
             {
                 if (user != null)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
                     if (user.EmailConfirmed == false)
                     {
                         //generate otp and send it to user's email to verify email
@@ -412,6 +423,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
                     }
                     else
@@ -434,6 +446,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
                     }
                 }
@@ -474,6 +487,7 @@ namespace Wasla_Auth_App.Controllers
                 var user = await _userManager.FindByIdAsync(model.userId);
                 if (user != null)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
                     var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {
@@ -490,6 +504,7 @@ namespace Wasla_Auth_App.Controllers
                             RefreshToken = token,
                             Id = user.Id,
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
                     }
                     else
@@ -543,6 +558,7 @@ namespace Wasla_Auth_App.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
                     //verify otp 
                     var isCodeValid = await _userManager.VerifyTwoFactorTokenAsync(user, "Email", model.otp);
 
@@ -567,6 +583,7 @@ namespace Wasla_Auth_App.Controllers
                             GoogleId = user.GoogleId,
                             TwoFactorEnabled = user.TwoFactorEnabled,
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
                     }
                     else
@@ -586,6 +603,7 @@ namespace Wasla_Auth_App.Controllers
                             AccessToken = "",
                             RefreshToken = "",
                             completeprofile = user.completeprofile,
+                            role=roles.FirstOrDefault()
                         });
 
                     }
@@ -628,6 +646,7 @@ namespace Wasla_Auth_App.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
                     //update user completeprofile = true,
                     //(1 = mean user answer to registration's questions)
                     //(2 = mean user fill his profile data all)
@@ -649,6 +668,7 @@ namespace Wasla_Auth_App.Controllers
                         GoogleId = user.GoogleId,
                         TwoFactorEnabled = user.TwoFactorEnabled,
                         completeprofile = user.completeprofile,
+                        role=roles.FirstOrDefault()
                     });
                 }
                 else

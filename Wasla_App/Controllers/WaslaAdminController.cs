@@ -11,7 +11,7 @@ using WaslaApp.Data.Models.profile;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,accountant")]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller

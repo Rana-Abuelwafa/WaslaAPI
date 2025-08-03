@@ -6,7 +6,7 @@ using WaslaApp.Data.Models.admin.Packages_Services;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,accountant")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountingController : Controller
