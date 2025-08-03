@@ -37,7 +37,7 @@ namespace WaslaApp.Data.Models.invoices
         public string? package_details { get; set; }
         public short? status { get; set; }
         public string? client_email { get; set; }
-
+        public string? client_id { get; set; }
         public string? client_name { get; set; }
         public int? service_package_id { get; set; }
         //public List<PricingPkgFeature> features { get; set; }
@@ -65,6 +65,7 @@ namespace WaslaApp.Data.Models.invoices
         public string? tax_code { get; set; }
         public string? curr_code { get; set; }
         public decimal? grand_total_price { get; set; }
+        public string? client_id { get; set; }
         public List<ClientInvoiceResponse> pkgs { get; set; }
     }
 }

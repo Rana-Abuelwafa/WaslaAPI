@@ -207,6 +207,12 @@ namespace Wasla_App.Controllers
             return Ok(await _waslaService.GetClientProfiles(clientId));
         }
 
+        [HttpPost("GetClientProfileByAdmin")]
+        public async Task<IActionResult> GetClientProfiles([FromQuery] string clientId)
+        {
+           
+            return Ok(await _waslaService.GetClientProfiles(clientId));
+        }
 
         [HttpPost("saveMainProfile")]
         public IActionResult saveMainProfile(ClientProfileCast profile)
@@ -285,6 +291,13 @@ namespace Wasla_App.Controllers
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
 
             }
+            return Ok(await _waslaService.GetProfileImage(clientId));
+        }
+
+        [HttpPost("GetClientProfileImageByAdmin")]
+        public async Task<IActionResult> GetClientProfileImageByAdmin([FromQuery] string clientId)
+        {
+           
             return Ok(await _waslaService.GetProfileImage(clientId));
         }
         #endregion

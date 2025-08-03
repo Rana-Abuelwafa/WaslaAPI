@@ -1423,6 +1423,36 @@
         }
       }
     },
+    "/api/WaslaClient/GetClientProfileByAdmin": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/saveMainProfile": {
       "post": {
         "tags": [
@@ -1566,6 +1596,36 @@
           "WaslaClient"
         ],
         "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WaslaClient/GetClientProfileImageByAdmin": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "Accept-Language",
             "in": "header",

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Localization;
 using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -898,12 +899,15 @@ namespace WaslaApp.Data
         {
             try
             {
-                DateTime dateFrom = DateTime.Parse(req.date_from);
-                DateTime dateTo = DateTime.Parse(req.date_to);
+                CultureInfo culture = new CultureInfo("en-GB"); // For dd/MM/yyyy
+                //DateTime dateFrom = DateTime.Parse(req.date_from, culture);
+                //DateTime dateTo = DateTime.Parse(req.date_to, culture);
+                DateTime dateFrom = DateTime.ParseExact(req.date_from, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dateTo = DateTime.ParseExact(req.date_to, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 var fullEntries = await _db.clientinvoiceswithdetails
                                   .Where(wr => wr.client_email == (String.IsNullOrEmpty(req.client_email) ? wr.client_email : req.client_email) && 
                                                wr.active == req.active && 
-                                               wr.status == req.status &&
+                                               wr.status == (req.status == 0 ? wr.status : req.status)  &&
                                                (wr.invoice_date >= dateFrom && wr.invoice_date <= dateTo) &&
                                                wr.invoice_code == (String.IsNullOrEmpty(req.invoice_code) ? wr.invoice_code : req.invoice_code)
                                          )
@@ -944,6 +948,7 @@ namespace WaslaApp.Data
                                        copoun_id = combinedEntry.copoun_id,
                                        copoun = combinedEntry.copoun,
                                        copoun_discount = combinedEntry.copoun_discount_value,
+                                       client_id= combinedEntry.client_id
                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
@@ -967,7 +972,8 @@ namespace WaslaApp.Data
                     grp.client_name,
                     grp.copoun_id,
                     grp.copoun_discount,
-                    grp.copoun
+                    grp.copoun,
+                    grp.client_id
                 }).Select(s => new ClientInvoiceGrp
                 {
                     invoice_id = s.Key.invoice_id,
@@ -987,6 +993,7 @@ namespace WaslaApp.Data
                     copoun_id = s.Key.copoun_id,
                     copoun = s.Key.copoun,
                     copoun_discount = s.Key.copoun_discount,
+                    client_id=s.Key.client_id,
                     pkgs = (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
                                       .Select(s => new ClientInvoiceResponse
                                       {

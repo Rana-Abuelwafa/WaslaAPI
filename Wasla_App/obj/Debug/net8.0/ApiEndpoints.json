@@ -356,6 +356,38 @@
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "GetClientProfiles",
+    "RelativePath": "api/WaslaClient/GetClientProfileByAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetClientProfileImageByAdmin",
+    "RelativePath": "api/WaslaClient/GetClientProfileImageByAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "GetClientProfiles",
     "RelativePath": "api/WaslaClient/GetClientProfiles",
     "HttpMethod": "POST",
     "IsController": true,
