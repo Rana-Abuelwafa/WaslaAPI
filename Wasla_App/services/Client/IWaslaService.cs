@@ -32,7 +32,7 @@ namespace Wasla_App.services.Client
         #endregion
 
         #region "packages & services"
-       
+        public Task<List<ServicesWithPkg>> GetSearchResult(SearchCls req);
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email);
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);

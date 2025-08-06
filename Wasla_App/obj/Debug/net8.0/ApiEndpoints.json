@@ -328,6 +328,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Wasla_App.Controllers.WaslaBrowseController",
+    "Method": "GetSearchResult",
+    "RelativePath": "api/WaslaBrowse/GetSearchResult",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.PackagesAndServices.SearchCls",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "CheckoutInvoice",
     "RelativePath": "api/WaslaClient/CheckoutInvoice",

@@ -118,5 +118,10 @@ namespace Wasla_App.services.Client
         {
             return _waslaDao.UpdateInvoicePrices(req,client_id);
         }
+
+        public Task<List<ServicesWithPkg>> GetSearchResult(SearchCls req)
+        {
+            return _waslaDao.GetSearchResult(req);
+        }
     }
 }

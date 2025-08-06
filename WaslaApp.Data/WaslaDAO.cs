@@ -763,7 +763,66 @@ namespace WaslaApp.Data
 
 
         #region "packages &services"
-        
+
+
+        //search for Packages' or service's  (name, code, default name)
+
+        public async Task<List<ServicesWithPkg>> GetSearchResult(SearchCls req)
+        {
+                try
+                {
+                    var result = await _db.packagesdetailswithservices
+                                       .Where(wr => wr.lang_code == req.lang && 
+                                              wr.curr_code.ToLower() == (wr.curr_code == null ? wr.curr_code : req.curr_code.ToLower()) &&
+                                              wr.active == true &&
+                                              (wr.service_name.ToLower().Contains(req.searchTerm.ToLower()) || wr.package_name.ToLower().Contains(req.searchTerm.ToLower()) || wr.service_code.ToLower().Contains(req.searchTerm.ToLower()) || wr.package_code.ToLower().Contains(req.searchTerm.ToLower()))
+                                             )
+                                       .ToListAsync();
+                    if(result != null)
+                    {
+                        var fullEntries = result.Select(s => new PricingPackageCast
+                        {
+                            service_id = (int)s.service_id,
+                            curr_code = s.curr_code,
+                            lang_code = s.lang_code,
+                            package_sale_price = s.package_sale_price,
+                            active = s.active,
+                            discount_amount = s.discount_amount,
+                            discount_type = (short?)s.discount_type,
+                            package_price = s.package_price,
+                            package_name = s.package_name,
+                            package_id = (int)s.package_id,
+                            package_desc = s.package_desc,
+                            order = s.order,
+                            package_details = s.package_details,
+                            service_name = s.service_name,
+                            is_recommend = s.is_recommend,
+                            package_code = s.package_code,
+                            isSelected = false,
+                            is_custom = s.is_custom,
+                            service_package_id = s.service_package_id,
+                            service_code = s.service_code,
+                            features = getPackageFeatures(new PackageFeatureReq { lang_code = req.lang, service_package_id = s.service_package_id }).ToList()
+
+                        }).ToList();
+                        return fullEntries.GroupBy(grp => new
+                        {
+                            grp.service_id,
+                            grp.service_name,
+                        }).Select(s => new ServicesWithPkg
+                        {
+                            service_id = s.Key.service_id,
+                            service_name = s.Key.service_name,
+                            pkgs = fullEntries.Where(wr => wr.service_id == s.Key.service_id).ToList()
+                        }).ToList();
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+        }
         public async Task<decimal?> CalculatePriceWithTax(int taxId, decimal? price)
         {
             decimal? total = 0;
@@ -788,6 +847,9 @@ namespace WaslaApp.Data
             }
             return total;
         }
+      
+        //make Client's Invoice with selected packages 
+
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
         {
             InvoiceResponse response = null;

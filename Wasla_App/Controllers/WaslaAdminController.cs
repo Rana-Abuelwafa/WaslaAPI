@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Wasla_App.services.Admin;
 using Wasla_App.services.Client;
 using WaslaApp.Data.Entities;
@@ -18,16 +19,23 @@ namespace Wasla_App.Controllers
     {
         private readonly IAdminWaslaService _adminWaslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly LoginUserData _loginUserData;
         public WaslaAdminController(IHttpContextAccessor httpContextAccessor, IAdminWaslaService adminWaslaService)
         {
             _adminWaslaService = adminWaslaService;
             _httpContextAccessor = httpContextAccessor;
+            _loginUserData = Utils.getTokenData(httpContextAccessor);
+            
+
         }
+
+            
 
         #region "questions"
         [HttpPost("saveMainQuestions")]
         public IActionResult SaveMainResigstraionQues(Main_RegistrationQuestion ques)
         {
+            string email = _loginUserData.client_email;
 
             return Ok(_adminWaslaService.SaveMainResigstraionQues(ques));
         }
