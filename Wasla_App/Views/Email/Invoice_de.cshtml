@@ -15,196 +15,124 @@
     var Total = Model.Total;
     var services = Model.services;
 }
+
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Invoice</title>
 </head>
 
-<body>
-    <style type="text/css">
-        body {
-            height: 100%;
-            /* min-height: 100vh; */
-            margin: 0;
-            overflow-x: hidden;
-        }
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7;">
+    <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 30px; border: 1px solid #ddd;">
+        <div style="text-align: center; border-bottom: 1px solid #707070;">
+            <img src="https://api.waslaa.de/images/logo.png" alt="Wasla Logo" style="width: 100px; margin-bottom: 20px;" />
+        </div>
 
-        ul {
-            padding-left: 5px;
-        }
+        <div style="text-align:center;">
+            <img src="https://api.waslaa.de/images/Emails/bill.png" alt="Verified" style="width: 80px; margin: 20px 0;" />
+        </div>
 
-            ul li {
-                list-style: none;
-                margin-bottom: 10px;
-            }
-
-        header {
-            /* position: fixed; */
-            height: 70px;
-            /* width: 100%; */
-            top: 0;
-            left: 0;
-            padding: 0 30px;
-        }
-
-            header img {
-                width: 200px;
-                height: 120px;
-            }
-
-        .bg {
-            width: 100%;
-            height: auto;
-            padding: 20px;
-            overflow: hidden;
-            /* margin-top: 80px; */
-            display: block;
-            background-color: white;
-            position: relative;
-        }
-
-            .bg img {
-                margin: 20px 0;
-            }
-
-        /*
-                .bg-content {
-                    background-color: white;
-                    padding: 50px;
-                    border-radius: 6px;
-                    width: 1000px;
-                    min-width: 1000px;
-                    height: 400px;
-                    margin: 100px auto;
-                    position: relative;
-                  } */
-
-        h2 {
-            color: #00bc82;
-        }
-
-        h3 {
-            color: #542d72;
-            margin: 10px 0;
-        }
-
-        p {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .footer {
-            /* position: fixed; */
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            color: #222;
-            /* height: 100px; */
-            padding: 10px;
-            text-align: center;
-            /* overflow: hidden; */
-        }
-
-            .footer p {
-                font-size: 14px;
-                margin: 10px 0;
-            }
-
-    </style>
-
-    <section class="bg"
-             style="background: #f7f7f7;width: 800px;margin: 10px auto;background-image: url('https://api.waslaa.de/images/gletter.png');background-position: center;background-repeat: no-repeat;background-size: contain;">
-        <header style="display: flex; align-content: center;height: 70px;padding:20px;justify-content:space-between">
-            <div style="flex: 1;">
-                <h2 style="font-size: 40px;margin: 0;color:#00bc82">Invoice</h2>
-            </div>
-            <div>
-                <img src="https://api.waslaa.de/images/logo.png" alt="logo" style="width: 150px;height: auto;" />
-            </div>
-        </header>
         <div class="bg-content" style="padding: 20px;">
             <table style="width:100%;">
                 <tr>
                     <td>
-                        <p style="margin-bottom: 5px;">Invoice To</p>
+                        <p style="margin-bottom: 5px; color: #333; ">Rechnung an</p>
                         <strong>@user</strong>
                     </td>
                     <td style="text-align: right;">
-                        <p style="margin-bottom: 5px;">Contact</p>
+                        <p style="margin-bottom: 5px; color: #333; ">Kontakt</p>
                         <strong>@contact</strong>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p style="margin-bottom: 5px;">Address</p>
+                        <p style="margin-bottom: 5px; color: #333; ">Adresse</p>
                         <strong>@Address</strong>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <p style="margin-bottom: 5px;">Invoice No</p>
+                        <p style="margin-bottom: 5px; color: #333; ">Rechnungsnr</p>
                         <strong>@InvoiceNo</strong>
                     </td>
                     <td style="text-align: right;">
-                        <p style="margin-bottom: 5px;">Date Issued</p>
+                        <p style="margin-bottom: 5px; color: #333;">Ausstellungsdatum</p>
                         <strong>@Date</strong>
                     </td>
                 </tr>
             </table>
-            <table style="width:100%; margin: 30px auto;border-collapse:collapse;text-align: left;">
-                <tr style="border: 1px solid #222; border-radius: 50px;">
+            <hr style="margin: 30px 0;" />
+            <table style="width:100%; margin: 20px auto;border-collapse:collapse;text-align: left;">
+                <tr style="border-bottom:1px solid #ccc">
                     <th style="padding: 5px;">No.</th>
-                    <th style="padding: 5px;">Product Item Description</th>
-                    <th style="padding: 5px;">Price</th>
+                    <th style="padding: 5px;">Produktartikelbeschreibung</th>
+                    <th style="padding: 5px;">Preis</th>
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
                     var service = services[i];
-                    <tr>
+                    <tr style="border-bottom:1px solid #ccc">
                         <td style="padding:10px 0;">@i</td>
                         <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
                         <td style="padding:10px 0;">@service.package_sale_price</td>
                     </tr>
                 }
+
                 <tr>
                     <th colspan="2"></th>
-                    <th>Sub Total</th>
-                    <td style="padding:10px 0;">@SubTtotal</td>
+                    <th style="border-bottom: 1px solid #ccc; padding: 10px 0;">Zwischensumme</th>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@SubTtotal</td>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
-                    <th>Discount</th>
-                    <td>@Discount</td>
+                    <th style="border-bottom: 1px solid #ccc; padding: 10px 0;">Rabatt</th>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@Discount</td>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
-                    <th>Total</th>
+                    <th>Gesamt</th>
                     <td style="padding:10px 0;">@Total</td>
                 </tr>
             </table>
-            <div>
-                <h3>Terms & Conditions :</h3>
-                <p>
-                    This amount includes up to two (2) revisions to the final design.
-                    If the client does not respond within 5 days, the project will be temporarily put on hold.
-                    Design rights will be transferred to the client upon full payment.
-                </p>
-            </div>
-
         </div>
-        <footer class="footer" style="text-align:center;color:#222;padding:10px;width:100%;">
-            <img src="https://api.waslaa.de/images/QRCode.png" alt="wasla_qr" class="footer-logo-img" style="width: 100px;height: 100px;" />
-            <p style="color: #542d72;">Thank you for your Business</p>
-
-
-        </footer>
-    </section>
+        <div>
+            <hr style="margin: 30px 0;" />
+            <h3 style="color: #00b894;">
+                Allgemeine Geschäftsbedingungen :
+            </h3>
+            <p style="color: #4b0082; font-weight: bold; letter-spacing: .5px; font-size: 12px;">
+                This amount includes up to two (2) revisions to the final design.
+                If the client does not respond within 5 days, the project will be temporarily put on hold.
+                Design rights will be transferred to the client upon full payment.
+            </p>
+        </div>
+        <hr style="margin: 30px 0;" />
+        <div style="text-align: center;">
+            <p>
+                Machen Sie mit und werden Sie Teil der Waslaa-Familie!
+            </p>
+            <div>
+                <a href="https://www.facebook.com/Waslaa.de" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-facebook.png" alt="Facebook" style="margin: 0 5px;" />
+                </a>
+                <a href="https://www.instagram.com/waslaa.de" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-instagram.png" alt="Instagram" style="margin: 0 5px;" />
+                </a>
+                <a href="waslaa.2025@gmail.com" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-gmail.png" alt="Email" style="margin: 0 5px;" />
+                </a>
+                <a href="https://x.com/waslaade" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-twitter.png" alt="x" style="margin: 0 5px;" />
+                </a>
+            </div>
+        </div>
+    </div>
 
 </body>
 

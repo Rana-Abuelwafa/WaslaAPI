@@ -1,0 +1,43 @@
+[2025-08-09 10:04:06.774 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-08-09 10:04:07.017 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-08-09 10:04:07.124 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-08-09 10:04:07.125 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-08-09 10:04:07.283 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-08-09 10:04:07.284 +03:00  INF]  Hosting environment: Development
+[2025-08-09 10:04:07.284 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-08-09 10:04:07.871 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/ - null null
+[2025-08-09 10:04:09.564 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/ - 404 0 null 1695.949ms
+[2025-08-09 10:04:09.579 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/, Response status code: 404
+[2025-08-09 10:04:12.324 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/ - null null
+[2025-08-09 10:04:12.337 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/ - 404 0 null 13.5779ms
+[2025-08-09 10:04:12.338 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/, Response status code: 404
+[2025-08-09 10:04:24.064 +03:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-08-09 10:04:24.286 +03:00  WRN]  The WebRootPath was not found: D:\waslaa\api\WaslaAPI\Wasla_App\wwwroot. Static files may be unavailable.
+[2025-08-09 10:04:24.440 +03:00  INF]  Now listening on: https://localhost:7283
+[2025-08-09 10:04:24.441 +03:00  INF]  Now listening on: http://localhost:5074
+[2025-08-09 10:04:24.592 +03:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-08-09 10:04:24.592 +03:00  INF]  Hosting environment: Development
+[2025-08-09 10:04:24.592 +03:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-08-09 10:04:25.179 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-08-09 10:04:25.526 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 360.9491ms
+[2025-08-09 10:04:25.541 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-08-09 10:04:25.555 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-08-09 10:04:25.559 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 17.9113ms
+[2025-08-09 10:04:25.626 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 70.7583ms
+[2025-08-09 10:04:25.894 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-08-09 10:04:25.946 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.9586ms
+[2025-08-09 10:04:31.866 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/ - null null
+[2025-08-09 10:04:32.001 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/ - 404 0 null 135.1894ms
+[2025-08-09 10:04:32.005 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/, Response status code: 404
+[2025-08-09 10:04:48.128 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/ - null null
+[2025-08-09 10:04:48.142 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/ - 404 0 null 15.5146ms
+[2025-08-09 10:04:48.142 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/, Response status code: 404
+[2025-08-09 10:05:09.890 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/ - null null
+[2025-08-09 10:05:09.909 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/ - 404 0 null 18.5148ms
+[2025-08-09 10:05:09.909 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/, Response status code: 404
+[2025-08-09 10:05:26.547 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml - null null
+[2025-08-09 10:05:26.550 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml - 404 0 null 3.8372ms
+[2025-08-09 10:05:26.551 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml, Response status code: 404
+[2025-08-09 10:05:32.349 +03:00  INF]  Request starting HTTP/2 GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml - null null
+[2025-08-09 10:05:32.355 +03:00  INF]  Request finished HTTP/2 GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml - 404 0 null 5.9464ms
+[2025-08-09 10:05:32.355 +03:00  INF]  Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7283/D:/waslaa/api/WaslaAPI/Wasla_App/Views/Email/Invoice_en.cshtml, Response status code: 404

@@ -1,195 +1,53 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="de" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Wasla OTP Verification</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 30px; border: 1px solid #ddd;">
+        <div style="text-align: center; border-bottom: 1px solid #707070;">
+            <img src="https://api.waslaa.de/images/logo.png" alt="Wasla Logo" style="width: 100px; margin-bottom: 20px;" />
+        </div>
+        <div style="text-align:center;">
+            <img src="https://api.waslaa.de/images/Emails/verification.png" alt="Verified" style="width: 80px; margin: 20px 0;" />
+        </div>
+        <div style="text-align:left;">
 
-    <style type="text/css">
-        body {
-            height: 100%;
-            /* min-height: 100vh; */
-            margin: 0;
-            overflow-x: hidden;
-        }
+            <h2 style="color: #4b0082;">Lieber @user</h2>
+            <p style="color: #00b894; font-weight: bold;">Danke für Ihre Registrierung bei Waslaa</p>
 
-        ul {
-            padding-left: 5px;
-        }
+        </div>
+        <hr style="margin: 30px 0;" />
+        <div>
+            <p style="text-align: center; color: #542D72; font-size:15px">Um Ihre Konto-Einrichtung abzuschließen, bestätigen Sie bitte Ihre E-Mail-Adresse durch Eingabe des folgenden Einmal-Passworts (OTP)</p>
+            <h2 style="text-align: center; color: #00b894; letter-spacing: 4px;">@otp</h2>
+        </div>
+        <hr style="margin: 30px 0;" />
+        <div>
+            <p style="text-align: center; color: #542D72; font-size: 15px ">Dieser Code ist 10 Minuten gültig</p>
+            <p style="text-align: center; color: #542D72; font-size: 15px ">Aus Sicherheitsgründen teilen Sie diesen Code bitte mit niemandem.</p>
+            <p style="text-align: center; color: #542D72; font-size: 15px ">Wenn Sie diesen Code nicht angefordert haben, ignorieren Sie bitte diese E-Mail oder kontaktieren Sie unser Support-Team.</p>
+        </div>
 
-            ul li {
-                list-style: none;
-                margin-bottom: 10px;
-            }
-
-        header {
-            /* position: fixed; */
-            height: 70px;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background-color: #f7f7f7;
-            padding: 0 30px;
-            align-items: center;
-            display: flex;
-        }
-
-            header img {
-                width: auto;
-                height: 30px;
-            }
-
-        .bg {
-            width: 100%;
-            height: auto;
-            padding: 20px;
-            overflow: hidden;
-            /* margin-top: 80px; */
-            display: block;
-            background-color: white;
-            position: relative;
-        }
-
-            .bg img {
-                margin: 20px 0;
-            }
-        /* .bg-content {
-         background-color: white;
-         padding: 50px;
-         border-radius: 6px;
-         width: 1000px;
-         min-width: 1000px;
-         height: 400px;
-         margin: 100px auto;
-         position: relative;
-       } */
-
-        h2 {
-            color: #00bc82;
-        }
-
-        h3 {
-            color: #542d72;
-        }
-
-        p {
-            font-size: 15px;
-            color: #666;
-            margin: 20px 0;
-        }
-
-
-        .greenbtn {
-            background-color: #542d72;
-            height: 40px;
-            width: 150px;
-            margin: 30px 0;
-            text-align: center;
-            line-height: 2.5;
-            display: block;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-
-        .footer {
-            /* position: fixed; */
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            color: #222;
-            height: auto;
-            background-color: #f7f7f7;
-            padding: 10px;
-            text-align: center;
-            overflow: hidden;
-        }
-        .footer img{
-           width: auto;
-           height: 30px;
-           margin: 10px auto;
-       }
-
-            .footer p {
-                font-size: 16px;
-                margin: 10px 0;
-            }
-
-        .social-icons {
-            margin: 20px 0;
-        }
-
-            .social-icons li {
-                display: inline-block;
-                margin: 0 5px;
-                color: #542d72;
-                font-size: 20px;
-            }
-
-        hr {
-            border: 1px solid #eee;
-        }
-   </style>
-  </head>
-   <body>
-    <header bgColor="#f7f7f7" style="background-color: #f7f7f7; height: 70px;width: 100%;padding: 0 30px;line-height: 70px;display: flex;align-items: center;">
-        <img src="https://api.waslaa.de/images/logo.png" alt="logo" />
-    </header>
-    <section class="bg">
-        <div class="bg-content">
-            <h2>Sehr geehrte/r @user</h2>
-            <h3>herzlichen Dank für Ihre Registrierung bei Waslaa – wir freuen uns sehr, Sie in unserer Community willkommen zu heißen! </h3>
-            <p>
-                **Um Ihr Konto erfolgreich zu aktivieren und alle Funktionen von Waslaa nutzen zu können, bestätigen Sie bitte Ihre E-Mail-Adresse mit dem folgenden Einmalpasswort (OTP):**
-            </p>
-            <ul style="list-style:none;margin-left:5px">
-                <li style="list-style:none">
-                    @otp
-                </li>
-
-            </ul>
-            <hr />
-
-            <p>
-                Dieser Code ist 10 Minuten gültig. <br /> <br />
-                Aus Sicherheitsgründen bitten wir Sie, diesen Code nicht mit Dritten zu teilen.
-            </p>
-            <p>
-                Sollten Sie diese Registrierung nicht selbst vorgenommen haben, <br /> <br />
-                können Sie diese E-Mail einfach ignorieren oder sich direkt an unser freundliches Support-Team wenden – wir sind gerne für Sie da!
-            </p>
+        <hr style="margin: 30px 0;" />
+        <div style="text-align: center;">
+            <p>Werden Sie Teil der Waslaa-Familie!</p>
             <div>
-                <p style="color: #222;">
-                    Wir wünschen Ihnen einen großartigen Start bei Waslaa und stehen Ihnen jederzeit bei Fragen zur Seite. <br /><br />
-                    Best regards, <br />  <br />
-                    Waslaa Team
-                </p>
+                <a href="https://www.facebook.com/Waslaa.de" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-facebook.png" alt="Facebook" style="margin: 0 5px;" />
+                </a>
+                <a href="https://www.instagram.com/waslaa.de" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-instagram.png" alt="Instagram" style="margin: 0 5px;" />
+                </a>
+                <a href="waslaa.2025@gmail.com" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-gmail.png" alt="Email" style="margin: 0 5px;" />
+                </a>
+                <a href="https://x.com/waslaade" target="_blank" style="text-decoration:none">
+                    <img src="https://api.waslaa.de/images/icons-twitter.png" alt="x" style="margin: 0 5px;" />
+                </a>
             </div>
         </div>
-    </section>
-    <footer class="footer" bgColor="#f7f7f7" style="background-color: #f7f7f7;text-align:center;width:100%;padding:10px;height: auto;">
-        <img src="https://api.waslaa.de/images/logo.png"
-             alt="Logo"
-             class="footer-logo-img" />
-        <p class="small-text footer-description">
-            Waslaa zielt darauf ab, Ihre Marke erfolgreich zu machen, indem Ihre Kunden einfach auf Ihre Marke zugreifen können.
-        </p>
-        <ul class="social-icons" style="list-style: none; margin: 20px 0; ">
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-facebook.png" />
-            </li>
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-instagram.png" />
-            </li>
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-gmail.png" />
-            </li>
-            <li class="icon">
-                <img src="https://api.waslaa.de/images/icons-twitter.png" />
-            </li>
-        </ul>
-    </footer>
+    </div>
 </body>
-
- 
 </html>

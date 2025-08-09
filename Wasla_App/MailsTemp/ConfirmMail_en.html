@@ -1,197 +1,145 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-   
-    <style type="text/css">
-         body {
-             height: 100%;
-             /* min-height: 100vh; */
-             margin: 0;
-             overflow-x: hidden;
-         }
-
-         ul {
-             padding-left: 5px;
-         }
-
-             ul li {
-                 list-style: none;
-                 margin-bottom: 10px;
-             }
-
-         header {
-             /* position: fixed; */
-             height: 70px;
-             width: 100%;
-             top: 0;
-             left: 0;
-             background-color: #f7f7f7;
-             padding: 0 30px;
-             align-items: center;
-             display: flex;
-         }
-
-             header img {
-                 width: auto;
-                 height: 30px;
-             }
-
-         .bg {
-             width: 100%;
-             height: auto;
-             padding: 20px;
-             overflow: hidden;
-             /* margin-top: 80px; */
-             display: block;
-             background-color: white;
-             position: relative;
-         }
-
-             .bg img {
-                 margin: 20px 0;
-             }
-         /* .bg-content {
-          background-color: white;
-          padding: 50px;
-          border-radius: 6px;
-          width: 1000px;
-          min-width: 1000px;
-          height: 400px;
-          margin: 100px auto;
-          position: relative;
-        } */
-
-         h2 {
-             color: #00bc82;
-         }
-
-         h3 {
-             color: #542d72;
-         }
-
-         p {
-             font-size: 15px;
-             color: #666;
-             margin: 20px 0;
-         }
-
-
-         .greenbtn {
-             background-color: #542d72;
-             height: 40px;
-             width: 150px;
-             margin: 30px 0;
-             text-align: center;
-             line-height: 2.5;
-             display: block;
-             color: white;
-             text-decoration: none;
-             border-radius: 6px;
-         }
-
-         .footer {
-             /* position: fixed; */
-             left: 0;
-             bottom: 0;
-             width: 100%;
-             color: #222;
-             height: auto;
-             background-color: #f7f7f7;
-             padding: 10px;
-             text-align: center;
-             overflow: hidden;
-         }
-         .footer img{
-            width: auto;
-            height: 30px;
-            margin: 10px auto;
-        }
-
-             .footer p {
-                 font-size: 16px;
-                 margin: 10px 0;
-             }
-
-         .social-icons {
-             margin: 20px 0;
-         }
-
-             .social-icons li {
-                 display: inline-block;
-                 margin: 0 5px;
-                 color: #542d72;
-                 font-size: 20px;
-             }
-
-         hr {
-             border: 1px solid #eee;
-         }
-    </style>
+    <meta charset="UTF-8">
+    <title>Wasla Confirmation Email</title>
 </head>
+<body style="margin:0;padding:0;font-family:Arial,sans-serif;line-height:1.5;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border: 1px solid #ddd; ">
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <img src="https://api.waslaa.de/images/logo.png" alt="Wasla Logo" style="max-width:150px;">
+                        </td>
+                    </tr>
 
-<body>
-   
-    <header bgColor="#f7f7f7" style="background-color: #f7f7f7; height: 70px;width: 100%;padding: 0 30px;line-height: 70px;display: flex;align-items: center;">
-        <img src="https://api.waslaa.de/images/logo.png" alt="logo" style="margin:auto" />
-    </header>
-    <section class="bg">
-        <div class="bg-content">
-            <h2>Dear @user</h2>
-            <p>
-                **Congratulations!** Your account has been successfully created.
-                As a special welcome gift, enjoy **50% OFF** your first purchase with us!
-            </p>
-            <h3>
-                **Your Exclusive Coupon:**
-            </h3>
-            <ul style="list-style:none;margin-left:5px">
-                <li style="list-style:none">
-                    🔹 Code: @copoun </li>
-                <li style="list-style:none">
-               🔹 Valid until: @EXPIRY_DATE </li>
-            </ul>
-            <hr />
-            <h3>💌 **Share the Love:**  </h3>
-            <p>Scan this QR code to share your discount with friends – they'll get 50% off too! </p>
-            <div><img src="https://api.waslaa.de/images/QRCode.png" alt="wasla_qr" /></div>
-            <div>
-                <p style="color: #222;">
-                    Thank you for joining Waslaa.de !
-                    <br />
-                    <br />
-                    Best regards, <br />  <br />
-                    Waslaa Team
-                </p>
-            </div>
-        </div>
-    </section>
-    <footer class="footer" bgColor="#f7f7f7" style="background-color: #f7f7f7;text-align:center;width:100%;padding:10px;height: auto;">
-        <img src="https://api.waslaa.de/images/logo.png"
-             alt="Logo"
-             class="footer-logo-img" />
-        <p class="small-text footer-description">
-            Waslaa aims to make your brand successful through the access of your
-            customers to your brand with ease.
-        </p>
-        <ul class="social-icons" style="list-style: none; margin: 20px 0; ">
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-facebook.png" />
-            </li>
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-instagram.png" />
-            </li>
-            <li class="icon" style="display:inline-block;margin:0 5px">
-                <img src="https://api.waslaa.de/images/icons-gmail.png" />
-            </li>
-            <li class="icon">
-                <img src="https://api.waslaa.de/images/icons-twitter.png" />
-            </li>
-        </ul>
-    </footer>
+                    <tr>
+                        <td style="border-top:1px solid #ccc;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <img src="https://api.waslaa.de/images/Emails/meeting.png" alt="Team" style="max-width:200px;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px;text-align:center;">
+                            <h2 style="color:#542d72;">Dear @user</h2>
+                            <p style="color:#00bc82;font-weight:bold;">Congratulations!</p>
+                            <p>Your account has been successfully created. As a special gift:</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <p style="color:#542d72;font-weight:bold;">Your Exclusive</p>
+                            <h3 style="color:#00bc82;margin:5px 0;">@copoun</h3>
+                            <p>Valid until: @EXPIRY_DATE</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border-top:1px solid #ccc;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <img src="https://api.waslaa.de/images/Emails/sharing.png" alt="Sharing Hearts" style="max-width:120px;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px;text-align:center;">
+                            <p style="color:#542d72;font-weight:bold;">Share with Love</p>
+                            <p style="color:#00bc82;">Scan this QR code to share your discount with friends – they’ll get 50% off too!</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <img src="https://api.waslaa.de/images/QRCode.png" alt="QR Code" style="max-width:200px;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <h3 style="color:#542d72;">Welcome to Wasla!</h3>
+                            <p style="color:#333;">Whether your goal is to attract more clients, grow your project online, or build a personal brand — we’re here to help you achieve that with creative tools through our platform. We are a family that strives together for success.</p>
+                            <a target="_blank" href="https://waslaa.de/" style="display: inline-block; padding: 10px 30px; background: transparent; color: #542D72; text-decoration: none; border-radius: 50px; margin-top: 10px; border: 1px solid #542D72;font-weight:bold ">Get started</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border-top:1px solid #ccc;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <h3 style=" color: #00BC82; font-weight: bold;">How IT</h3>
+                            <p style="color: #542D72; font-weight: bold;">Get your services in just three steps</p>
+                            <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="center" style="width: 33%; background-color: #f7f7f7; border: 4px solid white; border-radius: 13px;">
+                                        <p style="font-weight:bold;color:#542d72;font-size:13px">Submit your request</p>
+                                        <p style="font-size:12px;color:#333;"> Fill out the form for the service you need and complete the payment process </p>
+                                    </td>
+                                    <td align="center" style="width: 33%; background-color: #f7f7f7; border: 4px solid white; border-radius: 13px; ">
+                                        <p style="font-weight:bold;color:#542d72;font-size:13px">Our designers get to work</p>
+                                        <p style="font-size:12px;color:#333;">Designers will start working immediately and communicate with you to achieve the best results. </p>
+                                    </td>
+                                    <td align="center" style="width: 33%; background-color: #f7f7f7; border: 4px solid white; border-radius: 13px; ">
+                                        <p style="font-weight:bold;color:#542d72;font-size:13px">Receive your design</p>
+                                        <p style="font-size:12px;color:#333;">Receive your complete service, Give us your feedback </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <a target="_blank" href="https://waslaa.de/pricing" style="display: inline-block; padding: 10px 30px; background: transparent; color: #542D72; text-decoration: none; border-radius: 50px; margin-top: 10px; border: 1px solid #542D72;font-weight:bold ">Pick up a plan</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:20px;text-align:center;">
+                            <img src="https://api.waslaa.de/images/logo.png" alt="Wasla Logo" style="max-width:150px;">
+                            <p style="color:#333;font-size:12px;">Join us and be one of Wasla family!</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;text-align:center;">
+                         
+                            <table cellpadding="5" cellspacing="0" border="0" align="center">
+                                <tr>
+                                    <td>
+                                        <a href="https://www.facebook.com/Waslaa.de" target="_blank">
+                                            <img src="https://api.waslaa.de/images/icons-facebook.png" alt="Facebook" width="24" style="display:block;">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="https://www.instagram.com/waslaa.de" target="_blank">
+                                            <img src="https://api.waslaa.de/images/icons-instagram.png" alt="Instagram" width="24" style="display:block;">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="waslaa.2025@gmail.com">
+                                            <img src="https://api.waslaa.de/images/icons-gmail.png" alt="Email" width="24" style="display:block;">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="https://x.com/waslaade" target="_blank">
+                                            <img src="https://api.waslaa.de/images/icons-twitter.png" alt="x" width="24" style="display:block;">
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
-
- 
 </html>

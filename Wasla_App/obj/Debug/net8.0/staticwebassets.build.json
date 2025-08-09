@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "3w6PVwWyrARXokFHfwUYw4tLq+Rk+Ad+Wmq/m3jaT5U=",
-  "Source": "Wasla_App",
-  "BasePath": "_content/Wasla_App",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"3w6PVwWyrARXokFHfwUYw4tLq+Rk+Ad+Wmq/m3jaT5U=","Source":"Wasla_App","BasePath":"_content/Wasla_App","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

@@ -1,21 +1,4 @@
-﻿@using WaslaApp.Data.Models
-@using WaslaApp.Data.Models.PackagesAndServices
-@using WaslaApp.Data.Models.invoices
-@model HtmlInvoice
-@{
-    Layout = null;  // explicitly no layout page here!
-    // string title =  "Order Confirmation - " + config.ApplicationName;
-    var user = Model.user;
-    var contact = Model.contact;
-    var Address = Model.address;
-    var InvoiceNo = Model.InvoiceNo;
-    var Date = Model.IssuedDate;
-    var SubTtotal = Model.SubTtotal;
-    var Discount = Model.Discount;
-    var Total = Model.Total;
-    var services = Model.services;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -73,12 +56,12 @@
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
-                    var service = services[i];
-                    <tr style="border-bottom:1px solid #ccc">
-                        <td style="padding:10px 0;">@i</td>
-                        <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
-                        <td style="padding:10px 0;">@service.package_sale_price</td>
-                    </tr>
+                var service = services[i];
+                <tr style="border-bottom:1px solid #ccc">
+                    <td style="padding:10px 0;">@i</td>
+                    <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
+                    <td style="padding:10px 0;">@service.package_sale_price</td>
+                </tr>
                 }
 
                 <tr>
