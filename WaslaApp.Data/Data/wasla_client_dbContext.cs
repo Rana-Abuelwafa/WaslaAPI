@@ -30,25 +30,15 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<InvoiceMain> InvoiceMains { get; set; }
 
-    public virtual DbSet<MailTemp> MailTemps { get; set; }
-
     public virtual DbSet<Main_RegistrationQuestion> Main_RegistrationQuestions { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
-    public virtual DbSet<PricingPackage> PricingPackages { get; set; }
-
-    public virtual DbSet<PricingPkgCurrency> PricingPkgCurrencies { get; set; }
-
-    public virtual DbSet<PricingPkgFeature> PricingPkgFeatures { get; set; }
-
     public virtual DbSet<RegistrationAnswer> RegistrationAnswers { get; set; }
-
-    public virtual DbSet<RegistrationQuestion> RegistrationQuestions { get; set; }
 
     public virtual DbSet<RegistrationQuestions_Translation> RegistrationQuestions_Translations { get; set; }
 
-    public virtual DbSet<Service> Services { get; set; }
+    public virtual DbSet<audit_log> audit_logs { get; set; }
 
     public virtual DbSet<clientinvoiceswithdetail> clientinvoiceswithdetails { get; set; }
 
@@ -89,9 +79,16 @@ public partial class wasla_client_dbContext : DbContext
             entity.ToTable("ApplyTax");
 
             entity.Property(e => e.tax_id).ValueGeneratedNever();
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.tax_code).HasMaxLength(20);
             entity.Property(e => e.tax_name).HasMaxLength(50);
             entity.Property(e => e.tax_sign).HasColumnType("char");
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<ClientBrand>(entity =>
@@ -103,6 +100,13 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.brand_name).HasMaxLength(100);
             entity.Property(e => e.brand_type).HasMaxLength(20);
             entity.Property(e => e.client_Id).HasColumnType("character varying");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<ClientCopoun>(entity =>
@@ -111,7 +115,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.copoun).HasMaxLength(50);
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<ClientImage>(entity =>
@@ -119,9 +130,16 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("ClientImages_pkey");
 
             entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.img_name).HasMaxLength(50);
             entity.Property(e => e.img_path).HasMaxLength(100);
             entity.Property(e => e.type).HasComment("1 for profile");
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<ClientProfile>(entity =>
@@ -133,6 +151,10 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.client_email).HasMaxLength(50);
             entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.client_name).HasMaxLength(50);
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.fb_link).HasMaxLength(50);
             entity.Property(e => e.gender).HasMaxLength(50);
             entity.Property(e => e.lang).HasMaxLength(20);
@@ -140,6 +162,9 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.pay_code).HasMaxLength(20);
             entity.Property(e => e.phone_number).HasMaxLength(50);
             entity.Property(e => e.twitter_link).HasMaxLength(50);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<ClientService>(entity =>
@@ -149,7 +174,14 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.id).HasDefaultValueSql("nextval('\"ClientServices_id_seq\"'::regclass)");
             entity.Property(e => e.active).HasDefaultValue(false);
             entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.service_package_id).HasDefaultValue(0);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<InvoiceMain>(entity =>
@@ -162,6 +194,10 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.client_id).HasColumnType("character varying");
             entity.Property(e => e.client_name).HasMaxLength(100);
             entity.Property(e => e.copoun_id).HasDefaultValueSql("0");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.curr_code).HasMaxLength(20);
             entity.Property(e => e.grand_total_price).HasDefaultValueSql("0");
             entity.Property(e => e.invoice_code).HasMaxLength(50);
@@ -169,23 +205,23 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.invoice_date).HasColumnType("timestamp without time zone");
             entity.Property(e => e.status).HasComment("1 = pending\n2=checkout\n3=confirmed");
             entity.Property(e => e.tax_id).HasDefaultValue(0);
-        });
-
-        modelBuilder.Entity<MailTemp>(entity =>
-        {
-            entity.HasKey(e => e.id).HasName("MailTemps_pkey");
-
-            entity.Property(e => e.id).ValueGeneratedNever();
-            entity.Property(e => e.lang).HasMaxLength(20);
-            entity.Property(e => e.mail_Subject).HasMaxLength(50);
-            entity.Property(e => e.type).HasComment("1 => for mail Confirmation\n2 => for otp verify");
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<Main_RegistrationQuestion>(entity =>
         {
             entity.HasKey(e => e.ques_id).HasName("Main_RegistrationQuestions_pkey");
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.ques_type).HasMaxLength(20);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<PaymentMethod>(entity =>
@@ -197,76 +233,45 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.pay_name).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<PricingPackage>(entity =>
-        {
-            entity.HasKey(e => e.package_id).HasName("PricingPackages_pkey");
-
-            entity.Property(e => e.package_id).ValueGeneratedNever();
-            entity.Property(e => e.curr_code).HasMaxLength(20);
-            entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
-            entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.is_custom).HasDefaultValue(false);
-            entity.Property(e => e.lang_code).HasMaxLength(20);
-            entity.Property(e => e.package_code).HasMaxLength(20);
-            entity.Property(e => e.package_desc).HasMaxLength(100);
-            entity.Property(e => e.package_name).HasMaxLength(50);
-            entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
-        });
-
-        modelBuilder.Entity<PricingPkgCurrency>(entity =>
-        {
-            entity.HasKey(e => e.id).HasName("PricingPkgCurrency_pkey");
-
-            entity.ToTable("PricingPkgCurrency");
-
-            entity.Property(e => e.id).ValueGeneratedNever();
-            entity.Property(e => e.curr_code).HasMaxLength(20);
-            entity.Property(e => e.discount_type).HasComment("1 = percentage\n2 = amount");
-            entity.Property(e => e.end_date).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.start_date).HasColumnType("timestamp without time zone");
-        });
-
-        modelBuilder.Entity<PricingPkgFeature>(entity =>
-        {
-            entity.HasKey(e => e.id).HasName("PricingPkgServices_pkey");
-
-            entity.Property(e => e.lang_code).HasMaxLength(20);
-        });
-
         modelBuilder.Entity<RegistrationAnswer>(entity =>
         {
             entity.HasKey(e => e.id).HasName("RegistrationAnswers_pkey");
 
             entity.Property(e => e.client_id).HasColumnType("character varying");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.lang_code).HasMaxLength(20);
-        });
-
-        modelBuilder.Entity<RegistrationQuestion>(entity =>
-        {
-            entity.HasKey(e => e.ques_id).HasName("RegistrationQuestions_pkey");
-
-            entity.Property(e => e.lang_code).HasMaxLength(20);
-            entity.Property(e => e.order).HasDefaultValue(0);
-            entity.Property(e => e.ques_type).HasMaxLength(50);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<RegistrationQuestions_Translation>(entity =>
         {
             entity.HasKey(e => e.id).HasName("RegistrationQuestions_Translations_pkey");
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.lang_code).HasMaxLength(20);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
-        modelBuilder.Entity<Service>(entity =>
+        modelBuilder.Entity<audit_log>(entity =>
         {
-            entity.HasKey(e => e.productId).HasName("Product_pkey");
+            entity.HasKey(e => e.id).HasName("audit_log_pkey");
 
-            entity.Property(e => e.productId).ValueGeneratedNever();
-            entity.Property(e => e.active).HasDefaultValue(true);
-            entity.Property(e => e.lang_code).HasMaxLength(20);
-            entity.Property(e => e.leaf).HasDefaultValue(true);
-            entity.Property(e => e.price).HasDefaultValueSql("0");
-            entity.Property(e => e.service_code).HasMaxLength(20);
+            entity.ToTable("audit_log");
+
+            entity.Property(e => e.changed_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.changed_by).HasDefaultValueSql("CURRENT_USER");
         });
 
         modelBuilder.Entity<clientinvoiceswithdetail>(entity =>
@@ -294,7 +299,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.ToTable("features_translation");
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.lang_code).HasMaxLength(5);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<featureswithtranslation>(entity =>
@@ -312,7 +324,14 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("packages_features_pkey");
 
             entity.Property(e => e.id).HasDefaultValueSql("nextval('packages_features_id_seq'::regclass)");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.feature_code).HasMaxLength(20);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<main_service>(entity =>
@@ -320,6 +339,14 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("main_services_pkey");
 
             entity.HasIndex(e => new { e.service_code, e.active }, "main_services_service_code_key").IsUnique();
+
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<package>(entity =>
@@ -328,7 +355,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.HasIndex(e => new { e.package_code, e.active }, "packages_package_code_key").IsUnique();
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.order).HasDefaultValue((short)0);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<package_translation>(entity =>
@@ -339,7 +373,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.HasIndex(e => new { e.package_id, e.lang_code }, "package_translations_package_id_lang_code_key").IsUnique();
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.lang_code).HasMaxLength(5);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.package).WithMany(p => p.package_translations)
                 .HasForeignKey(d => d.package_id)
@@ -351,6 +392,13 @@ public partial class wasla_client_dbContext : DbContext
             entity.HasKey(e => e.id).HasName("packages_features_pkey1");
 
             entity.Property(e => e.id).HasDefaultValueSql("nextval('packages_features_id_seq1'::regclass)");
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
         });
 
         modelBuilder.Entity<packagesdetailswithservice>(entity =>
@@ -382,7 +430,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.HasIndex(e => new { e.service_id, e.package_id }, "service_packages_service_id_package_id_key").IsUnique();
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.is_recommend).HasDefaultValue(false);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.package).WithMany(p => p.service_packages)
                 .HasForeignKey(d => d.package_id)
@@ -401,10 +456,17 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.HasIndex(e => new { e.service_package_id, e.curr_code }, "service_package_prices_service_package_id_curr_code_key").IsUnique();
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.curr_code).HasMaxLength(3);
             entity.Property(e => e.discount_amount).HasPrecision(10, 2);
             entity.Property(e => e.package_price).HasPrecision(10, 2);
             entity.Property(e => e.package_sale_price).HasPrecision(10, 2);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.service_package).WithMany(p => p.service_package_prices)
                 .HasForeignKey(d => d.service_package_id)
@@ -419,7 +481,14 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.HasIndex(e => new { e.service_id, e.lang_code }, "service_translations_service_id_lang_code_key").IsUnique();
 
+            entity.Property(e => e.created_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.created_by).HasMaxLength(100);
             entity.Property(e => e.lang_code).HasMaxLength(5);
+            entity.Property(e => e.updated_at)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.service).WithMany(p => p.service_translations)
                 .HasForeignKey(d => d.service_id)

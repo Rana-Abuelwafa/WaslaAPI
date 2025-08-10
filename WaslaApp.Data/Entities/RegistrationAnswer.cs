@@ -14,4 +14,10 @@ public partial class RegistrationAnswer
     public string? answer { get; set; }
 
     public string? lang_code { get; set; }
+
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
 }

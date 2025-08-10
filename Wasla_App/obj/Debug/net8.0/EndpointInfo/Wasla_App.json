@@ -896,6 +896,53 @@
         }
       }
     },
+    "/api/WaslaAdmin/GetAudit_Logs": {
+      "post": {
+        "tags": [
+          "WaslaAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogReq"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaBrowse/GetPricingPackageWithService": {
       "post": {
         "tags": [
@@ -1858,6 +1905,20 @@
   },
   "components": {
     "schemas": {
+      "AuditLogReq": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ChangeInvoiceStatusReq": {
         "type": "object",
         "properties": {
@@ -1920,6 +1981,20 @@
             "nullable": true
           },
           "brand_desc": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
             "type": "string",
             "nullable": true
           }
@@ -2011,6 +2086,20 @@
             "type": "string",
             "nullable": true
           },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
+            "type": "string",
+            "nullable": true
+          },
           "client_birthdayStr": {
             "type": "string",
             "nullable": true
@@ -2041,7 +2130,8 @@
           },
           "invoice_id": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "active": {
             "type": "boolean",
@@ -2050,6 +2140,20 @@
           "service_package_id": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
+            "type": "string",
             "nullable": true
           },
           "isSelected": {
@@ -2092,6 +2196,20 @@
             "nullable": true
           },
           "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
             "type": "string",
             "nullable": true
           },
@@ -2316,6 +2434,20 @@
             "type": "boolean",
             "nullable": true
           },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
+            "type": "string",
+            "nullable": true
+          },
           "delete": {
             "type": "boolean",
             "nullable": true
@@ -2344,6 +2476,20 @@
             "nullable": true
           },
           "ques_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
             "type": "string",
             "nullable": true
           }
@@ -2546,6 +2692,20 @@
           "lang_code": {
             "type": "string",
             "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2567,6 +2727,20 @@
             "nullable": true
           },
           "lang_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_by": {
             "type": "string",
             "nullable": true
           },

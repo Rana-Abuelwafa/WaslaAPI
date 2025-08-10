@@ -14,4 +14,10 @@ public partial class ClientBrand
     public string? brand_type { get; set; }
 
     public string? brand_desc { get; set; }
+
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
 }

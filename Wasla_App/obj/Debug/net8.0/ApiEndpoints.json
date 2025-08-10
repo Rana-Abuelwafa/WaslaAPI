@@ -91,6 +91,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
+    "Method": "GetAudit_Logs",
+    "RelativePath": "api/WaslaAdmin/GetAudit_Logs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.Setting.AuditLogReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "getFeaturesWithTranslations",
     "RelativePath": "api/WaslaAdmin/getFeaturesWithTranslations",
     "HttpMethod": "POST",

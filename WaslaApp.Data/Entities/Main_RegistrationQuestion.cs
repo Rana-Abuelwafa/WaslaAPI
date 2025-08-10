@@ -14,4 +14,10 @@ public partial class Main_RegistrationQuestion
     public bool? active { get; set; }
 
     public string? ques_type { get; set; }
+
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
 }

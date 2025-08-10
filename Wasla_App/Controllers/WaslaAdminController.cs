@@ -9,10 +9,11 @@ using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
+using WaslaApp.Data.Models.Setting;
 
 namespace Wasla_App.Controllers
 {
-    [Authorize(Roles = "Admin,accountant")]
+   [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class WaslaAdminController : Controller
@@ -147,6 +148,13 @@ namespace Wasla_App.Controllers
         }
         #endregion
 
-       
+        #region "Logs"
+        [HttpPost("GetAudit_Logs")]
+        public async Task<IActionResult> GetAudit_Logs(AuditLogReq req)
+        {
+            return Ok(await _adminWaslaService.GetAudit_Logs(req));
+        }
+        #endregion
+
     }
 }

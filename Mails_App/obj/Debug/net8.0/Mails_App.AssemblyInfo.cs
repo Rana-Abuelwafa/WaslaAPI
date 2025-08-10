@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mails_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20f08b4765cc06b6bda0c9b75503ff12d74b5459")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9fed1388109184a08efa282948d8ca0f441d037")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mails_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mails_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

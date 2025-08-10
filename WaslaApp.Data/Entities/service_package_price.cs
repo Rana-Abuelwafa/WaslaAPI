@@ -19,5 +19,11 @@ public partial class service_package_price
 
     public int? discount_type { get; set; }
 
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
+
     public virtual service_package service_package { get; set; } = null!;
 }

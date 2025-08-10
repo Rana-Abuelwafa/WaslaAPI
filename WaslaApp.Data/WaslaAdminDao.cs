@@ -16,6 +16,7 @@ using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.Setting;
 
 namespace WaslaApp.Data
 {
@@ -1056,6 +1057,43 @@ namespace WaslaApp.Data
             catch (Exception ex)
             {
                 return new ResponseCls { success = false, errors = _localizer["CheckAdmin"] };
+            }
+        }
+        #endregion
+
+
+        #region "Logs"
+        //get log tabble data which contain all tables transactions (insert, update, delete)
+        public async Task<AuditLogResponse> GetAudit_Logs(AuditLogReq req)
+        
+        {
+            try
+            {
+                int count = await _db.audit_logs.CountAsync();
+                var data = await _db.audit_logs.Select(s => new AuditLogCls
+                {
+                    changed_at=s.changed_at,
+                    changed_atStr = s.changed_at.ToString(),
+                    changed_by=s.changed_by,
+                    id=s.id,
+                    operation =s.operation,
+                    record_pk=s.record_pk,
+                    schema_name=s.schema_name,
+                    table_name=s.table_name
+                }).Skip((req.pageNumber - 1) * req.pageSize)
+                                             .Take(req.pageSize)
+                                            .ToListAsync();
+
+                return new AuditLogResponse
+                {
+                    totalPages = count,
+                    result = data,
+
+                };
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
         #endregion

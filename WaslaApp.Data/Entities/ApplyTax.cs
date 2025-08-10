@@ -14,4 +14,10 @@ public partial class ApplyTax
     public decimal? tax_amount { get; set; }
 
     public char? tax_sign { get; set; }
+
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
 }

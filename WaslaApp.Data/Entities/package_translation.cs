@@ -17,5 +17,11 @@ public partial class package_translation
 
     public string? package_details { get; set; }
 
+    public DateTime? created_at { get; set; }
+
+    public DateTime? updated_at { get; set; }
+
+    public string? created_by { get; set; }
+
     public virtual package package { get; set; } = null!;
 }

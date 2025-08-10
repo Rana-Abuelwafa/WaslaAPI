@@ -5,6 +5,7 @@ using WaslaApp.Data.Models.admin.Questions;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
+using WaslaApp.Data.Models.Setting;
 
 namespace Wasla_App.services.Admin
 {
@@ -42,5 +43,8 @@ namespace Wasla_App.services.Admin
         public ResponseCls ChangeInvoiceStatus(ChangeInvoiceStatusReq req);
         #endregion
 
+        #region "Logs"
+        public Task<AuditLogResponse> GetAudit_Logs(AuditLogReq req);
+        #endregion
     }
 }
