@@ -32,6 +32,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "GetReportData",
+    "RelativePath": "api/Accounting/GetReportData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.reports.ReportReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "GetReports_Mains",
+    "RelativePath": "api/Accounting/GetReports",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "GetSummaryInvoice",
+    "RelativePath": "api/Accounting/GetSummaryInvoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.reports.ReportReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "PrintSummaryInvoice",
+    "RelativePath": "api/Accounting/PrintSummaryInvoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.reports.SummaryInvoiceReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.AccountingController",
+    "Method": "PrintSummaryService",
+    "RelativePath": "api/Accounting/PrintSummaryService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "WaslaApp.Data.Models.admin.reports.SummaryServiceReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Wasla_App.Controllers.WaslaAdminController",
     "Method": "AssignFeaturesToPackage",
     "RelativePath": "api/WaslaAdmin/AssignFeaturesToPackage",

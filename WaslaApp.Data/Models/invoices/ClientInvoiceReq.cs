@@ -10,7 +10,7 @@ namespace WaslaApp.Data.Models.invoices
     {
         /// 1 = pending
         /// 2=checkout
-        /// 3=confirmed
+        /// 3=payed
         public int? status { get; set; }
         public bool? active { get; set; }
         public string? lang_code { get; set; }

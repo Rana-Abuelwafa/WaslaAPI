@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
+using QuestPDF.Infrastructure;
 using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
@@ -22,7 +23,8 @@ var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)
   .Enrich.FromLogContext()
   .CreateLogger();
-
+// Configure QuestPDF license
+QuestPDF.Settings.License = LicenseType.Community;
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 // Add services to the container.

@@ -30,7 +30,7 @@ public partial class InvoiceMain
     /// <summary>
     /// 1 = pending
     /// 2=checkout
-    /// 3=confirmed
+    /// 3=payed
     /// </summary>
     public short? status { get; set; }
 

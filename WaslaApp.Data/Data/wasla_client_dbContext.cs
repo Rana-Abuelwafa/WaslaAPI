@@ -60,6 +60,8 @@ public partial class wasla_client_dbContext : DbContext
 
     public virtual DbSet<registrationqueswithlang> registrationqueswithlangs { get; set; }
 
+    public virtual DbSet<reports_main> reports_mains { get; set; }
+
     public virtual DbSet<service_package> service_packages { get; set; }
 
     public virtual DbSet<service_package_price> service_package_prices { get; set; }
@@ -203,7 +205,7 @@ public partial class wasla_client_dbContext : DbContext
             entity.Property(e => e.invoice_code).HasMaxLength(50);
             entity.Property(e => e.invoice_code_auto).HasMaxLength(20);
             entity.Property(e => e.invoice_date).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.status).HasComment("1 = pending\n2=checkout\n3=confirmed");
+            entity.Property(e => e.status).HasComment("1 = pending\n2=checkout\n3=payed");
             entity.Property(e => e.tax_id).HasDefaultValue(0);
             entity.Property(e => e.updated_at)
                 .HasDefaultValueSql("now()")
@@ -422,6 +424,17 @@ public partial class wasla_client_dbContext : DbContext
 
             entity.Property(e => e.lang_code).HasMaxLength(20);
             entity.Property(e => e.ques_type).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<reports_main>(entity =>
+        {
+            entity.HasKey(e => e.id).HasName("reports_main_pkey");
+
+            entity.ToTable("reports_main");
+
+            entity.Property(e => e.id).ValueGeneratedNever();
+            entity.Property(e => e.report_code).HasMaxLength(20);
+            entity.Property(e => e.report_name).HasMaxLength(100);
         });
 
         modelBuilder.Entity<service_package>(entity =>

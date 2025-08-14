@@ -99,6 +99,217 @@
         }
       }
     },
+    "/api/Accounting/GetReports": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Accounting/GetSummaryInvoice": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Accounting/GetReportData": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Accounting/PrintSummaryInvoice": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryInvoiceReq"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryInvoiceReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryInvoiceReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryInvoiceReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Accounting/PrintSummaryService": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryServiceReq"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryServiceReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryServiceReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryServiceReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaAdmin/saveMainQuestions": {
       "post": {
         "tags": [
@@ -2751,6 +2962,25 @@
         },
         "additionalProperties": false
       },
+      "ReportReq": {
+        "type": "object",
+        "properties": {
+          "date_from": {
+            "type": "string",
+            "nullable": true
+          },
+          "date_to": {
+            "type": "string",
+            "nullable": true
+          },
+          "report_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "SearchCls": {
         "type": "object",
         "properties": {
@@ -2815,6 +3045,261 @@
           },
           "delete": {
             "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryInvoiceReq": {
+        "type": "object",
+        "properties": {
+          "date_from": {
+            "type": "string",
+            "nullable": true
+          },
+          "date_to": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SummaryInvoiceResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryInvoiceResponse": {
+        "type": "object",
+        "properties": {
+          "NetValTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalVat": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalDiscount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "currency_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/clientinvoiceswithdetail"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryServiceReq": {
+        "type": "object",
+        "properties": {
+          "date_from": {
+            "type": "string",
+            "nullable": true
+          },
+          "date_to": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SummaryServiceResponseCurr"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryServiceResponseCurr": {
+        "type": "object",
+        "properties": {
+          "currency_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SummaryServiceResponseGrp"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryServiceResponseGrp": {
+        "type": "object",
+        "properties": {
+          "NetValTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalVat": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "GrandTotalDiscount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "currency_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "service_name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "clientinvoiceswithdetail": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "client_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "invoice_id": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "service_package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "client_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "client_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "copoun_id": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "curr_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "discount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "grand_total_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "invoice_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice_code_auto": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tax_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "total_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "tax_amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "tax_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "tax_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "tax_sign": {
+            "type": "string",
+            "nullable": true
+          },
+          "copoun": {
+            "type": "string",
+            "nullable": true
+          },
+          "copoun_discount_type": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "copoun_discount_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "client_service_id": {
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },

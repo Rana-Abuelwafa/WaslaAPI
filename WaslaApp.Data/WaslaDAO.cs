@@ -265,67 +265,8 @@ namespace WaslaApp.Data
         {
             try
             {
-                //var fullEntries = await _db.ClientServices.Where(wr => wr.client_id == client_id && wr.active == req.active)
-                //                .Join(
-                //                        _db.InvoiceMains.Where(wr => wr.active == req.active && wr.status == req.status),
-                //                        SERV => new { SERV.invoice_id, SERV.client_id },
-                //                        INV => new { INV.invoice_id, INV.client_id },
-                //                        (SERV, INV) => new { SERV, INV }
-                //                     )
-                //                .Join(
-                //                     _db.ApplyTaxes,
-                //                     SERV_INV => SERV_INV.INV.tax_id,
-                //                     TAX => TAX.tax_id,
-                //                     (SERV_INV, TAX) => new { SERV_INV, TAX }
-                //                    )
-                //                .Join(
-                //                     _db.ClientCopouns,
-                //                     SERV_INV_TAX => SERV_INV_TAX.SERV_INV.INV.copoun_id,
-                //                     COPOUN => COPOUN.id,
-                //                     (SERV_INV_TAX, COPOUN) => new { SERV_INV_TAX, COPOUN }
-                //                    )        
-                //                     .Join(
-                //                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
-                //                    combinedEntry => new { combinedEntry.SERV_INV_TAX.SERV_INV.SERV.package_id,
-                //                                          service_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.productId,
-                //                                          combinedEntry.SERV_INV_TAX.SERV_INV.INV.curr_code
-                //                    },
-                //                    PKG => new { PKG.package_id, PKG.service_id , PKG.curr_code },
-                //                    (combinedEntry, PKG) =>  new ClientInvoiceResponse
-                //                    {
-                //                        invoice_id = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_id,
-                //                        curr_code = combinedEntry.SERV_INV_TAX.SERV_INV.INV.curr_code,
-                //                        discount = combinedEntry.SERV_INV_TAX.SERV_INV.INV.discount,
-                //                        total_price = combinedEntry.SERV_INV_TAX.SERV_INV.INV.total_price,
-                //                        grand_total_price = combinedEntry.SERV_INV_TAX.SERV_INV.INV.grand_total_price,
-                //                        service_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.productId,
-                //                        package_id = combinedEntry.SERV_INV_TAX.SERV_INV.SERV.package_id,
-                //                        service_name = PKG.service_name,
-                //                        package_name = PKG.package_name,
-                //                        package_price = PKG.package_price,
-                //                        package_sale_price = PKG.package_sale_price,
-                //                        package_desc = PKG.package_desc,
-                //                        package_details = PKG.package_details,
-                //                        invoice_code = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_code,
-                //                        invoice_code_auto = combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_code_auto,
-                //                        status = combinedEntry.SERV_INV_TAX.SERV_INV.INV.status,
-                //                        tax_amount = combinedEntry.SERV_INV_TAX.TAX.tax_amount,
-                //                        tax_code = combinedEntry.SERV_INV_TAX.TAX.tax_code,
-                //                        tax_id = combinedEntry.SERV_INV_TAX.TAX.tax_id,
-                //                        service_package_id = PKG.service_package_id,
-                //                        client_name = combinedEntry.SERV_INV_TAX.SERV_INV.INV.client_name,
-                //                        client_email = combinedEntry.SERV_INV_TAX.SERV_INV.INV.client_email,
-                //                        invoice_date = DateTime.Parse(combinedEntry.SERV_INV_TAX.SERV_INV.INV.invoice_date.ToString()).ToString("yyyy-MM-dd"),
-                //                        copoun_id= combinedEntry.SERV_INV_TAX.SERV_INV.INV.copoun_id,
-                //                        copoun = combinedEntry.COPOUN.copoun,
-                //                        copoun_discount= combinedEntry.COPOUN.discount_value,
-                //                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
-                //                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
-                //                    }
-                //                   ).ToListAsync();
-
-                var fullEntries = await _db.clientinvoiceswithdetails.Where(wr => wr.client_id == client_id && wr.active == req.active && wr.status == req.status)
+                var fullEntries = await _db.clientinvoiceswithdetails.Where(wr => wr.client_id == client_id && wr.active == req.active && (wr.status == (req.status == -1 ? 2 : req.status) || wr.status == (req.status == -1 ? 3 : req.status)))
                                     .Join(
                                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
                                    INV => new {
@@ -873,7 +814,8 @@ namespace WaslaApp.Data
                 int count = 0;
                 decimal maxId = 0;
                 decimal servicemaxId = 0;
-                //concatenate each package code together + date now to make unique and readable code
+                //concatenate each service code together + concatenate each package code together + date now to make unique and readable code
+                //invoice code ex => WACO-BICO-20250810 => firstwo letter Service Code, second two letter Package Code + date
                 string invCode = string.Join("-", newList.Select(e => String.IsNullOrEmpty(e.package_code) ? "00" : (String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
                 //first save in InvoiceMain (make invoice)

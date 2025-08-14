@@ -13,10 +13,13 @@ using WaslaApp.Data.Entities;
 using WaslaApp.Data.Models.admin.Accounting;
 using WaslaApp.Data.Models.admin.Packages_Services;
 using WaslaApp.Data.Models.admin.Questions;
+using WaslaApp.Data.Models.admin.reports;
 using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.Setting;
+using static QuestPDF.Helpers.Colors;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WaslaApp.Data
 {
@@ -41,7 +44,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-               
+
                 if (row.ques_id == 0)
                 {
                     //check duplicate order (in add new row)
@@ -55,7 +58,7 @@ namespace WaslaApp.Data
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
-                   
+
                     if (_db.Main_RegistrationQuestions.Count() > 0)
                     {
                         maxId = _db.Main_RegistrationQuestions.Max(d => d.ques_id);
@@ -98,10 +101,10 @@ namespace WaslaApp.Data
             {
                 RegistrationQuestions_Translation ques = new RegistrationQuestions_Translation
                 {
-                     id = row.id,
-                    lang_code =row.lang_code,
-                    ques_id=row.ques_id,
-                    ques_title= row.ques_title
+                    id = row.id,
+                    lang_code = row.lang_code,
+                    ques_id = row.ques_id,
+                    ques_title = row.ques_title
                 };
                 if (row.delete == true)
                 {
@@ -115,7 +118,7 @@ namespace WaslaApp.Data
                     var result = _db.RegistrationQuestions_Translations.Where(wr => wr.ques_title == row.ques_title && wr.lang_code == row.lang_code && wr.ques_id == row.ques_id).SingleOrDefault();
                     if (result != null)
                     {
-                        
+
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
                     }
 
@@ -172,7 +175,7 @@ namespace WaslaApp.Data
                 //                                     }
                 //                                    )
                 //                              .ToListAsync();
-                var result  = await _db.registrationqueswithlangs.ToListAsync();
+                var result = await _db.registrationqueswithlangs.ToListAsync();
                 return result.GroupBy(grp => new
                 {
                     grp.ques_id,
@@ -181,10 +184,10 @@ namespace WaslaApp.Data
                     grp.active
                 }).Select(s => new QuestionsWithTranslationGrp
                 {
-                   ques_id=s.Key.ques_id,
-                   active= s.Key.active,
-                   order= s.Key.order,
-                   ques_title_default= s.Key.ques_title_default,
+                    ques_id = s.Key.ques_id,
+                    active = s.Key.active,
+                    order = s.Key.order,
+                    ques_title_default = s.Key.ques_title_default,
                     questions = result.Where(wr => wr.ques_id == s.Key.ques_id).ToList()
                 }).ToList();
             }
@@ -204,7 +207,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                main_service service = new main_service { id= row.id,active=row.active,default_name=row.default_name,service_code=row.service_code };
+                main_service service = new main_service { id = row.id, active = row.active, default_name = row.default_name, service_code = row.service_code };
                 if (service.id == 0)
                 {
                     //check duplicate validation
@@ -251,7 +254,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                
+
                 service_translation service = new service_translation { service_id = row.service_id, id = row.id, product_desc = row.product_desc, productname = row.productname, lang_code = row.lang_code };
                 if (row.delete == true)
                 {
@@ -314,7 +317,7 @@ namespace WaslaApp.Data
                                                   .Include(i => i.service_translations)
                                                    .ToListAsync();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -341,7 +344,7 @@ namespace WaslaApp.Data
                     .Include(i => i.package_translations)
                                          .ToListAsync();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -371,17 +374,17 @@ namespace WaslaApp.Data
             {
                 package pkg = new package
                 {
-                    order=row.order,
-                    id=row.id,
-                    active=row.active,
-                    default_name=row.default_name,
-                    is_custom=row.is_custom,
-                    is_recommend=row.is_recommend,
-                    package_code=row.package_code
-                    
+                    order = row.order,
+                    id = row.id,
+                    active = row.active,
+                    default_name = row.default_name,
+                    is_custom = row.is_custom,
+                    is_recommend = row.is_recommend,
+                    package_code = row.package_code
+
                 };
 
-               
+
                 if (row.id == 0)
                 {
                     //check duplicate order (in add new row )
@@ -435,17 +438,17 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                package_translation package = new package_translation { lang_code=row.lang_code,id=row.id,package_desc=row.package_desc,package_details=row.package_details,package_id=row.package_id,package_name=row.package_name};
+                package_translation package = new package_translation { lang_code = row.lang_code, id = row.id, package_desc = row.package_desc, package_details = row.package_details, package_id = row.package_id, package_name = row.package_name };
                 if (row.delete == true)
                 {
                     _db.Remove(package);
                     _db.SaveChanges();
-                   return new ResponseCls { errors = null, success = true };
+                    return new ResponseCls { errors = null, success = true };
                 }
                 if (row.id == 0)
                 {
                     //check duplicate validation
-                    var result = _db.package_translations.Where(wr =>  wr.package_id == row.package_id && wr.package_name == row.package_name && wr.lang_code == row.lang_code).SingleOrDefault();
+                    var result = _db.package_translations.Where(wr => wr.package_id == row.package_id && wr.package_name == row.package_name && wr.lang_code == row.lang_code).SingleOrDefault();
                     if (result != null)
                     {
                         return new ResponseCls { success = false, errors = _localizer["DuplicateData"] };
@@ -482,7 +485,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                service_package service_Package= new service_package { id = row.id ,package_id=row.package_id,service_id=row.service_id,is_recommend=row.is_recommend};
+                service_package service_Package = new service_package { id = row.id, package_id = row.package_id, service_id = row.service_id, is_recommend = row.is_recommend };
                 if (row.id == 0)
                 {
                     //check duplicate validation
@@ -528,20 +531,20 @@ namespace WaslaApp.Data
             {
                 service_package_price price = new service_package_price
                 {
-                    id=row.id,
-                    curr_code=row.curr_code,
-                    discount_amount=row.discount_amount,
-                    discount_type= row.discount_type,
-                    package_price= row.package_price,
-                    package_sale_price= row.package_sale_price,
-                    service_package_id=row.service_package_id
+                    id = row.id,
+                    curr_code = row.curr_code,
+                    discount_amount = row.discount_amount,
+                    discount_type = row.discount_type,
+                    package_price = row.package_price,
+                    package_sale_price = row.package_sale_price,
+                    service_package_id = row.service_package_id
                 };
-             
+
                 if (row.delete)
                 {
                     _db.Remove(price);
                     _db.SaveChanges();
-                  return  new ResponseCls { errors = null, success = true };
+                    return new ResponseCls { errors = null, success = true };
                 }
                 if (row.id == 0)
                 {
@@ -583,32 +586,32 @@ namespace WaslaApp.Data
         {
             try
             {
-               var result = _db.service_packages.Join(
-                                        _db.packages.Where(wr => wr.active == true),
-                                        SP => new { SP.package_id, },
-                                        PKG => new { package_id = PKG.id },
-                                        (SP, PKG) => new { SP, PKG }
-                                     )
-                                    .Join(
-                                       _db.main_services.Where(wr=> wr.active == true),
-                                        SP_PKG => new { SP_PKG.SP.service_id, },
-                                        SERV => new { service_id = SERV.id },
-                                        (combinedEntry, SERV) => new ServicePkgsWithDetails
-                                        {
-                                            service_id = combinedEntry.SP.service_id,
-                                            package_id= combinedEntry.SP.package_id,
-                                            service_package_id= combinedEntry.SP.id,
-                                            service_code= SERV.service_code,
-                                            package_code= combinedEntry.PKG.package_code,
-                                            is_custom= combinedEntry.PKG.is_custom,
-                                            is_recommend= combinedEntry.SP.is_recommend,
-                                            package_default_name= combinedEntry.PKG.default_name,
-                                            service_default_name= SERV.default_name,
-                                            order= combinedEntry.PKG.order
-                                        }
-                                    ).ToList();
+                var result = _db.service_packages.Join(
+                                         _db.packages.Where(wr => wr.active == true),
+                                         SP => new { SP.package_id, },
+                                         PKG => new { package_id = PKG.id },
+                                         (SP, PKG) => new { SP, PKG }
+                                      )
+                                     .Join(
+                                        _db.main_services.Where(wr => wr.active == true),
+                                         SP_PKG => new { SP_PKG.SP.service_id, },
+                                         SERV => new { service_id = SERV.id },
+                                         (combinedEntry, SERV) => new ServicePkgsWithDetails
+                                         {
+                                             service_id = combinedEntry.SP.service_id,
+                                             package_id = combinedEntry.SP.package_id,
+                                             service_package_id = combinedEntry.SP.id,
+                                             service_code = SERV.service_code,
+                                             package_code = combinedEntry.PKG.package_code,
+                                             is_custom = combinedEntry.PKG.is_custom,
+                                             is_recommend = combinedEntry.SP.is_recommend,
+                                             package_default_name = combinedEntry.PKG.default_name,
+                                             service_default_name = SERV.default_name,
+                                             order = combinedEntry.PKG.order
+                                         }
+                                     ).ToList();
 
-                return  result.GroupBy(grp => new
+                return result.GroupBy(grp => new
                 {
                     grp.service_default_name,
                     grp.service_code,
@@ -632,10 +635,10 @@ namespace WaslaApp.Data
         {
             try
             {
-               
-                    return await _db.main_features.Where(wr => wr.active == true).ToListAsync();
-               
-         
+
+                return await _db.main_features.Where(wr => wr.active == true).ToListAsync();
+
+
             }
             catch (Exception ex)
             {
@@ -674,13 +677,13 @@ namespace WaslaApp.Data
                     grp.feature_default_name
                 }).Select(s => new FeaturesWithTranslationGrp
                 {
-                   feature_default_name=s.Key.feature_default_name,
-                   feature_code=s.Key.feature_code,
-                   feature_id=s.Key.feature_id,
-                   features_Translations = result.Where(wr => wr.feature_id == s.Key.feature_id && wr.id != null).ToList()
+                    feature_default_name = s.Key.feature_default_name,
+                    feature_code = s.Key.feature_code,
+                    feature_id = s.Key.feature_id,
+                    features_Translations = result.Where(wr => wr.feature_id == s.Key.feature_id && wr.id != null).ToList()
                 }).ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -728,14 +731,14 @@ namespace WaslaApp.Data
                 return await _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
                                                          PKGF => new { PKGF.feature_id },
-                                                         FEAT => new { feature_id = FEAT.id},
+                                                         FEAT => new { feature_id = FEAT.id },
                                                          (PKGF, FEAT) => new PackagesFeatureRes
                                                          {
-                                                             feature_id= PKGF.feature_id,
+                                                             feature_id = PKGF.feature_id,
                                                              service_package_id = PKGF.service_package_id,
-                                                             id= PKGF.id,
-                                                             feature_code= FEAT.feature_code,
-                                                             feature_default_name= FEAT.feature_default_name
+                                                             id = PKGF.id,
+                                                             feature_code = FEAT.feature_code,
+                                                             feature_default_name = FEAT.feature_default_name
 
                                                          })
                                                   .ToListAsync();
@@ -755,14 +758,14 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-                packages_feature feat = new packages_feature { feature_id=row.feature_id,id=row.id, service_package_id = row.service_package_id };
+                packages_feature feat = new packages_feature { feature_id = row.feature_id, id = row.id, service_package_id = row.service_package_id };
                 if (row.delete)
                 {
                     _db.Remove(feat);
                     _db.SaveChanges();
                     return new ResponseCls { errors = null, success = true };
                 }
-                
+
                 if (row.id == 0)
                 {
                     //check duplicate validation
@@ -850,7 +853,7 @@ namespace WaslaApp.Data
             int maxId = 0;
             try
             {
-               
+
                 if (row.delete == true)
                 {
                     _db.Remove(row);
@@ -906,15 +909,16 @@ namespace WaslaApp.Data
                 DateTime dateFrom = DateTime.ParseExact(req.date_from, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 DateTime dateTo = DateTime.ParseExact(req.date_to, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 var fullEntries = await _db.clientinvoiceswithdetails
-                                  .Where(wr => wr.client_email == (String.IsNullOrEmpty(req.client_email) ? wr.client_email : req.client_email) && 
-                                               wr.active == req.active && 
-                                               wr.status == (req.status == 0 ? wr.status : req.status)  &&
+                                  .Where(wr => wr.client_email == (System.String.IsNullOrEmpty(req.client_email) ? wr.client_email : req.client_email) &&
+                                               wr.active == req.active &&
+                                               wr.status == (req.status == 0 ? wr.status : req.status) &&
                                                (wr.invoice_date >= dateFrom && wr.invoice_date <= dateTo) &&
-                                               wr.invoice_code == (String.IsNullOrEmpty(req.invoice_code) ? wr.invoice_code : req.invoice_code)
+                                               wr.invoice_code == (System.String.IsNullOrEmpty(req.invoice_code) ? wr.invoice_code : req.invoice_code)
                                          )
                                     .Join(
                                    _db.packagesdetailswithservices.Where(wr => wr.lang_code == req.lang_code),
-                                   INV => new {
+                                   INV => new
+                                   {
                                        INV.package_id,
                                        service_id = INV.productId,
                                        INV.curr_code,
@@ -949,7 +953,7 @@ namespace WaslaApp.Data
                                        copoun_id = combinedEntry.copoun_id,
                                        copoun = combinedEntry.copoun,
                                        copoun_discount = combinedEntry.copoun_discount_value,
-                                       client_id= combinedEntry.client_id
+                                       client_id = combinedEntry.client_id
                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
@@ -994,7 +998,7 @@ namespace WaslaApp.Data
                     copoun_id = s.Key.copoun_id,
                     copoun = s.Key.copoun,
                     copoun_discount = s.Key.copoun_discount,
-                    client_id=s.Key.client_id,
+                    client_id = s.Key.client_id,
                     pkgs = (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
                                       .Select(s => new ClientInvoiceResponse
                                       {
@@ -1031,12 +1035,12 @@ namespace WaslaApp.Data
 
         //status =2 checkout
         // status =1 pending 
-        // status =1 confirmed
+        // status =1 payed
         public ResponseCls ChangeInvoiceStatus(ChangeInvoiceStatusReq req)
         {
             try
             {
-                
+
                 InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == req.client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
                 if (inv != null)
                 {
@@ -1065,21 +1069,21 @@ namespace WaslaApp.Data
         #region "Logs"
         //get log tabble data which contain all tables transactions (insert, update, delete)
         public async Task<AuditLogResponse> GetAudit_Logs(AuditLogReq req)
-        
+
         {
             try
             {
                 int count = await _db.audit_logs.CountAsync();
                 var data = await _db.audit_logs.Select(s => new AuditLogCls
                 {
-                    changed_at=s.changed_at,
+                    changed_at = s.changed_at,
                     changed_atStr = s.changed_at.ToString(),
-                    changed_by=s.changed_by,
-                    id=s.id,
-                    operation =s.operation,
-                    record_pk=s.record_pk,
-                    schema_name=s.schema_name,
-                    table_name=s.table_name
+                    changed_by = s.changed_by,
+                    id = s.id,
+                    operation = s.operation,
+                    record_pk = s.record_pk,
+                    schema_name = s.schema_name,
+                    table_name = s.table_name
                 }).Skip((req.pageNumber - 1) * req.pageSize)
                                              .Take(req.pageSize)
                                             .ToListAsync();
@@ -1097,5 +1101,139 @@ namespace WaslaApp.Data
             }
         }
         #endregion
+
+        #region "reports"
+        //get reports DropDown
+
+        public async Task<List<reports_main>> GetReports_Mains()
+        {
+            try
+            {
+                return await _db.reports_mains.ToListAsync();
+
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        //get invoice sum for specific dates
+        public async Task<List<SummaryInvoiceResponse>> GetSummaryInvoice(ReportReq req)
+        {
+            try
+            {
+                CultureInfo culture = new CultureInfo("en-GB"); // For dd/MM/yyyy
+                                                                //DateTime dateFrom = DateTime.Parse(req.date_from, culture);
+                                                                //DateTime dateTo = DateTime.Parse(req.date_to, culture);
+                DateTime dateFrom = DateTime.ParseExact(req.date_from, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dateTo = DateTime.ParseExact(req.date_to, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+
+                var fullEntries = await _db.clientinvoiceswithdetails
+                                      .Where(wr => wr.active == true &&
+                                                   (wr.status == 2 || wr.status == 3) &&
+                                                   (wr.invoice_date >= dateFrom && wr.invoice_date <= dateTo)
+
+                                             ).ToListAsync();
+
+                var result = fullEntries.GroupBy(grp => new
+                { 
+                    grp.curr_code
+                
+                }).Select(s => new SummaryInvoiceResponse
+                {
+                    currency_code = s.Key.curr_code,
+                    GrandTotalVat= fullEntries.Where(wr => wr.curr_code == s.Key.curr_code).Sum(s => s.total_price *  s.tax_amount),
+                    NetValTotal = fullEntries.Where(wr => wr.curr_code == s.Key.curr_code).Sum(s => s.total_price),
+                    GrandTotalAmount= fullEntries.Where(wr => wr.curr_code == s.Key.curr_code).Sum(s => s.grand_total_price),
+                    GrandTotalDiscount = fullEntries.Where(wr => wr.curr_code == s.Key.curr_code).Sum(s => s.copoun_discount_value),
+                    invoices= fullEntries.Where(wr => wr.curr_code == s.Key.curr_code).ToList()
+                }).ToList();
+                return result;
+                }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+       
+        public async Task<List<SummaryServiceResponseCurr>> GetSummaryServiceReport(ReportReq req)
+        {
+            try
+            {
+                CultureInfo culture = new CultureInfo("en-GB"); // For dd/MM/yyyy
+                                                                //DateTime dateFrom = DateTime.Parse(req.date_from, culture);
+                                                                //DateTime dateTo = DateTime.Parse(req.date_to, culture);
+                DateTime dateFrom = DateTime.ParseExact(req.date_from, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dateTo = DateTime.ParseExact(req.date_to, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                var fullEntries =  await _db.clientinvoiceswithdetails
+                                  .Where(wr => wr.active == true &&
+                                                   (wr.status == 2 || wr.status == 3) &&
+                                                   (wr.invoice_date >= dateFrom && wr.invoice_date <= dateTo)
+                                                   )
+                                   .Join(
+                                  _db.packagesdetailswithservices.Where(wr => wr.lang_code.ToLower() == "en"),
+                                  INV => new
+                                  {
+                                      INV.package_id,
+                                      service_id = INV.productId,
+                                      INV.curr_code,
+                                      INV.service_package_id
+                                  },
+                                  PKG => new { PKG.package_id, PKG.service_id, PKG.curr_code, PKG.service_package_id },
+                                  (combinedEntry, PKG) => new SummaryServiceResponse
+                                  {
+                                      
+                                      curr_code = combinedEntry.curr_code,
+                                      discount = combinedEntry.discount,
+                                      total_price = combinedEntry.total_price,
+                                      grand_total_price = combinedEntry.grand_total_price,
+                                      service_id = combinedEntry.productId,
+                                      service_name = PKG.service_name,
+                                      invoice_code = combinedEntry.invoice_code,
+                                      status = combinedEntry.status,
+                                      tax_amount = combinedEntry.total_price * combinedEntry.tax_amount,
+                                      service_package_id = PKG.service_package_id,
+                                      client_name = combinedEntry.client_name,
+                                      client_email = combinedEntry.client_email,
+                                      invoice_date = DateTime.Parse(combinedEntry.invoice_date.ToString()).ToString("yyyy-MM-dd"),
+                                      copoun_discount = combinedEntry.copoun_discount_value,
+
+                                  }
+                                 ).ToListAsync();
+
+                var result = fullEntries.GroupBy(grp => new
+                {
+                    grp.service_name,
+                    grp.service_id,
+                    grp.curr_code
+
+                }).Select(s => new SummaryServiceResponseGrp
+                {
+                    currency_code=s.Key.curr_code,
+                    service_name = s.Key.service_name,
+                    GrandTotalVat = fullEntries.Where(wr => wr.service_id == s.Key.service_id && wr.curr_code == s.Key.curr_code).Sum(s => s.tax_amount),
+                    NetValTotal = fullEntries.Where(wr => wr.service_id == s.Key.service_id && wr.curr_code == s.Key.curr_code).Sum(s => s.total_price),
+                    GrandTotalAmount = fullEntries.Where(wr => wr.service_id == s.Key.service_id && wr.curr_code == s.Key.curr_code).Sum(s => s.grand_total_price),
+                    GrandTotalDiscount = fullEntries.Where(wr => wr.service_id == s.Key.service_id && wr.curr_code == s.Key.curr_code).Sum(s => s.copoun_discount),
+                }).ToList();
+
+                return result.GroupBy(grp => new
+                {
+                    grp.currency_code
+
+                }).Select(s => new SummaryServiceResponseCurr
+                {
+                    currency_code = s.Key.currency_code,
+                    result = result.Where(wr => wr.currency_code == s.Key.currency_code).ToList()
+                }).ToList();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        
+        #endregion
+
     }
 }
