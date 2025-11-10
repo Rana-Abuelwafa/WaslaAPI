@@ -73,9 +73,10 @@
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
+                    var no = @i + 1;
                     var service = services[i];
                     <tr style="border-bottom:1px solid #ccc">
-                        <td style="padding:10px 0;">@i</td>
+                        <td style="padding:10px 0;">@no</td>
                         <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
                         <td style="padding:10px 0;">@service.package_sale_price</td>
                     </tr>

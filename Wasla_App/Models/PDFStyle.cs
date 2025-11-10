@@ -12,6 +12,12 @@ namespace Wasla_App.Models
                 .BorderColor(Colors.Grey.Lighten2)
                 .Padding(5);
         }
+        public static IContainer MiniCellStyle(IContainer container)
+        {
+            return container.Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Padding(5);
+        }
         public static IContainer HeaderCell(IContainer container, string bgColor)
         {
             return container.Background(bgColor)

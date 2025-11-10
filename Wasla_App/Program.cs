@@ -51,6 +51,17 @@ builder.Services.AddCors(options =>
                     .WithHeaders(HeaderNames.ContentType, "*");
         });
 });
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(MyAllowSpecificOrigins, policy =>
+//    {
+//        policy
+//            .WithOrigins("https://localhost:3000", "https://localhost:3001", "https://waslaa.de/") // React dev server
+//            .AllowAnyHeader()
+//            .AllowAnyMethod()
+//            .AllowCredentials(); // allow cookies
+//    });
+//});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();

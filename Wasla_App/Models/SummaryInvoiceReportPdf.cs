@@ -132,8 +132,26 @@ namespace Wasla_App.Models
 
                             foreach (var group in invoices)
                             {
-                                decimal? subtotalTotal = group.invoices?.Sum(g => g.grand_total_price);
-                                mainCol.Item().PaddingVertical(5).Text($"{group.currency_code}: {subtotalTotal:N2}").Bold().FontColor(brandGreen);
+                                // Table for currency
+                                mainCol.Item().AlignLeft().Shrink().Table(table =>
+                                {
+                                    table.ColumnsDefinition(c =>
+                                    {
+                                        c.ConstantColumn(70);  // currency ~ fits "USD", "EUR", etc.
+                                        c.ConstantColumn(110);  // value
+
+
+                                    });
+                                    decimal? subtotalTotal = group.invoices?.Sum(g => g.grand_total_price);
+                                    table.Cell().Element(PDFStyle.MiniCellStyle).AlignCenter().Text(group.currency_code).Bold();
+                                    table.Cell().Element(PDFStyle.MiniCellStyle).AlignCenter().Text(subtotalTotal?.ToString("N2"));
+
+
+                                });
+
+                                   
+                                //decimal? subtotalTotal = group.invoices?.Sum(g => g.grand_total_price);
+                                //mainCol.Item().PaddingVertical(5).Text($"{group.currency_code}: {subtotalTotal:N2}").Bold().FontColor(brandGreen);
                             }
                         });
 

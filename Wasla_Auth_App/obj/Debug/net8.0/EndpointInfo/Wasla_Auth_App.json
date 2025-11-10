@@ -5,29 +5,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Authentication/GetRoles": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Authentication/CreateRole": {
       "post": {
         "tags": [
@@ -154,6 +131,48 @@
         }
       }
     },
+    "/api/Authentication/changePassword": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordCls"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordCls"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordCls"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Authentication/ExternalRegister": {
       "post": {
         "tags": [
@@ -216,118 +235,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AppsRegisterModel"
+                "$ref": "#/components/schemas/AppsLoginModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AppsRegisterModel"
+                "$ref": "#/components/schemas/AppsLoginModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AppsRegisterModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Authentication/SendMail": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MailData"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MailData"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/MailData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Authentication/changePassword": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Language for the response (e.g., en, ar, de)",
-            "schema": {
-              "type": "string",
-              "default": "en"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PasswordCls"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PasswordCls"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PasswordCls"
+                "$ref": "#/components/schemas/AppsLoginModel"
               }
             }
           }
@@ -370,6 +288,48 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/OTPConfirmCls"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Authentication/refresh": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
               }
             }
           }
@@ -1012,6 +972,24 @@
         },
         "additionalProperties": false
       },
+      "AppsLoginModel": {
+        "required": [
+          "email",
+          "lang"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "lang": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AppsRegisterModel": {
         "required": [
           "email",
@@ -1034,6 +1012,10 @@
             "type": "string"
           },
           "lang": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
             "type": "string",
             "nullable": true
           }
@@ -1168,28 +1150,6 @@
             "nullable": true
           },
           "twoFactorRecoveryCode": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "MailData": {
-        "type": "object",
-        "properties": {
-          "emailToId": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailToName": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailSubject": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailBody": {
             "type": "string",
             "nullable": true
           }
@@ -1369,6 +1329,24 @@
         "type": "object",
         "properties": {
           "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenModel": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
             "type": "string",
             "nullable": true
           }

@@ -10,5 +10,7 @@ namespace Wasla_Auth_App.Models
         public string? GoogleId { get; set; }
         public string? FaceBookId { get; set; }
         public int completeprofile { get; set; }
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
     }
 }

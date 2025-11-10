@@ -39,7 +39,7 @@
             <table style="width:100%;">
                 <tr>
                     <td>
-                        <p style="margin-bottom: 5px; color: #333; ">قاتورة ل</p>
+                        <p style="margin-bottom: 5px; color: #333; ">فاتورة ل</p>
                         <strong>@user</strong>
                     </td>
                     <td style="text-align: right;">
@@ -68,15 +68,16 @@
             <hr style="margin: 30px 0;" />
             <table style="width:100%; margin: 20px auto;border-collapse:collapse;text-align: left;">
                 <tr style="border-bottom:1px solid #ccc">
-                    <th style="padding: 5px;">تسلسل.</th>
+                    <th style="padding: 5px;">تسلسل</th>
                     <th style="padding: 5px;">وصف المنتج</th>
                     <th style="padding: 5px;">السعر</th>
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
+                    var no = @i + 1;
                     var service = services[i];
                     <tr style="border-bottom:1px solid #ccc">
-                        <td style="padding:10px 0;">@i</td>
+                        <td style="padding:10px 0;">@no </td>
                         <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
                         <td style="padding:10px 0;">@service.package_sale_price</td>
                     </tr>
@@ -101,13 +102,13 @@
         </div>
         <div>
             <hr style="margin: 30px 0;" />
-            <h3 style="color: #00b894;">
+            <h3 style="color: #00b894;text-align:right" ">
                 الشروط والاحكام :
             </h3>
-            <p style="color: #4b0082; font-weight: bold; letter-spacing: .5px; font-size: 12px;">
-                This amount includes up to two (2) revisions to the final design.
-                If the client does not respond within 5 days, the project will be temporarily put on hold.
-                Design rights will be transferred to the client upon full payment.
+            <p style="color: #4b0082; font-weight: bold; letter-spacing: .5px; font-size: 12px;text-align:right">
+                يشمل هذا المبلغ ما يصل إلى تعديلين (2) على التصميم النهائي.
+                إذا لم يرد العميل خلال 5 أيام، فسيتم تعليق المشروع مؤقتًا.
+                ستُنقل حقوق التصميم إلى العميل بعد استلام الدفعة كاملة.
             </p>
         </div>
         <hr style="margin: 30px 0;" />

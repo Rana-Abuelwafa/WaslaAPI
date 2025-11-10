@@ -1,0 +1,358 @@
+[2025-11-07 17:37:05.528 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - null null
+[2025-11-07 17:37:05.690 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:37:05.694 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 204 null null 168.2007ms
+[2025-11-07 17:37:05.764 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - application/json 13
+[2025-11-07 17:37:05.766 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:37:08.309 +02:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6‏‏/11‏‏/2025 12:18:02 م', Current time (UTC): '7‏‏/11‏‏/2025 3:37:08 م'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-11-07 17:37:08.345 +02:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6‏‏/11‏‏/2025 12:18:02 م', Current time (UTC): '7‏‏/11‏‏/2025 3:37:08 م'.
+[2025-11-07 17:37:08.417 +02:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-11-07 17:37:08.425 +02:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-11-07 17:37:08.426 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 401 0 null 2662.3313ms
+[2025-11-07 17:37:48.013 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - null null
+[2025-11-07 17:37:48.016 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:37:48.025 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 204 null null 11.4495ms
+[2025-11-07 17:37:48.045 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - application/json 13
+[2025-11-07 17:37:48.049 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:37:48.108 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:37:48.176 +02:00  INF]  Route matched with {action = "getQuesWithAnswers", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getQuesWithAnswers(WaslaApp.Data.Models.profile.QuesLstReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 17:37:55.921 +02:00  INF]  Executed DbCommand (149ms) [Parameters=[@__clientId_1='?', @__lang_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.ques_id, r.lang_code, r1.client_id, r1.answer, r."order", r.ques_title
+FROM registrationqueswithlangs AS r
+LEFT JOIN (
+    SELECT r0.answer, r0.client_id, r0.ques_id
+    FROM "RegistrationAnswers" AS r0
+    WHERE r0.client_id = @__clientId_1
+) AS r1 ON r.ques_id = r1.ques_id
+WHERE r.lang_code = @__lang_0
+[2025-11-07 17:37:55.979 +02:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.QuesWithAnswers, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-11-07 17:37:56.070 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App) in 7883.4092ms
+[2025-11-07 17:37:56.070 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:37:56.123 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 200 1207 application/json; charset=utf-8 8078.2936ms
+[2025-11-07 17:39:58.664 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - null null
+[2025-11-07 17:39:58.665 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:39:58.666 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 204 null null 2.0365ms
+[2025-11-07 17:39:58.674 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - application/json 13
+[2025-11-07 17:39:58.674 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:39:58.681 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:39:58.682 +02:00  INF]  Route matched with {action = "getQuesWithAnswers", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getQuesWithAnswers(WaslaApp.Data.Models.profile.QuesLstReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 17:39:58.768 +02:00  INF]  Executed DbCommand (3ms) [Parameters=[@__clientId_1='?', @__lang_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.ques_id, r.lang_code, r1.client_id, r1.answer, r."order", r.ques_title
+FROM registrationqueswithlangs AS r
+LEFT JOIN (
+    SELECT r0.answer, r0.client_id, r0.ques_id
+    FROM "RegistrationAnswers" AS r0
+    WHERE r0.client_id = @__clientId_1
+) AS r1 ON r.ques_id = r1.ques_id
+WHERE r.lang_code = @__lang_0
+[2025-11-07 17:39:58.771 +02:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.QuesWithAnswers, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-11-07 17:39:58.773 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App) in 90.8692ms
+[2025-11-07 17:39:58.773 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:39:58.773 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 200 1207 application/json; charset=utf-8 99.7872ms
+[2025-11-07 17:40:19.579 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - null null
+[2025-11-07 17:40:19.580 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:40:19.580 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 204 null null 0.924ms
+[2025-11-07 17:40:19.582 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - application/json 475
+[2025-11-07 17:40:19.582 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:40:19.584 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 17:40:19.589 +02:00  INF]  Route matched with {action = "saveRegistrationSteps", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult saveRegistrationSteps(System.Collections.Generic.List`1[WaslaApp.Data.Entities.RegistrationAnswer]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 17:40:19.912 +02:00  INF]  Executed DbCommand (2ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.131 +02:00  INF]  Executed DbCommand (2ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.138 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.141 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.143 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.147 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.149 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:40:20.389 +02:00  INF]  Executed DbCommand (40ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?', @p8='?', @p9='?' (DbType = Int32), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Int32), @p15='?', @p16='?', @p17='?', @p18='?', @p19='?' (DbType = Int32), @p20='?', @p21='?', @p22='?', @p23='?', @p24='?' (DbType = Int32), @p25='?', @p26='?', @p27='?', @p28='?', @p29='?' (DbType = Int32), @p30='?', @p31='?', @p32='?', @p33='?', @p34='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p5, @p6, @p7, @p8, @p9)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p10, @p11, @p12, @p13, @p14)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p15, @p16, @p17, @p18, @p19)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p20, @p21, @p22, @p23, @p24)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p25, @p26, @p27, @p28, @p29)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p30, @p31, @p32, @p33, @p34)
+RETURNING id, created_at, updated_at;
+[2025-11-07 17:40:20.533 +02:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientCopouns" AS c
+[2025-11-07 17:40:20.555 +02:00  INF]  Executed DbCommand (5ms) [Parameters=[@__copoun_client_id_0='?', @__copoun_start_date_1='?' (DbType = Date), @__copoun_end_date_2='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.copoun, c.created_at, c.created_by, c.discount_type, c.discount_value, c.end_date, c.start_date, c.updated_at
+FROM "ClientCopouns" AS c
+WHERE c.client_id = @__copoun_client_id_0 AND c.start_date = @__copoun_start_date_1 AND c.end_date = @__copoun_end_date_2
+LIMIT 2
+[2025-11-07 17:40:20.588 +02:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientCopouns" AS c
+[2025-11-07 17:40:20.718 +02:00  INF]  Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Date), @p7='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientCopouns" (id, client_id, copoun, created_by, discount_type, discount_value, end_date, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING created_at, updated_at;
+[2025-11-07 17:40:23.707 +02:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.profile.RegsistrationQuesResponse'.
+[2025-11-07 17:40:23.719 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App) in 4129.5705ms
+[2025-11-07 17:40:23.720 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 17:40:23.720 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 200 317 application/json; charset=utf-8 4138.1936ms
+[2025-11-07 17:55:00.124 +02:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-11-07 17:55:00.707 +02:00  INF]  Now listening on: https://localhost:7283
+[2025-11-07 17:55:00.708 +02:00  INF]  Now listening on: http://localhost:5074
+[2025-11-07 17:55:00.930 +02:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-11-07 17:55:00.931 +02:00  INF]  Hosting environment: Development
+[2025-11-07 17:55:00.931 +02:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-11-07 17:55:02.009 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-11-07 17:55:02.539 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 540.9538ms
+[2025-11-07 17:55:02.614 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-11-07 17:55:02.675 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-11-07 17:55:02.698 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 22.2945ms
+[2025-11-07 17:55:02.755 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 141.1644ms
+[2025-11-07 17:55:03.365 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-11-07 17:55:03.439 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 74.86ms
+[2025-11-07 17:57:17.731 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - null null
+[2025-11-07 17:57:17.753 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:57:17.757 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 204 null null 26.3411ms
+[2025-11-07 17:57:17.763 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - application/json 13
+[2025-11-07 17:57:17.766 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:57:18.287 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:57:18.353 +02:00  INF]  Route matched with {action = "getQuesWithAnswers", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getQuesWithAnswers(WaslaApp.Data.Models.profile.QuesLstReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 17:57:22.382 +02:00  INF]  Executed DbCommand (148ms) [Parameters=[@__clientId_1='?', @__lang_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.ques_id, r.lang_code, r1.client_id, r1.answer, r."order", r.ques_title
+FROM registrationqueswithlangs AS r
+LEFT JOIN (
+    SELECT r0.answer, r0.client_id, r0.ques_id
+    FROM "RegistrationAnswers" AS r0
+    WHERE r0.client_id = @__clientId_1
+) AS r1 ON r.ques_id = r1.ques_id
+WHERE r.lang_code = @__lang_0
+[2025-11-07 17:57:22.449 +02:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.QuesWithAnswers, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-11-07 17:57:22.565 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App) in 4201.023ms
+[2025-11-07 17:57:22.565 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 17:57:22.600 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 200 1207 application/json; charset=utf-8 4836.5799ms
+[2025-11-07 17:57:39.256 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - null null
+[2025-11-07 17:57:39.258 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:57:39.258 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 204 null null 1.965ms
+[2025-11-07 17:57:39.261 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - application/json 477
+[2025-11-07 17:57:39.261 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 17:57:39.281 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 17:57:39.290 +02:00  INF]  Route matched with {action = "saveRegistrationSteps", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult saveRegistrationSteps(System.Collections.Generic.List`1[WaslaApp.Data.Entities.RegistrationAnswer]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 17:57:39.552 +02:00  INF]  Executed DbCommand (4ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.733 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.736 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.738 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.740 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.741 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.743 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 17:57:39.942 +02:00  INF]  Executed DbCommand (28ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?', @p8='?', @p9='?' (DbType = Int32), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Int32), @p15='?', @p16='?', @p17='?', @p18='?', @p19='?' (DbType = Int32), @p20='?', @p21='?', @p22='?', @p23='?', @p24='?' (DbType = Int32), @p25='?', @p26='?', @p27='?', @p28='?', @p29='?' (DbType = Int32), @p30='?', @p31='?', @p32='?', @p33='?', @p34='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p5, @p6, @p7, @p8, @p9)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p10, @p11, @p12, @p13, @p14)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p15, @p16, @p17, @p18, @p19)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p20, @p21, @p22, @p23, @p24)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p25, @p26, @p27, @p28, @p29)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p30, @p31, @p32, @p33, @p34)
+RETURNING id, created_at, updated_at;
+[2025-11-07 17:57:40.084 +02:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientCopouns" AS c
+[2025-11-07 17:57:40.105 +02:00  INF]  Executed DbCommand (4ms) [Parameters=[@__copoun_client_id_0='?', @__copoun_start_date_1='?' (DbType = Date), @__copoun_end_date_2='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.copoun, c.created_at, c.created_by, c.discount_type, c.discount_value, c.end_date, c.start_date, c.updated_at
+FROM "ClientCopouns" AS c
+WHERE c.client_id = @__copoun_client_id_0 AND c.start_date = @__copoun_start_date_1 AND c.end_date = @__copoun_end_date_2
+LIMIT 2
+[2025-11-07 17:57:40.132 +02:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientCopouns" AS c
+[2025-11-07 17:57:40.277 +02:00  INF]  Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Date), @p7='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientCopouns" (id, client_id, copoun, created_by, discount_type, discount_value, end_date, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING created_at, updated_at;
+[2025-11-07 17:57:42.862 +02:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.profile.RegsistrationQuesResponse'.
+[2025-11-07 17:57:42.868 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App) in 3578.2347ms
+[2025-11-07 17:57:42.868 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 17:57:42.869 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 200 317 application/json; charset=utf-8 3608.7393ms
+[2025-11-07 18:01:29.200 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - null null
+[2025-11-07 18:01:29.202 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 18:01:29.212 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 204 null null 15.5968ms
+[2025-11-07 18:01:29.218 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - application/json 13
+[2025-11-07 18:01:29.218 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 18:01:29.235 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 18:01:29.235 +02:00  INF]  Route matched with {action = "getQuesWithAnswers", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult getQuesWithAnswers(WaslaApp.Data.Models.profile.QuesLstReq) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 18:01:29.418 +02:00  INF]  Executed DbCommand (2ms) [Parameters=[@__clientId_1='?', @__lang_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.ques_id, r.lang_code, r1.client_id, r1.answer, r."order", r.ques_title
+FROM registrationqueswithlangs AS r
+LEFT JOIN (
+    SELECT r0.answer, r0.client_id, r0.ques_id
+    FROM "RegistrationAnswers" AS r0
+    WHERE r0.client_id = @__clientId_1
+) AS r1 ON r.ques_id = r1.ques_id
+WHERE r.lang_code = @__lang_0
+[2025-11-07 18:01:29.418 +02:00  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WaslaApp.Data.Models.profile.QuesWithAnswers, WaslaApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-11-07 18:01:29.419 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App) in 184.2166ms
+[2025-11-07 18:01:29.420 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.getQuesWithAnswers (Wasla_App)'
+[2025-11-07 18:01:29.420 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/getQuesWithAnswers - 200 1207 application/json; charset=utf-8 202.6035ms
+[2025-11-07 18:01:39.433 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - null null
+[2025-11-07 18:01:39.434 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 18:01:39.434 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 204 null null 0.4952ms
+[2025-11-07 18:01:39.437 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - application/json 476
+[2025-11-07 18:01:39.437 +02:00  INF]  CORS policy execution successful.
+[2025-11-07 18:01:39.438 +02:00  INF]  Executing endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 18:01:39.438 +02:00  INF]  Route matched with {action = "saveRegistrationSteps", controller = "WaslaClient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult saveRegistrationSteps(System.Collections.Generic.List`1[WaslaApp.Data.Entities.RegistrationAnswer]) on controller Wasla_App.Controllers.WaslaClientController (Wasla_App).
+[2025-11-07 18:01:39.443 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.444 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.445 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.446 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.448 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.450 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.451 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__answer_client_id_0='?', @__answer_ques_id_1='?' (DbType = Int32), @__answer_lang_code_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r.id, r.answer, r.client_id, r.created_at, r.created_by, r.lang_code, r.ques_id, r.updated_at
+FROM "RegistrationAnswers" AS r
+WHERE r.client_id = @__answer_client_id_0 AND r.ques_id = @__answer_ques_id_1 AND r.lang_code = @__answer_lang_code_2
+LIMIT 2
+[2025-11-07 18:01:39.457 +02:00  INF]  Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int32), @p5='?', @p6='?', @p7='?', @p8='?', @p9='?' (DbType = Int32), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Int32), @p15='?', @p16='?', @p17='?', @p18='?', @p19='?' (DbType = Int32), @p20='?', @p21='?', @p22='?', @p23='?', @p24='?' (DbType = Int32), @p25='?', @p26='?', @p27='?', @p28='?', @p29='?' (DbType = Int32), @p30='?', @p31='?', @p32='?', @p33='?', @p34='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p5, @p6, @p7, @p8, @p9)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p10, @p11, @p12, @p13, @p14)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p15, @p16, @p17, @p18, @p19)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p20, @p21, @p22, @p23, @p24)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p25, @p26, @p27, @p28, @p29)
+RETURNING id, created_at, updated_at;
+INSERT INTO "RegistrationAnswers" (answer, client_id, created_by, lang_code, ques_id)
+VALUES (@p30, @p31, @p32, @p33, @p34)
+RETURNING id, created_at, updated_at;
+[2025-11-07 18:01:39.461 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "ClientCopouns" AS c
+[2025-11-07 18:01:39.463 +02:00  INF]  Executed DbCommand (1ms) [Parameters=[@__copoun_client_id_0='?', @__copoun_start_date_1='?' (DbType = Date), @__copoun_end_date_2='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+SELECT c.id, c.client_id, c.copoun, c.created_at, c.created_by, c.discount_type, c.discount_value, c.end_date, c.start_date, c.updated_at
+FROM "ClientCopouns" AS c
+WHERE c.client_id = @__copoun_client_id_0 AND c.start_date = @__copoun_start_date_1 AND c.end_date = @__copoun_end_date_2
+LIMIT 2
+[2025-11-07 18:01:39.464 +02:00  INF]  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT max(c.id)
+FROM "ClientCopouns" AS c
+[2025-11-07 18:01:39.468 +02:00  INF]  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Decimal), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Int16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Date), @p7='?' (DbType = Date)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ClientCopouns" (id, client_id, copoun, created_by, discount_type, discount_value, end_date, start_date)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING created_at, updated_at;
+[2025-11-07 18:01:41.488 +02:00  INF]  Executing OkObjectResult, writing value of type 'WaslaApp.Data.Models.profile.RegsistrationQuesResponse'.
+[2025-11-07 18:01:41.489 +02:00  INF]  Executed action Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App) in 2051.0169ms
+[2025-11-07 18:01:41.489 +02:00  INF]  Executed endpoint 'Wasla_App.Controllers.WaslaClientController.saveRegistrationSteps (Wasla_App)'
+[2025-11-07 18:01:41.490 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/saveRegistrationSteps - 200 317 application/json; charset=utf-8 2053.1285ms

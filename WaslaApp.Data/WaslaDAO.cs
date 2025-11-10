@@ -1,4 +1,5 @@
-﻿using Mails_App;
+﻿
+using Mails_App;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Org.BouncyCastle.Ocsp;

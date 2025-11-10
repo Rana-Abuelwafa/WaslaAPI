@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
-    "Method": "changePassword",
+    "Method": "ChangePassword",
     "RelativePath": "api/Authentication/changePassword",
     "HttpMethod": "POST",
     "IsController": true,
@@ -33,7 +33,7 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
-    "Method": "confirmOTP",
+    "Method": "ConfirmOTP",
     "RelativePath": "api/Authentication/ConfirmOTP",
     "HttpMethod": "POST",
     "IsController": true,
@@ -113,16 +113,6 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
-    "Method": "GetRoles",
-    "RelativePath": "api/Authentication/GetRoles",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "GetUsers",
     "RelativePath": "api/Authentication/GetUsers",
     "HttpMethod": "POST",
@@ -151,7 +141,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Wasla_Auth_App.Models.AppsRegisterModel",
+        "Type": "Wasla_Auth_App.Models.AppsLoginModel",
         "IsRequired": true
       }
     ],
@@ -175,6 +165,22 @@
   },
   {
     "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
+    "Method": "Refresh",
+    "RelativePath": "api/Authentication/refresh",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Wasla_Auth_App.Models.TokenModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
     "Method": "Register",
     "RelativePath": "api/Authentication/RegisterUser",
     "HttpMethod": "POST",
@@ -188,32 +194,6 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Wasla_Auth_App.Controllers.AuthenticationController",
-    "Method": "SendMail",
-    "RelativePath": "api/Authentication/SendMail",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Mail_Data",
-        "Type": "Mails_App.MailData",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[Wasla_Auth_App.Models.ApplicationUser, Wasla_Auth_App, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

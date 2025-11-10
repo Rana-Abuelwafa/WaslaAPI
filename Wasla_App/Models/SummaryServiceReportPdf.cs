@@ -98,12 +98,28 @@ namespace Wasla_App.Models
                             // Grand Total for all currencies
                             mainCol.Item().PaddingVertical(10).Text("Grand Totals by Currency")
                                 .FontSize(14).Bold().FontColor(brandPurple);
-
                             foreach (var group in invoices)
                             {
-                                decimal? subtotalTotal = group.result?.Sum(g => g.GrandTotalAmount);
-                                mainCol.Item().PaddingVertical(5).Text($"{group.currency_code}: {subtotalTotal:N2}").Bold().FontColor(brandGreen);
+                                // Table for currency
+                                mainCol.Item().AlignLeft().Shrink().Table(table =>
+                                {
+                                    table.ColumnsDefinition(c =>
+                                    {
+                                        c.ConstantColumn(70);  // currency ~ fits "USD", "EUR", etc.
+                                        c.ConstantColumn(110); // value
+
+
+                                    });
+                                    decimal? subtotalTotal = group.result?.Sum(g => g.GrandTotalAmount);
+                                    table.Cell().Element(PDFStyle.MiniCellStyle).AlignLeft().Text(group.currency_code).Bold();
+                                    table.Cell().Element(PDFStyle.MiniCellStyle).AlignLeft().Text(subtotalTotal?.ToString("N2"));
+                                });
                             }
+                            //foreach (var group in invoices)
+                            //{
+                            //    decimal? subtotalTotal = group.result?.Sum(g => g.GrandTotalAmount);
+                            //    mainCol.Item().PaddingVertical(5).Text($"{group.currency_code}: {subtotalTotal:N2}").Bold().FontColor(brandGreen);
+                            //}
                         });
 
                         // FOOTER

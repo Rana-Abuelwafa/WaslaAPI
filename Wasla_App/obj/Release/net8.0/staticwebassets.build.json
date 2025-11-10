@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "3w6PVwWyrARXokFHfwUYw4tLq+Rk+Ad+Wmq/m3jaT5U=",
-  "Source": "Wasla_App",
-  "BasePath": "_content/Wasla_App",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"pszRoNu072+xJ7qHg/o/RLPXdfofDEGspAlvIl2Hgwo=","Source":"Wasla_App","BasePath":"_content/Wasla_App","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[{"Name":"Wasla_App\\wwwroot","Source":"Wasla_App","ContentRoot":"D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\wwwroot\\","BasePath":"_content/Wasla_App","Pattern":"**"}],"Assets":[{"Identity":"D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\wwwroot\\logo.png","SourceId":"Wasla_App","SourceType":"Discovered","ContentRoot":"D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\wwwroot\\","BasePath":"_content/Wasla_App","RelativePath":"logo#[.{fingerprint}]?.png","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"792pgry9i1","Integrity":"q5PxniCuzIYG7E3qX1KtPJcZ2gyOOzKP53/reN2iSgc=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\logo.png","FileLength":394285,"LastWriteTime":"2025-02-14T09:13:06+00:00"}],"Endpoints":[{"Route":"logo.792pgry9i1.png","AssetFile":"D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\wwwroot\\logo.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"394285"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"q5PxniCuzIYG7E3qX1KtPJcZ2gyOOzKP53/reN2iSgc=\""},{"Name":"Last-Modified","Value":"Fri, 14 Feb 2025 09:13:06 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"792pgry9i1"},{"Name":"label","Value":"logo.png"},{"Name":"integrity","Value":"sha256-q5PxniCuzIYG7E3qX1KtPJcZ2gyOOzKP53/reN2iSgc="}]},{"Route":"logo.png","AssetFile":"D:\\waslaa\\api\\WaslaAPI\\Wasla_App\\wwwroot\\logo.png","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"394285"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\"q5PxniCuzIYG7E3qX1KtPJcZ2gyOOzKP53/reN2iSgc=\""},{"Name":"Last-Modified","Value":"Fri, 14 Feb 2025 09:13:06 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-q5PxniCuzIYG7E3qX1KtPJcZ2gyOOzKP53/reN2iSgc="}]}]}

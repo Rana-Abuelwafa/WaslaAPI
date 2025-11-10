@@ -8,9 +8,10 @@ namespace Wasla_Auth_App.Models
 {
     public class ResponseCls 
     {
-        public bool success { get; set; }
+        public bool isSuccessed { get; set; }
         public string? errors { get; set; }
         public string? message { get; set; }
+        public User? user { get; set; }
 
     }
 }

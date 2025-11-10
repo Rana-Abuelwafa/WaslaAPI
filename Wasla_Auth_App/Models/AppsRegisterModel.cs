@@ -14,6 +14,7 @@ namespace Wasla_Auth_App.Models
         public required string Email { get; set; }
 
         public required string lang { get; set; }
+        public string? Role { get; set; }
 
     }
 }

@@ -76,9 +76,10 @@
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
+                    var no = @i + 1;
                     var service = services[i];
                     <tr style="border-bottom:1px solid #ccc">
-                        <td style="padding:10px 0;">@i</td>
+                        <td style="padding:10px 0;">@no</td>
                         <td style="padding:10px 0;">@service.package_name - @service.service_name</td>
                         <td style="padding:10px 0;">@service.package_sale_price</td>
                     </tr>
@@ -107,9 +108,9 @@
                 Allgemeine Geschäftsbedingungen :
             </h3>
             <p style="color: #4b0082; font-weight: bold; letter-spacing: .5px; font-size: 12px;">
-                This amount includes up to two (2) revisions to the final design.
-                If the client does not respond within 5 days, the project will be temporarily put on hold.
-                Design rights will be transferred to the client upon full payment.
+                Dieser Betrag umfasst bis zu zwei (2) Überarbeitungen des endgültigen Designs.
+                Wenn der Kunde innerhalb von 5 Tagen nicht antwortet, wird das Projekt vorübergehend pausiert.
+                Die Designrechte werden nach vollständiger Zahlung auf den Kunden übertragen.
             </p>
         </div>
         <hr style="margin: 30px 0;" />
