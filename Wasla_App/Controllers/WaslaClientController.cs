@@ -304,7 +304,22 @@ namespace Wasla_App.Controllers
 
         #region "packages & services"
 
+        //request for custom service
+        [HttpPost("RequestForCustomPackage")]
+        public IActionResult RequestForCustomPackage([FromQuery] string lang)
+        {
+            string? clientId = string.Empty;
+            string? FullName = string.Empty;
+            string? client_email = string.Empty;
+            if (_httpContextAccessor.HttpContext is not null)
+            {
+                clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
+                FullName = _httpContextAccessor.HttpContext.User.FindFirstValue("FullName");
+                client_email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
+            }
+            return Ok(_waslaService.RequestForCustomPackage(lang, FullName,client_email));
 
+        }
 
         [HttpPost("SaveClientServices")]
         public IActionResult saveClientServices(List<ClientServiceCast> lst)

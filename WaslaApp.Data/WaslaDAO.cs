@@ -789,7 +789,27 @@ namespace WaslaApp.Data
             }
             return total;
         }
-      
+
+        //request for custom Package
+
+        public ResponseCls RequestForCustomPackage(string lang,string client_name,string client_email)
+        {
+            ResponseCls response = null;
+            try { 
+                //send contact mail to client
+                string fileName = "CustomerSupport_" + lang + ".html";
+                string htmlBody = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "MailsTemp//", fileName));
+                htmlBody = htmlBody.Replace("@user", client_name);
+                MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = client_name, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 4), EmailBody = htmlBody };
+                var result = _mailSettingDao.SendMail(Mail_Data);
+                 response = new ResponseCls { errors = null, success = result, message=result == true ? _localizer["CustomServiceReq"] : _localizer["CheckAdmin"] };
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseCls { errors = _localizer["CheckAdmin"], success = false, idOut = 0 };
+            }
+            return response;
+        }
         //make Client's Invoice with selected packages 
 
         public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)

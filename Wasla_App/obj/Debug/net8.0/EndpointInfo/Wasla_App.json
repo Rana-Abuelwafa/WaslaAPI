@@ -1948,6 +1948,36 @@
         }
       }
     },
+    "/api/WaslaClient/RequestForCustomPackage": {
+      "post": {
+        "tags": [
+          "WaslaClient"
+        ],
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language for the response (e.g., en, ar, de)",
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/WaslaClient/SaveClientServices": {
       "post": {
         "tags": [

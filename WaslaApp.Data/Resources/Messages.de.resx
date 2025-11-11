@@ -156,4 +156,7 @@
   <data name="DuplicateOrder" xml:space="preserve">
     <value>Es sind bereits Daten mit derselben Bestellung vorhanden</value>
   </data>
+  <data name="CustomServiceReq" xml:space="preserve">
+    <value>Wir haben Ihre Anfrage erhalten. Bitte überprüfen Sie Ihre E-Mails für weitere Informationen.</value>
+  </data>
 </root>

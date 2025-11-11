@@ -123,5 +123,10 @@ namespace Wasla_App.services.Client
         {
             return _waslaDao.GetSearchResult(req);
         }
+
+        public ResponseCls RequestForCustomPackage(string lang, string client_name, string client_email)
+        {
+            return _waslaDao.RequestForCustomPackage(lang,client_name,client_email);
+        }
     }
 }

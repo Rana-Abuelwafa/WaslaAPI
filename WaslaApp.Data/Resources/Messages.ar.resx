@@ -156,4 +156,7 @@
   <data name="DuplicateOrder" xml:space="preserve">
     <value>يوجد بالفعل بيانات بنفس الترتيب</value>
   </data>
+  <data name="CustomServiceReq" xml:space="preserve">
+    <value>لقد استلمنا طلبك. يُرجى التحقق من بريدك الإلكتروني لمزيد من المعلومات.</value>
+  </data>
 </root>

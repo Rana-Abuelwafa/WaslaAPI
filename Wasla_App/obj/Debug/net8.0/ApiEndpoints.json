@@ -603,6 +603,22 @@
   },
   {
     "ContainingType": "Wasla_App.Controllers.WaslaClientController",
+    "Method": "RequestForCustomPackage",
+    "RelativePath": "api/WaslaClient/RequestForCustomPackage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lang",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Wasla_App.Controllers.WaslaClientController",
     "Method": "saveClientBrand",
     "RelativePath": "api/WaslaClient/saveClientBrand",
     "HttpMethod": "POST",
