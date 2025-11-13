@@ -72,6 +72,17 @@ namespace WaslaApp.Data
                     return "Waslaa - Checkout-Benachrichtigung";
                 else return "";
             }
+            else if (type == 6)
+            {
+                //mean invoice
+                if (lang == "ar")
+                    return "   عرض سعر - وصلة";
+                else if (lang == "en")
+                    return "Waslaa - Packages' Price Offer";
+                else if (lang == "de")
+                    return "Waslaa - Preisangebot";
+                else return "";
+            }
             else return "";
 
         }

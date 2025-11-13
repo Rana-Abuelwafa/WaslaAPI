@@ -89,9 +89,9 @@ namespace Wasla_App.services.Client
         }
 
 
-        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email)
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email, string completeprofile)
         {
-            return _waslaDao.MakeClientInvoiceForPackages(lst,client_id,client_name,client_email);
+            return _waslaDao.MakeClientInvoiceForPackages(lst,client_id,client_name,client_email, completeprofile);
         }
 
         public Task<ClientCopounCast> ValidateClientCopoun(ClientCopounReq req, string client_id)

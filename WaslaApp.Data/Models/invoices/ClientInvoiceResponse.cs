@@ -18,6 +18,7 @@ namespace WaslaApp.Data.Models.invoices
         public decimal? copoun_id { get; set; }
          public string? copoun { get; set; }
         public decimal? copoun_discount { get; set; }
+        public int? copoun_discount_type { get; set; }
         public decimal? total_price { get; set; }
 
         public decimal? discount { get; set; }
@@ -55,6 +56,7 @@ namespace WaslaApp.Data.Models.invoices
         public decimal? copoun_id { get; set; }
         public string? copoun { get; set; }
         public decimal? copoun_discount { get; set; }
+        public string? copoun_discount_type { get; set; }
         public string? invoice_date { get; set; }
         public int? tax_id { get; set; }
         public decimal? total_price { get; set; }

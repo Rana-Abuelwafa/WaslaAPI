@@ -18,7 +18,9 @@ using WaslaApp.Data.Models.global;
 using WaslaApp.Data.Models.invoices;
 using WaslaApp.Data.Models.PackagesAndServices;
 using WaslaApp.Data.Models.profile;
+using static QuestPDF.Helpers.Colors;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WaslaApp.Data
 {
@@ -235,6 +237,9 @@ namespace WaslaApp.Data
         //update Invoice;s total & grand total price after remove package or  apply Copoun
         public ResponseCls UpdateInvoicePrices(InvUpdatePriceReq req , string client_id)
         {
+            decimal? totalAfterCopoun = 0;
+
+
             try
             {
                 InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
@@ -242,7 +247,28 @@ namespace WaslaApp.Data
                 {
                     var totalPrice = req.total_price - req.deduct_amount;
                     var TotalPriceAfterTax = CalculatePriceWithTax(req.tax_id, totalPrice).Result;
-                    var totalAfterCopoun = TotalPriceAfterTax - (TotalPriceAfterTax * req.copoun_discount / 100); ;
+
+                    //get copoun discount val
+
+                    var Copoun = _db.ClientCopouns.Where(wr => wr.id == req.copoun_id).FirstOrDefault();
+                    if(Copoun != null)
+                    {
+                        switch (Copoun.discount_type)
+                        {
+                            case 1:
+                                //percentage
+                                totalAfterCopoun = TotalPriceAfterTax - (TotalPriceAfterTax * Copoun.discount_value / 100);
+                                break;
+                            case 2:
+                                //fixed amount
+                                totalAfterCopoun = TotalPriceAfterTax - Copoun.discount_value;
+                                break;
+                        }
+                        
+                    }
+                    //var totalAfterCopoun = TotalPriceAfterTax - (TotalPriceAfterTax * req.copoun_discount / 100); ;
+                    
+                    
                     inv.copoun_id = req.copoun_id;
                     inv.total_price = totalPrice;
                     inv.grand_total_price = totalAfterCopoun;
@@ -302,9 +328,10 @@ namespace WaslaApp.Data
                                        client_name = combinedEntry.client_name,
                                        client_email = combinedEntry.client_email,
                                        invoice_date = DateTime.Parse(combinedEntry.invoice_date.ToString()).ToString("yyyy-MM-dd"),
-                                       copoun_id = combinedEntry.copoun_id,
-                                       copoun = combinedEntry.copoun,
-                                       copoun_discount = combinedEntry.copoun_discount_value,
+                                       copoun_id = combinedEntry.copoun_id ,
+                                       copoun =  combinedEntry.copoun,
+                                       copoun_discount = combinedEntry.copoun_discount_value ,
+                                       copoun_discount_type =combinedEntry.copoun_discount_type
                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
@@ -328,6 +355,7 @@ namespace WaslaApp.Data
                     grp.client_name,
                     grp.copoun_id,
                     grp.copoun_discount,
+                    grp.copoun_discount_type,
                     grp.copoun
                 }).Select(s => new ClientInvoiceGrp
                 {
@@ -348,6 +376,7 @@ namespace WaslaApp.Data
                     copoun_id=s.Key.copoun_id,
                     copoun=s.Key.copoun,
                     copoun_discount=s.Key.copoun_discount,
+                    copoun_discount_type = s.Key.copoun_discount_type == 1 ? "%":s.Key.curr_code,
                     pkgs = req.status == 2 ? (fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id)
                                       .Select(s => new ClientInvoiceResponse
                                       {
@@ -429,8 +458,10 @@ namespace WaslaApp.Data
                     return new ResponseCls { success = false, errors = _localizer["ProfileUncomplete"] };
                 }    
                 InvoiceMain inv = _db.InvoiceMains.Where(wr => wr.client_id == client_id && wr.invoice_id == req.invoice_id).SingleOrDefault();
+
                 if (inv != null)
                 {
+
                     inv.status = 2;
                     _db.Update(inv);
                     _db.SaveChanges();
@@ -442,7 +473,10 @@ namespace WaslaApp.Data
                     MailData Mail_Data = new MailData { EmailToId = "Customer.Care@waslaa.de", EmailToName = "Customer.Care@waslaa.de", EmailSubject = UtilsCls.GetMailSubjectByLang("en", 5), EmailBody = htmlBody };
                     _mailSettingDao.SendMail(Mail_Data);
                     return new ResponseCls { success = true, errors = null };
+     
                 }
+
+
                 return new ResponseCls { success = false, errors = _localizer["NoInvoice"] };
             }
             catch (Exception ex)
@@ -812,8 +846,13 @@ namespace WaslaApp.Data
         }
         //make Client's Invoice with selected packages 
 
-        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email)
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id ,string client_name,string client_email,string completeprofile)
         {
+
+            if (completeprofile.Trim() != "2")
+            {
+                return new InvoiceResponse { success = false, errors = _localizer["ProfileUncomplete"] };
+            }
             InvoiceResponse response = null;
             //list with custom package => no make invoice directly send contact mail to client
             var customLst = lst.Where(wr => wr.is_custom == true).ToList();
@@ -837,7 +876,7 @@ namespace WaslaApp.Data
                 decimal servicemaxId = 0;
                 //concatenate each service code together + concatenate each package code together + date now to make unique and readable code
                 //invoice code ex => WACO-BICO-20250810 => firstwo letter Service Code, second two letter Package Code + date
-                string invCode = string.Join("-", newList.Select(e => String.IsNullOrEmpty(e.package_code) ? "00" : (String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
+                string invCode = string.Join("-", newList.Select(e => System.String.IsNullOrEmpty(e.package_code) ? "00" : (System.String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
                 //first save in InvoiceMain (make invoice)
                 var totalPrice = newList.Sum(s => s.package_sale_price);
@@ -936,7 +975,13 @@ namespace WaslaApp.Data
                                 address = profile != null ? profile.address : "",
                                 contact = profile != null ? profile.phone_number : "",
                                 Discount = main.discount,
-                                services = newList,
+                                services = newList.Select(s => new PkgService
+                                {
+                                    package_name = s.package_name,
+                                    package_price=s.package_price,
+                                    package_sale_price=s.package_sale_price,
+                                    service_name=s.service_name,
+                                }).ToList(),
                                 InvoiceNo = main.invoice_code,
                                 IssuedDate = main.invoice_date?.ToString("yyyy-MM-dd"),
                                 Total = main.total_price,

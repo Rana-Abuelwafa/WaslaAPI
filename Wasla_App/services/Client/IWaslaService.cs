@@ -34,7 +34,7 @@ namespace Wasla_App.services.Client
         #region "packages & services"
         public ResponseCls RequestForCustomPackage(string lang, string client_name, string client_email);
         public Task<List<ServicesWithPkg>> GetSearchResult(SearchCls req);
-        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email);
+        public InvoiceResponse MakeClientInvoiceForPackages(List<InvoiceReq> lst, string client_id, string client_name, string client_email,string completeprofile);
         public Task<List<ServicesWithPkg>> GetPricingPackageWithService(LangReq req);
         public ResponseCls saveClientServices(List<ClientServiceCast> lst, string client_id);
         #endregion

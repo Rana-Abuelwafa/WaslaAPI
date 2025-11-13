@@ -344,20 +344,22 @@ namespace Wasla_App.Controllers
             string? FullName = string.Empty;
             string? client_email = string.Empty;
             string? lang = lst.FirstOrDefault().lang_code;
+            string? completeprofile = string.Empty;
             if (_httpContextAccessor.HttpContext is not null)
             {
                 clientId = _httpContextAccessor.HttpContext.User.FindFirstValue("ClientId");
                 FullName = _httpContextAccessor.HttpContext.User.FindFirstValue("FullName");
                 client_email = _httpContextAccessor.HttpContext.User.FindFirstValue("Email");
+                completeprofile = _httpContextAccessor.HttpContext.User.FindFirstValue("completeprofile");
             }
             string fileName = "Invoice_" + lang.ToLower() + ".cshtml";
             var templatePath = Path.Combine("/Views/Email" + "/", fileName);
-            InvoiceResponse response = _waslaService.MakeClientInvoiceForPackages(lst, clientId, FullName, client_email);
+            InvoiceResponse response = _waslaService.MakeClientInvoiceForPackages(lst, clientId, FullName, client_email, completeprofile);
             HtmlInvoice model = response.invoice;
             if (model != null)
             {
                 var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
-                MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 3), EmailBody = msg };
+                MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 6), EmailBody = msg };
                 return Ok(Mail_Service.SendMail(Mail_Data));
             }
             else

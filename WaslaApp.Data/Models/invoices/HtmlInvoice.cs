@@ -17,6 +17,15 @@ namespace WaslaApp.Data.Models.invoices
         public decimal? SubTtotal { get; set; }
         public decimal? Discount { get; set; }
         public decimal? Total { get; set; }
-        public List<InvoiceReq> services { get; set; }
+       // public List<InvoiceReq> services { get; set; }
+        public List<PkgService> services { get; set; }
+    }
+
+    public class PkgService
+    {
+        public decimal? package_sale_price { get; set; }
+        public decimal? package_price { get; set; }
+        public string? service_name { get; set; }
+        public string? package_name { get; set; }
     }
 }
