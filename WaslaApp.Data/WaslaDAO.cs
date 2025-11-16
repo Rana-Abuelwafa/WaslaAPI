@@ -879,7 +879,8 @@ namespace WaslaApp.Data
                 string invCode = string.Join("-", newList.Select(e => System.String.IsNullOrEmpty(e.package_code) ? "00" : (System.String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
                 //first save in InvoiceMain (make invoice)
-                var totalPrice = newList.Sum(s => s.package_sale_price);
+                //price for each package is per month , so multiply * 12 to make invoice per year
+                var totalPrice = newList.Sum(s => s.package_sale_price * 12);
                 var totalDiscount = newList.Sum(s => s.discount_amount);
                 var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
                 InvoiceMain main = new InvoiceMain
@@ -897,7 +898,7 @@ namespace WaslaApp.Data
                     copoun_id = 0,
                     grand_total_price = TotalPriceAfterTax,
                     status = 1, //mean pending
-                    tax_id = 1
+                    tax_id = 1  //.14
 
                 };
                 try

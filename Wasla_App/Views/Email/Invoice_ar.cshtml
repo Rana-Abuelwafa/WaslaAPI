@@ -25,7 +25,7 @@
     <title>Invoice</title>
 </head>
 
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7;">
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7;direction:rtl">
     <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 30px; border: 1px solid #ddd;">
         <div style="text-align: center; border-bottom: 1px solid #707070;">
             <img src="https://api.waslaa.de/images/logo.png" alt="Wasla Logo" style="width: 100px; margin-bottom: 20px;" />
@@ -70,7 +70,10 @@
                 <tr style="border-bottom:1px solid #ccc">
                     <th style="padding: 5px;">تسلسل</th>
                     <th style="padding: 5px;">وصف المنتج</th>
-                    <th style="padding: 5px;">السعر</th>
+                    <th style="padding: 5px;">
+                        السعر
+                        <span>(شهرى)</span>
+                    </th>
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
@@ -86,7 +89,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th style="border-bottom: 1px solid #ccc; padding: 10px 0;">المجموع</th>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@SubTtotal</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@SubTtotal (سنوى)</td>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
@@ -96,7 +99,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th>لسعر النهائي</th>
-                    <td style="padding:10px 0;">@Total</td>
+                    <td style="padding:10px 0;">@Total (سنوى)</td>
                 </tr>
             </table>
         </div>

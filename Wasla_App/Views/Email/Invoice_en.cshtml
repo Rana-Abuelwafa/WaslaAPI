@@ -69,7 +69,7 @@
                 <tr style="border-bottom:1px solid #ccc">
                     <th style="padding: 5px;">No.</th>
                     <th style="padding: 5px;">Product Item Description</th>
-                    <th style="padding: 5px;">Price</th>
+                    <th style="padding: 5px;">Price (Monthly)</th>
                 </tr>
                 @for (var i = 0; i < services.Count; i++)
                 {
@@ -85,7 +85,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th style="border-bottom: 1px solid #ccc; padding: 10px 0;">Sub Total</th>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@SubTtotal</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #ccc;">@SubTtotal (Yearly)</td>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
@@ -95,7 +95,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th>Total</th>
-                    <td style="padding:10px 0;">@Total</td>
+                    <td style="padding:10px 0;">@Total (Yearly)</td>
                 </tr>
             </table>
         </div>

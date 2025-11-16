@@ -35,13 +35,14 @@ namespace Wasla_App.Controllers
         private readonly ILogger<WaslaClientController> _logger;
         private readonly IWaslaService _waslaService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public WaslaClientController(IMailService _MailService, CustomViewRendererService viewService, IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger)
+        public WaslaClientController(IMailService _MailService, CustomViewRendererService viewService, IWaslaService waslaService, IHttpContextAccessor httpContextAccessor, ILogger<WaslaClientController> logger, IStringLocalizer<Messages> localizer)
         {
             _viewService = viewService;
             _waslaService = waslaService;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
             Mail_Service = _MailService;
+            _localizer = localizer;
         }
 
         #region "registration questions"
@@ -360,7 +361,8 @@ namespace Wasla_App.Controllers
             {
                 var msg = await _viewService.RenderViewToStringAsync(templatePath, model, ControllerContext);
                 MailData Mail_Data = new MailData { EmailToId = client_email, EmailToName = FullName, EmailSubject = UtilsCls.GetMailSubjectByLang(lang, 6), EmailBody = msg };
-                return Ok(Mail_Service.SendMail(Mail_Data));
+                var result = Mail_Service.SendMail(Mail_Data);
+                return Ok(new InvoiceResponse { success= result, errors= (result == true ? "" : _localizer["SendMailError"]), message= "" });
             }
             else
             {
