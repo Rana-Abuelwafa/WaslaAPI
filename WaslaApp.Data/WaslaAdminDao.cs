@@ -696,13 +696,13 @@ namespace WaslaApp.Data
             {
                 return _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
-                                                         PKGF => new { PKGF.feature_id },
+                                                         PKGF => new { feature_id = (int) PKGF.feature_id },
                                                          FEAT => new { feature_id = FEAT.id },
                                                          (PKGF, FEAT) => new { PKGF, FEAT }
                                                           )
                                                     .Join(_db.features_translations.Where(wr => wr.lang_code == req.lang_code),
                                                           combined => new { feature_id = combined.FEAT.id },
-                                                          Trans => new { Trans.feature_id },
+                                                          Trans => new { feature_id = (int) Trans.feature_id },
                                                           (combined, Trans) => new PackagesFeatureRes
                                                           {
                                                               feature_id = combined.PKGF.feature_id,
@@ -730,7 +730,7 @@ namespace WaslaApp.Data
             {
                 return await _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
-                                                         PKGF => new { PKGF.feature_id },
+                                                         PKGF => new { feature_id = (int) PKGF.feature_id },
                                                          FEAT => new { feature_id = FEAT.id },
                                                          (PKGF, FEAT) => new PackagesFeatureRes
                                                          {

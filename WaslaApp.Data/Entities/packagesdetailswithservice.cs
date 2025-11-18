@@ -44,4 +44,6 @@ public partial class packagesdetailswithservice
     public decimal? discount_amount { get; set; }
 
     public int? discount_type { get; set; }
+
+    public short? price_calc_type { get; set; }
 }

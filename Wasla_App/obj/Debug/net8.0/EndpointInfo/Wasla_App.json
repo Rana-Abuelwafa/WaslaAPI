@@ -2426,7 +2426,8 @@
           },
           "feature_id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "feature_name": {
             "type": "string",
@@ -2609,6 +2610,11 @@
             "nullable": true
           },
           "service_package_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price_calc_type": {
             "type": "integer",
             "format": "int32",
             "nullable": true

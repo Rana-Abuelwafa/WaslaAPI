@@ -159,4 +159,10 @@
   <data name="CustomServiceReq" xml:space="preserve">
     <value>Wir haben Ihre Anfrage erhalten. Bitte überprüfen Sie Ihre E-Mails für weitere Informationen.</value>
   </data>
+  <data name="PerProject" xml:space="preserve">
+    <value>Preis pro Projekt</value>
+  </data>
+  <data name="PerMonth" xml:space="preserve">
+    <value>Monatlich</value>
+  </data>
 </root>

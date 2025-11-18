@@ -9,7 +9,7 @@ public partial class packages_feature
 
     public int? service_package_id { get; set; }
 
-    public int feature_id { get; set; }
+    public int? feature_id { get; set; }
 
     public DateTime? created_at { get; set; }
 

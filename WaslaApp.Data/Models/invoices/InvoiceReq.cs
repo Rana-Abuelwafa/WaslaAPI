@@ -21,5 +21,6 @@ namespace WaslaApp.Data.Models.invoices
         public int? package_id { get; set; }
         public bool? is_custom { get; set; }
         public int? service_package_id { get; set; }
+        public short? price_calc_type { get; set; }
     }
 }

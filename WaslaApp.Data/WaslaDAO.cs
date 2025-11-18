@@ -292,6 +292,8 @@ namespace WaslaApp.Data
         {
             try
             {
+                var perProjectText = _localizer["PerProject"].Value;
+                var perMonthText = _localizer["PerMonth"].Value;
 
                 var fullEntries = await _db.clientinvoiceswithdetails.Where(wr => wr.client_id == client_id && wr.active == req.active && (wr.status == (req.status == -1 ? 2 : req.status) || wr.status == (req.status == -1 ? 3 : req.status)))
                                     .Join(
@@ -331,7 +333,9 @@ namespace WaslaApp.Data
                                        copoun_id = combinedEntry.copoun_id ,
                                        copoun =  combinedEntry.copoun,
                                        copoun_discount = combinedEntry.copoun_discount_value ,
-                                       copoun_discount_type =combinedEntry.copoun_discount_type
+                                       copoun_discount_type =combinedEntry.copoun_discount_type,
+                                       price_calc_type= PKG.price_calc_type,
+                                       price_calc_type_str = (PKG.price_calc_type!=null && PKG.price_calc_type == 3) ? perProjectText : perMonthText,
                                        //invoice_date = combinedEntry.SERV_INV.INV.invoice_date,
                                        // features = GetPricingPkgFeatures(new PricingPkgFeatureReq { active = true, lang_code = req.lang_code, package_id = combinedEntry.SERV_PKG.SERV_INV.SERV.package_id }).ToList()
 
@@ -399,6 +403,8 @@ namespace WaslaApp.Data
                                           tax_amount = s.tax_amount,
                                           tax_code = s.tax_code,
                                           tax_id = s.tax_id,
+                                          price_calc_type=s.price_calc_type,
+                                          price_calc_type_str=s.price_calc_type_str,
                                           features = getPackageFeatures(new PackageFeatureReq { service_package_id= s.service_package_id,lang_code=req.lang_code }).ToList()
                                       }).ToList()) : fullEntries.Where(wr => wr.invoice_id == s.Key.invoice_id).ToList()
 
@@ -879,8 +885,12 @@ namespace WaslaApp.Data
                 string invCode = string.Join("-", newList.Select(e => System.String.IsNullOrEmpty(e.package_code) ? "00" : (System.String.IsNullOrEmpty(e.service_code) ? "" : e.service_code) + e.package_code )) + "-" + DateTime.Now.ToString("yyyyMMdd");
 
                 //first save in InvoiceMain (make invoice)
-                //price for each package is per month , so multiply * 12 to make invoice per year
-                var totalPrice = newList.Sum(s => s.package_sale_price * 12);
+                //check for price calc type
+                //2 =>  (so multiply package price * 12 to make invoice per year for ex in web application)  
+                // 1 => invoice will be monthly in case marketing , price not multiply
+                //3 => per project in case Brand identity ,price not multiply
+                //totalPrice = newList.Sum(s => s.package_sale_price * 12);
+                var totalPrice = newList.Sum(s => s.package_sale_price * (s.price_calc_type == 2 ? 12 : 1));
                 var totalDiscount = newList.Sum(s => s.discount_amount);
                 var TotalPriceAfterTax = CalculatePriceWithTax(1, totalPrice).Result;
                 InvoiceMain main = new InvoiceMain
@@ -1012,13 +1022,13 @@ namespace WaslaApp.Data
             {
                 return  _db.packages_features.Where(wr => wr.service_package_id == req.service_package_id)
                                                   .Join(_db.main_features,
-                                                         PKGF => new { PKGF.feature_id },
+                                                         PKGF => new { feature_id = (int) PKGF.feature_id },
                                                          FEAT => new { feature_id = FEAT.id },
                                                          (PKGF, FEAT) => new { PKGF, FEAT }
                                                           )
                                                     .Join(_db.features_translations.Where(wr => wr.lang_code == req.lang_code),
                                                           combined => new { feature_id = combined.FEAT.id},
-                                                          Trans => new { Trans.feature_id},
+                                                          Trans => new { feature_id = (int) Trans.feature_id},
                                                           (combined, Trans) => new PackagesFeatureRes
                                                           {
                                                               feature_id = combined.PKGF.feature_id,
@@ -1068,6 +1078,7 @@ namespace WaslaApp.Data
                     is_custom = s.is_custom,
                     service_package_id=s.service_package_id,
                     service_code=s.service_code,
+                    price_calc_type=s.price_calc_type,
                     features = getPackageFeatures(new PackageFeatureReq { lang_code = req.lang,service_package_id=s.service_package_id }).ToList()
 
                 }).ToList();

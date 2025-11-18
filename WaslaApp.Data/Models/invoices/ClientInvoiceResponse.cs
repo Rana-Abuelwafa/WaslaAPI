@@ -41,6 +41,9 @@ namespace WaslaApp.Data.Models.invoices
         public string? client_id { get; set; }
         public string? client_name { get; set; }
         public int? service_package_id { get; set; }
+        public short? price_calc_type { get; set; }
+        public string? price_calc_type_str { get; set; }
+        
         //public List<PricingPkgFeature> features { get; set; }
         public List<PackagesFeatureRes> features { get; set; }
     }

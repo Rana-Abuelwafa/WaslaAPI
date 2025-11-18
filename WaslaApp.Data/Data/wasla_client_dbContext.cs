@@ -346,6 +346,9 @@ public partial class wasla_client_dbContext : DbContext
                 .HasDefaultValueSql("now()")
                 .HasColumnType("timestamp without time zone");
             entity.Property(e => e.created_by).HasMaxLength(100);
+            entity.Property(e => e.price_calc_type)
+                .HasDefaultValue((short)1)
+                .HasComment("1 = monthly\n2 = yearly\n3 = per project");
             entity.Property(e => e.updated_at)
                 .HasDefaultValueSql("now()")
                 .HasColumnType("timestamp without time zone");

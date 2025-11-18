@@ -19,6 +19,13 @@ public partial class main_service
 
     public string? created_by { get; set; }
 
+    /// <summary>
+    /// 1 = monthly
+    /// 2 = yearly
+    /// 3 = per project
+    /// </summary>
+    public short? price_calc_type { get; set; }
+
     public virtual ICollection<service_package> service_packages { get; set; } = new List<service_package>();
 
     public virtual ICollection<service_translation> service_translations { get; set; } = new List<service_translation>();

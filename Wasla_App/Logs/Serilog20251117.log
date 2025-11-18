@@ -1,0 +1,58 @@
+[2025-11-17 16:55:20.625 +02:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-11-17 16:55:21.656 +02:00  INF]  Now listening on: https://localhost:7283
+[2025-11-17 16:55:21.657 +02:00  INF]  Now listening on: http://localhost:5074
+[2025-11-17 16:55:21.865 +02:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-11-17 16:55:21.866 +02:00  INF]  Hosting environment: Development
+[2025-11-17 16:55:21.866 +02:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-11-17 16:55:24.187 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-11-17 16:55:24.736 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 566.9791ms
+[2025-11-17 16:55:24.817 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-11-17 16:55:24.817 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-11-17 16:55:24.850 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 33.2857ms
+[2025-11-17 16:55:24.975 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 158.1457ms
+[2025-11-17 16:55:25.195 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-11-17 16:55:25.282 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 86.6782ms
+[2025-11-17 17:06:14.425 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - null null
+[2025-11-17 17:06:14.425 +02:00  INF]  Request starting HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - null null
+[2025-11-17 17:06:14.493 +02:00  INF]  CORS policy execution successful.
+[2025-11-17 17:06:14.493 +02:00  INF]  CORS policy execution successful.
+[2025-11-17 17:06:14.495 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetClientProfiles - 204 null null 70.1673ms
+[2025-11-17 17:06:14.495 +02:00  INF]  Request finished HTTP/2 OPTIONS https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 204 null null 70.5799ms
+[2025-11-17 17:06:14.499 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - null 0
+[2025-11-17 17:06:14.499 +02:00  INF]  Request starting HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - application/json 43
+[2025-11-17 17:06:14.500 +02:00  INF]  CORS policy execution successful.
+[2025-11-17 17:06:14.500 +02:00  INF]  CORS policy execution successful.
+[2025-11-17 17:06:16.491 +02:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17‏‏/11‏‏/2025 2:06:19 م', Current time (UTC): '17‏‏/11‏‏/2025 3:06:16 م'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-11-17 17:06:16.491 +02:00  INF]  Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17‏‏/11‏‏/2025 2:06:19 م', Current time (UTC): '17‏‏/11‏‏/2025 3:06:16 م'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+[2025-11-17 17:06:16.512 +02:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17‏‏/11‏‏/2025 2:06:19 م', Current time (UTC): '17‏‏/11‏‏/2025 3:06:16 م'.
+[2025-11-17 17:06:16.512 +02:00  INF]  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17‏‏/11‏‏/2025 2:06:19 م', Current time (UTC): '17‏‏/11‏‏/2025 3:06:16 م'.
+[2025-11-17 17:06:16.574 +02:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-11-17 17:06:16.574 +02:00  INF]  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+[2025-11-17 17:06:16.583 +02:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-11-17 17:06:16.583 +02:00  INF]  AuthenticationScheme: Bearer was challenged.
+[2025-11-17 17:06:16.584 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetClientProfiles - 401 0 null 2085.302ms
+[2025-11-17 17:06:16.584 +02:00  INF]  Request finished HTTP/2 POST https://localhost:7283/api/WaslaClient/GetInvoicesByClient - 401 0 null 2085.4394ms
+[2025-11-17 17:06:46.444 +02:00  INF]  User profile is available. Using 'C:\Users\Pro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-11-17 17:06:47.553 +02:00  INF]  Now listening on: https://localhost:7283
+[2025-11-17 17:06:47.554 +02:00  INF]  Now listening on: http://localhost:5074
+[2025-11-17 17:06:48.437 +02:00  INF]  Application started. Press Ctrl+C to shut down.
+[2025-11-17 17:06:48.438 +02:00  INF]  Hosting environment: Development
+[2025-11-17 17:06:48.438 +02:00  INF]  Content root path: D:\waslaa\api\WaslaAPI\Wasla_App
+[2025-11-17 17:06:48.482 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/index.html - null null
+[2025-11-17 17:06:48.979 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/index.html - 200 null text/html;charset=utf-8 509.4839ms
+[2025-11-17 17:06:49.001 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - null null
+[2025-11-17 17:06:49.038 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/_vs/browserLink - null null
+[2025-11-17 17:06:49.042 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 40.791ms
+[2025-11-17 17:06:49.185 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/_vs/browserLink - 200 null text/javascript; charset=UTF-8 146.8938ms
+[2025-11-17 17:06:49.350 +02:00  INF]  Request starting HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - null null
+[2025-11-17 17:06:49.454 +02:00  INF]  Request finished HTTP/2 GET https://localhost:7283/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 103.7504ms
